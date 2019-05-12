@@ -50,12 +50,14 @@ $(document).ready(addDestinationFormFuctionality.onReady)
             {{ form.weather_place_autocomplete }} <br>
         
             <h3>{{ form.featured_photo.label }} </h3>
+            <p>Må legge til en compressor/resizer</p>
             {{ form.featured_photo }} <br>
             {% for error in form.featured_photo.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
 
-             <h3>{{ form.additional_photos.label }} </h3>
+            <h3>{{ form.additional_photos.label }} </h3>
+            <p>Må legge til en compressor/resizerasd</p>
             {{ form.additional_photos }} <br>
             {% for error in form.additional_photos.errors %}
             <span style="color: red;">[{{ error }}]</span>

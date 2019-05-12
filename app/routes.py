@@ -380,7 +380,9 @@ def user(username):
     return render_template('user.html', user=user, destinations=destinations)
 
 
-@app.route('/login', methods=['GET', 'POST'])  # imports the LoginForm class from forms.py, puts it into a variable, and sends it to the html template
+# imports the LoginForm class from forms.py, puts it into a variable,
+# and sends it to the html template
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:  # checks if the user is logged in or not
         return redirect(url_for('index'))
@@ -392,7 +394,9 @@ def login():
             return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')  # from (/login?next=/index) gets the value of ?next=
-        if not next_page or url_parse(next_page).netloc != '':  # .netloc checks if the URL in ?next= is absolute or relative, if absolute (http://www.domain.com/...) it redirects to index for security purposes
+        if not next_page or url_parse(next_page).netloc != '':
+            # .netloc checks if the URL in ?next= is absolute or relative, if absolute (http://www.domain.com/...)
+            # it redirects to index for security purposes
             next_page = url_for('index')
         return redirect(next_page)
     return render_template('login.html', title='Sign In', form=form)
@@ -447,7 +451,7 @@ def add_destination():
                                       weather_ltd=form.weather_ltd.data,
                                       weather_lng=form.weather_lng.data,
                                       featured_photo_filename=featured_photo_filename,
-                                      featured_photo_url=featured_photo_url, 
+                                      featured_photo_url=featured_photo_url,
                                       author=current_user)
             # Add new destination to database
             db.session.add(destination)
@@ -588,7 +592,9 @@ def find_partner():
 
 @app.route('/vote')
 def vote():
-    return "Här kan man rösta på vilka destinationer som ska läggas till. Man kan lägga till en destination eller upvota. Bonus: Man kan också kommentera på varje destination."
+    return """Här kan man rösta på vilka destinationer som ska läggas till.
+              Man kan lägga till en destination eller upvota.
+              Bonus: Man kan också kommentera på varje destination."""
 
 
 @app.route('/query-example')
