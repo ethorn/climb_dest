@@ -1,0 +1,503 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="sortfilter-bar">
+		<!-- EUR (currency list dropdown) -->
+		<ul>
+
+		<li class="sortfilter-bar--currency">
+			{{ currency_form.currency(class_="button") }}
+		</li>
+
+		<!-- Mobile sortby -->
+		<li class="sortfilter-bar--sortby hide-on-desktop">
+			<select name="sort_by" class="js-sort-by js-mobile-sort-by">
+    			<optgroup label="General">
+    				<option selected value="time">Newest</option>
+	    			<option value="cost">Cost</option>
+    			</optgroup>
+    			<optgroup label="Routes">
+    				<option value="total_routes">Total # of routes</option>
+	    			<option value="routes23"># routes in range 2/3</option>
+	    			<option value="routes4"># routes in range 4</option>
+	    			<option value="routes5"># routes in range 5</option>
+	    			<option value="routes6"># routes in range 6</option>
+	    			<option value="routes7"># routes in range 7</option>
+	    			<option value="routes8"># routes in range 8</option>
+	    			<option value="routes9"># routes in range 9</option>
+    			</optgroup>
+    		</select>
+    		<a class="sortfilter-bar--asc-desc js-sortby-asc-desc js-mobile-sortby-asc-desc js-asc" href="javascript:void(0);">&uarr;</a>
+		</li>
+
+		<!-- Desktop filters -->
+		<li class="sortfilter-bar--sortby hide-on-mobile">
+			<select name="sort_by" class="js-sort-by js-desktop-sort-by">
+    			<optgroup label="General">
+    				<option selected value="time">Newest</option>
+	    			<option value="cost">Cost</option>
+    			</optgroup>
+    			<optgroup label="Routes">
+    				<option value="total_routes">Total # of routes</option>
+	    			<option value="routes23"># routes in range 2/3</option>
+	    			<option value="routes4"># routes in range 4</option>
+	    			<option value="routes5"># routes in range 5</option>
+	    			<option value="routes6"># routes in range 6</option>
+	    			<option value="routes7"># routes in range 7</option>
+	    			<option value="routes8"># routes in range 8</option>
+	    			<option value="routes9"># routes in range 9</option>
+    			</optgroup>
+    		</select>
+    		<a class="sortfilter-bar--asc-desc js-sortby-asc-desc js-desktop-sortby-asc-desc js-asc" href="javascript:void(0);">&uarr;</a>
+		</li>
+
+		<li class="sortfilter-bar--cost button-filter hide-on-mobile">
+			Cost
+			<select name="filter-desktop-cost" class="js-filter-desktop-cost">
+    			<option value="any">Any</option>
+    			<option value="200">&#60;200 EUR / week</option>
+    			<option value="500">&#60;500 EUR / week</option>
+    			<option value="1000">&#60;1000 EUR / week</option>
+    		</select>
+		</li>
+
+		<li class="sortfilter-bar--accomodation button-filter js-filter-button-dropdown hide-on-mobile">
+			Accomodation
+			<div class="dropdown-content">
+				<input type="checkbox" class="js-filter-desktop-accomodation-checkbox" value="tent_free"> Free tent spots <br>
+				<input type="checkbox" class="js-filter-desktop-accomodation-checkbox" value="van_free"> Free van spots <br>
+				<input type="checkbox" class="js-filter-desktop-accomodation-checkbox" value="camping"> Camping <br>
+				<input type="checkbox" class="js-filter-desktop-accomodation-checkbox" value="hostel"> Hostel/Guesthouse <br>
+				<input type="checkbox" class="js-filter-desktop-accomodation-checkbox" value="apartment"> Apartment <br>
+				<input type="checkbox" class="js-filter-desktop-accomodation-checkbox" value="house"> House <br>
+				<input type="checkbox" class="js-filter-desktop-accomodation-checkbox" value="hotel"> Hotel <br>
+
+				<input type="submit" class="js-filter-desktop-submit js-filter-desktop-accomodation-submit" value="GO">
+			</div>
+		</li>
+
+		<li class="sortfilter-bar--discipline button-filter js-filter-button-dropdown hide-on-mobile">
+			Discipline
+			<div class="dropdown-content">
+				<label for="filter-main-discipline">Main discipline</label>
+				<select class="js-filter-desktop-main-discipline">
+					<option selected value="any">Any</option>
+					<option value="sport">Sport</option>
+					<option value="traditional">Trad</option>
+					<option value="bouldering">Bouldering</option>
+				</select>
+				<label>Also has</label>
+				<input type="checkbox" class="js-filter-desktop-second-discipline-checkbox" value="sport"> Sport<br>
+				<input type="checkbox" class="js-filter-desktop-second-discipline-checkbox" value="traditional"> Trad<br>
+				<input type="checkbox" class="js-filter-desktop-second-discipline-checkbox" value="bouldering"> Bouldering<br>
+
+				<input type="submit" class="js-filter-desktop-submit js-filter-desktop-discipline-submit" value="GO">
+			</div>
+		</li>
+
+		<li class="sortfilter-bar--months button-filter js-filter-button-dropdown hide-on-mobile">
+			Months
+			<div class="dropdown-content">
+				<input type="checkbox" class="js-filter-desktop-months-checkbox" value="january"> January <br>
+				<input type="checkbox" class="js-filter-desktop-months-checkbox" value="february"> February <br>
+				<input type="checkbox" class="js-filter-desktop-months-checkbox" value="march"> March <br>
+				<input type="checkbox" class="js-filter-desktop-months-checkbox" value="april"> April <br>
+				<input type="checkbox" class="js-filter-desktop-months-checkbox" value="may"> May <br>
+				<input type="checkbox" class="js-filter-desktop-months-checkbox" value="june"> June <br>
+				<input type="checkbox" class="js-filter-desktop-months-checkbox" value="july"> July <br>
+				<input type="checkbox" class="js-filter-desktop-months-checkbox" value="august"> August <br>
+				<input type="checkbox" class="js-filter-desktop-months-checkbox" value="september"> September <br>
+				<input type="checkbox" class="js-filter-desktop-months-checkbox" value="october"> October <br>
+				<input type="checkbox" class="js-filter-desktop-months-checkbox" value="november"> November <br>
+				<input type="checkbox" class="js-filter-desktop-months-checkbox" value="december"> December <br>
+
+				<input type="submit" class="js-filter-desktop-submit js-filter-desktop-months-submit" value="GO">
+			</div>
+		</li>
+
+		<li class="sortfilter-bar--car button-filter js-filter-button-dropdown hide-on-mobile">
+			Car
+			<div class="dropdown-content">
+				<input type="checkbox" class="js-filter-desktop-car-checkbox" value="not_needed"> Not needed <br>
+				<input type="checkbox" class="js-filter-desktop-car-checkbox" value="good_to_have"> Good to have <br>
+				<input type="checkbox" class="js-filter-desktop-car-checkbox" value="must_have"> Must have <br>
+
+				<input type="submit" class="js-filter-desktop-submit js-filter-car-submit" value="GO">
+			</div>
+		</li>
+
+		<li class="sortfilter-bar--filters button js-mobile-filters-toggle js-filter-button-dropdown hide-on-desktop">
+			<span>Filters</span>
+		</li>
+
+		</ul>
+	</div>
+
+	<!-- Mobile filters -->
+	<div class="mobile-filters-container js-mobile-filters-container">
+		<h4>Average weekly cost (EUR)</h4>
+		<select name="filter_mobile_cost" class="js-filter-mobile-cost">
+    			<option value="any">Any</option>
+    			<option value="200">&#60;200 EUR / week</option>
+    			<option value="500">&#60;500 EUR / week</option>
+    			<option value="1000">&#60;1000 EUR / week</option>
+    	</select>
+
+		<h4>Accomodation</h4>
+		<input type="checkbox" class="js-filter-mobile-accomodation-checkbox" name="mobile_tent_free" value="tent_free"> <label for="mobile_tent_free">Free tent spots</label> <br>
+		<input type="checkbox" class="js-filter-mobile-accomodation-checkbox" name="mobile_van_free" value="van_free"> <label for="mobile_van_free">Free van spots</label> <br>
+		<input type="checkbox" class="js-filter-mobile-accomodation-checkbox" name="mobile_cambing" value="camping"> <label for="mobile_camping">Camping</label> <br>
+		<input type="checkbox"  class="js-filter-mobile-accomodation-checkbox" name="mobile_hostel_guesthouse" value="hostel"> <label for="mobile_hostel_guesthouse">Hostel/Guesthouse</label> <br>
+		<input type="checkbox" class="js-filter-mobile-accomodation-checkbox" name="mobile_apartment" value="apartment"> <label for="mobile_apartment">apartment</label> <br>
+		<input type="checkbox" class="js-filter-mobile-accomodation-checkbox" name="mobile_house" value="house"> <label for="mobile_house">House</label> <br>
+		<input type="checkbox" class="js-filter-mobile-accomodation-checkbox" name="mobile_hotel" value="hotel"> <label for="mobile_hotel">Hotel</label>
+
+		<h4>Main discipline</h4>
+		<select class="filter-main-discipline--select js-filter-mobile-main-discipline">
+			<option selected="selected" value="any">Any</option>
+			<option value="traditional">Traditional</option>
+			<option value="sport">Sport</option>
+			<option value="bouldering">Bouldering</option>
+		</select>
+		
+		<h5>Also have</h5>
+		<input type="checkbox" class="js-filter-mobile-second-discipline-checkbox" name="mobile_bouldering" value="bouldering"> <label for="mobile_bouldering">Bouldering</label> <br>
+		<input type="checkbox" class="js-filter-mobile-second-discipline-checkbox" name="mobile_sport" value="sport"> <label for="mobile_sport">Sport</label> <br>
+		<input type="checkbox" class="js-filter-mobile-second-discipline-checkbox" name="mobile_traditional" value="traditional"> <label for="mobile_traditional">Traditional</label> <br>
+		
+		<h4>Months</h4>
+		<input type="checkbox" class="js-filter-mobile-months-checkbox" name="mobile_january" value="january"> <label for="mobile_january">January</label> <br>
+		<input type="checkbox" class="js-filter-mobile-months-checkbox" name="mobile_february" value="february"> <label for="mobile_february">February</label> <br>
+		<input type="checkbox" class="js-filter-mobile-months-checkbox" name="mobile_mars" value="mars"> <label for="mobile_mars">Mars</label> <br>
+		<input type="checkbox" class="js-filter-mobile-months-checkbox" name="mobile_april" value="april"> <label for="mobile_april">April</label> <br>
+		<input type="checkbox" class="js-filter-mobile-months-checkbox" name="mobile_may" value="may"> <label for="mobile_may">May</label> <br>
+		<input type="checkbox" class="js-filter-mobile-months-checkbox" name="mobile_june" value="june"> <label for="mobile_june">June</label> <br>
+		<input type="checkbox" class="js-filter-mobile-months-checkbox" name="mobile_july" value="july"> <label for="mobile_july">July</label> <br>
+		<input type="checkbox" class="js-filter-mobile-months-checkbox" name="mobile_august" value="august"> <label for="mobile_august">August</label> <br>
+		<input type="checkbox" class="js-filter-mobile-months-checkbox" name="mobile_september" value="september"> <label for="mobile_september">September</label> <br>
+		<input type="checkbox" class="js-filter-mobile-months-checkbox" name="mobile_october" value="october"> <label for="mobile_october">October</label> <br>
+		<input type="checkbox" class="js-filter-mobile-months-checkbox" name="mobile_november" value="november"> <label for="mobile_november">november</label> <br>
+		<input type="checkbox" class="js-filter-mobile-months-checkbox" name="mobile_december" value="december"> <label for="mobile_december">December</label> <br>
+
+		<h4>Car</h4>
+		<input type="checkbox" class="js-filter-mobile-car-checkbox" name="mobile_car_not_needed" value="not_needed"> <label for="mobile_car_not_needed">Not Needed</label> <br>
+		<input type="checkbox" class="js-filter-mobile-car-checkbox" name="mobile_car_good_to_have" value="good_to_have"> <label for="mobile_car_good_to_have">Good to have</label> <br>
+		<input type="checkbox" class="js-filter-mobile-car-checkbox" name="mobile_car_must_have" value="must_have"> <label for="mobile_car_must_have">Must have</label> <br>
+		
+		<input type="submit" class="filter-mobile-submit js-filter-mobile-submit" value="GO">
+		
+	</div>
+
+<div class="destinations-list-container">
+    	<ul>
+
+
+	{% for destination in destinations %}
+	{% set routes = destination.routes.first() %}
+	{% set cost = destination.cost.first() %}
+	{% set months = destination.months.first() %}
+	{% set accomodation = destination.accomodation.first() %}
+	{% set car = destination.car.first() %}
+	{% set approach = destination.approach.first() %}
+	
+	{% if routes %}
+		{% set max_height = 100 %}
+
+		{% set range_23 = routes.range_23 %}
+		{% set range_4 = routes.range_4 %}
+		{% set range_5 = routes.range_5 %}
+		{% set range_6 = routes.range_6 %}
+		{% set range_7 = routes.range_7 %}
+		{% set range_8 = routes.range_8 %}
+		{% set range_9 = routes.range_9 %}
+
+		{% if range_23 == 0 %}
+			{% set range_23 = 1 %}
+		{% endif %}
+		{% if range_4 == 0 %}
+			{% set range_4 = 1 %}
+		{% endif %}
+		{% if range_5 == 0 %}
+			{% set range_5 = 1 %}
+		{% endif %}
+		{% if range_6 == 0 %}
+			{% set range_6 = 1 %}
+		{% endif %}
+		{% if range_7 == 0 %}
+			{% set range_7 = 1 %}
+		{% endif %}
+		{% if range_8 == 0 %}
+			{% set range_8 = 1 %}
+		{% endif %}
+		{% if range_9 == 0 %}
+			{% set range_9 = 1 %}
+		{% endif %}
+		
+		{% set most_routes = 0 %}
+
+		{% if most_routes < range_23 %}
+			{% set most_routes = range_23 %}
+		{% endif %}
+		{% if most_routes < range_4 %}
+			{% set most_routes = range_4 %}
+		{% endif %}
+		{% if most_routes < range_5 %}
+			{% set most_routes = range_5 %}
+		{% endif %}
+		{% if most_routes < range_6 %}
+			{% set most_routes = range_6 %}
+		{% endif %}
+		{% if most_routes < range_7 %}
+			{% set most_routes = range_7 %}
+		{% endif %}
+		{% if most_routes < range_8 %}
+			{% set most_routes = range_8 %}
+		{% endif %}
+		{% if most_routes < range_9 %}
+			{% set most_routes = range_9 %}
+		{% endif %}
+
+
+
+		{% set perc_23 = range_23 / most_routes * 100 %}
+		{% set perc_4 = range_4 / most_routes * 100 %}
+		{% set perc_5 = range_5 / most_routes * 100 %}
+		{% set perc_6 = range_6 / most_routes * 100 %}
+		{% set perc_7 = range_7 / most_routes * 100 %}
+		{% set perc_8 = range_8 / most_routes * 100 %}
+		{% set perc_9 = range_9 / most_routes * 100 %}
+
+		{% set marg_23 = 80 - 0.8*perc_23 %}
+		{% set marg_4 = 80 - 0.8*perc_4 %}
+		{% set marg_5 = 80 - 0.8*perc_5 %}
+		{% set marg_6 = 80 - 0.8*perc_6 %}
+		{% set marg_7 = 80 - 0.8*perc_7 %}
+		{% set marg_8 = 80 - 0.8*perc_8 %}
+		{% set marg_9 = 80 - 0.8*perc_9 %}
+								
+	{% endif %}
+	<li class="destination-container">
+		<a href="/{{ destination.id }}">
+			
+			<!-- BG - Pos: absolute -->
+			<div class="destination-bg" style="background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url({{ destination.featured_photo_url }}); background-size:cover; background-position: center;">
+			</div>
+
+			<!-- Top destination div - with BG -->
+			<div class="destination-top">
+				
+				<!-- Discipline icons at the top -->
+				<div class="destination-top__discipline-icons">
+					
+					<!-- MAIN ICON -->
+					{% if routes.main_discipline == "traditional" %}
+						<img class="discipline-icons discipline-icons__main" src="{{ url_for('static', filename='images/icon_trad.png') }}" alt="Traditional">
+					{% elif routes.main_discipline == "sport" %}
+						<img class="discipline-icons discipline-icons__main" src="{{ url_for('static', filename='images/icon_sport.png') }}" alt="Sport">
+					{% elif routes.main_discipline == "bouldering" %}
+						<img class="discipline-icons discipline-icons__main" src="{{ url_for('static', filename='images/icon_bouldering.png') }}" alt="Bouldering">
+					{% endif %}
+
+					<!-- SECONDARY ICON -->
+					{% if routes.traditional == 1 and routes.main_discipline != "traditional" %}
+						<img class="discipline-icons discipline-icons__secondary" src="{{ url_for('static', filename='images/icon_trad.png') }}" alt="Traditional">
+					{% endif %}
+
+					{% if routes.sport == 1 and routes.main_discipline != "sport" %}
+						<img class="discipline-icons discipline-icons__secondary" src="{{ url_for('static', filename='images/icon_sport.png') }}" alt="Sport">
+					{% endif %}
+
+					{% if routes.bouldering == 1 and routes.main_discipline != "bouldering" %}
+						<img class="discipline-icons discipline-icons__secondary" src="{{ url_for('static', filename='images/icon_bouldering.png') }}" alt="Bouldering">
+					{% endif %}	
+						
+				</div>
+
+				<!-- Title and country -->
+				<div class="destination-top__title-country">
+					<h2>{{ destination.title }}, <span class="destination-country">{{ destination.country }}</span></h2>
+				</div>
+
+				<!-- Routes diagram -->
+				<div class="destination-top__routes-chart">
+					<span class="column">
+						<span class="hide-text col-grade-23" style="height: {{ 0.6*perc_23 }}px; margin-top: {{ marg_23 }}px;">{{ range_23 }}</span>
+						2 - 3
+					</span>
+					<span class="column">
+						<span class="hide-text col-grade-4" style="height: {{ 0.6*perc_4 }}px; margin-top: {{ marg_4 }}px;">{{ range_4 }}</span>
+						4
+					</span>
+					<span class="column">
+						<span class="hide-text col-grade-5" style="height: {{ 0.6*perc_5 }}px; margin-top: {{ marg_5 }}px;">{{range_5 }}</span>
+						5
+					</span>
+					<span class="column">
+						<span class="hide-text col-grade-6" style="height: {{ 0.6*perc_6 }}px; margin-top: {{ marg_6 }}px;">{{range_6 }}</span>
+						6
+					</span>
+					<span class="column">
+						<span class="hide-text col-grade-7" style="height: {{ 0.6*perc_7 }}px; margin-top: {{ marg_7 }}px;">{{range_7 }}</span>
+						7
+					</span>
+					<span class="column">
+						<span class="hide-text col-grade-8" style="height: {{ 0.6*perc_8 }}px; margin-top: {{ marg_8 }}px;">{{range_8 }}</span>
+						8
+					</span>
+					<span class="column">
+						<span class="hide-text col-grade-9" style="height: {{ 0.6*perc_9 }}px; margin-top: {{ marg_9 }}px;">{{range_9 }}</span>
+						9
+					</span>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+
+			<!-- Hover: display this div on top of "destination-top"  -->
+			<div class="destination-display-on-hover invisible">
+
+				<!-- APPROACH -->
+				<span class="property-title">Approach</span> 
+				{% if approach.easy == 1 %}
+					<span class="property-value--approach">Easy</span>
+				{% endif %}
+				{% if approach.moderate == 1 %}
+					<span class="property-value--approach">Moderate</span>
+				{% endif %}
+				{% if approach.hardcore == 1 %}
+					<span class="property-value--approach">Hardcore</span>
+				{% endif %}
+
+				<!-- TOTAL ROUTES -->
+				<span class="total-all">Total routes: {{ routes.total_routes }}</span>
+
+				<!-- Total Sport -->
+				<span class="total-sport">
+					<img class="discipline-icons discipline-icons__secondary" src="{{ url_for('static', filename='images/icon_sport.png') }}" alt="Sport"> 
+					{{ routes.total_sport }}
+				</span>
+
+				<!-- Total Trad -->
+				<span class="total-trad">
+					<img class="discipline-icons discipline-icons__secondary" src="{{ url_for('static', filename='images/icon_trad.png') }}" alt="Traditional"> 
+					{{ routes.total_trad }}
+				</span>
+				
+				<!-- Total Boulders -->
+				<span class="total-boulders">
+					<img class="discipline-icons discipline-icons__secondary" src="{{ url_for('static', filename='images/icon_bouldering.png') }}" alt="Boulders"> 
+					 {{ routes.total_boulders }}
+					</span>
+
+			</div>
+
+			<!-- Bottom destination div - specific info with flat bg -->
+			<div class="destination-bottom">
+				
+				<span class="destination-bottom__weekly-cost">
+					<span class="property-title">Cost: </span>
+					<span class="property-value--cost">
+						<span class="money">from {{ cost.weekly_avg }}</span> 
+						<span class="currency">{{ cost.currency }}
+						</span> 
+					/ w
+					</span>
+						
+					<div class="clearfix"></div>
+				</span>
+				
+				<span class="destination-bottom__season">
+					<span class="property-title">Season:</span>
+						{% if months.january == 1 %}
+							<span class="property-value--month">Jan</span>
+						{% endif %}
+						{% if months.february == 1 %}
+							<span class="property-value--month">Feb</span>
+						{% endif %}
+						{% if months.mars == 1 %}
+							<span class="property-value--month">Mar</span>
+						{% endif %}
+						{% if months.may == 1 %}
+							<span class="property-value--month">May</span>
+						{% endif %}
+						{% if months.june == 1 %}
+							<span class="property-value--month">Jun</span>
+						{% endif %}
+						{% if months.july == 1 %}
+							<span class="property-value--month">Jul</span>
+						{% endif %}
+						{% if months.august == 1 %}
+							<span class="property-value--month">Aug</span>
+						{% endif %}
+						{% if months.september == 1 %}
+							<span class="property-value--month">Sep</span>
+						{% endif %}
+						{% if months.october == 1 %}
+							<span class="property-value--month">Oct</span>
+						{% endif %}
+						{% if months.november == 1 %}
+							<span class="property-value--month">Nov</span>
+						{% endif %}
+						{% if months.december == 1 %}
+							<span class="property-value--month">Dec</span>
+						{% endif %}
+						
+						<div class="clearfix"></div>
+				</span>
+
+				<span class="destination-bottom__accomodation">
+					<span class="property-title">Accomodation: </span> 
+					{% if accomodation.tent == 1 %}
+						<span class="property-value--accomodation">Tent</span>
+					{% endif %}
+					{% if accomodation.van == 1 %}
+						<span class="property-value--accomodation">Van</span>
+					{% endif %}
+					{% if accomodation.hostel == 1 %}
+						<span class="property-value--accomodation">Hostel</span>
+					{% endif %}
+					{% if accomodation.camping == 1 %}
+						<span class="property-value--accomodation">Camping</span>
+					{% endif %}
+					{% if accomodation.apartment == 1 %}
+						<span class="property-value--accomodation">Apartment</span>
+					{% endif %}
+					{% if accomodation.house == 1 %}
+						<span class="property-value--accomodation">House</span>
+					{% endif %}
+					{% if accomodation.hotel == 1 %}
+						<span class="property-value--accomodation">Hotel</span>
+					{% endif %}
+					
+					<div class="clearfix"></div>
+				</span>
+
+				<span class="destination-bottom__restdays"></span>
+
+				<span class="destination-bottom__car">
+					<span class="property-title">Car: </span> 
+						{% if car.not_needed == 1 %}
+							<span class="property-value--car">Not needed</span>
+						{% endif %}
+						{% if car.good_to_have == 1 %}
+							<span class="property-value--car">Good to have</span>
+						{% endif %}
+						{% if car.must_have == 1 %}
+							<span class="property-value--car">Must have</span>
+						{% endif %}
+				</span>
+			</div>
+			{% if current_user.is_authenticated %}
+			<div class="edit-remove">
+				<a href="{{ url_for('edit', id=destination.id) }}">Edit</a>
+				<a href="{{ url_for('delete', id=destination.id) }}">Delete</a>
+			</div>
+			{% endif %}
+		</a>
+	</li>
+	{% endfor %}
+	<div class="clearfix"></div>
+
+	</ul>
+</div>
+{% endblock %}

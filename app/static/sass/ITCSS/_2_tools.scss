@@ -1,0 +1,36 @@
+// -------------------------------------------------------------------------
+//-------
+//-------		TOOLS - SCSS - Global mixins and functions
+//-------
+//-------		- Mixins
+//-------			* Media queries
+//-------
+//----------------------------------------------------------------------------
+
+
+// ==========================================================================
+// Media queries
+
+@mixin under-450-only {
+	@media (max-width: 450px) { @content; }
+}
+
+@mixin under-600 {
+	@media (max-width: 599px) { @content }
+}
+
+@mixin over-600 {
+	@media (min-width: 600px) { @content }
+}
+
+@mixin under-900 {
+	@media (max-width: 899px) { @content }
+}
+
+@mixin over-900 {
+	@media (min-width: 900px) { @content }
+}
+
+@mixin over-1200 {
+	@media (min-width: 1200px) { @content }
+}

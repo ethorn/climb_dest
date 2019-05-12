@@ -1,0 +1,32 @@
+<!--
+* Get user info from somewhere
+* Change settings through something
+-->
+<h2>Settings</h2>
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    <p>
+    	{{ form.displayname.label }}<br>
+        {{ form.displayname(size=32) }}<br>
+        {% for error in form.displayname.errors %}
+        	<span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+    	{{ form.location.label }}<br>
+    	{{ form.location(size=64) }}<br>
+    	{% for error in form.location.errors %}
+			<span style="color: red;">[{{ error }}]</span>
+    	{% endfor %}
+    </p>
+     <p>
+    	{{ form.bio.label }}<br>
+    	{{ form.bio(cols=50, rows=4) }}<br>
+    	{% for error in form.bio.errors %}
+			<span style="color: red;">[{{ error }}]</span>
+    	{% endfor %}
+    </p>
+    <p>
+    	{{ form.submit(class_='button') }}
+	</p>
+</form>

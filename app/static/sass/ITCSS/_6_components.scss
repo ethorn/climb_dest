@@ -1,0 +1,782 @@
+// -------------------------------------------------------------------------
+//-------
+//-------		COMPONENTS - SCSS - Specific UI components (majority of work goes here)
+//-------						  - UI compenents are often composed of object + component css
+//-------
+//-------		-
+//-------
+//----------------------------------------------------------------------------
+
+// ===========================================================
+// ==== TOP BAR
+
+.top-bar {
+	height: 50px;
+	margin: 20px auto;
+	padding: 0 10px;
+
+	@include over-900 {
+		width: 900px;
+	}
+
+	@include over-1200 {
+		width: 1200px;
+	}
+
+	div {
+		vertical-align: middle;
+	}
+}
+
+	.logo {
+		display: inline-block;
+		margin-right: 20px;
+		width: 50px;
+
+		img {
+			width: 50px;
+		}
+	}
+
+	.search {
+		display: inline-block;
+		height: 100%;
+		position: relative;
+		width: calc(100% - 169px);
+
+		@include over-600 {
+			width: calc(100% - 449px);
+		}
+
+		input {
+			border: 1px solid $silver;
+			display: block;
+			height: 30px;
+			margin: 8px auto 0;
+			padding: 0 10px;
+			vertical-align: middle;
+			width: calc(100% - 28px);
+
+			&::placeholder {
+				color: $silver;
+			}
+		}
+	}
+
+	.button-menu {
+		background: $menu-button-mobile;
+		border-radius: 6px;
+		color: $white;
+		display: inline-block;
+		font-size: 1.1rem;
+		font-weight: bold;
+		height: 50px;
+		line-height: 50px;
+		margin-left: 20px;
+		padding: 0;
+		vertical-align: middle;
+		width: 70px;
+
+		@include over-600 {
+			display: none;
+		}
+
+		&:hover {
+			background: $menu-button-mobile-active;
+		}
+	}
+
+	.menu {
+		background: $white;
+		display: none;
+		left: 0;
+		padding: 0;
+		position: absolute;
+		right: 0;
+		top: 75px;
+		z-index: 9999;
+
+		@include under-600 {
+			border-top: 1px solid $silver;
+		}
+
+		@include over-600 {
+			display: inline-block;
+			left: auto;
+			padding: 0;
+			position: relative;
+			right: auto;
+			top: auto;
+			width: 370px;
+		}
+
+		ul {
+			box-shadow: 0 12px 20px rgba($black, .8);
+			margin: 0;
+			padding: 0;
+
+			@include over-600 {
+				box-shadow: none;
+			}
+
+			li {
+				border-bottom: 1px solid $silver;
+				list-style: none;
+				padding: 6px 15px;
+
+				@include over-600 {
+					border-bottom: 0;
+					display: inline-block;
+					padding: 0 0 0 20px;
+				}
+			}
+		}
+
+		a {
+			color: $menu-links-desktop;
+			text-decoration: none;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	.menu-dashboard-drop-btn a:hover {
+		text-decoration: none;
+	}
+
+	.menu-dashboard-drop-btn:hover .dropdown-content-menu {
+		display: block;
+	}
+
+	.dropdown-content-menu {
+		background: $white;
+		border-radius: 6px;
+		font-size: .9em;
+		margin-top: 0;
+		padding: 0;
+
+		ul {
+			padding: 4px 0;
+
+			li {
+				display: block;
+				padding: 0;
+			}
+		}
+
+		a {
+			color: $tundora;
+			display: block;
+			padding: 4px 10px;
+
+			&:hover {
+				background: $red-violet;
+				color: $white;
+				cursor: pointer;
+				text-decoration: none;
+			}
+		}
+
+	}
+
+// ===========================================================
+// ==== Filter bar
+
+.sortfilter-bar {
+	margin: 0 auto;
+	padding: 10px;
+
+	@include over-900 {
+		width: 900px;
+	}
+
+	@include over-1200 {
+		width: 1200px;
+	}
+
+	ul {
+		margin: 0;
+		padding: 0;
+	}
+
+	li {
+		display: inline-block;
+	}
+}
+
+	.sortfilter-bar--currency {
+		display: inline-block;
+		height: 40px;
+
+		select {
+			font-size: .9em;
+			padding-left: 12px;
+			padding-right: 0;
+			width: 65px;
+		}
+	}
+
+	.sortfilter-bar--sortby {
+		display: inline-block;
+		height: 40px;
+		width: 131px;
+
+		select {
+			background: $orange;
+			border: 0;
+			border-radius: 3px 0 0 3px;
+			font-weight: $bold;
+			height: 100%;
+			padding-left: 15px;
+			width: 100px;
+		}
+	}
+
+	.sortfilter-bar--asc-desc {
+		background: $orange-active;
+		border-radius: 0 3px 3px 0;
+		color: $black;
+		display: inline-block;
+		line-height: 40px;
+		margin-left: -4px;
+		margin-top: -2px;
+		padding: 0 10px;
+		text-decoration: none;
+		vertical-align: middle;
+	}
+
+	.sortfilter-bar--filters {
+		span {
+			line-height: 40px;
+		}
+	}
+
+	.button-filter {
+		background: $orange;
+		border: 0;
+		border-radius: 3px;
+		color: $black;
+		font-weight: $bold;
+		padding: 8px 12px;
+		text-align: center;
+		text-decoration: none;
+
+		&:hover {
+			background: $orange-active;
+			cursor: pointer;
+		}
+	}
+
+		.active {
+			background: $orange-active;
+		}
+
+
+
+
+// ===========================================================
+// ==== Filter container
+
+.mobile-filters-container {
+	border: 3px solid $orange;
+	border-radius: 3px;
+	display: none;
+	margin: 0 10px 10px;
+	padding: 5px 10px;
+
+	h4 {
+		margin: 15px 0 5px;
+	}
+
+	h5 {
+		font-size: .9em;
+		margin: 10px 0 5px;
+	}
+
+	ul {
+		margin: 0;
+		padding: 5px 10px;
+	}
+
+	li {
+		list-style: none;
+	}
+
+	label {
+		color: $grey;
+		padding-left: 10px;
+	}
+
+	[type="checkbox"] {
+		margin-left: 10px;
+	}
+
+	[type="text"] {
+		border: 1px solid $silver;
+	}
+}
+
+	.filter-mobile-submit {
+		background: $filter-submit;
+		border: 0;
+		border-radius: 3px;
+		color: $white;
+		display: block;
+		font-size: 1.2em;
+		font-weight: bold;
+		letter-spacing: 2px;
+		margin: 20px 10px 10px;
+		padding: 20px 10px;
+		width: calc(100% - 20px);
+
+		&:hover {
+			background: $filter-submit-active;
+			cursor: pointer;
+		}
+	}
+
+	.filter-mobile-select-button {
+		background: $white;
+		border: 2px solid $silver;
+		border-radius: 5px;
+		color: $grey;
+		display: inline-block;
+		margin-right: 5px;
+		padding: 3px 5px;
+
+		&:hover {
+			cursor: pointer;
+	  	}
+	}
+
+	.on {
+		background: $regent-st-blue;
+		color: $black;
+	}
+
+// ===========================================================
+// ==== Content containers
+
+.content-container {
+	margin: 0 auto;
+	padding: 0 10px;
+	width: 100%;
+
+	@include over-900 {
+		width: 900px;
+	}
+
+	@include over-1200 {
+		width: 1200px;
+	}
+}
+
+.login-register-container {
+	border: 1px solid $alto;
+	border-radius: 5px;
+	box-shadow: 0 0 15px rgba($black, .04);
+	margin: 20px auto;
+	padding: 30px;
+
+	@include over-600 {
+		width: 600px;
+	}
+
+	h1 {
+		margin-top: 0;
+	}
+}
+
+// ===========================================================
+// ==== Destinations list on index page
+
+.destinations-list-container {
+	font-size: 0;
+	margin: 0 auto;
+	padding: 0 10px;
+
+	@include over-900 {
+		width: 900px;
+	}
+
+	@include over-1200 {
+		width: 1230px;
+	}
+
+	ul {
+		margin: 0;
+		padding: 0;
+	}
+}
+
+	.destination-container {
+		border-radius: 3px;
+		box-shadow: 0 0 5px $silver;
+		cursor: pointer;
+		display: inline-block;
+		font-size: 1rem;
+		list-style: none;
+		margin: 5px;
+		position: relative;
+		vertical-align: top;
+		width: 100%;
+
+		@include over-600 {
+			width: 45%;
+		}
+
+		@include over-1200 {
+			margin: .5%;
+			width: 32.3333333%;
+		}
+
+		&:hover {
+			background: rgba($black, .15);
+		}
+
+		a {
+			//color: $white;
+			text-decoration: none;
+		}
+
+		li {
+			font-size: 1rem;
+			line-height: 1.8em;
+
+			@include under-450-only {
+				font-size: .9rem;
+			}
+		}
+
+		.edit-remove {
+			bottom: 0;
+			color: $black;
+			display: block;
+			position: absolute;
+			right: 0;
+			z-index: 3;
+		}
+	}
+
+		.destination-bg {
+			background-position: center;
+			background-size: cover;
+			border-radius: 3px 3px 0 0;
+			height: 250px; // Samma som .destination-top
+			position: absolute;
+			width: 100%;
+			z-index: -1;
+		}
+
+		.destination-top {
+			color: $white;
+			height: 250px;
+			text-shadow: 1px 1px 0 rgba($black, .35), 1px 1px 5px rgba($black, .5);
+
+			&:hover {
+			}
+		}
+
+			.destination-top__discipline-icons {
+				height: 50px;
+				padding-top: 35px;
+				text-align: center;
+			}
+
+				.discipline-icons {
+					display: inline-block;
+					opacity: 1;
+				}
+
+				.discipline-icons__main {
+					width: 30px;
+				}
+
+				.discipline-icons__secondary {
+					width: 18px;
+				}
+
+			.destination-top__title-country {
+				padding: 5px 0 10px;
+				text-shadow: 0 0 10px rgba($black, 1);
+
+				h2 {
+					margin: 0 10%;
+					text-align: center;
+
+					.destination-country {
+						font-size: .7em;
+					}
+				}
+			}
+
+			// ROUTES CHART
+
+			.destination-top__routes-chart {
+				margin: 0 auto;
+				padding: 0 10%;
+
+				.column {
+					background: rgba($black, 0);
+					display: inline-block;
+					font-size: .8em;
+					height: 80px;
+					text-align: center;
+					width: calc((100% - 25px) / 7);
+				}
+
+				.col-grade-23,
+				.col-grade-4,
+				.col-grade-5,
+				.col-grade-6,
+				.col-grade-7,
+				.col-grade-8,
+				.col-grade-9 {
+					background: $silver;
+					box-shadow: 0 0 8px rgba($black, .2);
+					color: $black;
+					display: block;
+					font-size: .8em;
+					opacity: .9;
+					text-align: center;
+					text-shadow: none;
+					width: 100%;
+				}
+
+				.col-grade-23 {
+					background: $downy;
+				}
+
+				.col-grade-4 {
+					background: $fruit-salad;
+				}
+
+				.col-grade-5 {
+					background: $mariner;
+				}
+
+				.col-grade-6 {
+					background: $magenta;
+				}
+
+				.col-grade-7 {
+					background: $web-orange;
+				}
+
+				.col-grade-8 {
+					background: $sunset-orange;
+				}
+
+				.col-grade-9 {
+					background: $lonestar;
+				}
+			}
+
+		.destination-display-on-hover {
+			color: $white;
+			font-family: 'proxima_nova_altbold';
+			height: 250px;
+			position: absolute;
+			text-shadow: 1px 1px 0 rgba($black, .35), 1px 1px 5px rgba($black, .5);
+			top: 0;
+			width: 100%;
+
+			span {
+				display: block;
+				text-align: center;
+			}
+
+			.total-all {
+				font-size: 1.2rem;
+				padding-top: 20px;
+			}
+		}
+
+		.destination-bottom {
+			background: $desert-storm;
+			color: $tundora;
+			line-height: 1.7em;
+			padding: 10px;
+		}
+
+			.property-title {
+				font-family: 'proxima_nova_altbold';
+			}
+
+			.property-value { // Ta bort?
+			
+			}
+
+			.property-value--discipline { // Ta bort?
+				background: rgba($cornflower-blue, .5);
+				border-radius: 3px;
+				padding: 2px 5px;
+				text-transform: capitalize;
+			}
+
+			.property-value--month { // Ta bort?
+				background: rgba($thatch, .5);
+				border-radius: 3px;
+				padding: 2px 5px;
+			}
+
+			.property-value--cost { // Ta bort?
+			}
+
+			.property-value--accomodation { // Ta bort?
+				background: rgba($kelp, .5);
+				border-radius: 3px;
+				padding: 2px 5px;
+			}
+
+			.property-value--car { // Ta bort?
+				background: rgba($web-orange, .4);
+				border-radius: 3px;
+				padding: 2px 5px;
+			}
+
+			.property-value--approach { // Ta bort?
+				background: rgba($international-orange, .4);
+				border-radius: 3px;
+				padding: 3px 5px;
+			}
+
+
+// ===========================================================
+// ==== Dashboard pages
+
+.dashboard-menu-desktop {
+	float: left;
+	width: 25%;
+}
+
+
+
+
+// ===========================================================
+// ==== ADD DESTINATION PAGE / FORM
+
+.add-destination-container {
+	background: $desert-storm;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba($black, .2);
+	margin: 20px auto;
+	padding: 20px;
+	width: 500px;
+
+	h1 {
+		text-align: center;
+	}
+
+	h3 {
+		margin-bottom: 5px;
+	}
+
+	h4 {
+		color: $emperor;
+		margin: 0 20px 5px;
+	}
+
+	p {
+		color: $dusty-grey;
+		font-style: italic;
+		margin: 0 40px 10px;
+	}
+
+	ul {
+		list-style: none;
+		margin-left: 0;
+		margin-top: 0;
+	}
+
+	#title {
+		margin-left: 40px;
+		width: 200px;
+	}
+
+	#country {
+		background: $white;
+		display: block;
+		margin-left: 40px;
+		padding: 3px;
+		width: 200px;
+	}
+
+	#image {
+		margin-left: 40px;
+	}
+
+	#discipline_buttons_wrap {
+		margin: 0 40px 10px;
+	}
+
+	.main-discipline-btn {
+		background: $white;
+		border: 2px solid $silver;
+		border-radius: 5px;
+		cursor: pointer;
+		display: inline-block;
+		margin-right: 5px;
+		padding: 3px 5px;
+	}
+
+	.on {
+		background: $regent-st-blue;
+	}
+
+	input::placeholder {
+		color: $silver;
+	}
+
+	.route-label {
+		color: $emperor;
+		display: inline-block;
+		width: 30px;
+	}
+
+	ul.routes-list [type="text"] {
+		width: 50px;
+	}
+
+	ul.routes-list li {
+		margin-bottom: 4px;
+	}
+
+	select#currency {
+		margin-left: 0;
+		margin-bottom: 0;
+	}
+
+	span.per-week {
+		font-style: italic;
+		color: #999;
+	}
+
+	input#weekly_avg, .add-destination-container input#tent_cost, .add-destination-container input#hostel_cost, .add-destination-container input#apartment_cost, .add-destination-container input#hotel_cost {
+		margin-left: 20px;
+		margin-bottom: 15px;
+		width: 80px;
+	}
+
+	input#weekly_avg {
+		margin-left: 40px;
+		margin-bottom: 0;
+	}
+
+	input#submit {
+		padding: 10px 20px;
+		margin: 0 auto;
+		display: block;
+		border-radius: 5px;
+		background: #547d8b;
+		color: #fff;
+		border:none;
+		
+		&:hover {
+			cursor:pointer;
+			background: #a4d1e5;
+		}
+	}
+}

@@ -1,0 +1,89 @@
+// -------------------------------------------------------------------------
+//-------
+//-------		SETTINGS - SCSS
+//-------
+//-------		- Variables
+//------- 		* Colors
+//------- 		* Typography
+//-------
+//----------------------------------------------------------------------------
+
+// ==========================================================================
+//    Colors
+
+$ta-bort-mig: #111;
+
+$alto: #ddd;
+$black: #000;
+$dusty-grey: #999;
+$emperor: #555;
+$grey: #878787;
+$mine-shaft: #222;
+$maroon-flush: #b01b67;
+$orange-active: #e7b103;
+$orange: #ffc300;
+$red-violet: #d11a77;
+$seashell: #f1f1f1;
+$silver: #ccc;
+$tundora: #444;
+$white: #fff;
+$regent-st-blue: #a4d1e5;
+$desert-storm: #f3f3f1;
+
+//destination property backgrounds on index list
+$cornflower-blue: #4e90ec;
+$thatch: #bba3ac;
+$forest-green: #1f9c1f;
+$kelp: #49543a;
+$web-orange: #ffa500;
+$international-orange: #f9530b;
+
+// columns in routes chart in destination list
+$downy: #66cdaa;
+$fruit-salad: #4ca64c;
+$mariner: #2b6cc4;
+$magenta: #ff0;
+$sunset-orange: #ff4c4c;
+$lonestar: #600;
+
+
+$button-bg: #4a2339;
+
+$selection-color: #b3d4fc;
+
+
+
+$menu-links-desktop: 		$red-violet;
+$menu-button-mobile:		$red-violet;
+$menu-button-mobile-active:	$maroon-flush;
+$button-default-bg: 		$orange;
+$button-default-bg-active: 	$orange-active;
+$button-default-color: 		$mine-shaft;
+$dropdown-default-bg: 		$seashell;
+$dropdown-default-color:	$emperor;
+$dropdown-label-color:		$mine-shaft;
+$filter-submit:				$red-violet;
+$filter-submit-active:		$maroon-flush;
+
+
+// ==========================================================================
+//    Typography
+
+// Font weights
+$light: 100;
+$regular: 400;
+$bold: 900;
+
+// Base Font
+$base-font-family: 'Proxima Nova', Helvetica;
+$base-font-weight: $regular;
+$base-font-size: 1em;
+$base-line-height: 1.4;
+
+// Fixed Font
+$fixed-font-family: monospace;
+$fixed-font-size: 85%;
+$fixed-line-height: $base-line-height;
+
+// Headings
+$header-font-weight: $bold;

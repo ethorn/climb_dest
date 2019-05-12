@@ -1,0 +1,304 @@
+{% for destination in destinations %}
+	{% set routes = destination.routes.first() %}
+	{% set cost = destination.cost.first() %}
+	{% set months = destination.months.first() %}
+	{% set accomodation = destination.accomodation.first() %}
+	{% set car = destination.car.first() %}
+	{% set approach = destination.approach.first() %}
+	
+	{% if routes %}
+		{% set max_height = 100 %}
+
+		{% set range_23 = routes.range_23 %}
+		{% set range_4 = routes.range_4 %}
+		{% set range_5 = routes.range_5 %}
+		{% set range_6 = routes.range_6 %}
+		{% set range_7 = routes.range_7 %}
+		{% set range_8 = routes.range_8 %}
+		{% set range_9 = routes.range_9 %}
+
+		{% if range_23 == 0 %}
+			{% set range_23 = 1 %}
+		{% endif %}
+		{% if range_4 == 0 %}
+			{% set range_4 = 1 %}
+		{% endif %}
+		{% if range_5 == 0 %}
+			{% set range_5 = 1 %}
+		{% endif %}
+		{% if range_6 == 0 %}
+			{% set range_6 = 1 %}
+		{% endif %}
+		{% if range_7 == 0 %}
+			{% set range_7 = 1 %}
+		{% endif %}
+		{% if range_8 == 0 %}
+			{% set range_8 = 1 %}
+		{% endif %}
+		{% if range_9 == 0 %}
+			{% set range_9 = 1 %}
+		{% endif %}
+		
+		{% set most_routes = 0 %}
+
+		{% if most_routes < range_23 %}
+			{% set most_routes = range_23 %}
+		{% endif %}
+		{% if most_routes < range_4 %}
+			{% set most_routes = range_4 %}
+		{% endif %}
+		{% if most_routes < range_5 %}
+			{% set most_routes = range_5 %}
+		{% endif %}
+		{% if most_routes < range_6 %}
+			{% set most_routes = range_6 %}
+		{% endif %}
+		{% if most_routes < range_7 %}
+			{% set most_routes = range_7 %}
+		{% endif %}
+		{% if most_routes < range_8 %}
+			{% set most_routes = range_8 %}
+		{% endif %}
+		{% if most_routes < range_9 %}
+			{% set most_routes = range_9 %}
+		{% endif %}
+
+
+
+		{% set perc_23 = range_23 / most_routes * 100 %}
+		{% set perc_4 = range_4 / most_routes * 100 %}
+		{% set perc_5 = range_5 / most_routes * 100 %}
+		{% set perc_6 = range_6 / most_routes * 100 %}
+		{% set perc_7 = range_7 / most_routes * 100 %}
+		{% set perc_8 = range_8 / most_routes * 100 %}
+		{% set perc_9 = range_9 / most_routes * 100 %}
+
+		{% set marg_23 = 80 - 0.8*perc_23 %}
+		{% set marg_4 = 80 - 0.8*perc_4 %}
+		{% set marg_5 = 80 - 0.8*perc_5 %}
+		{% set marg_6 = 80 - 0.8*perc_6 %}
+		{% set marg_7 = 80 - 0.8*perc_7 %}
+		{% set marg_8 = 80 - 0.8*perc_8 %}
+		{% set marg_9 = 80 - 0.8*perc_9 %}
+								
+	{% endif %}
+	<li class="destination-container">
+		<a href="/{{ destination.id }}">
+			
+			<!-- BG - Pos: absolute -->
+			<div class="destination-bg" style="background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url({{ destination.image_url }}); background-size:cover; background-position: center;">
+			</div>
+
+			<!-- Top destination div - with BG -->
+			<div class="destination-top">
+				
+				<!-- Discipline icons at the top -->
+				<div class="destination-top__discipline-icons">
+					
+					<!-- MAIN ICON -->
+					{% if routes.main_discipline == "traditional" %}
+						<img class="discipline-icons discipline-icons__main" src="{{ url_for('static', filename='images/icon_trad.png') }}" alt="Traditional">
+					{% elif routes.main_discipline == "sport" %}
+						<img class="discipline-icons discipline-icons__main" src="{{ url_for('static', filename='images/icon_sport.png') }}" alt="Sport">
+					{% elif routes.main_discipline == "bouldering" %}
+						<img class="discipline-icons discipline-icons__main" src="{{ url_for('static', filename='images/icon_bouldering.png') }}" alt="Bouldering">
+					{% endif %}
+
+					<!-- SECONDARY ICON -->
+					{% if routes.traditional == 1 and routes.main_discipline != "traditional" %}
+						<img class="discipline-icons discipline-icons__secondary" src="{{ url_for('static', filename='images/icon_trad.png') }}" alt="Traditional">
+					{% endif %}
+
+					{% if routes.sport == 1 and routes.main_discipline != "sport" %}
+						<img class="discipline-icons discipline-icons__secondary" src="{{ url_for('static', filename='images/icon_sport.png') }}" alt="Sport">
+					{% endif %}
+
+					{% if routes.bouldering == 1 and routes.main_discipline != "bouldering" %}
+						<img class="discipline-icons discipline-icons__secondary" src="{{ url_for('static', filename='images/icon_bouldering.png') }}" alt="Bouldering">
+					{% endif %}	
+						
+				</div>
+
+				<!-- Title and country -->
+				<div class="destination-top__title-country">
+					<h2>{{ destination.title }}, <span class="destination-country">{{ destination.country }}</span></h2>
+				</div>
+
+				<!-- Routes diagram -->
+				<div class="destination-top__routes-chart">
+					<span class="column">
+						<span class="hide-text col-grade-23" style="height: {{ 0.6*perc_23 }}px; margin-top: {{ marg_23 }}px;">{{ range_23 }}</span>
+						2 - 3
+					</span>
+					<span class="column">
+						<span class="hide-text col-grade-4" style="height: {{ 0.6*perc_4 }}px; margin-top: {{ marg_4 }}px;">{{ range_4 }}</span>
+						4
+					</span>
+					<span class="column">
+						<span class="hide-text col-grade-5" style="height: {{ 0.6*perc_5 }}px; margin-top: {{ marg_5 }}px;">{{range_5 }}</span>
+						5
+					</span>
+					<span class="column">
+						<span class="hide-text col-grade-6" style="height: {{ 0.6*perc_6 }}px; margin-top: {{ marg_6 }}px;">{{range_6 }}</span>
+						6
+					</span>
+					<span class="column">
+						<span class="hide-text col-grade-7" style="height: {{ 0.6*perc_7 }}px; margin-top: {{ marg_7 }}px;">{{range_7 }}</span>
+						7
+					</span>
+					<span class="column">
+						<span class="hide-text col-grade-8" style="height: {{ 0.6*perc_8 }}px; margin-top: {{ marg_8 }}px;">{{range_8 }}</span>
+						8
+					</span>
+					<span class="column">
+						<span class="hide-text col-grade-9" style="height: {{ 0.6*perc_9 }}px; margin-top: {{ marg_9 }}px;">{{range_9 }}</span>
+						9
+					</span>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+
+			<!-- Hover: display this div on top of "destination-top"  -->
+			<div class="destination-display-on-hover invisible">
+
+				<!-- APPROACH -->
+				<span class="property-title">Approach</span> 
+				{% if approach.easy == 1 %}
+					<span class="property-value--approach">Easy</span>
+				{% endif %}
+				{% if approach.moderate == 1 %}
+					<span class="property-value--approach">Moderate</span>
+				{% endif %}
+				{% if approach.hardcore == 1 %}
+					<span class="property-value--approach">Hardcore</span>
+				{% endif %}
+
+				<!-- TOTAL ROUTES -->
+				<span class="total-all">Total routes: {{ routes.total_routes }}</span>
+
+				<!-- Total Sport -->
+				<span class="total-sport">
+					<img class="discipline-icons discipline-icons__secondary" src="{{ url_for('static', filename='images/icon_sport.png') }}" alt="Sport"> 
+					{{ routes.total_sport }}
+				</span>
+
+				<!-- Total Trad -->
+				<span class="total-trad">
+					<img class="discipline-icons discipline-icons__secondary" src="{{ url_for('static', filename='images/icon_trad.png') }}" alt="Traditional"> 
+					{{ routes.total_trad }}
+				</span>
+				
+				<!-- Total Boulders -->
+				<span class="total-boulders">
+					<img class="discipline-icons discipline-icons__secondary" src="{{ url_for('static', filename='images/icon_bouldering.png') }}" alt="Boulders"> 
+					 {{ routes.total_boulders }}
+					</span>
+
+			</div>
+
+			<!-- Bottom destination div - specific info with flat bg -->
+			<div class="destination-bottom">
+				
+				<span class="destination-bottom__weekly-cost">
+					<span class="property-title">Cost: </span>
+					<span class="property-value--cost">
+						<span class="money">{{ cost.weekly_avg }}</span> 
+						<span class="currency">{{ cost.currency }}
+						</span> 
+					/ w
+					</span>
+						
+					<div class="clearfix"></div>
+				</span>
+				
+				<span class="destination-bottom__season">
+					<span class="property-title">Season:</span>
+						{% if months.january == 1 %}
+							<span class="property-value--month">Jan</span>
+						{% endif %}
+						{% if months.february == 1 %}
+							<span class="property-value--month">Feb</span>
+						{% endif %}
+						{% if months.mars == 1 %}
+							<span class="property-value--month">Mar</span>
+						{% endif %}
+						{% if months.may == 1 %}
+							<span class="property-value--month">May</span>
+						{% endif %}
+						{% if months.june == 1 %}
+							<span class="property-value--month">Jun</span>
+						{% endif %}
+						{% if months.july == 1 %}
+							<span class="property-value--month">Jul</span>
+						{% endif %}
+						{% if months.august == 1 %}
+							<span class="property-value--month">Aug</span>
+						{% endif %}
+						{% if months.september == 1 %}
+							<span class="property-value--month">Sep</span>
+						{% endif %}
+						{% if months.october == 1 %}
+							<span class="property-value--month">Oct</span>
+						{% endif %}
+						{% if months.november == 1 %}
+							<span class="property-value--month">Nov</span>
+						{% endif %}
+						{% if months.december == 1 %}
+							<span class="property-value--month">Dec</span>
+						{% endif %}
+						
+						<div class="clearfix"></div>
+				</span>
+
+				<span class="destination-bottom__accomodation">
+					<span class="property-title">Accomodation: </span> 
+					{% if accomodation.tent == 1 %}
+						<span class="property-value--accomodation">Tent</span>
+					{% endif %}
+					{% if accomodation.van == 1 %}
+						<span class="property-value--accomodation">Van</span>
+					{% endif %}
+					{% if accomodation.hostel == 1 %}
+						<span class="property-value--accomodation">Hostel</span>
+					{% endif %}
+					{% if accomodation.camping == 1 %}
+						<span class="property-value--accomodation">Camping</span>
+					{% endif %}
+					{% if accomodation.apartment == 1 %}
+						<span class="property-value--accomodation">Apartment</span>
+					{% endif %}
+					{% if accomodation.house == 1 %}
+						<span class="property-value--accomodation">House</span>
+					{% endif %}
+					{% if accomodation.hotel == 1 %}
+						<span class="property-value--accomodation">Hotel</span>
+					{% endif %}
+					
+					<div class="clearfix"></div>
+				</span>
+
+				<span class="destination-bottom__restdays"></span>
+
+				<span class="destination-bottom__car">
+					<span class="property-title">Car: </span> 
+						{% if car.not_needed == 1 %}
+							<span class="property-value--car">Not needed</span>
+						{% endif %}
+						{% if car.good_to_have == 1 %}
+							<span class="property-value--car">Good to have</span>
+						{% endif %}
+						{% if car.must_have == 1 %}
+							<span class="property-value--car">Must have</span>
+						{% endif %}
+				</span>
+			</div>
+			{% if current_user.is_authenticated %}
+			<div class="edit-remove">
+				<a href="{{ url_for('edit', id=destination.id) }}">Edit</a>
+				<a href="{{ url_for('delete', id=destination.id) }}">Delete</a>
+			</div>
+			{% endif %}
+		</a>
+	</li>
+	{% endfor %}
+	<div class="clearfix"></div>

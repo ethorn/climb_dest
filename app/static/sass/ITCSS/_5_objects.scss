@@ -1,0 +1,86 @@
+// -------------------------------------------------------------------------
+//-------
+//-------		OBJECTS - SCSS - Class-based selectors that defines undecorated
+//-------						 design patterns (e.g. media objects)
+//-------
+//-------		- Eks. GRID
+//-------
+//----------------------------------------------------------------------------
+
+// Window container
+.radius-shadow-window {
+	border: 1px solid $alto;
+	border-radius: 5px;
+	box-shadow: 0 0 15px rgba($black, .04);
+	margin: 20px auto;
+	padding: 30px;
+}
+
+// Title arrow on mobile
+
+.title-arrow-on-mobile a {
+	color: $dusty-grey;
+	text-decoration: none;
+}
+
+// BUTTON
+
+.button {
+	background: $button-default-bg;
+	border: 0;
+	border-radius: 3px;
+	color: $button-default-color;
+	font-weight: $bold;
+	height: 40px;
+	padding: 0 12px;
+	text-align: center;
+	text-decoration: none;
+	vertical-align: middle;
+
+	&:hover {
+		background: $button-default-bg-active;
+		cursor: pointer;
+	}
+}
+
+// Dropdown container/content
+
+.dropdown-content {
+	background-color: $desert-storm;
+	border: 1px solid $silver;
+	border-radius: 3px;
+	box-shadow: 0 0 20px 0 rgba($black, .4);
+	color: $dropdown-default-color;
+	display: none;
+	margin-left: -12px;
+	margin-top: 15px;
+	min-width: 150px;
+	overflow: auto;
+	padding: 10px;
+	position: absolute;
+	text-align: left;
+	z-index: 1;
+
+	select {
+		color: $dropdown-default-color;
+		margin-bottom: 20px;
+	}
+
+	label {
+		color: $dropdown-label-color;
+		display: block;
+		font-weight: $bold;
+		margin: 0;
+		padding: 0;
+	}
+
+	[type='submit'] {
+		background: $menu-links-desktop;
+		border: 0;
+		color: $white;
+		letter-spacing: 2px;
+		margin-top: 10px;
+		width: 100%;
+	}
+}
+

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="content-container">
+	<div class="radius-shadow-window">
+	<h1>Profile page for {{ user.displayname }}</h1>
+
+	<p>Location: {{ user.location }}</p>
+	<p>Bio: {{ user.bio }}</p>
+
+	{% for destination in destinations %}
+		<p>
+			<strong>{{ destination.destination }}</strong> by {{ destination.author.username }}
+		</p>
+	{% endfor %}
+	
+	</div>
+</div>
+{% endblock %}

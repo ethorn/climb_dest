@@ -1,0 +1,12 @@
+
+// Main stylesheet where everything ends up
+//
+
+
+@import 'ITCSS/1_settings'; // Variables
+@import 'ITCSS/2_tools'; // Global mixins and functions
+@import 'ITCSS/3_generic';
+@import 'ITCSS/4_elements';
+@import 'ITCSS/5_objects';
+@import 'ITCSS/6_components';
+@import 'ITCSS/7_utilities'; // helpers, etc.
