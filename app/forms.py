@@ -162,7 +162,7 @@ class DestinationForm(FlaskForm):
                                     ('PLN', 'PLN'), ('RON', 'RON'), ('RUB', 'RUB'),
                                     ('SEK', 'SEK'), ('SGD', 'SGD'), ('THB', 'THB'),
                                     ('TRY', 'TRY'), ('USD', 'USD'), ('ZAR', 'ZAR')],
-                           validators=[DataRequired()], 
+                           validators=[DataRequired()],
                            default='EUR')
     beer_at_establishment = IntegerField('Beer at establishment')
     coffee_at_establishment = IntegerField('Coffee at establishment')

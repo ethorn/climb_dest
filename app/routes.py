@@ -190,7 +190,7 @@ def convert_currency():
 
     # name = request.cookies.get('userID')
 
-    # Selected currency from indes (selected by user)
+    # Selected currency from index (selected by user)
     c = request.args.get('c', "EUR", type=str)
 
     # base currency
@@ -202,7 +202,7 @@ def convert_currency():
 
     # Get rate
     payload = {'base': c_base, 'symbols': c}
-    r = requests.get('https://ratesapi.io/api/latest', params=payload)
+    r = requests.get('https://api.ratesapi.io/api/latest', params=payload)
 
     if r.status_code != 200:
         return 'Error: the translation service failed.'
@@ -216,7 +216,7 @@ def convert_currency():
         rate_from_euro = 1
     else:
         payload_eur = {'base': 'EUR', 'symbols': c}
-        r_e = requests.get('https://ratesapi.io/api/latest', params=payload_eur)
+        r_e = requests.get('https://api.ratesapi.io/api/latest', params=payload_eur)
         j_e = r_e.json()
         rate_from_euro = j_e['rates'][c]
 
@@ -479,31 +479,90 @@ def add_destination():
             #    + Hvis currency API'en ikke fungerer, bare lagre valgt valuta i databas
             # 3) Regne om alt til EUR: beer_at_establishment = convertValue * form.beer_at_establishment.data
             # 4) Lagre alt i databas, samt EUR som currency
+
             currency = form.currency.data
+            if currency != 'EUR':
+                # Getting rate from ratesAPI
+                payload = {'base': currency, 'symbols': 'EUR'}
+                api_currency_data = requests.get('https://api.ratesapi.io/api/latest', params=payload)
 
-            beer_at_establishment = 1
+                if api_currency_data.status_code == 200:
+                    json_api_currency_data = api_currency_data.json()
+                    conversion_rate = json_api_currency_data['rates']['EUR']
 
-            avg_weekly_cost = 1+1  # Må fikses
+                    currency = 'EUR'
 
-            cost = Cost(currency=ASDASD,
-                        beer_at_establishment=ASDASD,
-                        coffee_at_establishment=AD,
-                        restaurant_inexpensive_meal=ASD,
-                        groceries_one_week=ASD,
-                        car_rent_one_week=ASD,
-                        gas_one_liter=ASD,
-                        km_per_day=ASD,
-                        tent_per_day=ASD,
-                        van_per_day=ASD,
-                        camping_per_day=ASD,
-                        hostel_per_day=ASD,
-                        apartment_per_day=ASD,
-                        house_per_day=ASD,
-                        hotel_per_day=ASD,
+                    beer_at_establishment = conversion_rate * form.beer_at_establishment.data
+                    coffee_at_establishment = conversion_rate * form.beer_at_establishment.data
+                    restaurant_inexpensive_meal = conversion_rate * form.restaurant_inexpensive_meal.data
+                    groceries_one_week = conversion_rate * form.groceries_one_week.data
+                    car_rent_one_week = conversion_rate * form.car_rent_one_week.data
+                    gas_one_liter = conversion_rate * form.gas_one_liter.data
+                    km_per_day = conversion_rate * form.km_per_day.data
+                    tent_per_day = conversion_rate * form.tent_per_day.data
+                    van_per_day = conversion_rate * form.van_per_day.data
+                    camping_per_day = conversion_rate * form.camping_per_day.data
+                    hostel_per_day = conversion_rate * form.hostel_per_day.data
+                    apartment_per_day = conversion_rate * form.apartment_per_day.data
+                    house_per_day = conversion_rate * form.house_per_day.data
+                    hotel_per_day = conversion_rate * form.hotel_per_day.data
+                else:
+                    beer_at_establishment = form.beer_at_establishment.data
+                    coffee_at_establishment = form.beer_at_establishment.data
+                    restaurant_inexpensive_meal = form.restaurant_inexpensive_meal.data
+                    groceries_one_week = form.groceries_one_week.data
+                    car_rent_one_week = form.car_rent_one_week.data
+                    gas_one_liter = form.gas_one_liter.data
+                    km_per_day = form.km_per_day.data
+                    tent_per_day = form.tent_per_day.data
+                    van_per_day = form.van_per_day.data
+                    camping_per_day = form.camping_per_day.data
+                    hostel_per_day = form.hostel_per_day.data
+                    apartment_per_day = form.apartment_per_day.data
+                    house_per_day = form.house_per_day.data
+                    hotel_per_day = form.hotel_per_day.data
+            else:
+                beer_at_establishment = form.beer_at_establishment.data
+                coffee_at_establishment = form.beer_at_establishment.data
+                restaurant_inexpensive_meal = form.restaurant_inexpensive_meal.data
+                groceries_one_week = form.groceries_one_week.data
+                car_rent_one_week = form.car_rent_one_week.data
+                gas_one_liter = form.gas_one_liter.data
+                km_per_day = form.km_per_day.data
+                tent_per_day = form.tent_per_day.data
+                van_per_day = form.van_per_day.data
+                camping_per_day = form.camping_per_day.data
+                hostel_per_day = form.hostel_per_day.data
+                apartment_per_day = form.apartment_per_day.data
+                house_per_day = form.house_per_day.data
+                hotel_per_day = form.hotel_per_day.data
+
+            def CalcAvgWeeklyCost():
+                # MÅ FIKSE EN KALKULASJON PÅ DETTE
+                
+                avg_weekly_cost = 1+1+1+1+11+1+1+11
+                return avg_weekly_cost
+            avg_weekly_cost = CalcAvgWeeklyCost()
+
+            cost = Cost(currency=currency,
+                        beer_at_establishment=beer_at_establishment,
+                        coffee_at_establishment=coffee_at_establishment,
+                        restaurant_inexpensive_meal=restaurant_inexpensive_meal,
+                        groceries_one_week=groceries_one_week,
+                        car_rent_one_week=car_rent_one_week,
+                        gas_one_liter=gas_one_liter,
+                        km_per_day=km_per_day,
+                        tent_per_day=tent_per_day,
+                        van_per_day=van_per_day,
+                        camping_per_day=camping_per_day,
+                        hostel_per_day=hostel_per_day,
+                        apartment_per_day=apartment_per_day,
+                        house_per_day=house_per_day,
+                        hotel_per_day=hotel_per_day,
                         avg_weekly_cost=avg_weekly_cost,
                         destination_id=d.id)
             db.session.add(cost)
-            
+
             # cost = Cost(currency=currency, weekly_avg=weekly_avg, tent=tent_cost, hostel=hostel_cost,
             #             apartment=apartment_cost, hotel=hotel_cost, destination_id=d.id)
 
@@ -511,7 +570,7 @@ def add_destination():
             # ### CURRENCY TO EUR
             # REQUEST FOR CURRENCY DATA
             # payload = {'base': form.currency.data, 'symbols': 'EUR'}
-            # r = requests.get('https://ratesapi.io/api/latest', params=payload)
+            # r = requests.get('https://api.ratesapi.io/api/latest', params=payload)
             # j = r.json()
             # rate = j['rates']['EUR']
 
@@ -537,7 +596,6 @@ def add_destination():
             total_routes = range_23 + range_4 + range_5 + range_6 + range_7 + range_8 + range_9
             ###
 
-            
             months = Months(january=form.january.data, february=form.february.data, mars=form.mars.data,
                             april=form.april.data, may=form.may.data, june=form.june.data, july=form.july.data,
                             august=form.august.data, september=form.september.data, october=form.october.data,
