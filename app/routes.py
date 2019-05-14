@@ -473,6 +473,8 @@ def add_destination():
                                                                  destination_id=d.id))
             db.session.bulk_save_objects(additional_photos_object)
 
+            # COST
+
             # ### CURRENCY TO EUR
             # REQUEST FOR CURRENCY DATA
             # payload = {'base': form.currency.data, 'symbols': 'EUR'}

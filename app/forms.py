@@ -94,6 +94,7 @@ class CurrencyForm(FlaskForm):
 
 
 class DestinationForm(FlaskForm):
+    # General information
     title = StringField('Name of destination (e.g. "Kalymnos")', validators=[DataRequired()])
     country = CountrySelectField('Country', validators=[DataRequired()])
     weather_place_autocomplete = StringField('Area or city for weather forecast', validators=[DataRequired()])
@@ -103,15 +104,17 @@ class DestinationForm(FlaskForm):
     additional_photos = MultipleFileField('Additional Photos', validators=[FileAllowed(images, 'Images only!')])
     description = TextAreaField('Destination description')
 
+    # Disciplines
     traditional = BooleanField('Traditional')
     sport = BooleanField('Sport')
     bouldering = BooleanField('Bouldering')
-    main_discipline = SelectField('Main discipline', 
+    main_discipline = SelectField('Main discipline',
                                   choices=[('traditional', 'Traditional'),
                                            ('bouldering', 'Bouldering'),
                                            ('sport', 'Sport')],
                                   validators=[DataRequired()])
 
+    # Months/Season
     january = BooleanField('January')
     february = BooleanField('February')
     mars = BooleanField('March')
@@ -125,24 +128,7 @@ class DestinationForm(FlaskForm):
     november = BooleanField('November')
     december = BooleanField('December')
 
-
-
-
-
-    # Cost
-    # Må få inn currencies fra JSON
-    currency = SelectField('Currency', choices=[('EUR', 'EUR'), ('AUD','AUD'), ('BGN','BGN'), ('BRL','BRL'), ('CAD','CAD'), ('CHF','CHF'), ('CNY','CNY'), ('CZK','CZK'), ('DKK','DKK'), ('GBP','GBP'), ('HKD','HKD'), ('HRK','HRK'), ('HUF','HUF'), ('IDR','IDR'), ('ILS','ILS'), ('INR','INR'), ('ISK','ISK'), ('JPY','JPY'), ('KRW','KRW'), ('MXN','MXN'), ('MYR','MYR'), ('NOK','NOK'), ('NZD','NZD'), ('PHP','PHP'), ('PLN','PLN'), ('RON','RON'), ('RUB','RUB'), ('SEK','SEK'), ('SGD','SGD'), ('THB','THB'), ('TRY','TRY'), ('USD','USD'), ('ZAR','ZAR')], validators=[DataRequired()], default='EUR')
-    weekly_avg = IntegerField('Weekly Average Cost')
-    tent_cost = IntegerField('Average cost for tent (per day)')
-    hostel_cost = IntegerField('Average cost for hostel (per day)')
-    apartment_cost = IntegerField('Average cost for apartment (per day)')
-    hotel_cost = IntegerField('Average cost for hotel (per day)')
-
-
-
-
-
-
+    # Accomodation
     tent = BooleanField('Tent')
     van = BooleanField('Van')
     hostel = BooleanField('Hostel')
@@ -163,6 +149,43 @@ class DestinationForm(FlaskForm):
     rent_scooter_locally = BooleanField('Scooter available locally')
     rent_car_locally = BooleanField('Car available locally')
 
+    # Cost
+    beer_at_establishment = IntegerField('Beer at establishment')
+    coffee_at_establishment = IntegerField('Coffee at establishment')
+    restaurant_inexpensive_meal = IntegerField('restaurant_inexpensive_meal')
+    groceries_one_week = IntegerField('groceries_one_week')
+    car_rent_one_week = IntegerField('car_rent_one_week')
+    gas_one_liter = IntegerField('gas_one_liter')
+    km_per_day = IntegerField('km_per_day')
+    tent_per_day = IntegerField('tent_per_day')
+    van_per_day = IntegerField('van_per_day')
+    camping_per_day = IntegerField('camping_per_day')
+    hostel_per_day = IntegerField('hostel_per_day')
+    apartment_per_day = IntegerField('apartment_per_day')
+    house_per_day = IntegerField('house_per_day')
+    hotel_per_day = IntegerField('hotel_per_day')
+
+    # Cost (old stuff)
+    currency = SelectField('Currency',
+                           choices=[('EUR', 'EUR'), ('AUD', 'AUD'), ('BGN', 'BGN'),
+                                    ('BRL', 'BRL'), ('CAD', 'CAD'), ('CHF', 'CHF'),
+                                    ('CNY', 'CNY'), ('CZK', 'CZK'), ('DKK', 'DKK'),
+                                    ('GBP', 'GBP'), ('HKD', 'HKD'), ('HRK', 'HRK'),
+                                    ('HUF', 'HUF'), ('IDR', 'IDR'), ('ILS', 'ILS'),
+                                    ('INR', 'INR'), ('ISK', 'ISK'), ('JPY', 'JPY'),
+                                    ('KRW', 'KRW'), ('MXN', 'MXN'), ('MYR', 'MYR'),
+                                    ('NOK', 'NOK'), ('NZD', 'NZD'), ('PHP', 'PHP'),
+                                    ('PLN', 'PLN'), ('RON', 'RON'), ('RUB', 'RUB'),
+                                    ('SEK', 'SEK'), ('SGD', 'SGD'), ('THB', 'THB'),
+                                    ('TRY', 'TRY'), ('USD', 'USD'), ('ZAR', 'ZAR')],
+                           validators=[DataRequired()], default='EUR')
+    weekly_avg = IntegerField('Weekly Average Cost')
+    tent_cost = IntegerField('Average cost for tent (per day)')
+    hostel_cost = IntegerField('Average cost for hostel (per day)')
+    apartment_cost = IntegerField('Average cost for apartment (per day)')
+    hotel_cost = IntegerField('Average cost for hotel (per day)')
+
+    # Routes
     r_2 = IntegerField('2', render_kw={"placeholder": "0"}, default=4)
     r_3 = IntegerField('3', render_kw={"placeholder": "0"}, default=4)
     r_4 = IntegerField('4', render_kw={"placeholder": "0"}, default=4)

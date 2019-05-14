@@ -141,6 +141,7 @@ class Cost(db.Model):
     km_per_day = db.Column(db.Integer, index=True, default=0)
     tent_per_day = db.Column(db.Integer, index=True, default=0)
     van_per_day = db.Column(db.Integer, index=True, default=0)
+    camping_per_day = db.Column(db.Integer, index=True, default=0)
     hostel_per_day = db.Column(db.Integer, index=True, default=0)
     apartment_per_day = db.Column(db.Integer, index=True, default=0)
     house_per_day = db.Column(db.Integer, index=True, default=0)

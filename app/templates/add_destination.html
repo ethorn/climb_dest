@@ -14,7 +14,6 @@
                 var costAccomodationName = accomodationName + '-cost'
                 if ($(this).is(':checked')) {
                     $('[name="' + costAccomodationName + '"]').show()
-                    console.log(costAccomodationName)
                 } else {
                     $('[name="' + costAccomodationName + '"]').hide()
                 }
@@ -139,11 +138,11 @@
         <!-- <h4>{{ form.currency.label }}</h4> -->
 
         <h2>Cost</h2>
-        <p>If you don't know the below prices at your destination, please go to <a
+        <p><span class="help-info">If you don't know the below prices at your destination, please go to <a
                 href="http://www.numbeo.com">Numbeo.com</a> and search for the nearest city, then use that data to fill
-            out the prices.</p>
+            out the prices.</span></p>
 
-        <p>CURRENCIES?? - Default currency: EUR - Men ha et valg å velge currency etter hvert felt?</p>
+        <p><span class="help-info">CURRENCIES?? - Default currency: EUR - Men ha et valg å velge currency etter hvert felt?</span></p>
 
         <h3>Food and drinks</h3>
         <p>See <a href="https://www.numbeo.com/cost-of-living/">Cost of Living index (Numbeo)</a> for beer, coffee and
@@ -172,6 +171,7 @@
             <li class="js-accomodation-cost-item-in-add-destination-form" name="tent-cost">Tent</li>
             <li class="js-accomodation-cost-item-in-add-destination-form" name="van-cost">Van</li>
             <li class="js-accomodation-cost-item-in-add-destination-form" name="hostel-cost">Hostel</li>
+            <li class="js-accomodation-cost-item-in-add-destination-form" name="camping-cost">Camping</li>
             <li class="js-accomodation-cost-item-in-add-destination-form" name="apartment-cost">Apartment</li>
             <li class="js-accomodation-cost-item-in-add-destination-form" name="house-cost">House</li>
             <li class="js-accomodation-cost-item-in-add-destination-form" name="hotel-cost">Hotel</li>

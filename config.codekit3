@@ -1772,6 +1772,14 @@
 		"oAP": "/migrations/versions/__pycache__/c6f7befdd918_added_better_structure_for_discipline_.cpython-37.pyc",
 		"oF": 0
 		},
+	"/migrations/versions/__pycache__/cb11dafe5ec9_.cpython-37.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/migrations/versions/__pycache__/cb11dafe5ec9_.cpython-37.pyc",
+		"oF": 0
+		},
 	"/migrations/versions/__pycache__/d51645fa9e9c_adding_total_sport_total_trad_total_.cpython-37.pyc": {
 		"cB": 0,
 		"ft": 8192,
@@ -1850,6 +1858,14 @@
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/migrations/versions/c6f7befdd918_added_better_structure_for_discipline_.py",
+		"oF": 0
+		},
+	"/migrations/versions/cb11dafe5ec9_.py": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/migrations/versions/cb11dafe5ec9_.py",
 		"oF": 0
 		},
 	"/migrations/versions/d51645fa9e9c_adding_total_sport_total_trad_total_.py": {

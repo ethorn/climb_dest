@@ -680,9 +680,11 @@
 	}
 
 	p {
-		color: $dusty-grey;
-		font-style: italic;
 		margin: 0 40px 10px;
+	}
+
+	span.help-info {
+		font-style: italic;
 	}
 
 	ul {
