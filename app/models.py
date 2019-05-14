@@ -58,6 +58,7 @@ class Destination(db.Model):
     weather_lng = db.Column(db.Integer)
     featured_photo_filename = db.Column(db.String(64))
     featured_photo_url = db.Column(db.String(256))
+    description = db.Column(db.Text)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))  # user.id refers to table user, column id
     additional_photos = db.relationship('AdditionalPhotos', backref='destination', lazy='dynamic')

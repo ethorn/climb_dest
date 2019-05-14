@@ -4,6 +4,8 @@
 	<h1>Single Destination Page</h1>
 	<h2>{{ destination.title }}</h2>
 
+	<p>{{ destination.description|safe }}</p>
+
 	<script>
 	$.getJSON('https://api.darksky.net/forecast/1f68e89d4578eaf5624ce820707747a5/37.8267,-122.4233', function(forecast) {
 		console.log(forecast);

@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
 <head>
 	<meta charset="UTF-8">
 	{% if title %}
@@ -9,22 +10,32 @@
 	{% endif %}
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="{{ url_for('static', filename='js/vendors/jquery331.min.js') }}">\x3C/script>')</script>
+	<script>window.jQuery || document.write('<script src="{{ url_for('static', filename='js / vendors / jquery331.min.js') }}">\x3C/script>')</script>
 	<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-	<script type=text/javascript>
-	  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
-	</script>
-
-	<script src="{{ url_for('static', filename='app-min.js') }}"></script>	
+	<script type=text/javascript> $SCRIPT_ROOT={{ request.script_root|tojson|safe }}; </script> 
 	
+	<!-- Summernote WYSIWYG-->
+	<!-- include libraries(jQuery, bootstrap) -->
+	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+	<!-- include summernote css/js -->
+	<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
+	<!-- ... -->
+
+
+	<script src="{{ url_for('static', filename='app-min.js') }}"></script>
+
 	<link rel="stylesheet" href="{{ url_for('static', filename='fonts/fonts.css') }}">
 	<link rel="stylesheet" href="{{ url_for('static', filename='bower_components/normalize-css/normalize.css') }}">
 	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
 	<div class="top-bar">
 		<div class="logo">
-			<a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/climb_dest_6.svg') }}" alt="Climbit"></a>
+			<a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/climb_dest_6.svg') }}"
+					alt="Climbit"></a>
 		</div>
 		<div class="search">
 			<input type="text" placeholder="Search for your destination">
@@ -35,12 +46,12 @@
 				<li><a href="{{ url_for('add_destination') }}">Add Destination</a></li>
 				{% if current_user.is_anonymous %}
 				<li>
-			        <a href="{{ url_for('login') }}">Login</a>
-			        <li><a href="{{ url_for('register') }}">Register</a></li>
+					<a href="{{ url_for('login') }}">Login</a>
+				<li><a href="{{ url_for('register') }}">Register</a></li>
 				</li>
 				{% else %}
 				<li class="menu-dashboard-drop-btn hide-under-600">
-					<a href="#">{{ current_user.username }} &#9662;	</a>
+					<a href="#">{{ current_user.username }} &#9662; </a>
 					<div class="dropdown-content dropdown-content-menu">
 						<ul>
 							<li><a href="{{ url_for('user', username=current_user.username) }}">View Profile</a></li>
@@ -61,29 +72,30 @@
 				{% endif %}
 			</ul>
 		</nav>
-		<a href="#" class="menu-mobile-button button button-menu js-menu-mobile-button">Menu</a> <!-- må koble denne til js -->
+		<a href="#" class="menu-mobile-button button button-menu js-menu-mobile-button">Menu</a>
+		<!-- må koble denne til js -->
 	</div>
-	
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <ul>
-            {% for message in messages %}
-            <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-        {% endwith %}
 
-    <p style="text-align: center; font-style: italic;">First, ten</p>
-    
-    	
-    {% block content %}{% endblock %}
-    
-    <hr>
-    <section class="fixe">
-    <h4>Goal: Be the website that helps people <strong>decide where to go</strong></h4>
+	{% with messages = get_flashed_messages() %}
+	{% if messages %}
+	<ul>
+		{% for message in messages %}
+		<li>{{ message }}</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+	{% endwith %}
 
-	<h3>Fixe:</h3>
+	<p style="text-align: center; font-style: italic;">First, ten</p>
+
+
+	{% block content %}{% endblock %}
+
+	<hr>
+	<section class="fixe">
+		<h4>Goal: Be the website that helps people <strong>decide where to go</strong></h4>
+
+		<h3>Fixe:</h3>
 		<ol>
 			<li><b>Status: Håller på med HTML/CSS for ny design av destination list</b></li>
 			<li><i>Nästa: Fikse ny design med CSS/html</i></li>
@@ -108,7 +120,8 @@
 			<li>Info site, no users, just adding destinations myself</li>
 			<li>Good design and great info</li>
 			<li>Add review system - no login required, make it easy - possible for long form review with pictures</li>
-			<li>Add user features -> find partner, suggest destination, suggest info displayed, contribute pictures, follow destinations</li>
+			<li>Add user features -> find partner, suggest destination, suggest info displayed, contribute pictures, follow
+				destinations</li>
 		</ol>
 		<h3>v.2/3</h3>
 		<ul>
@@ -116,4 +129,5 @@
 		</ul>
 	</section>
 </body>
+
 </html>

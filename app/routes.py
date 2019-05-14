@@ -1,15 +1,17 @@
-from flask import render_template, flash, redirect, url_for, request, json, jsonify, make_response
-from app import app, db, images
-from app.forms import LoginForm, RegistrationForm, DestinationForm, EditDestinationForm, CurrencyForm
-from app.forms import ResetPasswordRequestForm, ResetPasswordForm, EditProfileForm
-from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User, Destination, Routes, Cost, Months, Accomodation, Approach, Car, AdditionalPhotos
+import requests  # request for API
+from flask import (flash, json, jsonify, make_response, redirect,
+                   render_template, request, url_for)
+from flask_login import current_user, login_required, login_user, logout_user
+from sqlalchemy import and_, or_, true  # , false
 from werkzeug.urls import url_parse
-from sqlalchemy import or_, and_, true  # , false
-from app.email import send_password_reset_email
 
-# request for API
-import requests
+from app import app, db, images
+from app.email import send_password_reset_email
+from app.forms import (CurrencyForm, DestinationForm, EditDestinationForm,
+                       EditProfileForm, LoginForm, RegistrationForm,
+                       ResetPasswordForm, ResetPasswordRequestForm)
+from app.models import (Accomodation, AdditionalPhotos, Approach, Car, Cost,
+                        Destination, Months, Routes, User)
 
 
 @app.route('/dashboard/<page>', methods=['GET', 'POST'])
@@ -452,6 +454,7 @@ def add_destination():
                                       weather_lng=form.weather_lng.data,
                                       featured_photo_filename=featured_photo_filename,
                                       featured_photo_url=featured_photo_url,
+                                      description=form.description.data,
                                       author=current_user)
             # Add new destination to database
             db.session.add(destination)

@@ -1016,17 +1016,27 @@
 		"oS": 0,
 		"uL": 1
 		},
-	"/app/static/sass/style.scss": {
-		"aP": 0,
+	"/app/static/sass/style.css": {
+		"aP": 1,
 		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "/app/static/sass/style-min.css",
+		"oF": 0,
+		"oS": 3
+		},
+	"/app/static/sass/style.scss": {
+		"aP": 1,
+		"bl": 1,
 		"dP": 10,
 		"dS": 0,
 		"ft": 4,
-		"ma": 0,
+		"ma": 1,
 		"oA": 0,
-		"oAP": "/app/static/sass/style.css",
-		"oF": 0,
-		"oS": 0,
+		"oAP": "/app/static/style.css",
+		"oF": 3,
+		"oS": 3,
 		"uL": 1
 		},
 	"/app/static/style.css": {
@@ -1135,6 +1145,17 @@
 		"opt": 0,
 		"q": 30
 		},
+	"/app/static/uploads/images/DSC03375_1.jpg": {
+		"ft": 16384,
+		"iS": 1482191,
+		"jF": 0,
+		"oA": 0,
+		"oAP": "/app/static/uploads/images/DSC03375_1.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 30
+		},
 	"/app/static/uploads/images/DSC03462.jpg": {
 		"ft": 16384,
 		"iS": 15590001,
@@ -1174,6 +1195,28 @@
 		"jF": 0,
 		"oA": 0,
 		"oAP": "/app/static/uploads/images/DSC03529.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 30
+		},
+	"/app/static/uploads/images/DSC03529_1.jpg": {
+		"ft": 16384,
+		"iS": 11701570,
+		"jF": 0,
+		"oA": 0,
+		"oAP": "/app/static/uploads/images/DSC03529_1.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 30
+		},
+	"/app/static/uploads/images/DSC03529_2.jpg": {
+		"ft": 16384,
+		"iS": 11701570,
+		"jF": 0,
+		"oA": 0,
+		"oAP": "/app/static/uploads/images/DSC03529_2.jpg",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
@@ -1433,6 +1476,22 @@
 		"oAP": "/migrations/versions/0001990d4b19_editing_cost_table.py",
 		"oF": 0
 		},
+	"/migrations/versions/03661f8a7ab1_adding_column_description_to_.py": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/migrations/versions/03661f8a7ab1_adding_column_description_to_.py",
+		"oF": 0
+		},
+	"/migrations/versions/0c0eb5a167d3_adding_column_description_type_text_to_.py": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/migrations/versions/0c0eb5a167d3_adding_column_description_type_text_to_.py",
+		"oF": 0
+		},
 	"/migrations/versions/5e85a1dec6e3_adding_stuff_to_cost_table.py": {
 		"cB": 0,
 		"ft": 8192,
@@ -1449,6 +1508,14 @@
 		"oAP": "/migrations/versions/81a2ee3df2e0_changing_tent_and_van_col_names.py",
 		"oF": 0
 		},
+	"/migrations/versions/83f9d34915d6_deleting_column_description.py": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/migrations/versions/83f9d34915d6_deleting_column_description.py",
+		"oF": 0
+		},
 	"/migrations/versions/849fb7127501_fixing_accomodation_table.py": {
 		"cB": 0,
 		"ft": 8192,
@@ -1463,6 +1530,22 @@
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/migrations/versions/__pycache__/0001990d4b19_editing_cost_table.cpython-37.pyc",
+		"oF": 0
+		},
+	"/migrations/versions/__pycache__/03661f8a7ab1_adding_column_description_to_.cpython-37.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/migrations/versions/__pycache__/03661f8a7ab1_adding_column_description_to_.cpython-37.pyc",
+		"oF": 0
+		},
+	"/migrations/versions/__pycache__/0c0eb5a167d3_adding_column_description_type_text_to_.cpython-37.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/migrations/versions/__pycache__/0c0eb5a167d3_adding_column_description_type_text_to_.cpython-37.pyc",
 		"oF": 0
 		},
 	"/migrations/versions/__pycache__/156272bc612b_routes_table_v01.cpython-36.pyc": {
@@ -1583,6 +1666,14 @@
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/migrations/versions/__pycache__/81a2ee3df2e0_changing_tent_and_van_col_names.cpython-37.pyc",
+		"oF": 0
+		},
+	"/migrations/versions/__pycache__/83f9d34915d6_deleting_column_description.cpython-37.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/migrations/versions/__pycache__/83f9d34915d6_deleting_column_description.cpython-37.pyc",
 		"oF": 0
 		},
 	"/migrations/versions/__pycache__/849fb7127501_fixing_accomodation_table.cpython-37.pyc": {

@@ -101,6 +101,7 @@ class DestinationForm(FlaskForm):
     weather_lng = HiddenField('Longitude', validators=[DataRequired()])
     featured_photo = FileField('Featured Photo', validators=[FileRequired(), FileAllowed(images, 'Images only!')])
     additional_photos = MultipleFileField('Additional Photos', validators=[FileAllowed(images, 'Images only!')])
+    description = TextAreaField('Destination description')
 
     traditional = BooleanField('Traditional')
     sport = BooleanField('Sport')

@@ -2,186 +2,185 @@
 
 {% block content %}
 <script>
-var addDestinationFormFuctionality = {
+    var addDestinationFormFuctionality = {
 
-  onReady: function () {
+        onReady: function () {
 
-    $('select#country option').first().attr('disabled', true)
+            $('select#country option').first().attr('disabled', true)
 
-    $('.js-accomodation-cost-item-in-add-destination-form').hide()
-    $('.js-accomodation-list-item-in-add-destination-form input:checkbox').click(function () {
-      var accomodationName = $(this).attr('name')
-      var costAccomodationName = accomodationName + '-cost'
-      if ($(this).is(':checked')) {
-        $('[name="' + costAccomodationName + '"]').show()
-        console.log(costAccomodationName)
-      } else {
-        $('[name="' + costAccomodationName + '"]').hide()
-      }
-    })
+            $('.js-accomodation-cost-item-in-add-destination-form').hide()
+            $('.js-accomodation-list-item-in-add-destination-form input:checkbox').click(function () {
+                var accomodationName = $(this).attr('name')
+                var costAccomodationName = accomodationName + '-cost'
+                if ($(this).is(':checked')) {
+                    $('[name="' + costAccomodationName + '"]').show()
+                    console.log(costAccomodationName)
+                } else {
+                    $('[name="' + costAccomodationName + '"]').hide()
+                }
+            })
+        
+        }
 
-  }
+    }
 
-}
-
-$(document).ready(addDestinationFormFuctionality.onReady)
+    $(document).ready(addDestinationFormFuctionality.onReady)
 </script>
 
 <div class="add-destination-container">
     <h1>Add Destination</h1>
     <form action="" method="post" enctype="multipart/form-data">
         {{ form.hidden_tag() }}
-        
-            <h3>{{ form.title.label }} </h3>
-            {{ form.title(size=64) }}<br>
-            {% for error in form.title.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        
-        
-            <h3>{{ form.country.label }} </h3>
-            {{ form.country() }}<br>
-            {% for error in form.country.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
 
-            <h3>{{ form.weather_place_autocomplete.label }}</h3>
-            <p>Select place from the list that pops up when you write</p>
-            {{ form.weather_place_autocomplete }} <br>
-        
-            <h3>{{ form.featured_photo.label }} </h3>
-            <p>Må legge til en compressor/resizer</p>
-            {{ form.featured_photo }} <br>
-            {% for error in form.featured_photo.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
+        <h3>{{ form.title.label }} </h3>
+        {{ form.title(size=64) }}<br>
+        {% for error in form.title.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
 
-            <h3>{{ form.additional_photos.label }} </h3>
-            <p>Må legge til en compressor/resizerasd</p>
-            {{ form.additional_photos }} <br>
-            {% for error in form.additional_photos.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
 
-            <h2>Written information</h2>
+        <h3>{{ form.country.label }} </h3>
+        {{ form.country() }}<br>
+        {% for error in form.country.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
 
-            <h3>Description</h3>
-            <p>WYSIWYG</p>
-        
-            <h3>History</h3>
-            <p>WYSIWYG</p>
+        <h3>{{ form.weather_place_autocomplete.label }}</h3>
+        <p>Select place from the list that pops up when you write</p>
+        {{ form.weather_place_autocomplete }} <br>
 
-            <h3>Access</h3>
-            <p>WYSIWYG</p>
+        <h3>{{ form.featured_photo.label }} </h3>
+        <p>Må legge til en compressor/resizer</p>
+        {{ form.featured_photo }} <br>
+        {% for error in form.featured_photo.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
 
-            <h3>Accomodation</h3>
-            <p>WYSIWYG</p>
+        <h3>{{ form.additional_photos.label }} </h3>
+        <p>Må legge til en compressor/resizerasd</p>
+        {{ form.additional_photos }} <br>
+        {% for error in form.additional_photos.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
 
-            <h3>Topos and Books</h3>
-            <p>WYSIWYG</p>
+        <h2>Written information</h2>
 
-            <h2>Searchable information and data</h2>
-        
-            <h3>Discipline</h3>
-            
-                <h4>{{ form.main_discipline.label }} </h4>
-                <div id="discipline_buttons_wrap">{{ form.main_discipline }}</div>
-            
-                 <h4>Also has these</h4>
-                <ul>
-                    <li>{{ form.traditional }} {{ form.traditional.label }}</li>
-                    <li>{{ form.sport }} {{ form.sport.label }}</li>
-                    <li>{{ form.bouldering }} {{ form.bouldering.label }}</li>
-                </ul>
-            </ul>
-            {% for error in form.main_discipline.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        
-        
-            <h3>Months in season</h3>
-            <ul>
-                <li>{{ form.january }} {{ form.january.label }}</li> 
-                <li>{{ form.february }} {{ form.february.label }}</li> 
-                <li>{{ form.mars }} {{ form.mars.label }}</li> 
-                <li>{{ form.april }} {{ form.april.label }}</li> 
-                <li>{{ form.may }} {{ form.may.label }}</li> 
-                <li>{{ form.june }} {{ form.june.label }}</li> 
-                <li>{{ form.july }} {{ form.july.label }}</li> 
-                <li>{{ form.august }} {{ form.august.label }}</li> 
-                <li>{{ form.september }} {{ form.september.label }}</li> 
-                <li>{{ form.october }} {{ form.october.label }}</li> 
-                <li>{{ form.november }} {{ form.november.label }}</li> 
-                <li>{{ form.december }} {{ form.december.label }}</li> 
-            </ul>
-        
-            <h3>Accomodations available</h3>
-            <ul>
-                <li class="js-accomodation-list-item-in-add-destination-form">{{ form.tent }} {{ form.tent.label }}</li>
-                <li class="js-accomodation-list-item-in-add-destination-form">{{ form.van }} {{ form.van.label }}</li>
-                <li class="js-accomodation-list-item-in-add-destination-form">{{ form.hostel }} {{ form.hostel.label }}</li>
-                <li class="js-accomodation-list-item-in-add-destination-form">{{ form.camping }} {{ form.camping.label }}</li>
-                <li class="js-accomodation-list-item-in-add-destination-form">{{ form.apartment }} {{ form.apartment.label }}</li>
-                <li class="js-accomodation-list-item-in-add-destination-form">{{ form.house }} {{ form.house.label }}</li>
-                <li class="js-accomodation-list-item-in-add-destination-form">{{ form.hotel }} {{ form.hotel.label }}</li>
-            </ul>
-        
-            <h3>Approach:</h3>
-            <ul>
-                <li>{{ form.easy }} {{ form.easy.label }}</li>
-                <li> {{ form.moderate }} {{ form.moderate.label }}</li>
-                <li>{{ form.hardcore }} {{ form.hardcore.label }}</li>
-            </ul>
-        
-            <h3>Car</h3>
-            <ul>
-                <li>{{ form.not_needed }} {{ form.not_needed.label }}</li>
-                <li>{{ form.good_to_have }} {{ form.good_to_have.label }}</li>
-                <li>{{ form.must_have }} {{ form.must_have.label }}</li>
-            </ul>
-            <!--<h4>Renting availability</h4>
+        <h3>{{ form.description.label }}</h3>
+        {{ form.description }}
+
+        <h2>Searchable information and data</h2>
+
+        <h3>Discipline</h3>
+
+        <h4>{{ form.main_discipline.label }} </h4>
+        <div id="discipline_buttons_wrap">{{ form.main_discipline }}</div>
+
+        <h4>Also has these</h4>
+        <ul>
+            <li>{{ form.traditional }} {{ form.traditional.label }}</li>
+            <li>{{ form.sport }} {{ form.sport.label }}</li>
+            <li>{{ form.bouldering }} {{ form.bouldering.label }}</li>
+        </ul>
+        </ul>
+        {% for error in form.main_discipline.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+
+
+        <h3>Months in season</h3>
+        <ul>
+            <li>{{ form.january }} {{ form.january.label }}</li>
+            <li>{{ form.february }} {{ form.february.label }}</li>
+            <li>{{ form.mars }} {{ form.mars.label }}</li>
+            <li>{{ form.april }} {{ form.april.label }}</li>
+            <li>{{ form.may }} {{ form.may.label }}</li>
+            <li>{{ form.june }} {{ form.june.label }}</li>
+            <li>{{ form.july }} {{ form.july.label }}</li>
+            <li>{{ form.august }} {{ form.august.label }}</li>
+            <li>{{ form.september }} {{ form.september.label }}</li>
+            <li>{{ form.october }} {{ form.october.label }}</li>
+            <li>{{ form.november }} {{ form.november.label }}</li>
+            <li>{{ form.december }} {{ form.december.label }}</li>
+        </ul>
+
+        <h3>Accomodations available</h3>
+        <ul>
+            <li class="js-accomodation-list-item-in-add-destination-form">{{ form.tent }} {{ form.tent.label }}</li>
+            <li class="js-accomodation-list-item-in-add-destination-form">{{ form.van }} {{ form.van.label }}</li>
+            <li class="js-accomodation-list-item-in-add-destination-form">{{ form.hostel }} {{ form.hostel.label }}</li>
+            <li class="js-accomodation-list-item-in-add-destination-form">{{ form.camping }} {{ form.camping.label }}
+            </li>
+            <li class="js-accomodation-list-item-in-add-destination-form">{{ form.apartment }}
+                {{ form.apartment.label }}</li>
+            <li class="js-accomodation-list-item-in-add-destination-form">{{ form.house }} {{ form.house.label }}</li>
+            <li class="js-accomodation-list-item-in-add-destination-form">{{ form.hotel }} {{ form.hotel.label }}</li>
+        </ul>
+
+        <h3>Approach:</h3>
+        <ul>
+            <li>{{ form.easy }} {{ form.easy.label }}</li>
+            <li> {{ form.moderate }} {{ form.moderate.label }}</li>
+            <li>{{ form.hardcore }} {{ form.hardcore.label }}</li>
+        </ul>
+
+        <h3>Car</h3>
+        <ul>
+            <li>{{ form.not_needed }} {{ form.not_needed.label }}</li>
+            <li>{{ form.good_to_have }} {{ form.good_to_have.label }}</li>
+            <li>{{ form.must_have }} {{ form.must_have.label }}</li>
+        </ul>
+        <!--<h4>Renting availability</h4>
              <ul>
                 <li>{{ form.rent_scooter_locally }} {{ form.rent_scooter_locally.label }}</li>
                 <li>{{ form.rent_car_locally }} {{ form.rent_car_locally.label }}</li>
             </ul> -->
 
-            <!--<h3>Cost</h3> Ska detta vara automatiskt eller ska folk lägga till detta? Vilka kostnader är viktiga? -->
-            <!-- <h4>{{ form.currency.label }}</h4> -->
-            
-            <h2>Cost</h2>
-            <p>If you don't know the below prices at your destination, please go to <a href="http://www.numbeo.com">Numbeo.com</a> and search for the nearest city, then use that data to fill out the prices.</p>
+        <!--<h3>Cost</h3> Ska detta vara automatiskt eller ska folk lägga till detta? Vilka kostnader är viktiga? -->
+        <!-- <h4>{{ form.currency.label }}</h4> -->
 
-            <p>CURRENCIES?? - Default currency: EUR - Men ha et valg å velge currency etter hvert felt?</p>
-            
-            <h3>Food and drinks</h3>
-            <p>See <a href="https://www.numbeo.com/cost-of-living/">Cost of Living index (Numbeo)</a> for beer, coffee and restaurant prices.</p>
-            <p>See <a href="https://www.numbeo.com/food-prices/">Food prices index (Numbeo)</a> for the price of one days worth of groceries.</p>
-            <p>* One beer (0.5l) at an establishment</p>
-            <p>* A cup of coffee at an establishment</p>
-            <p>* A meal at a normal/inexpensive restaurant</p>
-            <p>* A days groceries.</p>
+        <h2>Cost</h2>
+        <p>If you don't know the below prices at your destination, please go to <a
+                href="http://www.numbeo.com">Numbeo.com</a> and search for the nearest city, then use that data to fill
+            out the prices.</p>
 
-            <h3>Car</h3>
-            <p>See <a href="https://www.rentalcars.com/">Rental Cars</a>, <a href="https://www.avis.com/en/locations/avisworldwide">Avis</a>, <a href="https://www.hertz.no/rentacar/location">Hertz</a> or <a href="https://www.sixt.com/car-rental/">SiXT</a> for one week rental prices.</p>
-            <p>See <a href="https://www.numbeo.com/gas-prices/">Gas prices index (Numbeo)</a> for gas prices.</p>
-            <p>Leave the fields empty if no car is needed.</p>
-            <p>* One week rental</p>
-            <p>* Gas price per liter - CURRENCY?</p>
-            <p>* Average amount of kilometers driving per day - Use <a href="http://maps.google.com">Google Maps</a> for estimation.</p>
+        <p>CURRENCIES?? - Default currency: EUR - Men ha et valg å velge currency etter hvert felt?</p>
 
-            <h3>Accomodation</h3>
-            <ul>
-              <li class="js-accomodation-cost-item-in-add-destination-form" name="tent-cost">Tent</li>
-              <li class="js-accomodation-cost-item-in-add-destination-form" name="van-cost">Van</li>
-              <li class="js-accomodation-cost-item-in-add-destination-form" name="hostel-cost">Hostel</li>
-              <li class="js-accomodation-cost-item-in-add-destination-form" name="apartment-cost">Apartment</li>
-              <li class="js-accomodation-cost-item-in-add-destination-form" name="house-cost">House</li>
-              <li class="js-accomodation-cost-item-in-add-destination-form" name="hotel-cost">Hotel</li>
-            </ul>
+        <h3>Food and drinks</h3>
+        <p>See <a href="https://www.numbeo.com/cost-of-living/">Cost of Living index (Numbeo)</a> for beer, coffee and
+            restaurant prices.</p>
+        <p>See <a href="https://www.numbeo.com/food-prices/">Food prices index (Numbeo)</a> for the price of one days
+            worth of groceries.</p>
+        <p>* One beer (0.5l) at an establishment</p>
+        <p>* A cup of coffee at an establishment</p>
+        <p>* A meal at a normal/inexpensive restaurant</p>
+        <p>* A days groceries.</p>
 
-            <!--<h3>{{ form.weekly_avg.label }}</h3>
-            {{ form.weekly_avg }} {{ form.currency }} --> <!-- <span class="per-week">per week</span>-->
-            <!-- <h4>{{ form.tent_cost.label }}</h4>
+        <h3>Car</h3>
+        <p>See <a href="https://www.rentalcars.com/">Rental Cars</a>, <a
+                href="https://www.avis.com/en/locations/avisworldwide">Avis</a>, <a
+                href="https://www.hertz.no/rentacar/location">Hertz</a> or <a
+                href="https://www.sixt.com/car-rental/">SiXT</a> for one week rental prices.</p>
+        <p>See <a href="https://www.numbeo.com/gas-prices/">Gas prices index (Numbeo)</a> for gas prices.</p>
+        <p>Leave the fields empty if no car is needed.</p>
+        <p>* One week rental</p>
+        <p>* Gas price per liter - CURRENCY?</p>
+        <p>* Average amount of kilometers driving per day - Use <a href="http://maps.google.com">Google Maps</a> for
+            estimation.</p>
+
+        <h3>Accomodation</h3>
+        <ul>
+            <li class="js-accomodation-cost-item-in-add-destination-form" name="tent-cost">Tent</li>
+            <li class="js-accomodation-cost-item-in-add-destination-form" name="van-cost">Van</li>
+            <li class="js-accomodation-cost-item-in-add-destination-form" name="hostel-cost">Hostel</li>
+            <li class="js-accomodation-cost-item-in-add-destination-form" name="apartment-cost">Apartment</li>
+            <li class="js-accomodation-cost-item-in-add-destination-form" name="house-cost">House</li>
+            <li class="js-accomodation-cost-item-in-add-destination-form" name="hotel-cost">Hotel</li>
+        </ul>
+
+        <!--<h3>{{ form.weekly_avg.label }}</h3>
+            {{ form.weekly_avg }} {{ form.currency }} -->
+        <!-- <span class="per-week">per week</span>-->
+        <!-- <h4>{{ form.tent_cost.label }}</h4>
             {{ form.tent_cost }} 
             <h4>{{ form.hostel_cost.label }} </h4>
             {{ form.hostel_cost }} 
@@ -189,7 +188,7 @@ $(document).ready(addDestinationFormFuctionality.onReady)
             {{ form.apartment_cost }} 
             <h4>{{ form.hotel_cost.label }} </h4>
             {{ form.hotel_cost }} -->
-        
+
         <h2>Routes</h2>
         <p>(French grading for now. More grading systems will come.)</p>
         <p>Please enter the number of routes in each grade:</p>
@@ -225,13 +224,13 @@ $(document).ready(addDestinationFormFuctionality.onReady)
             <li><span class="route-label">{{ form.r_9b_p.label }}</span> {{ form.r_9b_p }}</li>
             <li><span class="route-label">{{ form.r_9c.label }}</span> {{ form.r_9c }}</li>
         </ul>
-       
+
         {{ form.submit() }}
     </form>
 </div>
 
 <script>
-    
+
     var autocomplete, place;
 
     var options = {
@@ -262,9 +261,9 @@ $(document).ready(addDestinationFormFuctionality.onReady)
     function setAutocompleteCountry() {
         var country = document.getElementById('country').value;
         if (country === 'all') {
-            autocomplete.setComponentRestrictions({'country': []});
+            autocomplete.setComponentRestrictions({ 'country': [] });
         } else {
-            autocomplete.setComponentRestrictions({'country': country});
+            autocomplete.setComponentRestrictions({ 'country': country });
         }
     }
 
@@ -281,8 +280,22 @@ $(document).ready(addDestinationFormFuctionality.onReady)
     }
 
 </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8XiZomiVMq2KmbTlj6OPu6tILBrkTYoQ&libraries=places&callback=initAutocomplete"
-            async defer></script>
+<script>
+    $('#description').summernote({
+        toolbar: [
+            // [groupName, [list of button]]
+            ['style', ['bold', 'italic', 'underline', 'clear', 'H1']],
+            ['font', ['strikethrough', 'superscript', 'subscript']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['picture'],
+            ['link'],
+            ['table']
+        ],
+        placeholder: 'Write here: Description of the area, history, access, accomodation, access, topos and books..'
+    });
+</script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8XiZomiVMq2KmbTlj6OPu6tILBrkTYoQ&libraries=places&callback=initAutocomplete"
+    async defer></script>
 
 {% endblock %}
-
