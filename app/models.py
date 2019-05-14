@@ -21,7 +21,7 @@ class User(UserMixin, db.Model):
         try:
             id = jwt.decode(token, app.config['SECRET_KEY'],
                             algorithms=['HS256'])['reset_password']
-        except:
+        except:  # noqa: E722
             return
         return User.query.get(id)
 
@@ -32,7 +32,8 @@ class User(UserMixin, db.Model):
     bio = db.Column(db.String(280))
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
-    destinations = db.relationship('Destination', backref='author', lazy='dynamic')  # lazy='dynamic' returns object instead of list
+    destinations = db.relationship('Destination', backref='author', lazy='dynamic')
+    # lazy='dynamic' returns object instead of list
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -62,7 +63,8 @@ class Destination(db.Model):
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))  # user.id refers to table user, column id
     additional_photos = db.relationship('AdditionalPhotos', backref='destination', lazy='dynamic')
-    routes = db.relationship('Routes', backref='destination', lazy='dynamic')  # lazy='dynamic' returns object instead of list
+    routes = db.relationship('Routes', backref='destination', lazy='dynamic')
+    # lazy='dynamic' returns object instead of list
     cost = db.relationship('Cost', backref='destination', lazy='dynamic')
     accomodation = db.relationship('Accomodation', backref='destination', lazy='dynamic')
     months = db.relationship('Months', backref='destination', lazy='dynamic')
@@ -132,6 +134,7 @@ class Routes(db.Model):
 
 class Cost(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    currency = db.Column(db.String(32))
     beer_at_establishment = db.Column(db.Integer, index=True, default=0)
     coffee_at_establishment = db.Column(db.Integer, index=True, default=0)
     restaurant_inexpensive_meal = db.Column(db.Integer, index=True, default=0)

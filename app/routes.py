@@ -186,7 +186,7 @@ def load_destinations():
 
 
 @app.route('/_convert_currency')
-def convert():
+def convert_currency():
 
     # name = request.cookies.get('userID')
 
@@ -474,7 +474,40 @@ def add_destination():
             db.session.bulk_save_objects(additional_photos_object)
 
             # COST
+            # 1) Få currency brukt fra form
+            # 2) Få konverteringsverdi fra valgt valuta til EUR
+            #    + Hvis currency API'en ikke fungerer, bare lagre valgt valuta i databas
+            # 3) Regne om alt til EUR: beer_at_establishment = convertValue * form.beer_at_establishment.data
+            # 4) Lagre alt i databas, samt EUR som currency
+            currency = form.currency.data
 
+            beer_at_establishment = 1
+
+            avg_weekly_cost = 1+1  # Må fikses
+
+            cost = Cost(currency=ASDASD,
+                        beer_at_establishment=ASDASD,
+                        coffee_at_establishment=AD,
+                        restaurant_inexpensive_meal=ASD,
+                        groceries_one_week=ASD,
+                        car_rent_one_week=ASD,
+                        gas_one_liter=ASD,
+                        km_per_day=ASD,
+                        tent_per_day=ASD,
+                        van_per_day=ASD,
+                        camping_per_day=ASD,
+                        hostel_per_day=ASD,
+                        apartment_per_day=ASD,
+                        house_per_day=ASD,
+                        hotel_per_day=ASD,
+                        avg_weekly_cost=avg_weekly_cost,
+                        destination_id=d.id)
+            db.session.add(cost)
+            
+            # cost = Cost(currency=currency, weekly_avg=weekly_avg, tent=tent_cost, hostel=hostel_cost,
+            #             apartment=apartment_cost, hotel=hotel_cost, destination_id=d.id)
+
+            # Cost (old)
             # ### CURRENCY TO EUR
             # REQUEST FOR CURRENCY DATA
             # payload = {'base': form.currency.data, 'symbols': 'EUR'}
@@ -504,8 +537,7 @@ def add_destination():
             total_routes = range_23 + range_4 + range_5 + range_6 + range_7 + range_8 + range_9
             ###
 
-            # cost = Cost(currency=currency, weekly_avg=weekly_avg, tent=tent_cost, hostel=hostel_cost,
-            #             apartment=apartment_cost, hotel=hotel_cost, destination_id=d.id)
+            
             months = Months(january=form.january.data, february=form.february.data, mars=form.mars.data,
                             april=form.april.data, may=form.may.data, june=form.june.data, july=form.july.data,
                             august=form.august.data, september=form.september.data, october=form.october.data,
@@ -530,7 +562,6 @@ def add_destination():
                             range_8=range_8, r_9a=form.r_9a.data, r_9a_p=form.r_9a_p.data, r_9b=form.r_9b.data,
                             r_9b_p=form.r_9b_p.data, r_9c=form.r_9c.data, range_9=range_9, total_routes=total_routes,
                             destination_id=d.id)
-            # db.session.add(cost)
             db.session.add(months)
             db.session.add(accomodation)
             db.session.add(approach)

@@ -826,6 +826,25 @@
 		"oT": 1,
 		"q": 100
 		},
+	"/app/static/js/dev/app-min.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/app/static/js/dev/app-min-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/app/static/js/dev/app-min.js.map": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/app/static/js/dev/app-min.js.map",
+		"oF": 0
+		},
 	"/app/static/js/dev/app.js": {
 		"bF": 0,
 		"ft": 64,
@@ -1508,6 +1527,14 @@
 		"oAP": "/migrations/versions/81a2ee3df2e0_changing_tent_and_van_col_names.py",
 		"oF": 0
 		},
+	"/migrations/versions/823bb1671107_.py": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/migrations/versions/823bb1671107_.py",
+		"oF": 0
+		},
 	"/migrations/versions/83f9d34915d6_deleting_column_description.py": {
 		"cB": 0,
 		"ft": 8192,
@@ -1666,6 +1693,14 @@
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/migrations/versions/__pycache__/81a2ee3df2e0_changing_tent_and_van_col_names.cpython-37.pyc",
+		"oF": 0
+		},
+	"/migrations/versions/__pycache__/823bb1671107_.cpython-37.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/migrations/versions/__pycache__/823bb1671107_.cpython-37.pyc",
 		"oF": 0
 		},
 	"/migrations/versions/__pycache__/83f9d34915d6_deleting_column_description.cpython-37.pyc": {
@@ -1940,6 +1975,14 @@
 		"oAP": "/venv/bin/alembic",
 		"oF": 0
 		},
+	"/venv/bin/autopep8": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/venv/bin/autopep8",
+		"oF": 0
+		},
 	"/venv/bin/chardetect": {
 		"cB": 0,
 		"ft": 8192,
@@ -2034,6 +2077,14 @@
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/venv/bin/pyjwt",
+		"oF": 0
+		},
+	"/venv/lib/python3.7/site-packages/__pycache__/autopep8.cpython-37.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/venv/lib/python3.7/site-packages/__pycache__/autopep8.cpython-37.pyc",
 		"oF": 0
 		},
 	"/venv/lib/python3.7/site-packages/__pycache__/easy_install.cpython-37.pyc": {
@@ -3170,6 +3221,78 @@
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/venv/lib/python3.7/site-packages/alembic/util/sqla_compat.py",
+		"oF": 0
+		},
+	"/venv/lib/python3.7/site-packages/autopep8-1.4.4-py3.7.egg-info/dependency_links.txt": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/venv/lib/python3.7/site-packages/autopep8-1.4.4-py3.7.egg-info/dependency_links.txt",
+		"oF": 0
+		},
+	"/venv/lib/python3.7/site-packages/autopep8-1.4.4-py3.7.egg-info/entry_points.txt": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/venv/lib/python3.7/site-packages/autopep8-1.4.4-py3.7.egg-info/entry_points.txt",
+		"oF": 0
+		},
+	"/venv/lib/python3.7/site-packages/autopep8-1.4.4-py3.7.egg-info/installed-files.txt": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/venv/lib/python3.7/site-packages/autopep8-1.4.4-py3.7.egg-info/installed-files.txt",
+		"oF": 0
+		},
+	"/venv/lib/python3.7/site-packages/autopep8-1.4.4-py3.7.egg-info/not-zip-safe": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/venv/lib/python3.7/site-packages/autopep8-1.4.4-py3.7.egg-info/not-zip-safe",
+		"oF": 0
+		},
+	"/venv/lib/python3.7/site-packages/autopep8-1.4.4-py3.7.egg-info/PKG-INFO": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/venv/lib/python3.7/site-packages/autopep8-1.4.4-py3.7.egg-info/PKG-INFO",
+		"oF": 0
+		},
+	"/venv/lib/python3.7/site-packages/autopep8-1.4.4-py3.7.egg-info/requires.txt": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/venv/lib/python3.7/site-packages/autopep8-1.4.4-py3.7.egg-info/requires.txt",
+		"oF": 0
+		},
+	"/venv/lib/python3.7/site-packages/autopep8-1.4.4-py3.7.egg-info/SOURCES.txt": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/venv/lib/python3.7/site-packages/autopep8-1.4.4-py3.7.egg-info/SOURCES.txt",
+		"oF": 0
+		},
+	"/venv/lib/python3.7/site-packages/autopep8-1.4.4-py3.7.egg-info/top_level.txt": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/venv/lib/python3.7/site-packages/autopep8-1.4.4-py3.7.egg-info/top_level.txt",
+		"oF": 0
+		},
+	"/venv/lib/python3.7/site-packages/autopep8.py": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/venv/lib/python3.7/site-packages/autopep8.py",
 		"oF": 0
 		},
 	"/venv/lib/python3.7/site-packages/blinker-1.4.dist-info/AUTHORS": {

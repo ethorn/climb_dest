@@ -138,6 +138,7 @@
         <!-- <h4>{{ form.currency.label }}</h4> -->
 
         <h2>Cost</h2>
+        <p><strong>Hvor jeg er: Har akkurat lagt til alle fields i forms.py. Skal nå legge de til i selve formen nedenfor. Etter det må jeg gjøre en kalkulasjon i routes.py og legge inn altsammen i databasen. Etter det må jeg tenke litt på currencies.</strong></p>
         <p><span class="help-info">If you don't know the below prices at your destination, please go to <a
                 href="http://www.numbeo.com">Numbeo.com</a> and search for the nearest city, then use that data to fill
             out the prices.</span></p>
@@ -149,47 +150,87 @@
             restaurant prices.</p>
         <p>See <a href="https://www.numbeo.com/food-prices/">Food prices index (Numbeo)</a> for the price of one days
             worth of groceries.</p>
-        <p>* One beer (0.5l) at an establishment</p>
-        <p>* A cup of coffee at an establishment</p>
-        <p>* A meal at a normal/inexpensive restaurant</p>
-        <p>* A days groceries.</p>
+        
+        <ul>
+            <li>
+                {{ form.currency.label }}
+                {{ form.currency }}
+            </li>
+            <li>
+                {{ form.beer_at_establishment.label }}
+                {{ form.beer_at_establishment }}
+            </li>
+            <li>
+                {{ form.coffee_at_establishment.label }}
+                {{ form.coffee_at_establishment }}
+            </li>
+            <li>
+                {{ form.restaurant_inexpensive_meal.label }}
+                {{ form.restaurant_inexpensive_meal }}
+            </li>
+            <li>
+                {{ form.groceries_one_week.label }}
+                {{ form.groceries_one_week }}
+            </li>
+        </ul>
 
         <h3>Car</h3>
         <p>See <a href="https://www.rentalcars.com/">Rental Cars</a>, <a
                 href="https://www.avis.com/en/locations/avisworldwide">Avis</a>, <a
                 href="https://www.hertz.no/rentacar/location">Hertz</a> or <a
                 href="https://www.sixt.com/car-rental/">SiXT</a> for one week rental prices.</p>
-        <p>See <a href="https://www.numbeo.com/gas-prices/">Gas prices index (Numbeo)</a> for gas prices.</p>
+        <p>See <a href="https://www.numbeo.com/gas-prices/">Gas prices index (Numbeo)</a> for gas prices and use <a href="http://maps.google.com">Google Maps</a> for
+            kilometer estimation.</p>
         <p>Leave the fields empty if no car is needed.</p>
-        <p>* One week rental</p>
-        <p>* Gas price per liter - CURRENCY?</p>
-        <p>* Average amount of kilometers driving per day - Use <a href="http://maps.google.com">Google Maps</a> for
-            estimation.</p>
+        <ul>
+            <li>
+                {{ form.car_rent_one_week.label }}
+                {{ form.car_rent_one_week }}
+            </li>
+            <li>
+                {{ form.gas_one_liter.label }}
+                {{ form.gas_one_liter }}
+            </li>
+            <li>
+                {{ form.km_per_day.label }}
+                {{ form.km_per_day }}
+            </li>
+        </ul>
 
         <h3>Accomodation</h3>
         <ul>
-            <li class="js-accomodation-cost-item-in-add-destination-form" name="tent-cost">Tent</li>
-            <li class="js-accomodation-cost-item-in-add-destination-form" name="van-cost">Van</li>
-            <li class="js-accomodation-cost-item-in-add-destination-form" name="hostel-cost">Hostel</li>
-            <li class="js-accomodation-cost-item-in-add-destination-form" name="camping-cost">Camping</li>
-            <li class="js-accomodation-cost-item-in-add-destination-form" name="apartment-cost">Apartment</li>
-            <li class="js-accomodation-cost-item-in-add-destination-form" name="house-cost">House</li>
-            <li class="js-accomodation-cost-item-in-add-destination-form" name="hotel-cost">Hotel</li>
+            <li class="js-accomodation-cost-item-in-add-destination-form" name="tent-cost">
+                {{ form.tent_per_day.label }}
+                {{ form.tent_per_day }}
+            </li>
+            <li class="js-accomodation-cost-item-in-add-destination-form" name="van-cost">
+                {{ form.van_per_day.label }}
+                {{ form.van_per_day }}
+            </li>
+            <li class="js-accomodation-cost-item-in-add-destination-form" name="camping-cost">
+                {{ form.tent_per_day.label }}
+                {{ form.tent_per_day }}
+            </li>
+            <li class="js-accomodation-cost-item-in-add-destination-form" name="hostel-cost">
+                {{ form.hostel_per_day.label }}
+                {{ form.hostel_per_day }}
+            </li>
+            <li class="js-accomodation-cost-item-in-add-destination-form" name="apartment-cost">
+                {{ form.apartment_per_day.label }}
+                {{ form.apartment_per_day }}
+            </li>
+            <li class="js-accomodation-cost-item-in-add-destination-form" name="house-cost">
+                {{ form.house_per_day.label }}
+                {{ form.house_per_day }}
+            </li>
+            <li class="js-accomodation-cost-item-in-add-destination-form" name="hotel-cost">
+                {{ form.hotel_per_day.label }}
+                {{ form.hotel_per_day }}
+            </li>
         </ul>
 
-        <!--<h3>{{ form.weekly_avg.label }}</h3>
-            {{ form.weekly_avg }} {{ form.currency }} -->
-        <!-- <span class="per-week">per week</span>-->
-        <!-- <h4>{{ form.tent_cost.label }}</h4>
-            {{ form.tent_cost }} 
-            <h4>{{ form.hostel_cost.label }} </h4>
-            {{ form.hostel_cost }} 
-            <h4>{{ form.apartment_cost.label }} </h4>
-            {{ form.apartment_cost }} 
-            <h4>{{ form.hotel_cost.label }} </h4>
-            {{ form.hotel_cost }} -->
-
         <h2>Routes</h2>
+        <p><strong>Hvor jeg er: Må gjøre om systemet nedan. Se anteckningar.</strong></p>
         <p>(French grading for now. More grading systems will come.)</p>
         <p>Please enter the number of routes in each grade:</p>
         <ul class="routes-list">

@@ -1,3 +1,4 @@
+/* global $SCRIPT_ROOT, Cookies */
 /* -------------------------------------------------------------------------
 -------
 -------   Currency Feature
@@ -8,55 +9,55 @@
 
 var currency = {
 
-  onReady: function() {
+  onReady: function () {
 
     // When page loads
-    currency.fromCookie(); 
+    currency.fromCookie()
 
     // When changing currency manually in select field
-    $('select#currency').change( currency.onSelectChange )
+    $('select#currency').change(currency.onSelectChange)
   },
 
-  onSelectChange: function() {
+  onSelectChange: function () {
     $.getJSON($SCRIPT_ROOT + '/_convert_currency', {
-        c: $(this).val()
-      }, function(data) {
-        
-        $('span.money').each(function() {
-          var money = $(this).text();
-          var new_money = money * data.rate;
-          var new_money_round = Math.round(new_money);
-          $(this).text(new_money_round);
-        })
-        $('span.currency').html(data.new_currency);
-      });
-      return false;
+      c: $(this).val()
+    }, function (data) {
+
+      $('span.money').each(function () {
+        var money = $(this).text()
+        var newMoney = money * data.rate
+        var newMoneyRounded = Math.round(newMoney)
+        $(this).text(newMoneyRounded)
+      })
+      $('span.currency').html(data.new_currency)
+    })
+    return false
   },
 
-  fromCookie: function() {
-    if (Cookies.get('currency') != undefined && Cookies.get('currency') != 'EUR') {
-    
-      var currency = Cookies.get('currency');
-      var rate_from_euro = Cookies.get('rate_from_euro');
-      
-      if (rate_from_euro != 1) {
-        
-        // takes info from cookie and makes the current currency 
-        // selected in the select#currency list:
-        $('select#currency').val(currency);
-        
-        // change from euro to current currency when refreshing:
-        $('span.money').each(function() {
-          var money = $(this).text();
-          var new_money = money * rate_from_euro;
-          var new_money_round = Math.round(new_money);
-          $(this).text(new_money_round);
-        });
+  fromCookie: function () {
+    if (Cookies.get('currency') !== undefined && Cookies.get('currency') !== 'EUR') {
 
-        $('span.currency').html(currency);
+      var currency = Cookies.get('currency')
+      var rateFromEuro = Cookies.get('rate_from_euro')
+
+      if (rateFromEuro !== 1) {
+
+        // takes info from cookie and makes the current currency
+        // selected in the select#currency list:
+        $('select#currency').val(currency)
+
+        // change from euro to current currency when refreshing:
+        $('span.money').each(function () {
+          var money = $(this).text()
+          var newMoney = money * rateFromEuro
+          var newMoneyRounded = Math.round(newMoney)
+          $(this).text(newMoneyRounded)
+        })
+
+        $('span.currency').html(currency)
       }
     }
   }
 
-};
+}
 $(document).ready(currency.onReady)

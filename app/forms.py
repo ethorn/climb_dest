@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, IntegerField, PasswordField, BooleanField, SubmitField, SelectField, \
-                    FileField, MultipleFileField, HiddenField
+    FileField, MultipleFileField, HiddenField
 from wtforms.validators import ValidationError, DataRequired, Length, Email, EqualTo
 from flask_wtf.file import FileAllowed, FileRequired
 from app.models import User
@@ -150,22 +150,6 @@ class DestinationForm(FlaskForm):
     rent_car_locally = BooleanField('Car available locally')
 
     # Cost
-    beer_at_establishment = IntegerField('Beer at establishment')
-    coffee_at_establishment = IntegerField('Coffee at establishment')
-    restaurant_inexpensive_meal = IntegerField('restaurant_inexpensive_meal')
-    groceries_one_week = IntegerField('groceries_one_week')
-    car_rent_one_week = IntegerField('car_rent_one_week')
-    gas_one_liter = IntegerField('gas_one_liter')
-    km_per_day = IntegerField('km_per_day')
-    tent_per_day = IntegerField('tent_per_day')
-    van_per_day = IntegerField('van_per_day')
-    camping_per_day = IntegerField('camping_per_day')
-    hostel_per_day = IntegerField('hostel_per_day')
-    apartment_per_day = IntegerField('apartment_per_day')
-    house_per_day = IntegerField('house_per_day')
-    hotel_per_day = IntegerField('hotel_per_day')
-
-    # Cost (old stuff)
     currency = SelectField('Currency',
                            choices=[('EUR', 'EUR'), ('AUD', 'AUD'), ('BGN', 'BGN'),
                                     ('BRL', 'BRL'), ('CAD', 'CAD'), ('CHF', 'CHF'),
@@ -178,12 +162,22 @@ class DestinationForm(FlaskForm):
                                     ('PLN', 'PLN'), ('RON', 'RON'), ('RUB', 'RUB'),
                                     ('SEK', 'SEK'), ('SGD', 'SGD'), ('THB', 'THB'),
                                     ('TRY', 'TRY'), ('USD', 'USD'), ('ZAR', 'ZAR')],
-                           validators=[DataRequired()], default='EUR')
-    weekly_avg = IntegerField('Weekly Average Cost')
-    tent_cost = IntegerField('Average cost for tent (per day)')
-    hostel_cost = IntegerField('Average cost for hostel (per day)')
-    apartment_cost = IntegerField('Average cost for apartment (per day)')
-    hotel_cost = IntegerField('Average cost for hotel (per day)')
+                           validators=[DataRequired()], 
+                           default='EUR')
+    beer_at_establishment = IntegerField('Beer at establishment')
+    coffee_at_establishment = IntegerField('Coffee at establishment')
+    restaurant_inexpensive_meal = IntegerField('Inexpensive meal at restaurant')
+    groceries_one_week = IntegerField('One week of groceries')
+    car_rent_one_week = IntegerField('Renting car for one week')
+    gas_one_liter = IntegerField('One liter of gasoline')
+    km_per_day = IntegerField('Average kilometers of driving per day')
+    tent_per_day = IntegerField('Cost per night in tent')
+    van_per_day = IntegerField('Cost per night in van')
+    camping_per_day = IntegerField('Cost per night in camping')
+    hostel_per_day = IntegerField('Cost per night in hostel')
+    apartment_per_day = IntegerField('Cost per night in apartment')
+    house_per_day = IntegerField('Cost per night in house')
+    hotel_per_day = IntegerField('Cost per night in hotel')
 
     # Routes
     r_2 = IntegerField('2', render_kw={"placeholder": "0"}, default=4)
@@ -222,6 +216,7 @@ class DestinationForm(FlaskForm):
 class EditDestinationForm(FlaskForm):
     title = StringField('Destination title', validators=[DataRequired()])
     country = StringField('Country', validators=[DataRequired()])
-    discipline = SelectField('Main discipline', choices=[('traditional', 'Traditional'), ('bouldering', 'Bouldering'), ('sport', 'Sport')], validators=[DataRequired()])
+    discipline = SelectField('Main discipline', choices=[(
+        'traditional', 'Traditional'), ('bouldering', 'Bouldering'), ('sport', 'Sport')], validators=[DataRequired()])
     image = FileField('Destination Photo', validators=[FileRequired(), FileAllowed(images, 'Images only!')])
     submit = SubmitField('Update')
