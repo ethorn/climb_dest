@@ -79,6 +79,14 @@
 		"plM": 3758088159,
 		"prP": 0
 		},
+	"/_ASSETS/climbing_grades_categorization.xlsx": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/_ASSETS/climbing_grades_categorization.xlsx",
+		"oF": 0
+		},
 	"/_ASSETS/destination_in_list.psd": {
 		"cB": 0,
 		"ft": 8192,
@@ -119,6 +127,14 @@
 		"opt": 0,
 		"oT": 1,
 		"q": 100
+		},
+	"/_ASSETS/~$climbing_grades_categorization.xlsx": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/_ASSETS/~$climbing_grades_categorization.xlsx",
+		"oF": 0
 		},
 	"/app.db": {
 		"cB": 0,
@@ -793,6 +809,17 @@
 		"plM": 3758088159,
 		"prP": 0
 		},
+	"/app/static/images/grades_categorization.png": {
+		"ft": 32768,
+		"iS": 109769,
+		"oA": 0,
+		"oAP": "/app/static/images/grades_categorization.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
 	"/app/static/images/icon_bouldering.png": {
 		"ft": 32768,
 		"iS": 8592,
@@ -1076,6 +1103,28 @@
 		"oAP": "/app/static/style.css.map",
 		"oF": 0
 		},
+	"/app/static/uploads/images/12728760_10156626548080523_7550212807584346473_n.jpg": {
+		"ft": 16384,
+		"iS": 54801,
+		"jF": 0,
+		"oA": 0,
+		"oAP": "/app/static/uploads/images/12728760_10156626548080523_7550212807584346473_n.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 30
+		},
+	"/app/static/uploads/images/12728760_10156626548080523_7550212807584346473_n_1.jpg": {
+		"ft": 16384,
+		"iS": 54801,
+		"jF": 0,
+		"oA": 0,
+		"oAP": "/app/static/uploads/images/12728760_10156626548080523_7550212807584346473_n_1.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 30
+		},
 	"/app/static/uploads/images/14681580_686429324857969_8354741369358001280_n.jpg": {
 		"ft": 16384,
 		"iS": 160483,
@@ -1098,17 +1147,6 @@
 		"opt": 0,
 		"q": 30
 		},
-	"/app/static/uploads/images/14690930_686429791524589_8535505141492700782_n_1.jpg": {
-		"ft": 16384,
-		"iS": 108640,
-		"jF": 0,
-		"oA": 0,
-		"oAP": "/app/static/uploads/images/14690930_686429791524589_8535505141492700782_n_1.jpg",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"q": 30
-		},
 	"/app/static/uploads/images/14713753_686429708191264_8533953784930172943_n.jpg": {
 		"ft": 16384,
 		"iS": 93779,
@@ -1120,12 +1158,12 @@
 		"opt": 0,
 		"q": 30
 		},
-	"/app/static/uploads/images/14731136_686430071524561_7191455512277329312_n.jpg": {
+	"/app/static/uploads/images/14713753_686429708191264_8533953784930172943_n_1.jpg": {
 		"ft": 16384,
-		"iS": 95654,
+		"iS": 93779,
 		"jF": 0,
 		"oA": 0,
-		"oAP": "/app/static/uploads/images/14731136_686430071524561_7191455512277329312_n.jpg",
+		"oAP": "/app/static/uploads/images/14713753_686429708191264_8533953784930172943_n_1.jpg",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
@@ -1137,105 +1175,6 @@
 		"jF": 0,
 		"oA": 0,
 		"oAP": "/app/static/uploads/images/1935076_10156626547750523_7937965071204542987_n.jpg",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"q": 30
-		},
-	"/app/static/uploads/images/1935076_10156626547750523_7937965071204542987_n_1.jpg": {
-		"ft": 16384,
-		"iS": 104274,
-		"jF": 0,
-		"oA": 0,
-		"oAP": "/app/static/uploads/images/1935076_10156626547750523_7937965071204542987_n_1.jpg",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"q": 30
-		},
-	"/app/static/uploads/images/DSC03375.jpg": {
-		"ft": 16384,
-		"iS": 16306515,
-		"jF": 0,
-		"oA": 0,
-		"oAP": "/app/static/uploads/images/DSC03375.jpg",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"q": 30
-		},
-	"/app/static/uploads/images/DSC03375_1.jpg": {
-		"ft": 16384,
-		"iS": 1482191,
-		"jF": 0,
-		"oA": 0,
-		"oAP": "/app/static/uploads/images/DSC03375_1.jpg",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"q": 30
-		},
-	"/app/static/uploads/images/DSC03462.jpg": {
-		"ft": 16384,
-		"iS": 15590001,
-		"jF": 0,
-		"oA": 0,
-		"oAP": "/app/static/uploads/images/DSC03462.jpg",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"q": 30
-		},
-	"/app/static/uploads/images/DSC03477.jpg": {
-		"ft": 16384,
-		"iS": 11588612,
-		"jF": 0,
-		"oA": 0,
-		"oAP": "/app/static/uploads/images/DSC03477.jpg",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"q": 30
-		},
-	"/app/static/uploads/images/DSC03508.jpg": {
-		"ft": 16384,
-		"iS": 14600575,
-		"jF": 0,
-		"oA": 0,
-		"oAP": "/app/static/uploads/images/DSC03508.jpg",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"q": 30
-		},
-	"/app/static/uploads/images/DSC03529.jpg": {
-		"ft": 16384,
-		"iS": 11701570,
-		"jF": 0,
-		"oA": 0,
-		"oAP": "/app/static/uploads/images/DSC03529.jpg",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"q": 30
-		},
-	"/app/static/uploads/images/DSC03529_1.jpg": {
-		"ft": 16384,
-		"iS": 11701570,
-		"jF": 0,
-		"oA": 0,
-		"oAP": "/app/static/uploads/images/DSC03529_1.jpg",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"q": 30
-		},
-	"/app/static/uploads/images/DSC03529_2.jpg": {
-		"ft": 16384,
-		"iS": 11701570,
-		"jF": 0,
-		"oA": 0,
-		"oAP": "/app/static/uploads/images/DSC03529_2.jpg",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
@@ -1487,68 +1426,12 @@
 		"oAP": "/migrations/script.py.mako",
 		"oF": 0
 		},
-	"/migrations/versions/0001990d4b19_editing_cost_table.py": {
+	"/migrations/versions/13cb99a5e7c7_.py": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/migrations/versions/0001990d4b19_editing_cost_table.py",
-		"oF": 0
-		},
-	"/migrations/versions/03661f8a7ab1_adding_column_description_to_.py": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/migrations/versions/03661f8a7ab1_adding_column_description_to_.py",
-		"oF": 0
-		},
-	"/migrations/versions/0c0eb5a167d3_adding_column_description_type_text_to_.py": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/migrations/versions/0c0eb5a167d3_adding_column_description_type_text_to_.py",
-		"oF": 0
-		},
-	"/migrations/versions/5e85a1dec6e3_adding_stuff_to_cost_table.py": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/migrations/versions/5e85a1dec6e3_adding_stuff_to_cost_table.py",
-		"oF": 0
-		},
-	"/migrations/versions/81a2ee3df2e0_changing_tent_and_van_col_names.py": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/migrations/versions/81a2ee3df2e0_changing_tent_and_van_col_names.py",
-		"oF": 0
-		},
-	"/migrations/versions/823bb1671107_.py": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/migrations/versions/823bb1671107_.py",
-		"oF": 0
-		},
-	"/migrations/versions/83f9d34915d6_deleting_column_description.py": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/migrations/versions/83f9d34915d6_deleting_column_description.py",
-		"oF": 0
-		},
-	"/migrations/versions/849fb7127501_fixing_accomodation_table.py": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/migrations/versions/849fb7127501_fixing_accomodation_table.py",
+		"oAP": "/migrations/versions/13cb99a5e7c7_.py",
 		"oF": 0
 		},
 	"/migrations/versions/__pycache__/0001990d4b19_editing_cost_table.cpython-37.pyc": {
@@ -1557,6 +1440,14 @@
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/migrations/versions/__pycache__/0001990d4b19_editing_cost_table.cpython-37.pyc",
+		"oF": 0
+		},
+	"/migrations/versions/__pycache__/02560eb9c47d_added_accomodation_used_for_average_to_.cpython-37.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/migrations/versions/__pycache__/02560eb9c47d_added_accomodation_used_for_average_to_.cpython-37.pyc",
 		"oF": 0
 		},
 	"/migrations/versions/__pycache__/03661f8a7ab1_adding_column_description_to_.cpython-37.pyc": {
@@ -1573,6 +1464,14 @@
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/migrations/versions/__pycache__/0c0eb5a167d3_adding_column_description_type_text_to_.cpython-37.pyc",
+		"oF": 0
+		},
+	"/migrations/versions/__pycache__/13cb99a5e7c7_.cpython-37.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/migrations/versions/__pycache__/13cb99a5e7c7_.cpython-37.pyc",
 		"oF": 0
 		},
 	"/migrations/versions/__pycache__/156272bc612b_routes_table_v01.cpython-36.pyc": {
@@ -1613,6 +1512,22 @@
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/migrations/versions/__pycache__/3f7269a187c5_routes_table_v03.cpython-36.pyc",
+		"oF": 0
+		},
+	"/migrations/versions/__pycache__/46d5eb0e7a47_.cpython-37.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/migrations/versions/__pycache__/46d5eb0e7a47_.cpython-37.pyc",
+		"oF": 0
+		},
+	"/migrations/versions/__pycache__/51aa29d4bcee_changing_routes_table_to_simpler_fields.cpython-37.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/migrations/versions/__pycache__/51aa29d4bcee_changing_routes_table_to_simpler_fields.cpython-37.pyc",
 		"oF": 0
 		},
 	"/migrations/versions/__pycache__/5917d5132274_.cpython-37.pyc": {
@@ -1791,6 +1706,14 @@
 		"oAP": "/migrations/versions/__pycache__/be1f3f6713b5_database_relationship_between_routes_.cpython-36.pyc",
 		"oF": 0
 		},
+	"/migrations/versions/__pycache__/c3d364ac9c9e_.cpython-37.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/migrations/versions/__pycache__/c3d364ac9c9e_.cpython-37.pyc",
+		"oF": 0
+		},
 	"/migrations/versions/__pycache__/c6f7befdd918_added_better_structure_for_discipline_.cpython-36.pyc": {
 		"cB": 0,
 		"ft": 8192,
@@ -1861,70 +1784,6 @@
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/migrations/versions/__pycache__/e52b1f5157da_image_fields_in_database.cpython-36.pyc",
-		"oF": 0
-		},
-	"/migrations/versions/a8f8ced74f75_added_a_table_for_additional_photos.py": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/migrations/versions/a8f8ced74f75_added_a_table_for_additional_photos.py",
-		"oF": 0
-		},
-	"/migrations/versions/aa377432a9ea_fixing_accomodation_database_table.py": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/migrations/versions/aa377432a9ea_fixing_accomodation_database_table.py",
-		"oF": 0
-		},
-	"/migrations/versions/b54d4f943ed0_edited_destination_table.py": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/migrations/versions/b54d4f943ed0_edited_destination_table.py",
-		"oF": 0
-		},
-	"/migrations/versions/c6f7befdd918_added_better_structure_for_discipline_.py": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/migrations/versions/c6f7befdd918_added_better_structure_for_discipline_.py",
-		"oF": 0
-		},
-	"/migrations/versions/cb11dafe5ec9_.py": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/migrations/versions/cb11dafe5ec9_.py",
-		"oF": 0
-		},
-	"/migrations/versions/d51645fa9e9c_adding_total_sport_total_trad_total_.py": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/migrations/versions/d51645fa9e9c_adding_total_sport_total_trad_total_.py",
-		"oF": 0
-		},
-	"/migrations/versions/e21aae64252b_adding_additional_user_properties.py": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/migrations/versions/e21aae64252b_adding_additional_user_properties.py",
-		"oF": 0
-		},
-	"/migrations/versions/e4a4d58bd6c6_added_weather_longitude_and_latitude_to_.py": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/migrations/versions/e4a4d58bd6c6_added_weather_longitude_and_latitude_to_.py",
 		"oF": 0
 		},
 	"/requirements.txt": {

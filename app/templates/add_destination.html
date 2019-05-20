@@ -8,16 +8,16 @@
 
             $('select#country option').first().attr('disabled', true)
 
-            $('.js-accomodation-cost-item-in-add-destination-form').hide()
-            $('.js-accomodation-list-item-in-add-destination-form input:checkbox').click(function () {
-                var accomodationName = $(this).attr('name')
-                var costAccomodationName = accomodationName + '-cost'
-                if ($(this).is(':checked')) {
-                    $('[name="' + costAccomodationName + '"]').show()
-                } else {
-                    $('[name="' + costAccomodationName + '"]').hide()
-                }
-            })
+            // $('.js-accomodation-cost-item-in-add-destination-form').hide()
+            // $('.js-accomodation-list-item-in-add-destination-form input:checkbox').click(function () {
+            //     var accomodationName = $(this).attr('name')
+            //     var costAccomodationName = accomodationName + '-cost'
+            //     if ($(this).is(':checked')) {
+            //         $('[name="' + costAccomodationName + '"]').show()
+            //     } else {
+            //         $('[name="' + costAccomodationName + '"]').hide()
+            //     }
+            // })
         
         }
 
@@ -128,14 +128,6 @@
             <li>{{ form.good_to_have }} {{ form.good_to_have.label }}</li>
             <li>{{ form.must_have }} {{ form.must_have.label }}</li>
         </ul>
-        <!--<h4>Renting availability</h4>
-             <ul>
-                <li>{{ form.rent_scooter_locally }} {{ form.rent_scooter_locally.label }}</li>
-                <li>{{ form.rent_car_locally }} {{ form.rent_car_locally.label }}</li>
-            </ul> -->
-
-        <!--<h3>Cost</h3> Ska detta vara automatiskt eller ska folk lägga till detta? Vilka kostnader är viktiga? -->
-        <!-- <h4>{{ form.currency.label }}</h4> -->
 
         <h2>Cost</h2>
         <p><strong>Hvor jeg er: Har akkurat lagt til alle fields i forms.py. Skal nå legge de til i selve formen nedenfor. Etter det må jeg gjøre en kalkulasjon i routes.py og legge inn altsammen i databasen. Etter det må jeg tenke litt på currencies.</strong></p>
@@ -153,8 +145,8 @@
         
         <ul>
             <li>
-                {{ form.currency.label }}
-                {{ form.currency }}
+                {{ form.cost_form_currency.label }}
+                {{ form.cost_form_currency }}
             </li>
             <li>
                 {{ form.beer_at_establishment.label }}
@@ -208,8 +200,8 @@
                 {{ form.van_per_day }}
             </li>
             <li class="js-accomodation-cost-item-in-add-destination-form" name="camping-cost">
-                {{ form.tent_per_day.label }}
-                {{ form.tent_per_day }}
+                {{ form.camping_per_day.label }}
+                {{ form.camping_per_day }}
             </li>
             <li class="js-accomodation-cost-item-in-add-destination-form" name="hostel-cost">
                 {{ form.hostel_per_day.label }}
@@ -230,40 +222,48 @@
         </ul>
 
         <h2>Routes</h2>
-        <p><strong>Hvor jeg er: Må gjøre om systemet nedan. Se anteckningar.</strong></p>
-        <p>(French grading for now. More grading systems will come.)</p>
-        <p>Please enter the number of routes in each grade:</p>
-        <ul class="routes-list">
-            <li><span class="route-label">{{ form.r_2.label }}</span> {{ form.r_2 }}</li>
-            <li><span class="route-label">{{ form.r_3.label }}</span> {{ form.r_3 }}</li>
-            <li><span class="route-label">{{ form.r_4.label }}</span> {{ form.r_4 }}</li>
-            <li><span class="route-label">{{ form.r_4_p.label }}</span> {{ form.r_4_p }}</li>
-            <li><span class="route-label">{{ form.r_5a.label }}</span> {{ form.r_5a }}</li>
-            <li><span class="route-label">{{ form.r_5b.label }}</span> {{ form.r_5b }}</li>
-            <li><span class="route-label">{{ form.r_5c.label }}</span> {{ form.r_5c }}</li>
-            <li><span class="route-label">{{ form.r_6a.label }}</span> {{ form.r_6a }}</li>
-            <li><span class="route-label">{{ form.r_6a_p.label }}</span> {{ form.r_6a_p }}</li>
-            <li><span class="route-label">{{ form.r_6b.label }}</span> {{ form.r_6b }}</li>
-            <li><span class="route-label">{{ form.r_6b_p.label }}</span> {{ form.r_6b_p }}</li>
-            <li><span class="route-label">{{ form.r_6c.label }}</span> {{ form.r_6c }}</li>
-            <li><span class="route-label">{{ form.r_6c_p.label }}</span> {{ form.r_6c_p }}</li>
-            <li><span class="route-label">{{ form.r_7a.label }}</span> {{ form.r_7a }}</li>
-            <li><span class="route-label">{{ form.r_7a_p.label }}</span> {{ form.r_7a_p }}</li>
-            <li><span class="route-label">{{ form.r_7b.label }}</span> {{ form.r_7b }}</li>
-            <li><span class="route-label">{{ form.r_7b_p.label }}</span> {{ form.r_7b_p }}</li>
-            <li><span class="route-label">{{ form.r_7c.label }}</span> {{ form.r_7c }}</li>
-            <li><span class="route-label">{{ form.r_7c_p.label }}</span> {{ form.r_7c_p }}</li>
-            <li><span class="route-label">{{ form.r_8a.label }}</span> {{ form.r_8a }}</li>
-            <li><span class="route-label">{{ form.r_8a_p.label }}</span> {{ form.r_8a_p }}</li>
-            <li><span class="route-label">{{ form.r_8b.label }}</span> {{ form.r_8b }}</li>
-            <li><span class="route-label">{{ form.r_8b_p.label }}</span> {{ form.r_8b_p }}</li>
-            <li><span class="route-label">{{ form.r_8c.label }}</span> {{ form.r_8c }}</li>
-            <li><span class="route-label">{{ form.r_8c_p.label }}</span> {{ form.r_8c_p }}</li>
-            <li><span class="route-label">{{ form.r_9a.label }}</span> {{ form.r_9a }}</li>
-            <li><span class="route-label">{{ form.r_9a_p.label }}</span> {{ form.r_9a_p }}</li>
-            <li><span class="route-label">{{ form.r_9b.label }}</span> {{ form.r_9b }}</li>
-            <li><span class="route-label">{{ form.r_9b_p.label }}</span> {{ form.r_9b_p }}</li>
-            <li><span class="route-label">{{ form.r_9c.label }}</span> {{ form.r_9c }}</li>
+        <ul>
+           <li>
+               {{ form.total_routes.label }}
+               {{ form.total_routes }}
+            </li>
+           <li>
+               {{ form.total_sport.label }}
+               {{ form.total_sport }}
+            </li> 
+           <li>
+               {{ form.total_trad.label }}
+               {{ form.total_trad }}
+            </li> 
+           <li>
+               {{ form.total_boulders.label }}
+               {{ form.total_boulders }}
+            </li> 
+            <li>
+                <br>
+                <p>
+                    <i>The following four fields are used to create the staple diagram for this destination. 
+                    If you don't know the number of routes, just put in percentage numbers (but without '%'),
+                    e.g. easy: 0.25, intermediate: 0.45, hard: 0.2, very hard: 0.1.</i><br>
+                    <img width="500px" src="{{ url_for('static', filename='images/grades_categorization.png') }}" alt="">
+                </p>
+            </li>
+           <li>
+               {{ form.easy_routes.label }}
+               {{ form.easy_routes }}
+            </li> 
+           <li>
+               {{ form.intermediate_routes.label }}
+               {{ form.intermediate_routes }}
+            </li> 
+           <li>
+               {{ form.hard_routes.label }}
+               {{ form.hard_routes }}
+            </li> 
+           <li>
+               {{ form.very_hard_routes.label }}
+               {{ form.very_hard_routes }}
+            </li> 
         </ul>
 
         {{ form.submit() }}
@@ -332,7 +332,7 @@
             ['link'],
             ['table']
         ],
-        placeholder: 'Write here: Description of the area, history, access, accomodation, access, topos and books..'
+        placeholder: 'Describe the area, it\'s history, access, accomodation, topos/books, things that are good to know, etc.'
     });
 </script>
 <script

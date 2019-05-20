@@ -193,7 +193,7 @@
     	<ul>
 
 
-	{% for destination in destinations %}
+{% for destination in destinations %}
 	{% set routes = destination.routes.first() %}
 	{% set cost = destination.cost.first() %}
 	{% set months = destination.months.first() %}
@@ -204,77 +204,53 @@
 	{% if routes %}
 		{% set max_height = 100 %}
 
-		{% set range_23 = routes.range_23 %}
-		{% set range_4 = routes.range_4 %}
-		{% set range_5 = routes.range_5 %}
-		{% set range_6 = routes.range_6 %}
-		{% set range_7 = routes.range_7 %}
-		{% set range_8 = routes.range_8 %}
-		{% set range_9 = routes.range_9 %}
+		<!-- Get routes data from database -->
+		{% set easy_routes = routes.easy_routes %}
+		{% set intermediate_routes = routes.intermediate_routes %}
+		{% set hard_routes = routes.hard_routes %}
+		{% set very_hard_routes = routes.very_hard_routes %}
 
-		{% if range_23 == 0 %}
-			{% set range_23 = 1 %}
+		<!-- Set route-ranges to 1 if 0 in database -->
+		{% if easy_routes == 0 %}
+			{% set easy_routes = 1 %}
 		{% endif %}
-		{% if range_4 == 0 %}
-			{% set range_4 = 1 %}
+		{% if intermediate_routes == 0 %}
+			{% set intermediate_routes = 1 %}
 		{% endif %}
-		{% if range_5 == 0 %}
-			{% set range_5 = 1 %}
+		{% if hard_routes == 0 %}
+			{% set hard_routes = 1 %}
 		{% endif %}
-		{% if range_6 == 0 %}
-			{% set range_6 = 1 %}
-		{% endif %}
-		{% if range_7 == 0 %}
-			{% set range_7 = 1 %}
-		{% endif %}
-		{% if range_8 == 0 %}
-			{% set range_8 = 1 %}
-		{% endif %}
-		{% if range_9 == 0 %}
-			{% set range_9 = 1 %}
+		{% if very_hard_routes == 0 %}
+			{% set very_hard_routes = 1 %}
 		{% endif %}
 		
+		<!-- find which range has the most routes, and set it to most_routes -->
 		{% set most_routes = 0 %}
 
-		{% if most_routes < range_23 %}
-			{% set most_routes = range_23 %}
+		{% if most_routes < easy_routes %}
+			{% set most_routes = easy_routes %}
 		{% endif %}
-		{% if most_routes < range_4 %}
-			{% set most_routes = range_4 %}
+		{% if most_routes < intermediate_routes %}
+			{% set most_routes = intermediate_routes %}
 		{% endif %}
-		{% if most_routes < range_5 %}
-			{% set most_routes = range_5 %}
+		{% if most_routes < hard_routes %}
+			{% set most_routes = hard_routes %}
 		{% endif %}
-		{% if most_routes < range_6 %}
-			{% set most_routes = range_6 %}
-		{% endif %}
-		{% if most_routes < range_7 %}
-			{% set most_routes = range_7 %}
-		{% endif %}
-		{% if most_routes < range_8 %}
-			{% set most_routes = range_8 %}
-		{% endif %}
-		{% if most_routes < range_9 %}
-			{% set most_routes = range_9 %}
+		{% if most_routes < very_hard_routes %}
+			{% set most_routes = very_hard_routes %}
 		{% endif %}
 
+		<!-- Calculate percentages for column height -->
+		{% set perc_easy_routes = easy_routes / most_routes * 100 %}
+		{% set perc_intermediate_routes = intermediate_routes / most_routes * 100 %}
+		{% set perc_hard_routes = hard_routes / most_routes * 100 %}
+		{% set perc_very_hard_routes = very_hard_routes / most_routes * 100 %}
 
-
-		{% set perc_23 = range_23 / most_routes * 100 %}
-		{% set perc_4 = range_4 / most_routes * 100 %}
-		{% set perc_5 = range_5 / most_routes * 100 %}
-		{% set perc_6 = range_6 / most_routes * 100 %}
-		{% set perc_7 = range_7 / most_routes * 100 %}
-		{% set perc_8 = range_8 / most_routes * 100 %}
-		{% set perc_9 = range_9 / most_routes * 100 %}
-
-		{% set marg_23 = 80 - 0.8*perc_23 %}
-		{% set marg_4 = 80 - 0.8*perc_4 %}
-		{% set marg_5 = 80 - 0.8*perc_5 %}
-		{% set marg_6 = 80 - 0.8*perc_6 %}
-		{% set marg_7 = 80 - 0.8*perc_7 %}
-		{% set marg_8 = 80 - 0.8*perc_8 %}
-		{% set marg_9 = 80 - 0.8*perc_9 %}
+		<!-- calculate margin-top for each column, to reflect percentage height -->
+		{% set margin_easy_routes = 80 - 0.8*perc_easy_routes %}
+		{% set margin_intermediate_routes = 80 - 0.8*perc_intermediate_routes %}
+		{% set margin_hard_routes = 80 - 0.8*perc_hard_routes %}
+		{% set margin_very_hard_routes = 80 - 0.8*perc_very_hard_routes %}
 								
 	{% endif %}
 	<li class="destination-container">
@@ -322,32 +298,20 @@
 				<!-- Routes diagram -->
 				<div class="destination-top__routes-chart">
 					<span class="column">
-						<span class="hide-text col-grade-23" style="height: {{ 0.6*perc_23 }}px; margin-top: {{ marg_23 }}px;">{{ range_23 }}</span>
-						2 - 3
+						<span class="hide-text col-grade-23" style="height: {{ 0.6*perc_easy_routes }}px; margin-top: {{ margin_easy_routes }}px;">{{ easy_routes }}</span>
+						<!-- 2 - 3 -->
 					</span>
 					<span class="column">
-						<span class="hide-text col-grade-4" style="height: {{ 0.6*perc_4 }}px; margin-top: {{ marg_4 }}px;">{{ range_4 }}</span>
-						4
+						<span class="hide-text col-grade-4" style="height: {{ 0.6*perc_intermediate_routes }}px; margin-top: {{ margin_intermediate_routes }}px;">{{ intermediate_routes }}</span>
+						<!-- 4 -->
 					</span>
 					<span class="column">
-						<span class="hide-text col-grade-5" style="height: {{ 0.6*perc_5 }}px; margin-top: {{ marg_5 }}px;">{{range_5 }}</span>
-						5
+						<span class="hide-text col-grade-5" style="height: {{ 0.6*perc_hard_routes }}px; margin-top: {{ margin_hard_routes }}px;">{{ hard_routes }}</span>
+						<!-- 5 -->
 					</span>
 					<span class="column">
-						<span class="hide-text col-grade-6" style="height: {{ 0.6*perc_6 }}px; margin-top: {{ marg_6 }}px;">{{range_6 }}</span>
-						6
-					</span>
-					<span class="column">
-						<span class="hide-text col-grade-7" style="height: {{ 0.6*perc_7 }}px; margin-top: {{ marg_7 }}px;">{{range_7 }}</span>
-						7
-					</span>
-					<span class="column">
-						<span class="hide-text col-grade-8" style="height: {{ 0.6*perc_8 }}px; margin-top: {{ marg_8 }}px;">{{range_8 }}</span>
-						8
-					</span>
-					<span class="column">
-						<span class="hide-text col-grade-9" style="height: {{ 0.6*perc_9 }}px; margin-top: {{ marg_9 }}px;">{{range_9 }}</span>
-						9
+						<span class="hide-text col-grade-6" style="height: {{ 0.6*perc_very_hard_routes }}px; margin-top: {{ margin_very_hard_routes }}px;">{{ very_hard_routes }}</span>
+						<!-- 6 -->
 					</span>
 					<div class="clearfix"></div>
 				</div>
@@ -397,8 +361,8 @@
 				<span class="destination-bottom__weekly-cost">
 					<span class="property-title">Cost: </span>
 					<span class="property-value--cost">
-						<span class="money">from {{ cost.weekly_avg }}</span> 
-						<span class="currency">{{ cost.currency }}
+						from <span class="money">{{ cost.avg_weekly_cost }}</span> 
+						<span class="currency">{{ cost.cost_form_currency }}
 						</span> 
 					/ w
 					</span>
@@ -495,7 +459,7 @@
 			{% endif %}
 		</a>
 	</li>
-	{% endfor %}
+{% endfor %}
 	<div class="clearfix"></div>
 
 	</ul>

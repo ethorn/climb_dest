@@ -12,6 +12,7 @@ from app.forms import (CurrencyForm, DestinationForm, EditDestinationForm,
                        ResetPasswordForm, ResetPasswordRequestForm)
 from app.models import (Accomodation, AdditionalPhotos, Approach, Car, Cost,
                         Destination, Months, Routes, User)
+from decimal import Decimal
 
 
 @app.route('/dashboard/<page>', methods=['GET', 'POST'])
@@ -474,77 +475,115 @@ def add_destination():
             db.session.bulk_save_objects(additional_photos_object)
 
             # COST
-            # 1) Få currency brukt fra form
-            # 2) Få konverteringsverdi fra valgt valuta til EUR
-            #    + Hvis currency API'en ikke fungerer, bare lagre valgt valuta i databas
-            # 3) Regne om alt til EUR: beer_at_establishment = convertValue * form.beer_at_establishment.data
-            # 4) Lagre alt i databas, samt EUR som currency
-
-            currency = form.currency.data
-            if currency != 'EUR':
+            cost_form_currency = form.cost_form_currency.data
+            if cost_form_currency != 'EUR':
                 # Getting rate from ratesAPI
-                payload = {'base': currency, 'symbols': 'EUR'}
+                payload = {'base': cost_form_currency, 'symbols': 'EUR'}
                 api_currency_data = requests.get('https://api.ratesapi.io/api/latest', params=payload)
 
                 if api_currency_data.status_code == 200:
                     json_api_currency_data = api_currency_data.json()
                     conversion_rate = json_api_currency_data['rates']['EUR']
 
-                    currency = 'EUR'
+                    cost_form_currency = 'EUR'
 
-                    beer_at_establishment = conversion_rate * form.beer_at_establishment.data
-                    coffee_at_establishment = conversion_rate * form.beer_at_establishment.data
-                    restaurant_inexpensive_meal = conversion_rate * form.restaurant_inexpensive_meal.data
-                    groceries_one_week = conversion_rate * form.groceries_one_week.data
-                    car_rent_one_week = conversion_rate * form.car_rent_one_week.data
-                    gas_one_liter = conversion_rate * form.gas_one_liter.data
-                    km_per_day = conversion_rate * form.km_per_day.data
-                    tent_per_day = conversion_rate * form.tent_per_day.data
-                    van_per_day = conversion_rate * form.van_per_day.data
-                    camping_per_day = conversion_rate * form.camping_per_day.data
-                    hostel_per_day = conversion_rate * form.hostel_per_day.data
-                    apartment_per_day = conversion_rate * form.apartment_per_day.data
-                    house_per_day = conversion_rate * form.house_per_day.data
-                    hotel_per_day = conversion_rate * form.hotel_per_day.data
+                    beer_at_establishment = Decimal(conversion_rate) * form.beer_at_establishment.data  # required
+                    coffee_at_establishment = Decimal(conversion_rate) * form.coffee_at_establishment.data  # required
+                    restaurant_inexpensive_meal = Decimal(conversion_rate) * form.restaurant_inexpensive_meal.data  # required
+                    groceries_one_week = Decimal(conversion_rate) * form.groceries_one_week.data  # required
+                    car_rent_one_week = \
+                        (Decimal(conversion_rate) * form.car_rent_one_week.data) if (type(form.car_rent_one_week.data) == Decimal) \
+                        else 0
+                    gas_one_liter = \
+                        (Decimal(conversion_rate) * form.gas_one_liter.data) if (type(form.gas_one_liter.data) == Decimal) else 0
+                    km_per_day = \
+                        (Decimal(conversion_rate) * form.km_per_day.data) if (type(form.km_per_day.data) == Decimal) else 0
+                    tent_per_day = \
+                        (Decimal(conversion_rate) * form.tent_per_day.data) if (type(form.tent_per_day.data) == Decimal) else None
+                    van_per_day = \
+                        (Decimal(conversion_rate) * form.van_per_day.data) if (type(form.van_per_day.data) == Decimal) else None
+                    camping_per_day = \
+                        (Decimal(conversion_rate) * form.camping_per_day.data) if (type(form.camping_per_day.data) == Decimal) \
+                        else None
+                    hostel_per_day = \
+                        (Decimal(conversion_rate) * form.hostel_per_day.data) if (type(form.hostel_per_day.data) == Decimal) \
+                        else None
+                    apartment_per_day = \
+                        (Decimal(conversion_rate) * form.apartment_per_day.data) if (type(form.apartment_per_day.data) == Decimal) \
+                        else None
+                    house_per_day = \
+                        (Decimal(conversion_rate) * form.house_per_day.data) if (type(form.house_per_day.data) == Decimal) else None
+                    hotel_per_day = \
+                        (Decimal(conversion_rate) * form.hotel_per_day.data) if (type(form.hotel_per_day.data) == Decimal) else None
                 else:
-                    beer_at_establishment = form.beer_at_establishment.data
-                    coffee_at_establishment = form.beer_at_establishment.data
-                    restaurant_inexpensive_meal = form.restaurant_inexpensive_meal.data
-                    groceries_one_week = form.groceries_one_week.data
-                    car_rent_one_week = form.car_rent_one_week.data
-                    gas_one_liter = form.gas_one_liter.data
-                    km_per_day = form.km_per_day.data
-                    tent_per_day = form.tent_per_day.data
-                    van_per_day = form.van_per_day.data
-                    camping_per_day = form.camping_per_day.data
-                    hostel_per_day = form.hostel_per_day.data
-                    apartment_per_day = form.apartment_per_day.data
-                    house_per_day = form.house_per_day.data
-                    hotel_per_day = form.hotel_per_day.data
+                    beer_at_establishment = form.beer_at_establishment.data  # required
+                    coffee_at_establishment = form.coffee_at_establishment.data  # required
+                    restaurant_inexpensive_meal = form.restaurant_inexpensive_meal.data  # required
+                    groceries_one_week = form.groceries_one_week.data  # required
+                    car_rent_one_week = form.car_rent_one_week.data if (type(form.car_rent_one_week.data) == Decimal) \
+                        else 0
+                    gas_one_liter = form.gas_one_liter.data if (type(form.gas_one_liter.data) == Decimal) else 0
+                    km_per_day = form.km_per_day.data if (type(form.km_per_day.data) == Decimal) else 0
+                    tent_per_day = form.tent_per_day.data if (type(form.tent_per_day.data) == Decimal) else None
+                    van_per_day = form.van_per_day.data if (type(form.van_per_day.data) == Decimal) else None
+                    camping_per_day = form.camping_per_day.data if (type(form.camping_per_day.data) == Decimal) else None
+                    hostel_per_day = form.hostel_per_day.data if (type(form.hostel_per_day.data) == Decimal) else None
+                    apartment_per_day = form.apartment_per_day.data if (type(form.apartment_per_day.data) == Decimal) \
+                        else None
+                    house_per_day = form.house_per_day.data if (type(form.house_per_day.data) == Decimal) else None
+                    hotel_per_day = form.hotel_per_day.data if (type(form.hotel_per_day.data) == Decimal) else None
             else:
-                beer_at_establishment = form.beer_at_establishment.data
-                coffee_at_establishment = form.beer_at_establishment.data
-                restaurant_inexpensive_meal = form.restaurant_inexpensive_meal.data
-                groceries_one_week = form.groceries_one_week.data
-                car_rent_one_week = form.car_rent_one_week.data
-                gas_one_liter = form.gas_one_liter.data
-                km_per_day = form.km_per_day.data
-                tent_per_day = form.tent_per_day.data
-                van_per_day = form.van_per_day.data
-                camping_per_day = form.camping_per_day.data
-                hostel_per_day = form.hostel_per_day.data
-                apartment_per_day = form.apartment_per_day.data
-                house_per_day = form.house_per_day.data
-                hotel_per_day = form.hotel_per_day.data
+                beer_at_establishment = form.beer_at_establishment.data  # required
+                coffee_at_establishment = form.coffee_at_establishment.data  # required
+                restaurant_inexpensive_meal = form.restaurant_inexpensive_meal.data  # required
+                groceries_one_week = form.groceries_one_week.data  # required
+                car_rent_one_week = form.car_rent_one_week.data if (type(form.car_rent_one_week.data) == Decimal) else 0
+                gas_one_liter = form.gas_one_liter.data if (type(form.gas_one_liter.data) == Decimal) else 0
+                km_per_day = form.km_per_day.data if (type(form.km_per_day.data) == Decimal) else 0
+                tent_per_day = form.tent_per_day.data if (type(form.tent_per_day.data) == Decimal) else None
+                van_per_day = form.van_per_day.data if (type(form.van_per_day.data) == Decimal) else None
+                camping_per_day = form.camping_per_day.data if (type(form.camping_per_day.data) == Decimal) else None
+                hostel_per_day = form.hostel_per_day.data if (type(form.hostel_per_day.data) == Decimal) else None
+                apartment_per_day = form.apartment_per_day.data if (type(form.apartment_per_day.data) == Decimal) else None
+                house_per_day = form.house_per_day.data if (type(form.house_per_day.data) == Decimal) else None
+                hotel_per_day = form.hotel_per_day.data if (type(form.hotel_per_day.data) == Decimal) else None
+
+            accomodations_form_data = {
+                    "tent_per_day": tent_per_day,
+                    "van_per_day": van_per_day,
+                    "camping_per_day": camping_per_day,
+                    "hostel_per_day": hostel_per_day,
+                    "apartment_per_day": apartment_per_day,
+                    "house_per_day": house_per_day,
+                    "hotel_per_day": hotel_per_day
+            }
+
+            for key in list(accomodations_form_data):
+                if accomodations_form_data[key] is None:
+                    del accomodations_form_data[key]
+
+            if accomodations_form_data:  # Checking so it's not empty
+                cheapest_accomodation = min(accomodations_form_data, key=accomodations_form_data.get)
+            else:  # if it is empty
+                accomodations_form_data = {
+                    'no_info': 0
+                }
+                cheapest_accomodation = 'no_info'
 
             def CalcAvgWeeklyCost():
-                # MÅ FIKSE EN KALKULASJON PÅ DETTE
-                
-                avg_weekly_cost = 1+1+1+1+11+1+1+11
+                avg_weekly_cost = \
+                    3 * beer_at_establishment + \
+                    3 * coffee_at_establishment + \
+                    2 * restaurant_inexpensive_meal + \
+                    1 * groceries_one_week + \
+                    1 * car_rent_one_week + \
+                    7 * gas_one_liter * km_per_day + \
+                    7 * accomodations_form_data[cheapest_accomodation]
                 return avg_weekly_cost
+
             avg_weekly_cost = CalcAvgWeeklyCost()
 
-            cost = Cost(currency=currency,
+            cost = Cost(cost_form_currency=cost_form_currency,
                         beer_at_establishment=beer_at_establishment,
                         coffee_at_establishment=coffee_at_establishment,
                         restaurant_inexpensive_meal=restaurant_inexpensive_meal,
@@ -559,72 +598,52 @@ def add_destination():
                         apartment_per_day=apartment_per_day,
                         house_per_day=house_per_day,
                         hotel_per_day=hotel_per_day,
+                        accomodation_used_for_avg_weekly_cost=cheapest_accomodation,
                         avg_weekly_cost=avg_weekly_cost,
                         destination_id=d.id)
             db.session.add(cost)
 
-            # cost = Cost(currency=currency, weekly_avg=weekly_avg, tent=tent_cost, hostel=hostel_cost,
-            #             apartment=apartment_cost, hotel=hotel_cost, destination_id=d.id)
+            # ROUTES
+            routes = Routes(traditional=form.traditional.data,
+                            sport=form.sport.data,
+                            bouldering=form.bouldering.data,
+                            main_discipline=form.main_discipline.data,
+                            easy_routes=form.easy_routes.data,
+                            intermediate_routes=form.intermediate_routes.data,
+                            hard_routes=form.hard_routes.data,
+                            very_hard_routes=form.very_hard_routes.data,
+                            total_routes=form.total_routes.data,
+                            total_trad=form.total_trad.data,
+                            total_sport=form.total_sport.data,
+                            total_boulders=form.total_boulders.data,
+                            destination_id=d.id)
+            db.session.add(routes)
 
-            # Cost (old)
-            # ### CURRENCY TO EUR
-            # REQUEST FOR CURRENCY DATA
-            # payload = {'base': form.currency.data, 'symbols': 'EUR'}
-            # r = requests.get('https://api.ratesapi.io/api/latest', params=payload)
-            # j = r.json()
-            # rate = j['rates']['EUR']
-
-            # currency = 'EUR'
-            # weekly_avg = round((form.weekly_avg.data * rate), 0)
-            # tent_cost = round((form.tent_cost.data * rate), 0)
-            # hostel_cost = round((form.hostel_cost.data * rate), 0)
-            # apartment_cost = round((form.apartment_cost.data * rate), 0)
-            # hotel_cost = round((form.hotel_cost.data * rate), 0)
-            ##
-
-            # ### ROUTES PROPERTIES
-            range_23 = form.r_2.data + form.r_3.data
-            range_4 = form.r_4.data + form.r_4_p.data
-            range_5 = form.r_5a.data + form.r_5b.data + form.r_5c.data
-            range_6 = form.r_6a.data + form.r_6a_p.data + form.r_6b.data + form.r_6b_p.data + form.r_6c.data + \
-                form.r_6c_p.data
-            range_7 = form.r_7a.data + form.r_7a_p.data + form.r_7b.data + form.r_7b_p.data + form.r_7c.data + \
-                form.r_7c_p.data
-            range_8 = form.r_8a.data + form.r_8a_p.data + form.r_8b.data + form.r_8b_p.data + form.r_8c.data + \
-                form.r_8c_p.data
-            range_9 = form.r_9a.data + form.r_9a_p.data + form.r_9b.data + form.r_9b_p.data + form.r_9c.data
-            total_routes = range_23 + range_4 + range_5 + range_6 + range_7 + range_8 + range_9
-            ###
-
+            # MONTHS
             months = Months(january=form.january.data, february=form.february.data, mars=form.mars.data,
                             april=form.april.data, may=form.may.data, june=form.june.data, july=form.july.data,
                             august=form.august.data, september=form.september.data, october=form.october.data,
                             november=form.november.data, december=form.december.data, destination_id=d.id)
+            db.session.add(months)
+
+            # ACCOMODATION
             accomodation = Accomodation(tent=form.tent.data, van=form.van.data, hostel=form.hostel.data,
                                         camping=form.camping.data, apartment=form.apartment.data,
                                         house=form.house.data, hotel=form.hotel.data, destination_id=d.id)
+            db.session.add(accomodation)
+
+            # APPROACH
             approach = Approach(easy=form.easy.data, moderate=form.moderate.data, hardcore=form.hardcore.data,
                                 destination_id=d.id)
+            db.session.add(approach)
+
+            # CAR
             car = Car(not_needed=form.not_needed.data, good_to_have=form.good_to_have.data,
                       must_have=form.must_have.data, rent_scooter_locally=form.rent_scooter_locally.data,
                       rent_car_locally=form.rent_car_locally.data, destination_id=d.id)
-            routes = Routes(traditional=form.traditional.data, sport=form.sport.data, bouldering=form.bouldering.data,
-                            main_discipline=form.main_discipline.data, r_2=form.r_2.data, r_3=form.r_3.data,
-                            range_23=range_23, r_4=form.r_4.data, r_4_p=form.r_4_p.data, range_4=range_4,
-                            r_5a=form.r_5a.data, r_5b=form.r_5b.data, r_5c=form.r_5c.data, range_5=range_5,
-                            r_6a=form.r_6a.data, r_6a_p=form.r_6a_p.data, r_6b=form.r_6b.data, r_6b_p=form.r_6b_p.data,
-                            r_6c=form.r_6c.data, r_6c_p=form.r_6c_p.data, range_6=range_6, r_7a=form.r_7a.data,
-                            r_7a_p=form.r_7a_p.data, r_7b=form.r_7b.data, r_7b_p=form.r_7b_p.data, r_7c=form.r_7c.data,
-                            r_7c_p=form.r_7c_p.data, range_7=range_7, r_8a=form.r_8a.data, r_8a_p=form.r_8a_p.data,
-                            r_8b=form.r_8b.data, r_8b_p=form.r_8b_p.data, r_8c=form.r_8c.data, r_8c_p=form.r_8c_p.data,
-                            range_8=range_8, r_9a=form.r_9a.data, r_9a_p=form.r_9a_p.data, r_9b=form.r_9b.data,
-                            r_9b_p=form.r_9b_p.data, r_9c=form.r_9c.data, range_9=range_9, total_routes=total_routes,
-                            destination_id=d.id)
-            db.session.add(months)
-            db.session.add(accomodation)
-            db.session.add(approach)
             db.session.add(car)
-            db.session.add(routes)
+
+            # Commit everything to database
             db.session.commit()
             flash('Destination "{}" added!'.format(str(form.title.data)))
             return redirect(url_for('index'))

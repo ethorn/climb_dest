@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, IntegerField, PasswordField, BooleanField, SubmitField, SelectField, \
-    FileField, MultipleFileField, HiddenField
-from wtforms.validators import ValidationError, DataRequired, Length, Email, EqualTo
+    FileField, MultipleFileField, HiddenField, DecimalField
+from wtforms.validators import ValidationError, DataRequired, Length, Email, EqualTo, Optional
 from flask_wtf.file import FileAllowed, FileRequired
 from app.models import User
 from app import images
@@ -150,66 +150,46 @@ class DestinationForm(FlaskForm):
     rent_car_locally = BooleanField('Car available locally')
 
     # Cost
-    currency = SelectField('Currency',
-                           choices=[('EUR', 'EUR'), ('AUD', 'AUD'), ('BGN', 'BGN'),
-                                    ('BRL', 'BRL'), ('CAD', 'CAD'), ('CHF', 'CHF'),
-                                    ('CNY', 'CNY'), ('CZK', 'CZK'), ('DKK', 'DKK'),
-                                    ('GBP', 'GBP'), ('HKD', 'HKD'), ('HRK', 'HRK'),
-                                    ('HUF', 'HUF'), ('IDR', 'IDR'), ('ILS', 'ILS'),
-                                    ('INR', 'INR'), ('ISK', 'ISK'), ('JPY', 'JPY'),
-                                    ('KRW', 'KRW'), ('MXN', 'MXN'), ('MYR', 'MYR'),
-                                    ('NOK', 'NOK'), ('NZD', 'NZD'), ('PHP', 'PHP'),
-                                    ('PLN', 'PLN'), ('RON', 'RON'), ('RUB', 'RUB'),
-                                    ('SEK', 'SEK'), ('SGD', 'SGD'), ('THB', 'THB'),
-                                    ('TRY', 'TRY'), ('USD', 'USD'), ('ZAR', 'ZAR')],
-                           validators=[DataRequired()],
-                           default='EUR')
-    beer_at_establishment = IntegerField('Beer at establishment')
-    coffee_at_establishment = IntegerField('Coffee at establishment')
-    restaurant_inexpensive_meal = IntegerField('Inexpensive meal at restaurant')
-    groceries_one_week = IntegerField('One week of groceries')
-    car_rent_one_week = IntegerField('Renting car for one week')
-    gas_one_liter = IntegerField('One liter of gasoline')
-    km_per_day = IntegerField('Average kilometers of driving per day')
-    tent_per_day = IntegerField('Cost per night in tent')
-    van_per_day = IntegerField('Cost per night in van')
-    camping_per_day = IntegerField('Cost per night in camping')
-    hostel_per_day = IntegerField('Cost per night in hostel')
-    apartment_per_day = IntegerField('Cost per night in apartment')
-    house_per_day = IntegerField('Cost per night in house')
-    hotel_per_day = IntegerField('Cost per night in hotel')
+    cost_form_currency = SelectField('Currency',
+                                     choices=[('EUR', 'EUR'), ('AUD', 'AUD'), ('BGN', 'BGN'),
+                                              ('BRL', 'BRL'), ('CAD', 'CAD'), ('CHF', 'CHF'),
+                                              ('CNY', 'CNY'), ('CZK', 'CZK'), ('DKK', 'DKK'),
+                                              ('GBP', 'GBP'), ('HKD', 'HKD'), ('HRK', 'HRK'),
+                                              ('HUF', 'HUF'), ('IDR', 'IDR'), ('ILS', 'ILS'),
+                                              ('INR', 'INR'), ('ISK', 'ISK'), ('JPY', 'JPY'),
+                                              ('KRW', 'KRW'), ('MXN', 'MXN'), ('MYR', 'MYR'),
+                                              ('NOK', 'NOK'), ('NZD', 'NZD'), ('PHP', 'PHP'),
+                                              ('PLN', 'PLN'), ('RON', 'RON'), ('RUB', 'RUB'),
+                                              ('SEK', 'SEK'), ('SGD', 'SGD'), ('THB', 'THB'),
+                                              ('TRY', 'TRY'), ('USD', 'USD'), ('ZAR', 'ZAR')],
+                                     validators=[DataRequired()],
+                                     default='EUR')
+    beer_at_establishment = DecimalField('Beer at establishment', validators=[DataRequired()])
+    coffee_at_establishment = DecimalField('Coffee at establishment', validators=[DataRequired()])
+    restaurant_inexpensive_meal = DecimalField('Inexpensive meal at restaurant', validators=[DataRequired()])
+    groceries_one_week = DecimalField('One week of groceries', validators=[DataRequired()])
+    car_rent_one_week = DecimalField('Renting car for one week', validators=[Optional()])
+    gas_one_liter = DecimalField('One liter of gasoline', validators=[Optional()])
+    km_per_day = DecimalField('Average kilometers of driving per day', validators=[Optional()])
+    tent_per_day = DecimalField('Cost per night in tent', validators=[Optional()])
+    van_per_day = DecimalField('Cost per night in van', validators=[Optional()])
+    camping_per_day = DecimalField('Cost per night in camping', validators=[Optional()])
+    hostel_per_day = DecimalField('Cost per night in hostel', validators=[Optional()])
+    apartment_per_day = DecimalField('Cost per night in apartment', validators=[Optional()])
+    house_per_day = DecimalField('Cost per night in house', validators=[Optional()])
+    hotel_per_day = DecimalField('Cost per night in hotel', validators=[Optional()])
 
     # Routes
-    r_2 = IntegerField('2', render_kw={"placeholder": "0"}, default=4)
-    r_3 = IntegerField('3', render_kw={"placeholder": "0"}, default=4)
-    r_4 = IntegerField('4', render_kw={"placeholder": "0"}, default=4)
-    r_4_p = IntegerField('4+', render_kw={"placeholder": "0"}, default=4)
-    r_5a = IntegerField('5a', render_kw={"placeholder": "0"}, default=4)
-    r_5b = IntegerField('5b', render_kw={"placeholder": "0"}, default=4)
-    r_5c = IntegerField('5c', render_kw={"placeholder": "0"}, default=4)
-    r_6a = IntegerField('6a', render_kw={"placeholder": "0"}, default=4)
-    r_6a_p = IntegerField('6a+', render_kw={"placeholder": "0"}, default=4)
-    r_6b = IntegerField('6b', render_kw={"placeholder": "0"}, default=4)
-    r_6b_p = IntegerField('6b+', render_kw={"placeholder": "0"}, default=4)
-    r_6c = IntegerField('6c', render_kw={"placeholder": "0"}, default=4)
-    r_6c_p = IntegerField('6c+', render_kw={"placeholder": "0"}, default=4)
-    r_7a = IntegerField('7a', render_kw={"placeholder": "0"}, default=4)
-    r_7a_p = IntegerField('7a+', render_kw={"placeholder": "0"}, default=4)
-    r_7b = IntegerField('7b', render_kw={"placeholder": "0"}, default=4)
-    r_7b_p = IntegerField('7b+', render_kw={"placeholder": "0"}, default=4)
-    r_7c = IntegerField('7c', render_kw={"placeholder": "0"}, default=4)
-    r_7c_p = IntegerField('7c+', render_kw={"placeholder": "0"}, default=4)
-    r_8a = IntegerField('8a', render_kw={"placeholder": "0"}, default=4)
-    r_8a_p = IntegerField('8a+', render_kw={"placeholder": "0"}, default=4)
-    r_8b = IntegerField('8b', render_kw={"placeholder": "0"}, default=4)
-    r_8b_p = IntegerField('8b+', render_kw={"placeholder": "0"}, default=4)
-    r_8c = IntegerField('8c', render_kw={"placeholder": "0"}, default=4)
-    r_8c_p = IntegerField('8c+', render_kw={"placeholder": "0"}, default=4)
-    r_9a = IntegerField('9a', render_kw={"placeholder": "0"}, default=4)
-    r_9a_p = IntegerField('9a+', render_kw={"placeholder": "0"}, default=4)
-    r_9b = IntegerField('9b', render_kw={"placeholder": "0"}, default=4)
-    r_9b_p = IntegerField('9b+', render_kw={"placeholder": "0"}, default=4)
-    r_9c = IntegerField('9c', render_kw={"placeholder": "0"}, default=4)
+    total_routes = IntegerField('Total number of routes')
+    total_sport = IntegerField('Number of sport routes', validators=[Optional()])
+    total_trad = IntegerField('Number of traditional routes', validators=[Optional()])
+    total_boulders = IntegerField('Number of boulder problems', validators=[Optional()])
+    easy_routes = DecimalField('Number of easy routes (up to 4+)')
+    intermediate_routes = DecimalField('Number of intermediate routes (5 to 6a+)')
+    hard_routes = DecimalField('Number of hard routes (6b to 7a)')
+    very_hard_routes = DecimalField('Number of hard routes (7a+ and up)')
+
+    # Submit
     submit = SubmitField('Add Destination!')
 
 
