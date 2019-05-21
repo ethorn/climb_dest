@@ -1,16 +1,40 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<h1>Single Destination Page</h1>
-	<h2>{{ destination.title }}</h2>
+	<h1>{{ destination.title }}</h1>
+	<h1>[FeaturedPhoto]</h1>
+	<p>[Additional photos]</p>
 
-	<p>{{ destination.description|safe }}</p>
-
+	<h2>Weather info</h2>
+	<p>Description here? or in main description area?</p>
 	<script>
 	$.getJSON('https://api.darksky.net/forecast/1f68e89d4578eaf5624ce820707747a5/37.8267,-122.4233', function(forecast) {
 		console.log(forecast);
 	});
 	</script>
+
+	<h2>Description/Info</h2>
+	<p><i>< Describe the area, it\'s history, access/travel info, accomodation, weather characteristics, route characteristics, topos/books, things that are good to know, Things to do on restdays, Culture, food, etc.> </Describe></i></p>
+	<p>{{ destination.description|safe }}</p>
+
+	<h2>Cost table</h2>
+
+	<h2>In season (months)</h2>
+
+	<h2>Routes</h2>
+	<ul>
+		<li>Main discipline + also has ...</li>
+		<li>Grade distribution (routes diagram)</li>
+		<li>total routes, total sport, total trad, total boulders</li>
+		<li>Approach</li>
+		<li>Resources (links to other websites, books, etc.)</li>
+	</ul>
+
+	<h2>Map</h2>
+
+	<h2>Stories/reviews (LATER)</h2>
+
+	<h2>Videos (LATER)</h2>
 
 
 {% endblock %}

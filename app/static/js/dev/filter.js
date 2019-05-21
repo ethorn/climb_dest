@@ -445,12 +445,13 @@ var filterLoad = {
     } else if (from === 'mobile') {
       jsonData = filterLoad.mobileDataFromFilter
     }
-
+    console.log('bottom in loadDestinations') // eslint-disable-line no-console
+    console.log(jsonData) // eslint-disable-line no-console
     // Change url
     filterLoad.changeUrl(jsonData)
 
     var jsonDataAsString = JSON.stringify(jsonData)
-
+    console.log(jsonDataAsString)
     // Ajax load (sends request to route('/_load_destinations'))
     $('.destinations-list-container ul').load($SCRIPT_ROOT + '/_load_destinations', { jsonDataAsString: jsonDataAsString }, function () {
       // On success

@@ -54,6 +54,7 @@ class Destination(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(64), index=True, unique=True)
     country = db.Column(db.String(64), index=True)
+    continent = db.Column(db.String(64), index=True)
     # discipline = db.Column(db.String(64), index=True)
     weather_ltd = db.Column(db.Integer)
     weather_lng = db.Column(db.Integer)

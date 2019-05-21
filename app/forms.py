@@ -7,7 +7,6 @@ from app.models import User
 from app import images
 import pycountry
 
-
 class CountrySelectField(SelectField):
     def __init__(self, *args, **kwargs):
         super(CountrySelectField, self).__init__(*args, **kwargs)
@@ -180,14 +179,14 @@ class DestinationForm(FlaskForm):
     hotel_per_day = DecimalField('Cost per night in hotel', validators=[Optional()])
 
     # Routes
-    total_routes = IntegerField('Total number of routes')
+    total_routes = IntegerField('Total number of routes', validators=[Optional()])
     total_sport = IntegerField('Number of sport routes', validators=[Optional()])
     total_trad = IntegerField('Number of traditional routes', validators=[Optional()])
     total_boulders = IntegerField('Number of boulder problems', validators=[Optional()])
-    easy_routes = DecimalField('Number of easy routes (up to 4+)')
-    intermediate_routes = DecimalField('Number of intermediate routes (5 to 6a+)')
-    hard_routes = DecimalField('Number of hard routes (6b to 7a)')
-    very_hard_routes = DecimalField('Number of hard routes (7a+ and up)')
+    easy_routes = DecimalField('Number of easy routes (up to 4+)', validators=[Optional()])
+    intermediate_routes = DecimalField('Number of intermediate routes (5 to 6a+)', validators=[Optional()])
+    hard_routes = DecimalField('Number of hard routes (6b to 7a)', validators=[Optional()])
+    very_hard_routes = DecimalField('Number of hard routes (7a+ and up)', validators=[Optional()])
 
     # Submit
     submit = SubmitField('Add Destination!')

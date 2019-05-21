@@ -13,6 +13,7 @@ from app.forms import (CurrencyForm, DestinationForm, EditDestinationForm,
 from app.models import (Accomodation, AdditionalPhotos, Approach, Car, Cost,
                         Destination, Months, Routes, User)
 from decimal import Decimal
+import pycountry_convert
 
 
 @app.route('/dashboard/<page>', methods=['GET', 'POST'])
@@ -74,29 +75,29 @@ def load_destinations():
     # - Process incoming data: Make stringified json into json object
     data_as_string = request.form.get('jsonDataAsString')
     data = json.loads(data_as_string)
-
+    
     # sort_by (Cost/Time added/routes in 4/routes in 5/...)
     sort_by = data['sort_by']
     if sort_by == "cost":
-        order_parameter = Cost.weekly_avg
+        order_parameter = Cost.avg_weekly_cost
     elif sort_by == "time":
         order_parameter = Destination.timestamp
-    elif sort_by == "routes23":
-        order_parameter = Routes.range_23
-    elif sort_by == "routes4":
-        order_parameter = Routes.range_4
-    elif sort_by == "routes5":
-        order_parameter = Routes.range_5
-    elif sort_by == "routes6":
-        order_parameter = Routes.range_6
-    elif sort_by == "routes7":
-        order_parameter = Routes.range_7
-    elif sort_by == "routes8":
-        order_parameter = Routes.range_8
-    elif sort_by == "routes9":
-        order_parameter = Routes.range_9
     elif sort_by == "total_routes":
         order_parameter = Routes.total_routes
+    elif sort_by == "total_sport":
+        order_parameter = Routes.total_sport
+    elif sort_by == "total_trad":
+        order_parameter = Routes.total_trad
+    elif sort_by == "total_boulders":
+        order_parameter = Routes.total_boulders
+    elif sort_by == "easy_routes":
+        order_parameter = Routes.easy_routes
+    elif sort_by == "intermediate_routes":
+        order_parameter = Routes.intermediate_routes
+    elif sort_by == "hard_routes":
+        order_parameter = Routes.hard_routes
+    elif sort_by == "very_hard_routes":
+        order_parameter = Routes.very_hard_routes
     else:
         order_parameter = Destination.timestamp  # Default order
 
@@ -136,7 +137,7 @@ def load_destinations():
     if data.get('cost'):
         max_cost = data['cost']
 
-        filters.append(Cost.weekly_avg <= max_cost)
+        filters.append(Cost.avg_weekly_cost <= max_cost)
 
     # main_discipline & secondary_discipline (hvis selected, så må destinasjonen ha det.)
     discipline_filters = []
@@ -178,7 +179,7 @@ def load_destinations():
     if filters:
         destinations = Destination.query.join(*joins).filter(*filters).order_by(order_p_final).all()
     else:
-        destinations = Destination.query.order_by(order_p_final).all()
+        destinations = Destination.query.join(*joins).filter(*filters).order_by(order_p_final).all()
     ######
 
     # Return
@@ -241,25 +242,25 @@ def index():
         if request.args.get('sort_by'):
             sort_by = request.args.get('sort_by')
             if sort_by == "cost":
-                order_parameter = Cost.weekly_avg
+                order_parameter = Cost.avg_weekly_cost
             elif sort_by == "time":
                 order_parameter = Destination.timestamp
-            elif sort_by == "routes23":
-                order_parameter = Routes.range_23
-            elif sort_by == "routes4":
-                order_parameter = Routes.range_4
-            elif sort_by == "routes5":
-                order_parameter = Routes.range_5
-            elif sort_by == "routes6":
-                order_parameter = Routes.range_6
-            elif sort_by == "routes7":
-                order_parameter = Routes.range_7
-            elif sort_by == "routes8":
-                order_parameter = Routes.range_8
-            elif sort_by == "routes9":
-                order_parameter = Routes.range_9
             elif sort_by == "total_routes":
                 order_parameter = Routes.total_routes
+            elif sort_by == "total_sport":
+                order_parameter = Routes.total_sport
+            elif sort_by == "total_trad":
+                order_parameter = Routes.total_trad
+            elif sort_by == "total_boulders":
+                order_parameter = Routes.total_boulders
+            elif sort_by == "easy_routes":
+                order_parameter = Routes.easy_routes
+            elif sort_by == "intermediate_routes":
+                order_parameter = Routes.intermediate_routes
+            elif sort_by == "hard_routes":
+                order_parameter = Routes.hard_routes
+            elif sort_by == "very_hard_routes":
+                order_parameter = Routes.very_hard_routes
             else:
                 order_parameter = Destination.timestamp  # Default order
         else:
@@ -314,7 +315,7 @@ def index():
             except ValueError:
                 max_cost = 9999999999999
 
-            filters.append(Cost.weekly_avg <= max_cost)
+            filters.append(Cost.avg_weekly_cost <= max_cost)
 
         # main_discipline & secondary_discipline (hvis selected, så må destinasjonen ha det.)
 
@@ -362,7 +363,7 @@ def index():
         if filters:
             destinations = Destination.query.join(*joins).filter(*filters).order_by(order_p_final).all()
         else:
-            destinations = Destination.query.order_by(order_p_final).all()
+            destinations = Destination.query.join(*joins).order_by(order_p_final).all()
     else:
         destinations = Destination.query.all()
 
@@ -449,8 +450,14 @@ def add_destination():
             featured_photo_url = images.url(featured_photo_filename)
 
             # Destination main stuff
+            # -- Convert from country code to country name
+            country = pycountry_convert.country_alpha2_to_country_name(form.country.data)
+            # -- Convert from country code to continent
+            continent = pycountry_convert.country_alpha2_to_continent_code(form.country.data)
+
             destination = Destination(title=form.title.data,
-                                      country=form.country.data,
+                                      country=country,
+                                      continent=continent,
                                       weather_ltd=form.weather_ltd.data,
                                       weather_lng=form.weather_lng.data,
                                       featured_photo_filename=featured_photo_filename,
