@@ -451,7 +451,7 @@
 						{% endif %}
 				</span>
 			</div>
-			{% if current_user.is_authenticated %}
+			{% if current_user.is_authenticated and current_user.access == 2 %}
 			<div class="edit-remove">
 				<a href="{{ url_for('edit', id=destination.id) }}">Edit</a>
 				<a href="{{ url_for('delete', id=destination.id) }}">Delete</a>

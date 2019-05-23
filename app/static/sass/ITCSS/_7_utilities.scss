@@ -53,6 +53,10 @@
 	text-transform: uppercase;
 }
 
+.required {
+	color: $maroon-flush;
+}
+
 // Hide on mobile
 .hide-on-mobile-portrait {
 	@include under-450-only {

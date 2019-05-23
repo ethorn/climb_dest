@@ -660,27 +660,58 @@
 
 .add-destination-container {
 	background: $desert-storm;
-	border-radius: 10px;
-	box-shadow: 0 0 10px rgba($black, .2);
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba($black, .1);
 	margin: 20px auto;
-	padding: 20px;
-	width: 900px;
+	padding: 20px 50px;
+	
+	@include over-900 {
+		width: 800px;
+	}
+
+	input[type=text], input[type=file] {
+		padding: 6px 10px;
+		width: 250px;
+	}
+
+	input[type=checkbox] {
+		margin-right: 5px;
+	}
+
+	select {
+		padding: 6px 10px;
+		width: 200px;
+	}
+
+	img {
+		display: block;
+	}
 
 	h1 {
 		text-align: center;
 	}
 
+	h2 {
+		font-size: 1.6rem;
+		margin-top: 60px;
+	}
+
 	h3 {
+		font-size: 1.3rem;
 		margin-bottom: 5px;
+		margin-top: 40px;
 	}
 
 	h4 {
-		color: $emperor;
-		margin: 0 20px 5px;
+		color: tundora;
+		margin-bottom: 10px;
 	}
 
 	p {
-		margin: 0 40px 10px;
+		color: $dusty-grey;
+		font-style: italic;
+		font-size: 0.8em;
 	}
 
 	span.help-info {
@@ -691,27 +722,41 @@
 		list-style: none;
 		margin-left: 0;
 		margin-top: 0;
+		padding-left: 0px;
+	}
+
+	li {
+		padding-bottom: 2px;
+	}
+
+	span.cost-field-currency {
+		color: $silver;
 	}
 
 	#title {
-		margin-left: 40px;
-		width: 200px;
 	}
 
 	#country {
 		background: $white;
+		color: $emperor;
 		display: block;
-		margin-left: 40px;
-		padding: 3px;
-		width: 200px;
 	}
 
-	#image {
-		margin-left: 40px;
+	#featured_photo, #additional_photos {
+		background: $white;
+		border: 1px solid $silver;
+	}
+
+	#description, .note-editable {
+		p {
+			color: $emperor;
+			font-style: normal;
+			font-size: 1em;
+		}
 	}
 
 	#discipline_buttons_wrap {
-		margin: 0 40px 10px;
+		margin: 0 0px 10px;
 	}
 
 	.main-discipline-btn {
@@ -725,7 +770,12 @@
 	}
 
 	.on {
-		background: $regent-st-blue;
+		background: $red-violet;
+		border-color: maroon-flush;
+		color: $white;
+	}
+
+	ul.list-discipline {
 	}
 
 	input::placeholder {
@@ -767,18 +817,78 @@
 		margin-bottom: 0;
 	}
 
+	.easy-routes {
+		color: $forest-green;
+	}
+
+	.intermediate-routes {
+		color: $web-orange;
+	}
+
+	.hard-routes {
+		color: $shiraz;
+	}
+
+	.very-hard-routes {
+		color: $black;
+	}
+
+	input.integer {
+		width: 100px;
+		direction: RTL;
+	}
+
 	input#submit {
-		padding: 10px 20px;
-		margin: 0 auto;
+		padding: 20px 60px;
+		margin: 0 auto 40px;
 		display: block;
 		border-radius: 5px;
-		background: #547d8b;
+		background: $red-violet;
 		color: #fff;
 		border:none;
+		font-size: 1.4rem;
 		
 		&:hover {
 			cursor:pointer;
-			background: #a4d1e5;
+			background: $maroon-flush;
 		}
 	}
+}
+
+// ===========================================================
+// ==== SINGLE PAGE
+
+.single-page-wrapper {
+	margin: 20px auto;
+	padding: 0 10px;
+
+	@include over-900 {
+		width: 880px;
+	}
+
+	@include over-1200 {
+		width: 1180px;
+	}
+
+	.single-title {
+		min-height: 300px;
+
+		h1 {
+			color: #fff;
+			font-size: 4rem;
+			margin: 0;
+			text-align: center;
+			text-shadow: 0 0 10px rgba($black, .5);
+			padding: 100px 0 0;
+		}
+
+		h2 {
+			color: #fff;
+			margin: 0;
+			text-align: center;
+			text-shadow: 0 0 10px rgba($black, .5);
+		}
+	}
+
+	
 }

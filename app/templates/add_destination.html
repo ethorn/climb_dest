@@ -27,55 +27,48 @@
 </script>
 
 <div class="add-destination-container">
-    <h1>Add Destination</h1>
+    <h1>Add a new destination</h1>
     <form action="" method="post" enctype="multipart/form-data">
         {{ form.hidden_tag() }}
 
-        <h3>{{ form.title.label }} </h3>
+        <h3><span class="required">*</span> {{ form.title.label }}</h3>
         {{ form.title(size=64) }}<br>
         {% for error in form.title.errors %}
         <span style="color: red;">[{{ error }}]</span>
         {% endfor %}
 
 
-        <h3>{{ form.country.label }} </h3>
-        {{ form.country() }}<br>
+        <h3><span class="required">*</span> {{ form.country.label }}</h3>
+        {{ form.country() }}
         {% for error in form.country.errors %}
         <span style="color: red;">[{{ error }}]</span>
         {% endfor %}
 
-        <h3>{{ form.weather_place_autocomplete.label }}</h3>
-        <p>Select place from the list that pops up when you write</p>
+        <h3><span class="required">*</span> {{ form.weather_place_autocomplete.label }}</h3>
+        <p>Start writing, then select from list.</p>
         {{ form.weather_place_autocomplete }} <br>
 
-        <h3>{{ form.featured_photo.label }} </h3>
-        <p>Må legge til en compressor/resizer</p>
+        <h3><span class="required">*</span> {{ form.featured_photo.label }}</h3>
         {{ form.featured_photo }} <br>
         {% for error in form.featured_photo.errors %}
         <span style="color: red;">[{{ error }}]</span>
         {% endfor %}
 
         <h3>{{ form.additional_photos.label }} </h3>
-        <p>Må legge til en compressor/resizerasd</p>
         {{ form.additional_photos }} <br>
         {% for error in form.additional_photos.errors %}
         <span style="color: red;">[{{ error }}]</span>
         {% endfor %}
 
-        <h2>Written information</h2>
-
         <h3>{{ form.description.label }}</h3>
+        <p>Describe the area, it's history, access/travel info, accomodation, weather characteristics, route characteristics, topos/books, things that are good to know, etc.</p>
         {{ form.description }}
 
-        <h2>Searchable information and data</h2>
-
-        <h3>Discipline</h3>
-
-        <h4>{{ form.main_discipline.label }} </h4>
+        <h3>{{ form.main_discipline.label }} </h3>
         <div id="discipline_buttons_wrap">{{ form.main_discipline }}</div>
 
         <h4>Also has these</h4>
-        <ul>
+        <ul class="list-discipline">
             <li>{{ form.traditional }} {{ form.traditional.label }}</li>
             <li>{{ form.sport }} {{ form.sport.label }}</li>
             <li>{{ form.bouldering }} {{ form.bouldering.label }}</li>
@@ -104,15 +97,13 @@
 
         <h3>Accomodations available</h3>
         <ul>
-            <li class="js-accomodation-list-item-in-add-destination-form">{{ form.tent }} {{ form.tent.label }}</li>
-            <li class="js-accomodation-list-item-in-add-destination-form">{{ form.van }} {{ form.van.label }}</li>
-            <li class="js-accomodation-list-item-in-add-destination-form">{{ form.hostel }} {{ form.hostel.label }}</li>
-            <li class="js-accomodation-list-item-in-add-destination-form">{{ form.camping }} {{ form.camping.label }}
-            </li>
-            <li class="js-accomodation-list-item-in-add-destination-form">{{ form.apartment }}
-                {{ form.apartment.label }}</li>
-            <li class="js-accomodation-list-item-in-add-destination-form">{{ form.house }} {{ form.house.label }}</li>
-            <li class="js-accomodation-list-item-in-add-destination-form">{{ form.hotel }} {{ form.hotel.label }}</li>
+            <li>{{ form.tent }} {{ form.tent.label }}</li>
+            <li>{{ form.van }} {{ form.van.label }}</li>
+            <li>{{ form.camping }} {{ form.camping.label }}</li>
+            <li>{{ form.hostel }} {{ form.hostel.label }}</li>
+            <li>{{ form.apartment }} {{ form.apartment.label }}</li>
+            <li>{{ form.house }} {{ form.house.label }}</li>
+            <li>{{ form.hotel }} {{ form.hotel.label }}</li>
         </ul>
 
         <h3>Approach:</h3>
@@ -129,142 +120,108 @@
             <li>{{ form.must_have }} {{ form.must_have.label }}</li>
         </ul>
 
-        <h2>Cost</h2>
-        <p><strong>Hvor jeg er: Har akkurat lagt til alle fields i forms.py. Skal nå legge de til i selve formen nedenfor. Etter det må jeg gjøre en kalkulasjon i routes.py og legge inn altsammen i databasen. Etter det må jeg tenke litt på currencies.</strong></p>
-        <p><span class="help-info">If you don't know the below prices at your destination, please go to <a
-                href="http://www.numbeo.com">Numbeo.com</a> and search for the nearest city, then use that data to fill
-            out the prices.</span></p>
+        <h2>Cost and prices for this destination</h2>
+        <p>Please fill in as much as you can. Only use numbers and dots (3.14 is correct). Do not use comma (3,14 is wrong).</p>
 
-        <p><span class="help-info">CURRENCIES?? - Default currency: EUR - Men ha et valg å velge currency etter hvert felt?</span></p>
+        <h3>{{ form.cost_form_currency.label }}</h4>
+        <p>Just select the currency you will use to enter the prices. Does not have to be the local currency.</p>
+        {{ form.cost_form_currency }}
 
         <h3>Food and drinks</h3>
-        <p>See <a href="https://www.numbeo.com/cost-of-living/">Cost of Living index (Numbeo)</a> for beer, coffee and
-            restaurant prices.</p>
-        <p>See <a href="https://www.numbeo.com/food-prices/">Food prices index (Numbeo)</a> for the price of one days
-            worth of groceries.</p>
-        
-        <ul>
-            <li>
-                {{ form.cost_form_currency.label }}
-                {{ form.cost_form_currency }}
-            </li>
-            <li>
-                {{ form.beer_at_establishment.label }}
-                {{ form.beer_at_establishment }}
-            </li>
-            <li>
-                {{ form.coffee_at_establishment.label }}
-                {{ form.coffee_at_establishment }}
-            </li>
-            <li>
-                {{ form.restaurant_inexpensive_meal.label }}
-                {{ form.restaurant_inexpensive_meal }}
-            </li>
-            <li>
-                {{ form.groceries_one_week.label }}
-                {{ form.groceries_one_week }}
-            </li>
-        </ul>
+        <p>For beer, coffee and restaurant prices, see <a href="https://www.numbeo.com/cost-of-living/">Cost of Living index (Numbeo)</a>. For one days worth of groceries, see <a href="https://www.numbeo.com/food-prices/">Food prices index (Numbeo)</a></p>
+      
+        <h4><span class="required">*</span> {{ form.beer_at_establishment.label }}</h4>
+        {{ form.beer_at_establishment }} <span class="cost-field-currency">EUR</span>
+    
+        <h4><span class="required">*</span> {{ form.coffee_at_establishment.label }}</h4>
+        {{ form.coffee_at_establishment }} <span class="cost-field-currency">EUR</span>
+    
+        <h4><span class="required">*</span> {{ form.restaurant_inexpensive_meal.label }}</h4>
+        {{ form.restaurant_inexpensive_meal }} <span class="cost-field-currency">EUR</span>
+    
+        <h4><span class="required">*</span> {{ form.groceries_one_week.label }}</h4>
+        {{ form.groceries_one_week }} <span class="cost-field-currency">EUR</span>
+         
 
         <h3>Car</h3>
-        <p>See <a href="https://www.rentalcars.com/">Rental Cars</a>, <a
+        <p>For one week rental prices, see <a href="https://www.rentalcars.com/">Rental Cars</a>, <a
                 href="https://www.avis.com/en/locations/avisworldwide">Avis</a>, <a
                 href="https://www.hertz.no/rentacar/location">Hertz</a> or <a
-                href="https://www.sixt.com/car-rental/">SiXT</a> for one week rental prices.</p>
-        <p>See <a href="https://www.numbeo.com/gas-prices/">Gas prices index (Numbeo)</a> for gas prices and use <a href="http://maps.google.com">Google Maps</a> for
-            kilometer estimation.</p>
-        <p>Leave the fields empty if no car is needed.</p>
-        <ul>
-            <li>
-                {{ form.car_rent_one_week.label }}
-                {{ form.car_rent_one_week }}
-            </li>
-            <li>
-                {{ form.gas_one_liter.label }}
-                {{ form.gas_one_liter }}
-            </li>
-            <li>
-                {{ form.km_per_day.label }}
-                {{ form.km_per_day }}
-            </li>
-        </ul>
+                href="https://www.sixt.com/car-rental/">SiXT</a>. For gas prices, see <a href="https://www.numbeo.com/gas-prices/">Gas prices index (Numbeo)</a>.</p>
+        
+        <h4>{{ form.car_rent_one_week.label }}</h4>
+        {{ form.car_rent_one_week }} <span class="cost-field-currency">EUR</span>
+        
+        <h4>{{ form.gas_one_liter.label }}</h4>
+        {{ form.gas_one_liter }} <span class="cost-field-currency">EUR</span>
+        
+        <h4>{{ form.km_per_day.label }}</h4>
+        {{ form.km_per_day }} <span class="cost-field-currency">EUR</span>
+        
 
         <h3>Accomodation</h3>
-        <ul>
-            <li class="js-accomodation-cost-item-in-add-destination-form" name="tent-cost">
-                {{ form.tent_per_day.label }}
-                {{ form.tent_per_day }}
-            </li>
-            <li class="js-accomodation-cost-item-in-add-destination-form" name="van-cost">
-                {{ form.van_per_day.label }}
-                {{ form.van_per_day }}
-            </li>
-            <li class="js-accomodation-cost-item-in-add-destination-form" name="camping-cost">
-                {{ form.camping_per_day.label }}
-                {{ form.camping_per_day }}
-            </li>
-            <li class="js-accomodation-cost-item-in-add-destination-form" name="hostel-cost">
-                {{ form.hostel_per_day.label }}
-                {{ form.hostel_per_day }}
-            </li>
-            <li class="js-accomodation-cost-item-in-add-destination-form" name="apartment-cost">
-                {{ form.apartment_per_day.label }}
-                {{ form.apartment_per_day }}
-            </li>
-            <li class="js-accomodation-cost-item-in-add-destination-form" name="house-cost">
-                {{ form.house_per_day.label }}
-                {{ form.house_per_day }}
-            </li>
-            <li class="js-accomodation-cost-item-in-add-destination-form" name="hotel-cost">
-                {{ form.hotel_per_day.label }}
-                {{ form.hotel_per_day }}
-            </li>
-        </ul>
+        <p>Just leave the unavailable accomodations blank. </p>
+            <h4>{{ form.tent_per_day.label }}</h4>
+            {{ form.tent_per_day }} <span class="cost-field-currency">EUR</span>
+        
+            <h4>{{ form.van_per_day.label }}</h4>
+            {{ form.van_per_day }} <span class="cost-field-currency">EUR</span>
 
-        <h2>Routes</h2>
-        <ul>
-           <li>
-               {{ form.total_routes.label }}
-               {{ form.total_routes }}
-            </li>
-           <li>
-               {{ form.total_sport.label }}
-               {{ form.total_sport }}
-            </li> 
-           <li>
-               {{ form.total_trad.label }}
-               {{ form.total_trad }}
-            </li> 
-           <li>
-               {{ form.total_boulders.label }}
-               {{ form.total_boulders }}
-            </li> 
-            <li>
-                <br>
-                <p>
-                    <i>The following four fields are used to create the staple diagram for this destination. 
-                    If you don't know the number of routes, just put in percentage numbers (but without '%'),
-                    e.g. easy: 0.25, intermediate: 0.45, hard: 0.2, very hard: 0.1.</i><br>
-                    <img width="500px" src="{{ url_for('static', filename='images/grades_categorization.png') }}" alt="">
-                </p>
-            </li>
-           <li>
-               {{ form.easy_routes.label }}
-               {{ form.easy_routes }}
-            </li> 
-           <li>
-               {{ form.intermediate_routes.label }}
-               {{ form.intermediate_routes }}
-            </li> 
-           <li>
-               {{ form.hard_routes.label }}
-               {{ form.hard_routes }}
-            </li> 
-           <li>
-               {{ form.very_hard_routes.label }}
-               {{ form.very_hard_routes }}
-            </li> 
-        </ul>
+            <h4>{{ form.camping_per_day.label }}</h4>
+            {{ form.camping_per_day }} <span class="cost-field-currency">EUR</span>
+
+            <h4>{{ form.hostel_per_day.label }}</h4>
+            {{ form.hostel_per_day }} <span class="cost-field-currency">EUR</span>
+
+            <h4>{{ form.apartment_per_day.label }}</h4>
+            {{ form.apartment_per_day }} <span class="cost-field-currency">EUR</span>
+
+            <h4>{{ form.house_per_day.label }}</h4>
+            {{ form.house_per_day }} <span class="cost-field-currency">EUR</span>
+
+            <h4>{{ form.hotel_per_day.label }}</h4>
+            {{ form.hotel_per_day }} <span class="cost-field-currency">EUR</span>
+
+
+        <h2>Routes information</h2>
+        <p>Please fill in as much as you can. Only use numbers and dots (3.14 is correct). Do not use comma (3,14 is wrong).</p>
+
+        <h4>{{ form.total_routes.label }}</h4>
+        {{ form.total_routes }}
+
+        <h4>{{ form.total_sport.label }}</h4>
+        {{ form.total_sport }}
+
+        <h4>{{ form.total_trad.label }}</h4>
+        {{ form.total_trad }}
+
+        <h4>{{ form.total_boulders.label }}</h4>
+        {{ form.total_boulders }}
+        
+        <br><br><br><br>
+        
+        <img width="500px" src="{{ url_for('static', filename='images/grades_categorization.png') }}" alt="">
+        <br>
+        <p>
+            <strong><u>The following four fields are used to create the staple diagram for this destination.</u></strong>
+            If you don't know the number of routes, just put in percentage numbers (but without '%'),
+            e.g. easy: 0.25, intermediate: 0.45, hard: 0.2, very hard: 0.1.
+        </p>
+        <p>Use the table above for reference.</p>
+
+        <h4><span class="easy-routes">{{ form.easy_routes.label }}</span></h4>
+        {{ form.easy_routes }}
+
+        <h4><span class="intermediate-routes">{{ form.intermediate_routes.label }}</span></h4>
+        {{ form.intermediate_routes }}
+
+        <h4><span class="hard-routes">{{ form.hard_routes.label }}</span></h4>
+        {{ form.hard_routes }}
+
+        <h4><span class="very-hard-routes">{{ form.very_hard_routes.label }}</span></h4>
+        {{ form.very_hard_routes }}
+
+        <h2 style="text-align: center;">Thank you so much! :)</h2>
 
         {{ form.submit() }}
     </form>
@@ -323,6 +280,7 @@
 </script>
 <script>
     $('#description').summernote({
+        minHeight: 200,
         toolbar: [
             // [groupName, [list of button]]
             ['style', ['bold', 'italic', 'underline', 'clear', 'H1']],
@@ -332,8 +290,21 @@
             ['link'],
             ['table']
         ],
-        placeholder: 'Describe the area, it\'s history, access/travel info, accomodation, weather characteristics, route characteristics, topos/books, things that are good to know, etc.'
+        placeholder: 'Write here...'
     });
+</script>
+<script>
+var currencyFormChange = {
+    
+    onReady: function () {
+        $('select#cost_form_currency').change(function () {
+            console.log("hasd")
+            $('span.cost-field-currency').text($(this).val()) 
+        })
+    }
+
+}
+$(document).ready(currencyFormChange.onReady)
 </script>
 <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8XiZomiVMq2KmbTlj6OPu6tILBrkTYoQ&libraries=places&callback=initAutocomplete"

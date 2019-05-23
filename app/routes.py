@@ -1,4 +1,7 @@
-import requests  # request for API
+from decimal import Decimal
+
+import pycountry_convert
+import requests
 from flask import (flash, json, jsonify, make_response, redirect,
                    render_template, request, url_for)
 from flask_login import current_user, login_required, login_user, logout_user
@@ -12,8 +15,6 @@ from app.forms import (CurrencyForm, DestinationForm, EditDestinationForm,
                        ResetPasswordForm, ResetPasswordRequestForm)
 from app.models import (Accomodation, AdditionalPhotos, Approach, Car, Cost,
                         Destination, Months, Routes, User)
-from decimal import Decimal
-import pycountry_convert
 
 
 @app.route('/dashboard/<page>', methods=['GET', 'POST'])
@@ -75,7 +76,7 @@ def load_destinations():
     # - Process incoming data: Make stringified json into json object
     data_as_string = request.form.get('jsonDataAsString')
     data = json.loads(data_as_string)
-    
+
     # sort_by (Cost/Time added/routes in 4/routes in 5/...)
     sort_by = data['sort_by']
     if sort_by == "cost":
@@ -370,7 +371,7 @@ def index():
     currency_form = CurrencyForm()
 
     return render_template('index.html', title='Home', destinations=destinations, request=request,
-                           currency_form=currency_form)
+                           currency_form=currency_form, user=User)
 
 
 @app.route('/user/<username>')

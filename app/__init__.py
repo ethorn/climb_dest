@@ -17,7 +17,7 @@ migrate = Migrate(app, db)
 login = LoginManager(app)
 login.login_view = 'login'  # To use the login-required feature to show certain views only if logged in. 'login' is the function/endpoint for the login view
 mail = Mail(app)
-
+# Setup Flask-User and specify the User data-model
 
 # Configure the image uploading via Flask-Uploads
 images = UploadSet('images', IMAGES)

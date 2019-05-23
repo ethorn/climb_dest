@@ -84,8 +84,12 @@
 	{% endif %}
 	{% endwith %}
 
+	{% if current_user.is_authenticated and current_user.access == 2 %}
 	<p style="text-align: center; font-style: italic;">First, ten</p>
-
+	{% endif %}
+	<p style="text-align:center; color:darkgray">
+		Welcome to the beta-version of this site. Please give me feedback on features, destinations, information, bugs, etc. <br>Register your own account and add a destination. <br>Help me make this website great!
+	</p>
 
 	{% block content %}{% endblock %}
 
@@ -97,13 +101,14 @@
 		<ol>
 			<li><s>Routes system: filter and index</s></li>
 			<li><s>Add dest. form final fields. Continent? Auto?</s></li>
-			<li>Add dest form design. KISS.</li>
-			<li>EditDestinationForm</li>
+			<li><s>Add dest form design. KISS.</s></li>
+			<li><s>Only admin can see edit/delete links</s></li>
 			<li>Single_page</li>
 			<li>Feedback system</li>
 			<li>Overall design fixes</li>
 			<li>Other small fixes</li>
 			<li>Beta launch</li>
+			<li>EditDestinationForm</li>
 		</ol>
 	</section>
 </body>

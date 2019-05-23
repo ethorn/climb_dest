@@ -25,9 +25,9 @@
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
-        {% if destination.image_url %}
+        {% if destination.featured_photo_url %}
         <p>
-        <img src="{{ destination.image_url }}" alt="{{ destination.image_filename }}" style="width:600px;height:450px;">
+        <img src="{{ destination.featured_photo_url }}" alt="{{ destination.featured_photo_filename }}" style="width:600px;height:450px;">
         </p>
         {% endif %}
         <p>

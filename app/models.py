@@ -7,6 +7,13 @@ import jwt
 from app import app
 
 
+ACCESS = {
+    'guest': 0,
+    'user': 1,
+    'admin': 2
+}
+
+
 # En Class för varje table i databasen
 class User(UserMixin, db.Model):
     # UserMixin is a class that includes the required items is_authenticated, is_active, is_anonymous, get_id(), etc.
@@ -26,6 +33,7 @@ class User(UserMixin, db.Model):
         return User.query.get(id)
 
     id = db.Column(db.Integer, primary_key=True)
+    access = db.Column(db.Integer, index=True, default=1)
     username = db.Column(db.String(64), index=True, unique=True)
     displayname = db.Column(db.String(64), index=True)
     location = db.Column(db.String(64), index=True)
@@ -34,6 +42,7 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(128))
     destinations = db.relationship('Destination', backref='author', lazy='dynamic')
     # lazy='dynamic' returns object instead of list
+    # Define the relationship to Role via UserRoles
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -43,6 +52,12 @@ class User(UserMixin, db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+
+    def is_admin(self):
+        return self.access == ACCESS['admin']
+
+    def allowed(self, access_level):
+        return self.access >= access_level
 
 
 @login.user_loader  # for flask_login, user for example for current_user to get the current user object
