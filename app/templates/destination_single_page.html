@@ -5,40 +5,293 @@
 	<div class="single-title" style="background: url({{ destination.featured_photo_url }}) no-repeat center center; background-size:cover;">
 		<h1>{{ destination.title }}</h1>
 		<h2>{{ destination.country }}</h2>
+		<span class="forecast-current-weather"></span>
 	</div>
-	<p>[Additional photos]</p>
 
-	<h2>Weather info</h2>
-	<p>From API</p>
-	<script>
-	$.getJSON('https://api.darksky.net/forecast/1f68e89d4578eaf5624ce820707747a5/37.8267,-122.4233', function(forecast) {
-		console.log(forecast);
-	});
-	</script>
+	<div class="climbing-information">
+		{% set routes = destination.routes.first() %}
+		{% if routes %}
+			{% set max_height = 100 %}
 
-	<h2>Description/Info</h2>
-	<p><i>< Describe the area, it\'s history, access/travel info, accomodation, weather characteristics, route characteristics, topos/books, things that are good to know, Things to do on restdays, Culture, food, etc.> </Describe></i></p>
+			<!-- Get routes data from database -->
+			{% set easy_routes = routes.easy_routes %}
+			{% set intermediate_routes = routes.intermediate_routes %}
+			{% set hard_routes = routes.hard_routes %}
+			{% set very_hard_routes = routes.very_hard_routes %}
+
+			<!-- Set route-ranges to 1 if 0 in database -->
+			{% if easy_routes == 0 %}
+				{% set easy_routes = 1 %}
+			{% endif %}
+			{% if intermediate_routes == 0 %}
+				{% set intermediate_routes = 1 %}
+			{% endif %}
+			{% if hard_routes == 0 %}
+				{% set hard_routes = 1 %}
+			{% endif %}
+			{% if very_hard_routes == 0 %}
+				{% set very_hard_routes = 1 %}
+			{% endif %}
+			
+			<!-- find which range has the most routes, and set it to most_routes -->
+			{% set most_routes = 0 %}
+
+			{% if most_routes < easy_routes %}
+				{% set most_routes = easy_routes %}
+			{% endif %}
+			{% if most_routes < intermediate_routes %}
+				{% set most_routes = intermediate_routes %}
+			{% endif %}
+			{% if most_routes < hard_routes %}
+				{% set most_routes = hard_routes %}
+			{% endif %}
+			{% if most_routes < very_hard_routes %}
+				{% set most_routes = very_hard_routes %}
+			{% endif %}
+
+			<!-- Calculate percentages for column height -->
+			{% set perc_easy_routes = easy_routes / most_routes * 100 %}
+			{% set perc_intermediate_routes = intermediate_routes / most_routes * 100 %}
+			{% set perc_hard_routes = hard_routes / most_routes * 100 %}
+			{% set perc_very_hard_routes = very_hard_routes / most_routes * 100 %}
+
+			<!-- calculate margin-top for each column, to reflect percentage height -->
+			{% set margin_easy_routes = 80 - 0.8*perc_easy_routes %}
+			{% set margin_intermediate_routes = 80 - 0.8*perc_intermediate_routes %}
+			{% set margin_hard_routes = 80 - 0.8*perc_hard_routes %}
+			{% set margin_very_hard_routes = 80 - 0.8*perc_very_hard_routes %}
+									
+		{% endif %}
+		<div class="routes-information">
+			<div class="routes-information_icons">
+				<!-- MAIN ICON -->
+				{% if routes.main_discipline == "traditional" %}
+					<img class="discipline-icons discipline-icons__main" src="{{ url_for('static', filename='images/icon_trad.png') }}" alt="Traditional">
+				{% elif routes.main_discipline == "sport" %}
+					<img class="discipline-icons discipline-icons__main" src="{{ url_for('static', filename='images/icon_sport.png') }}" alt="Sport">
+				{% elif routes.main_discipline == "bouldering" %}
+					<img class="discipline-icons discipline-icons__main" src="{{ url_for('static', filename='images/icon_bouldering.png') }}" alt="Bouldering">
+				{% endif %}
+
+				<!-- SECONDARY ICON -->
+				{% if routes.traditional == 1 and routes.main_discipline != "traditional" %}
+					<img class="discipline-icons discipline-icons__secondary" src="{{ url_for('static', filename='images/icon_trad.png') }}" alt="Traditional">
+				{% endif %}
+
+				{% if routes.sport == 1 and routes.main_discipline != "sport" %}
+					<img class="discipline-icons discipline-icons__secondary" src="{{ url_for('static', filename='images/icon_sport.png') }}" alt="Sport">
+				{% endif %}
+
+				{% if routes.bouldering == 1 and routes.main_discipline != "bouldering" %}
+					<img class="discipline-icons discipline-icons__secondary" src="{{ url_for('static', filename='images/icon_bouldering.png') }}" alt="Bouldering">
+				{% endif %}	
+			</div>
+
+			<table>
+				<tbody>
+					<tr>
+						<td class="table-total-routes">Total routes</td>
+						<td class="table-total-routes">{{ routes.total_routes }}</td>
+					</tr>
+					<tr>
+						<td class="table-smaller">Sport routes</td>
+						<td class="table-smaller">{{ routes.total_sport }}</td>
+					</tr>
+					<tr>
+						<td class="table-smaller">Trad routes</td>
+						<td class="table-smaller">{{ routes.total_trad }}</td>
+					</tr>
+					<tr>
+						<td class="table-smaller">Boulder problems</td>
+						<td class="table-smaller">{{ routes.total_boulders }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="routes-diagram">
+			<h3>Grades distribution</h3>
+			<!-- Routes diagram -->
+			<div class="destination-top__routes-chart">
+				<span class="column">
+					<span class="hide-text col-grade-easy" style="height: {{ 0.6*perc_easy_routes }}px; margin-top: {{ margin_easy_routes }}px;">{{ easy_routes }}</span>
+					Easy
+				</span>
+				<span class="column">
+					<span class="hide-text col-grade-intermediate" style="height: {{ 0.6*perc_intermediate_routes }}px; margin-top: {{ margin_intermediate_routes }}px;">{{ intermediate_routes }}</span>
+					Intermediate
+				</span>
+				<span class="column">
+					<span class="hide-text col-grade-hard" style="height: {{ 0.6*perc_hard_routes }}px; margin-top: {{ margin_hard_routes }}px;">{{ hard_routes }}</span>
+					Hard
+				</span>
+				<span class="column">
+					<span class="hide-text col-grade-very-hard" style="height: {{ 0.6*perc_very_hard_routes }}px; margin-top: {{ margin_very_hard_routes }}px;">{{ very_hard_routes }}</span>
+					Very hard
+				</span>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="area-information">
+		<div class="area-information-content">
+			<h3>Season</h3>
+			{% set months = destination.months.first() %}
+				{% if months.january == 1 %}
+					<span class="property-value--month">Jan</span>
+				{% endif %}
+				{% if months.february == 1 %}
+					<span class="property-value--month">Feb</span>
+				{% endif %}
+				{% if months.mars == 1 %}
+					<span class="property-value--month">Mar</span>
+				{% endif %}
+				{% if months.may == 1 %}
+					<span class="property-value--month">May</span>
+				{% endif %}
+				{% if months.june == 1 %}
+					<span class="property-value--month">Jun</span>
+				{% endif %}
+				{% if months.july == 1 %}
+					<span class="property-value--month">Jul</span>
+				{% endif %}
+				{% if months.august == 1 %}
+					<span class="property-value--month">Aug</span>
+				{% endif %}
+				{% if months.september == 1 %}
+					<span class="property-value--month">Sep</span>
+				{% endif %}
+				{% if months.october == 1 %}
+					<span class="property-value--month">Oct</span>
+				{% endif %}
+				{% if months.november == 1 %}
+					<span class="property-value--month">Nov</span>
+				{% endif %}
+				{% if months.december == 1 %}
+					<span class="property-value--month">Dec</span>
+				{% endif %}
+
+			<h3>Approach</h3>
+			{% set approach = destination.approach.first() %}
+				{% if approach.easy == 1 %}
+					<span class="property-value--approach">Easy</span>
+				{% endif %}
+				{% if approach.moderate == 1 %}
+					<span class="property-value--approach">Moderate</span>
+				{% endif %}
+				{% if approach.hardcore == 1 %}
+					<span class="property-value--approach">Hardcore</span>
+				{% endif %}
+
+			<h3>Car</h3>
+			{% set car = destination.car.first() %}
+				{% if car.not_needed == 1 %}
+					<span class="property-value--car">Not needed</span>
+				{% endif %}
+				{% if car.good_to_have == 1 %}
+					<span class="property-value--car">Good to have</span>
+				{% endif %}
+				{% if car.must_have == 1 %}
+					<span class="property-value--car">Must have</span>
+				{% endif %}
+
+			<h3>Accomodations</h3>
+			{% set accomodation = destination.accomodation.first() %}
+				{% if accomodation.tent == 1 %}
+					<span class="property-value--accomodation">Tent</span>
+				{% endif %}
+				{% if accomodation.van == 1 %}
+					<span class="property-value--accomodation">Van</span>
+				{% endif %}
+				{% if accomodation.hostel == 1 %}
+					<span class="property-value--accomodation">Hostel</span>
+				{% endif %}
+				{% if accomodation.camping == 1 %}
+					<span class="property-value--accomodation">Camping</span>
+				{% endif %}
+				{% if accomodation.apartment == 1 %}
+					<span class="property-value--accomodation">Apartment</span>
+				{% endif %}
+				{% if accomodation.house == 1 %}
+					<span class="property-value--accomodation">House</span>
+				{% endif %}
+				{% if accomodation.hotel == 1 %}
+					<span class="property-value--accomodation">Hotel</span>
+				{% endif %}
+
+			<h3>Avg. weekly cost</h3>
+			{% set cost = destination.cost.first() %}
+			<span class="property-value--cost">{{ cost.avg_weekly_cost|round|int }} EUR / week</span>
+
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	
+	
+	<h2>About</h2>
 	<p>{{ destination.description|safe }}</p>
 
+	<h2>Weather info</h2>
+	<p>Current weather under main title. 7 days weather here.</p>
+	<div>
+		<h3>Next 7 days</h3>
+		<ol class="forecast-seven-days">
+			<li class="forecast-day-zero"></li>
+			<li class="forecast-day-one"></li>
+			<li class="forecast-day-two"></li>
+			<li class="forecast-day-three"></li>
+			<li class="forecast-day-four"></li>
+			<li class="forecast-day-five"></li>
+			<li class="forecast-day-six"></li>
+			<li class="forecast-day-seven"></li>
+		</ol>
+	</div>
+
 	<h2>Cost table</h2>
+	{% for cost in destination.cost %}
+	<table width="50%">
+		<tr>
+			<th>Beer</th>
+			<th>Coffee</th>
+		</tr>
+		<tr>
+			<td>{{ cost.beer_at_establishment }}</td>
+			<td>{{ cost.coffee_at_establishment }}</td>
+		</tr>
+	</table>
+	{% endfor %}
+	
 
-	<h2>In season (months)</h2>
 
-	<h2>Routes</h2>
-	<ul>
-		<li>Main discipline + also has ...</li>
-		<li>Grade distribution (routes diagram)</li>
-		<li>total routes, total sport, total trad, total boulders</li>
-		<li>Approach</li>
-		<li>Resources (links to other websites, books, etc.)</li>
-	</ul>
+	
 
-	<h2>Map</h2>
+	<h2>Photos</h2>
+	{% for photo in destination.additional_photos %}
+		<img src="{{ photo.additional_photo_url }}" alt="" width="150px">
+	{% endfor %}
 
-	<h2>Stories/reviews (LATER)</h2>
+	<!-- <h2>Map (LATER)</h2> -->
 
-	<h2>Videos (LATER)</h2>
+	<!-- <h2>Stories/reviews (LATER)</h2> -->
+
+	<!-- <h2>Videos (LATER)</h2> -->
 
 </div>
+
+<script>
+	$.getJSON('https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/1f68e89d4578eaf5624ce820707747a5/{{ destination.weather_ltd }},{{ destination.weather_lng }}?exclude=[alerts,flags,hourly]', function(forecast) {
+		console.log(forecast)
+		$('.forecast-day-zero').text(forecast.daily.data[0].summary)
+		$('.forecast-day-one').text(forecast.daily.data[1].summary)
+		$('.forecast-day-two').text(forecast.daily.data[2].summary)
+		$('.forecast-day-three').text(forecast.daily.data[3].summary)
+		$('.forecast-day-four').text(forecast.daily.data[4].summary)
+		$('.forecast-day-five').text(forecast.daily.data[5].summary)
+		$('.forecast-day-six').text(forecast.daily.data[6].summary)
+		$('.forecast-day-seven').text(forecast.daily.data[7].summary)
+
+		$('span.forecast-current-weather').text(forecast.currently.icon)
+	});
+</script>
 
 {% endblock %}

@@ -516,24 +516,21 @@
 
 			.destination-top__routes-chart {
 				margin: 0 auto;
-				padding: 0 10%;
+				padding: 0 20%;
 
 				.column {
 					background: rgba($black, 0);
 					display: inline-block;
-					font-size: .8em;
+					font-size: .5em;
 					height: 80px;
 					text-align: center;
-					width: calc((100% - 25px) / 7);
+					width: calc((100% - 13px) / 4);
 				}
 
-				.col-grade-23,
-				.col-grade-4,
-				.col-grade-5,
-				.col-grade-6,
-				.col-grade-7,
-				.col-grade-8,
-				.col-grade-9 {
+				.col-grade-easy,
+				.col-grade-intermediate,
+				.col-grade-hard,
+				.col-grade-very-hard {
 					background: $silver;
 					box-shadow: 0 0 8px rgba($black, .2);
 					color: $black;
@@ -545,33 +542,22 @@
 					width: 100%;
 				}
 
-				.col-grade-23 {
-					background: $downy;
+				.col-grade-easy {
+					background: #1f9c1f;
 				}
 
-				.col-grade-4 {
-					background: $fruit-salad;
+				.col-grade-intermediate {
+					background: $orange;
 				}
 
-				.col-grade-5 {
-					background: $mariner;
+				.col-grade-hard {
+					background: #B60C1E;
 				}
 
-				.col-grade-6 {
-					background: $magenta;
+				.col-grade-very-hard {
+					background: #000;
 				}
 
-				.col-grade-7 {
-					background: $web-orange;
-				}
-
-				.col-grade-8 {
-					background: $sunset-orange;
-				}
-
-				.col-grade-9 {
-					background: $lonestar;
-				}
 			}
 
 		.destination-display-on-hover {
@@ -623,6 +609,9 @@
 			}
 
 			.property-value--cost { // Ta bort?
+				background: rgba($fruit-salad, .5);
+				border-radius: 3px;
+				padding: 2px 5px;
 			}
 
 			.property-value--accomodation { // Ta bort?
@@ -872,6 +861,7 @@
 
 	.single-title {
 		min-height: 300px;
+		margin-bottom: 20px;
 
 		h1 {
 			color: #fff;
@@ -890,5 +880,68 @@
 		}
 	}
 
+	.climbing-information {
+		border-radius: 5px;
+		float: left;
+		height: 350px;
+		width: 49%;
+		padding: 0 0 10px 0;
+		background: rgb(245, 245, 245);
+
+		.routes-information_icons {
+			padding-top: 20px;
+			padding-bottom: 20px;
+			text-align: center;
+		}
+
+		.routes-diagram {
+			h3 {
+				color: $dusty-grey;
+				text-align: center;
+				margin-bottom: 0;
+			}
+		}
+
+		table {
+			border-radius: 3px;
+			border: 1px solid $silver;
+			margin: 0 auto;
+			padding: 10px;
+			width: 40%;
+
+			td.table-total-routes {
+				font-weight: bold;
+				font-size: 1.1em;
+			}
+			
+			td.table-smaller {
+				font-size: 0.9em;
+			}
+		}
+		
+	}
+
+	.area-information {
+		border-radius: 5px;
+		float: right;
+		height: 350px;
+		width: 49%;
+		padding: 0 0 10px 0;
+		background: rgb(245, 245, 245);
+
+		.area-information-content {
+			padding: 0 20px;
+
+			h3 {
+				font-size: 1em;
+				margin-bottom: 3px;
+			}
+
+			span {
+				font-size: 1em;
+			}
+		}
+	}
 	
 }
+
