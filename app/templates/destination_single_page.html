@@ -5,7 +5,9 @@
 	<div class="single-title" style="background: url({{ destination.featured_photo_url }}) no-repeat center center; background-size:cover;">
 		<h1>{{ destination.title }}</h1>
 		<h2>{{ destination.country }}</h2>
-		<span class="forecast-current-weather"></span>
+		<span class="forecast-current-weather">
+			
+		</span>
 	</div>
 
 	<div class="climbing-information">
@@ -232,7 +234,6 @@
 	<p>{{ destination.description|safe }}</p>
 
 	<h2>Weather info</h2>
-	<p>Current weather under main title. 7 days weather here.</p>
 	<div>
 		<h3>Next 7 days</h3>
 		<ol class="forecast-seven-days">
@@ -290,7 +291,8 @@
 		$('.forecast-day-six').text(forecast.daily.data[6].summary)
 		$('.forecast-day-seven').text(forecast.daily.data[7].summary)
 
-		$('span.forecast-current-weather').text(forecast.currently.icon)
+		$('span.forecast-current-weather').prepend('<img style="display:block; margin: 0 auto;" src={{ url_for("static", filename="images/darksky/") }}' + forecast.currently.icon + '.svg>')
+
 	});
 </script>
 
