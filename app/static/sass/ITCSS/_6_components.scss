@@ -894,11 +894,24 @@
 
 	.climbing-information {
 		border-radius: 5px;
-		float: left;
-		height: 350px;
-		width: 49%;
-		padding: 0 0 10px 0;
+		padding: 10px 0 10px 0;
 		background: rgb(250, 250, 250);
+		margin-bottom: 10px;
+
+		@include over-600 {
+			width: 49%;
+			float: left;
+			min-height:350px;
+		}
+
+		@include over-900 {
+			float: left;
+			height: 350px;
+			width: 49%;
+		}
+	
+		@include over-1200 {
+		}
 
 		.routes-information_icons {
 			padding-top: 20px;
@@ -919,7 +932,16 @@
 			border: 1px solid $silver;
 			margin: 0 auto;
 			padding: 10px;
-			width: 40%;
+			width: 70%;
+
+			@include over-600 {
+			}
+	
+			@include over-900 {
+			}
+		
+			@include over-1200 {
+			}
 
 			td.table-total-routes {
 				font-weight: bold;
@@ -935,11 +957,23 @@
 
 	.area-information {
 		border-radius: 5px;
-		float: right;
-		height: 350px;
-		width: 49%;
-		padding: 0 0 10px 0;
+		padding: 10px 0 10px 0;
 		background: rgb(250, 250, 250);
+
+		@include over-600 {
+			float: right;
+			width: 49%;
+			min-height:350px;
+		}
+
+		@include over-900 {
+			float: right;
+			height: 350px;
+			width: 49%;
+		}
+	
+		@include over-1200 {
+		}
 
 		.area-information-content {
 			padding: 0 20px;
@@ -956,13 +990,38 @@
 	}
 
 	.single-about {
-		width: 50%;
+		width: 100%;
 		margin: 0 auto;
+
+		@include over-600 {
+		}
+
+		@include over-900 {
+			width: 80%;
+		}
+	
+		@include over-1200 {
+			width: 60%;
+		}
 	}
 
 	.single-weather {
-		width: 60%;
+		width: 100%;
 		margin: 0 auto;
+		font-size: 0.7em;
+
+		@include over-600 {
+			font-size: 0.85em;
+		}
+
+		@include over-900 {
+			width: 80%;
+			font-size: 1em;
+		}
+	
+		@include over-1200 {
+			width: 70%;
+		}
 
 		table { 
 			border-collapse: collapse; 
@@ -1004,13 +1063,14 @@
 	}
 
 	.single-cost {
-		width: 70%;
+		width: 100%;
 		margin: 0 auto;
 
 		@include over-600 {
 		}
 
 		@include over-900 {
+			width: 90%;
 		}
 	
 		@include over-1200 {
@@ -1024,21 +1084,46 @@
 			margin: 1%;
 			font-weight: bold;
 
+			@include over-600 {
+				width: 60%;
+				margin: 0 auto 10px;
+			}
+	
+			@include over-900 {
+				width: 80%;
+			}
+		
+			@include over-1200 {
+			}
+
 			span {
 				display: block;
 				font-size: 0.7em;
 				font-style: italic;
 				color: $dusty-grey;
+				margin-top: 6px;
 			}
 		}
 
 		.cost-table-wrap {
-			float: left;
-			width: 29%;
 			border-radius: 5px;
 			border: 1px solid $desert-storm;
 			padding: 8px;
-			margin: 0 1%;
+			margin-bottom: 10px;
+
+			@include over-600 {
+				width: 60%;
+				margin: 0 auto 10px;
+			}
+	
+			@include over-900 {
+				float: left;
+				width: 28%;
+				margin: 0 1% 10px;
+			}
+		
+			@include over-1200 {
+			}
 		}
 
 		table {
@@ -1067,15 +1152,35 @@
 	}
 
 	.single-photos {
+		width: 100%;
 		margin: 0 auto;
-		width: 60%;
 		text-align: center;
+		
+		@include over-600 {
+		}
+
+		@include over-900 {
+			width: 60%;
+		}
+	
+		@include over-1200 {
+		}
 	}
 
 	.single-map {
 		height: 400px;
-		width: 50%;
+		width: 100%;
 		margin: 0 auto;
+
+		@include over-600 {
+		}
+
+		@include over-900 {
+			width: 50%;
+		}
+	
+		@include over-1200 {
+		}
 
 		#map {
 			height: calc(100% - 50px);
