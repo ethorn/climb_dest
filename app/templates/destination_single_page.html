@@ -221,7 +221,7 @@
 					<span class="property-value--accomodation">Hotel</span>
 				{% endif %}
 
-			<h3>Avg. weekly cost</h3>
+			<h3>Estimated weekly cost</h3>
 			{% set cost = destination.cost.first() %}
 			<span class="property-value--cost">{{ cost.avg_weekly_cost|round|int }} EUR / week</span>
 
@@ -229,49 +229,236 @@
 	</div>
 	<div class="clearfix"></div>
 	
-	
-	<h2>About</h2>
-	<p>{{ destination.description|safe }}</p>
-
-	<h2>Weather info</h2>
-	<div>
-		<h3>Next 7 days</h3>
-		<ol class="forecast-seven-days">
-			<li class="forecast-day-zero"></li>
-			<li class="forecast-day-one"></li>
-			<li class="forecast-day-two"></li>
-			<li class="forecast-day-three"></li>
-			<li class="forecast-day-four"></li>
-			<li class="forecast-day-five"></li>
-			<li class="forecast-day-six"></li>
-			<li class="forecast-day-seven"></li>
-		</ol>
+	<div class="single-about">
+		<h2>About</h2>
+		<p>{{ destination.description|safe }}</p>
 	</div>
 
-	<h2>Cost table</h2>
-	{% for cost in destination.cost %}
-	<table width="50%">
-		<tr>
-			<th>Beer</th>
-			<th>Coffee</th>
-		</tr>
-		<tr>
-			<td>{{ cost.beer_at_establishment }}</td>
-			<td>{{ cost.coffee_at_establishment }}</td>
-		</tr>
-	</table>
-	{% endfor %}
+	<div class="single-weather">
+		<h2>Weather forecast</h2>
+		<table>
+			<thead>
+				<tr class="table-forecast-top-legends">
+					<th></th>
+					<th></th>
+					<th>high</th>
+					<th>low</th>
+					<th>wind</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="forecast-day-zero">
+					<td class="forecast-date"></td>
+					<td class="forecast-icon"></td>
+					<td class="forecast-high-temp"></td>
+					<td class="forecast-low-temp"></td>
+					<td class="forecast-wind"></td>
+					<td class="forecast-summary"></td>
+				</tr>
+				<tr class="forecast-day-one">
+					<td class="forecast-date"></td>
+					<td class="forecast-icon"></td>
+					<td class="forecast-high-temp"></td>
+					<td class="forecast-low-temp"></td>
+					<td class="forecast-wind"></td>
+					<td class="forecast-summary"></td>
+				</tr>
+				<tr class="forecast-day-two">
+					<td class="forecast-date"></td>
+					<td class="forecast-icon"></td>
+					<td class="forecast-high-temp"></td>
+					<td class="forecast-low-temp"></td>
+					<td class="forecast-wind"></td>
+					<td class="forecast-summary"></td>
+				</tr>
+				<tr class="forecast-day-three">
+					<td class="forecast-date"></td>
+					<td class="forecast-icon"></td>
+					<td class="forecast-high-temp"></td>
+					<td class="forecast-low-temp"></td>
+					<td class="forecast-wind"></td>
+					<td class="forecast-summary"></td>
+				</tr>
+				<tr class="forecast-day-four">
+					<td class="forecast-date"></td>
+					<td class="forecast-icon"></td>
+					<td class="forecast-high-temp"></td>
+					<td class="forecast-low-temp"></td>
+					<td class="forecast-wind"></td>
+					<td class="forecast-summary"></td>
+				</tr>
+				<tr class="forecast-day-five">
+					<td class="forecast-date"></td>
+					<td class="forecast-icon"></td>
+					<td class="forecast-high-temp"></td>
+					<td class="forecast-low-temp"></td>
+					<td class="forecast-wind"></td>
+					<td class="forecast-summary"></td>
+				</tr>
+				<tr class="forecast-day-six">
+					<td class="forecast-date"></td>
+					<td class="forecast-icon"></td>
+					<td class="forecast-high-temp"></td>
+					<td class="forecast-low-temp"></td>
+					<td class="forecast-wind"></td>
+					<td class="forecast-summary"></td>
+				</tr>
+				<tr class="forecast-day-seven">
+					<td class="forecast-date"></td>
+					<td class="forecast-icon"></td>
+					<td class="forecast-high-temp"></td>
+					<td class="forecast-low-temp"></td>
+					<td class="forecast-wind"></td>
+					<td class="forecast-summary"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="single-cost">
+		<h2>Cost</h2>
+		
+		{% set cost = destination.cost.first() %}
+		<div class="cost-table-wrap">
+			<table>
+				<thead>
+					<tr>
+						<th>Food</th>
+						<th class="cost-table-currency">(EUR)</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Beer</td>
+						<td class="table-right">{{ cost.beer_at_establishment|round }}</td>
+					</tr>
+					<tr>
+						<td>Coffee</td>
+						<td class="table-right">{{ cost.coffee_at_establishment|round }}</td>
+					</tr>
+					<tr>
+						<td>Inexpensive restaurant</td>
+						<td class="table-right">{{ cost.restaurant_inexpensive_meal|round }}</td>
+					</tr>
+					<tr>
+						<td>One weeks groceries</td>
+						<td class="table-right">{{ cost.groceries_one_week|round }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="cost-table-wrap">
+			<table>
+				<thead>
+					<tr>
+						<th>Transport</th>
+						<th class="cost-table-currency">(EUR)</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>One week car rental</td>
+						<td class="table-right">{{ cost.car_rent_one_week|round }}</td>
+					</tr>
+					<tr>
+						<td>One liter gas</td>
+						<td class="table-right">{{ cost.gas_one_liter|round }}</td>
+					</tr>
+					<tr>
+						<td>Estimated km per day</td>
+						<td class="table-right">{{ cost.km_per_day|round }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="cost-table-wrap">
+			<table>
+				<thead>
+					<tr>
+						<th>Accomodation (per day)</th>
+						<th class="cost-table-currency">(EUR)</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Tent</td>
+						<td class="table-right">{{ cost.tent_per_day|round }}</td>
+					</tr>
+					<tr>
+						<td>Van</td>
+						<td class="table-right">{{ cost.van_per_day|round }}</td>
+					</tr>
+					<tr>
+						<td>Camping</td>
+						<td class="table-right">{{ cost.camping_per_day|round }}</td>
+					</tr>
+					<tr>
+						<td>Hostel</td>
+						<td class="table-right">{{ cost.hostel_per_day|round }}</td>
+					</tr>
+					<tr>
+						<td>Apartment</td>
+						<td class="table-right">{{ cost.apartment_per_day|round }}</td>
+					</tr>
+					<tr>
+						<td>House</td>
+						<td class="table-right">{{ cost.house_per_day|round }}</td>
+					</tr>
+					<tr>
+						<td>Hotel</td>
+						<td class="table-right">{{ cost.hotel_per_day|round }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="clearfix"></div>
+
+		<p>
+				Estimated weekly cost: <u>{{ cost.avg_weekly_cost|round|int }} {{ cost.cost_form_currency }} / week</u>
+				<span>
+					Based on: 3 beers, 3 coffees, 2 inexpensive restaurant meals, groceries for one week, 7 days in cheapest <br>
+					available accomodation, car rental for one week (if applicable), gas for one week (if applicable).
+				</span>
+			</p>
+	</div>
 	
 
 
+	{% if destination.additional_photos.first() %}
+	<div class="single-photos">
+		<h2>Photos</h2>
+		{% for photo in destination.additional_photos %}
+			<img src="{{ photo.additional_photo_url }}" alt="" width="150px">
+		{% endfor %}
+	</div>
+	{% endif %}
+
+	<div class="single-map">
+		<h2>Map</h2>
+		<div id="map"></div>
+		<script>
+
+		function initMap() {
+			var myLatLng = {lat: {{ destination.weather_ltd }}, lng: {{ destination.weather_lng }}};
+
+			var map = new google.maps.Map(document.getElementById('map'), {
+			zoom: 5,
+			center: myLatLng
+			});
+
+			var marker = new google.maps.Marker({
+			position: myLatLng,
+			map: map
+			});
+		}
+		</script>
+		<script async defer
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8XiZomiVMq2KmbTlj6OPu6tILBrkTYoQ&callback=initMap">
+		</script>
+	</div>
+
 	
-
-	<h2>Photos</h2>
-	{% for photo in destination.additional_photos %}
-		<img src="{{ photo.additional_photo_url }}" alt="" width="150px">
-	{% endfor %}
-
-	<!-- <h2>Map (LATER)</h2> -->
 
 	<!-- <h2>Stories/reviews (LATER)</h2> -->
 
@@ -280,18 +467,93 @@
 </div>
 
 <script>
-	$.getJSON('https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/1f68e89d4578eaf5624ce820707747a5/{{ destination.weather_ltd }},{{ destination.weather_lng }}?exclude=[alerts,flags,hourly]', function(forecast) {
+	$.getJSON('https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/1f68e89d4578eaf5624ce820707747a5/{{ destination.weather_ltd }},{{ destination.weather_lng }}?exclude=[alerts,flags,hourly]&units=si', function(forecast) {
 		console.log(forecast)
-		$('.forecast-day-zero').text(forecast.daily.data[0].summary)
-		$('.forecast-day-one').text(forecast.daily.data[1].summary)
-		$('.forecast-day-two').text(forecast.daily.data[2].summary)
-		$('.forecast-day-three').text(forecast.daily.data[3].summary)
-		$('.forecast-day-four').text(forecast.daily.data[4].summary)
-		$('.forecast-day-five').text(forecast.daily.data[5].summary)
-		$('.forecast-day-six').text(forecast.daily.data[6].summary)
-		$('.forecast-day-seven').text(forecast.daily.data[7].summary)
 
-		$('span.forecast-current-weather').prepend('<img style="display:block; margin: 0 auto;" src={{ url_for("static", filename="images/darksky/") }}' + forecast.currently.icon + '.svg>')
+		var months_arr = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+		var dateDayZero = new Date(forecast.daily.data[0].time * 1000)
+		var monthDayZero = months_arr[dateDayZero.getMonth()];
+		var dayDayZero = dateDayZero.getDate();
+		$('tr.forecast-day-zero td.forecast-date').text(dayDayZero + " " + monthDayZero)
+		$('tr.forecast-day-zero td.forecast-icon').prepend('<img src={{ url_for("static", filename="images/darksky/") }}' + forecast.daily.data[0].icon + '.svg>')
+		$('tr.forecast-day-zero td.forecast-high-temp').text(forecast.daily.data[0].apparentTemperatureMax.toFixed() + " \xb0C")
+		$('tr.forecast-day-zero td.forecast-low-temp').text(forecast.daily.data[0].apparentTemperatureMin.toFixed() + " \xb0C")
+		$('tr.forecast-day-zero td.forecast-wind').text(forecast.daily.data[0].windSpeed.toFixed() + " m/s")
+		$('tr.forecast-day-zero td.forecast-summary').text(forecast.daily.data[0].summary)
+
+		var dateDayOne = new Date(forecast.daily.data[1].time * 1000)
+		var monthDayOne = months_arr[dateDayOne.getMonth()];
+		var dayDayOne = dateDayOne.getDate();
+		$('tr.forecast-day-one td.forecast-date').text(dayDayOne + " " + monthDayOne)
+		$('tr.forecast-day-one td.forecast-icon').prepend('<img src={{ url_for("static", filename="images/darksky/") }}' + forecast.daily.data[1].icon + '.svg>')
+		$('tr.forecast-day-one td.forecast-high-temp').text(forecast.daily.data[1].apparentTemperatureMax.toFixed() + " \xb0C")
+		$('tr.forecast-day-one td.forecast-low-temp').text(forecast.daily.data[1].apparentTemperatureMin.toFixed() + " \xb0C")
+		$('tr.forecast-day-one td.forecast-wind').text(forecast.daily.data[1].windSpeed.toFixed() + " m/s")
+		$('tr.forecast-day-one td.forecast-summary').text(forecast.daily.data[1].summary)
+
+		var dateDayTwo = new Date(forecast.daily.data[2].time * 1000)
+		var monthDayTwo = months_arr[dateDayTwo.getMonth()];
+		var dayDayTwo = dateDayTwo.getDate();
+		$('tr.forecast-day-two td.forecast-date').text(dayDayTwo + " " + monthDayTwo)
+		$('tr.forecast-day-two td.forecast-icon').prepend('<img src={{ url_for("static", filename="images/darksky/") }}' + forecast.daily.data[2].icon + '.svg>')
+		$('tr.forecast-day-two td.forecast-high-temp').text(forecast.daily.data[2].apparentTemperatureMax.toFixed() + " \xb0C")
+		$('tr.forecast-day-two td.forecast-low-temp').text(forecast.daily.data[2].apparentTemperatureMin.toFixed() + " \xb0C")
+		$('tr.forecast-day-two td.forecast-wind').text(forecast.daily.data[2].windSpeed.toFixed() + " m/s")
+		$('tr.forecast-day-two td.forecast-summary').text(forecast.daily.data[2].summary)
+
+		var dateDayThree = new Date(forecast.daily.data[3].time * 1000)
+		var monthDayThree = months_arr[dateDayThree.getMonth()];
+		var dayDayThree = dateDayThree.getDate();
+		$('tr.forecast-day-three td.forecast-date').text(dayDayThree + " " + monthDayThree)
+		$('tr.forecast-day-three td.forecast-icon').prepend('<img src={{ url_for("static", filename="images/darksky/") }}' + forecast.daily.data[3].icon + '.svg>')
+		$('tr.forecast-day-three td.forecast-high-temp').text(forecast.daily.data[3].apparentTemperatureMax.toFixed() + " \xb0C")
+		$('tr.forecast-day-three td.forecast-low-temp').text(forecast.daily.data[3].apparentTemperatureMin.toFixed() + " \xb0C")
+		$('tr.forecast-day-three td.forecast-wind').text(forecast.daily.data[3].windSpeed.toFixed() + " m/s")
+		$('tr.forecast-day-three td.forecast-summary').text(forecast.daily.data[3].summary)
+
+		var dateDayFour = new Date(forecast.daily.data[4].time * 1000)
+		var monthDayFour = months_arr[dateDayFour.getMonth()];
+		var dayDayFour = dateDayFour.getDate();
+		$('tr.forecast-day-four td.forecast-date').text(dayDayFour + " " + monthDayFour)
+		$('tr.forecast-day-four td.forecast-icon').prepend('<img src={{ url_for("static", filename="images/darksky/") }}' + forecast.daily.data[4].icon + '.svg>')
+		$('tr.forecast-day-four td.forecast-high-temp').text(forecast.daily.data[4].apparentTemperatureMax.toFixed() + " \xb0C")
+		$('tr.forecast-day-four td.forecast-low-temp').text(forecast.daily.data[4].apparentTemperatureMin.toFixed() + " \xb0C")
+		$('tr.forecast-day-four td.forecast-wind').text(forecast.daily.data[4].windSpeed.toFixed() + " m/s")
+		$('tr.forecast-day-four td.forecast-summary').text(forecast.daily.data[4].summary)
+
+		var dateDayFive = new Date(forecast.daily.data[5].time * 1000)
+		var monthDayFive = months_arr[dateDayFive.getMonth()];
+		var dayDayFive = dateDayFive.getDate();
+		$('tr.forecast-day-five td.forecast-date').text(dayDayFive + " " + monthDayFive)
+		$('tr.forecast-day-five td.forecast-icon').prepend('<img src={{ url_for("static", filename="images/darksky/") }}' + forecast.daily.data[5].icon + '.svg>')
+		$('tr.forecast-day-five td.forecast-high-temp').text(forecast.daily.data[5].apparentTemperatureMax.toFixed() + " \xb0C")
+		$('tr.forecast-day-five td.forecast-low-temp').text(forecast.daily.data[5].apparentTemperatureMin.toFixed() + " \xb0C")
+		$('tr.forecast-day-five td.forecast-wind').text(forecast.daily.data[5].windSpeed.toFixed() + " m/s")
+		$('tr.forecast-day-five td.forecast-summary').text(forecast.daily.data[5].summary)
+
+		var dateDaySix = new Date(forecast.daily.data[6].time * 1000)
+		var monthDaySix = months_arr[dateDaySix.getMonth()];
+		var dayDaySix = dateDaySix.getDate();
+		$('tr.forecast-day-six td.forecast-date').text(dayDaySix + " " + monthDaySix)
+		$('tr.forecast-day-six td.forecast-icon').prepend('<img src={{ url_for("static", filename="images/darksky/") }}' + forecast.daily.data[6].icon + '.svg>')
+		$('tr.forecast-day-six td.forecast-high-temp').text(forecast.daily.data[6].apparentTemperatureMax.toFixed() + " \xb0C")
+		$('tr.forecast-day-six td.forecast-low-temp').text(forecast.daily.data[6].apparentTemperatureMin.toFixed() + " \xb0C")
+		$('tr.forecast-day-six td.forecast-wind').text(forecast.daily.data[6].windSpeed.toFixed() + " m/s")
+		$('tr.forecast-day-six td.forecast-summary').text(forecast.daily.data[6].summary)
+
+		var dateDaySeven = new Date(forecast.daily.data[7].time * 1000)
+		var monthDaySeven = months_arr[dateDaySeven.getMonth()];
+		var dayDaySeven = dateDaySeven.getDate();
+		$('tr.forecast-day-seven td.forecast-date').text(dayDaySeven + " " + monthDaySeven)
+		$('tr.forecast-day-seven td.forecast-icon').prepend('<img src={{ url_for("static", filename="images/darksky/") }}' + forecast.daily.data[7].icon + '.svg>')
+		$('tr.forecast-day-seven td.forecast-high-temp').text(forecast.daily.data[7].apparentTemperatureMax.toFixed() + " \xb0C")
+		$('tr.forecast-day-seven td.forecast-low-temp').text(forecast.daily.data[7].apparentTemperatureMin.toFixed() + " \xb0C")
+		$('tr.forecast-day-seven td.forecast-wind').text(forecast.daily.data[7].windSpeed.toFixed() + " m/s")
+		$('tr.forecast-day-seven td.forecast-summary').text(forecast.daily.data[7].summary)
+
+
+		$('span.forecast-current-weather').prepend('<img style="display:block; margin: 0 auto;" width="64px" src={{ url_for("static", filename="images/darksky/") }}' + forecast.currently.icon + '.svg>')
 
 	});
 </script>

@@ -543,7 +543,7 @@
 				}
 
 				.col-grade-easy {
-					background: #1f9c1f;
+					background: $fruit-salad;
 				}
 
 				.col-grade-intermediate {
@@ -551,11 +551,11 @@
 				}
 
 				.col-grade-hard {
-					background: #B60C1E;
+					background: rgb(197, 49, 64);
 				}
 
 				.col-grade-very-hard {
-					background: #000;
+					background: rgb(34, 34, 34);
 				}
 
 			}
@@ -851,6 +851,12 @@
 	margin: 20px auto;
 	padding: 0 10px;
 
+	h2 {
+		font-size: 2rem;
+		margin-top: 40px;
+		text-align: center;
+	}
+
 	@include over-900 {
 		width: 880px;
 	}
@@ -862,6 +868,7 @@
 	.single-title {
 		min-height: 300px;
 		margin-bottom: 20px;
+		padding-bottom: 20px;
 
 		h1 {
 			color: #fff;
@@ -869,7 +876,7 @@
 			margin: 0;
 			text-align: center;
 			text-shadow: 0 0 10px rgba($black, .5);
-			padding: 100px 0 0;
+			padding: 80px 0 0;
 		}
 
 		h2 {
@@ -877,6 +884,7 @@
 			margin: 0;
 			text-align: center;
 			text-shadow: 0 0 10px rgba($black, .5);
+			padding-bottom: 20px;
 		}
 
 		.forecast-current-weather {
@@ -890,7 +898,7 @@
 		height: 350px;
 		width: 49%;
 		padding: 0 0 10px 0;
-		background: rgb(245, 245, 245);
+		background: rgb(250, 250, 250);
 
 		.routes-information_icons {
 			padding-top: 20px;
@@ -931,7 +939,7 @@
 		height: 350px;
 		width: 49%;
 		padding: 0 0 10px 0;
-		background: rgb(245, 245, 245);
+		background: rgb(250, 250, 250);
 
 		.area-information-content {
 			padding: 0 20px;
@@ -944,6 +952,134 @@
 			span {
 				font-size: 1em;
 			}
+		}
+	}
+
+	.single-about {
+		width: 50%;
+		margin: 0 auto;
+	}
+
+	.single-weather {
+		width: 60%;
+		margin: 0 auto;
+
+		table { 
+			border-collapse: collapse; 
+			width: 100%;
+
+			th {
+				text-align: left;
+			}
+			tr {
+				border-bottom: 1px solid $seashell;
+			}
+		}
+
+		tr.table-forecast-top-legends {
+			border-bottom: 1px solid $silver;
+			color: $dusty-grey;
+			font-size: 0.7em;
+		}
+
+		td.forecast-date {
+			width: 8%;
+		}
+		td.forecast-icon {
+			width: 14%;
+			text-align: center;
+		}
+		td.forecast-high-temp {
+			width: 12%;
+		}
+		td.forecast-low-temp {
+			width: 12%;
+		}
+		td.forecast-wind {
+			width: 12%;
+		}
+		td.forecast-summary {
+			width: 40%;
+		}
+	}
+
+	.single-cost {
+		width: 70%;
+		margin: 0 auto;
+
+		@include over-600 {
+		}
+
+		@include over-900 {
+		}
+	
+		@include over-1200 {
+		}
+
+		p {
+			text-align: center;
+			border-radius: 3px;
+			padding:10px;
+			border: 1px solid $desert-storm;
+			margin: 1%;
+			font-weight: bold;
+
+			span {
+				display: block;
+				font-size: 0.7em;
+				font-style: italic;
+				color: $dusty-grey;
+			}
+		}
+
+		.cost-table-wrap {
+			float: left;
+			width: 29%;
+			border-radius: 5px;
+			border: 1px solid $desert-storm;
+			padding: 8px;
+			margin: 0 1%;
+		}
+
+		table {
+			border-collapse: collapse;
+			border-spacing: 0;
+			width: 100%;
+			
+			thead {
+				text-align: center;
+
+				th.cost-table-currency {
+					font-size: 0.7em;
+					color: $dusty-grey;
+				}
+			}
+
+			td, th {
+				border-bottom: 1px solid $desert-storm;
+			}
+			
+			td.table-right {
+				background: $desert-storm;
+				text-align: center;
+			}
+		}
+	}
+
+	.single-photos {
+		margin: 0 auto;
+		width: 60%;
+		text-align: center;
+	}
+
+	.single-map {
+		height: 400px;
+		width: 50%;
+		margin: 0 auto;
+
+		#map {
+			height: calc(100% - 50px);
+			width: 100%;
 		}
 	}
 	

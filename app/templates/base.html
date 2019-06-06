@@ -87,29 +87,15 @@
 	{% if current_user.is_authenticated and current_user.access == 2 %}
 	<p style="text-align: center; font-style: italic;">First, ten</p>
 	{% endif %}
-	<p style="text-align:center; color:darkgray">
+	<!-- <p style="text-align:center; color:darkgray">
 		Welcome to the beta-version of this site. Please give me feedback on features, destinations, information, bugs, etc. <br>Register your own account and add a destination. <br>Help me make this website great!
-	</p>
+	</p> -->
 
 	{% block content %}{% endblock %}
 
-	<hr>
-	<section class="fixe">
-		<h4>Goal: Be the website that helps people <strong>decide where to go</strong></h4>
-
-		<h3>Fixe:</h3>
-		<ol>
-			<li><s>Routes system: filter and index</s></li>
-			<li><s>Add dest. form final fields. Continent? Auto?</s></li>
-			<li><s>Add dest form design. KISS.</s></li>
-			<li><s>Only admin can see edit/delete links</s></li>
-			<li>Single_page</li>
-			<li>Feedback system</li>
-			<li>Overall design fixes</li>
-			<li>Other small fixes</li>
-			<li>Beta launch</li>
-			<li>EditDestinationForm</li>
-		</ol>
+	<section style="color:#d1d1d1; text-align: center; padding: 80px 40px 40px;" class="footer">
+		<hr>
+		Climbit BETA version - 2018-2019
 	</section>
 </body>
 
