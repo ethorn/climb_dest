@@ -3,16 +3,26 @@
 {% block content %}
 <div class="content-container">
 	<div class="radius-shadow-window">
+	{% if user.displayname %}
 	<h1>Profile page for {{ user.displayname }}</h1>
+	{% else %}
+	<h1>Profile page for {{ user.username }}</h1>
+	{% endif %}
 
+	{% if user.location %}
 	<p>Location: {{ user.location }}</p>
-	<p>Bio: {{ user.bio }}</p>
+	{% endif %}
 
+	{% if user.bio %}
+	<p>Bio: {{ user.bio }}</p>
+	{% endif %}
+
+	<h3>Destinations added:</h3>
+	<ul>
 	{% for destination in destinations %}
-		<p>
-			<strong>{{ destination.destination }}</strong> by {{ destination.author.username }}
-		</p>
+			<li><strong>{{ destination.destination }}</strong></li>
 	{% endfor %}
+	</ul>
 	
 	</div>
 </div>

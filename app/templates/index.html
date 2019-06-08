@@ -7,7 +7,7 @@
 		<ul>
 
 		<li class="sortfilter-bar--currency">
-			{{ currency_form.currency(class_="button") }}
+			{{ currency_form.currency(class_="button-filter") }}
 		</li>
 
 		<!-- Mobile sortby -->
@@ -298,19 +298,19 @@
 				<!-- Routes diagram -->
 				<div class="destination-top__routes-chart">
 					<span class="column">
-						<span class="hide-text col-grade-easy" style="height: {{ 0.6*perc_easy_routes }}px; margin-top: {{ margin_easy_routes }}px;">{{ easy_routes }}</span>
+						<span class="hide-text col-grade-easy" style="height: {{ 60*0.01*perc_easy_routes }}px;">{{ easy_routes }}</span>
 						<!-- 2 - 3 -->
 					</span>
 					<span class="column">
-						<span class="hide-text col-grade-intermediate" style="height: {{ 0.6*perc_intermediate_routes }}px; margin-top: {{ margin_intermediate_routes }}px;">{{ intermediate_routes }}</span>
+						<span class="hide-text col-grade-intermediate" style="height: {{ 60*0.01*perc_intermediate_routes }}px;">{{ intermediate_routes }}</span>
 						<!-- 4 -->
 					</span>
 					<span class="column">
-						<span class="hide-text col-grade-hard" style="height: {{ 0.6*perc_hard_routes }}px; margin-top: {{ margin_hard_routes }}px;">{{ hard_routes }}</span>
+						<span class="hide-text col-grade-hard" style="height: {{ 60*0.01*perc_hard_routes }}px;">{{ hard_routes }}</span>
 						<!-- 5 -->
 					</span>
 					<span class="column">
-						<span class="hide-text col-grade-very-hard" style="height: {{ 0.6*perc_very_hard_routes }}px; margin-top: {{ margin_very_hard_routes }}px;">{{ very_hard_routes }}</span>
+						<span class="hide-text col-grade-very-hard" style="height: {{ 60*0.01*perc_very_hard_routes }}px;">{{ very_hard_routes }}</span>
 						<!-- 6 -->
 					</span>
 					<div class="clearfix"></div>
@@ -319,19 +319,7 @@
 
 			<!-- Hover: display this div on top of "destination-top"  -->
 			<div class="destination-display-on-hover invisible">
-
-				<!-- APPROACH -->
-				<span class="property-title">Approach</span> 
-				{% if approach.easy == 1 %}
-					<span class="property-value--approach">Easy</span>
-				{% endif %}
-				{% if approach.moderate == 1 %}
-					<span class="property-value--approach">Moderate</span>
-				{% endif %}
-				{% if approach.hardcore == 1 %}
-					<span class="property-value--approach">Hardcore</span>
-				{% endif %}
-
+				<br><br><br>
 				<!-- TOTAL ROUTES -->
 				<span class="total-all">Total routes: {{ routes.total_routes }}</span>
 
@@ -359,12 +347,12 @@
 			<div class="destination-bottom">
 				
 				<span class="destination-bottom__weekly-cost">
-					<span class="property-title">Cost: </span>
+					<span class="property-title">Est. cost: </span>
 					<span class="property-value--cost">
-						<span class="money">{{ cost.avg_weekly_cost }}</span> 
+						<span class="money">{{ cost.avg_weekly_cost|round|int }}</span> 
 						<span class="currency">{{ cost.cost_form_currency }}
 						</span> 
-					/ w
+					/ week
 					</span>
 						
 					<div class="clearfix"></div>
@@ -436,8 +424,6 @@
 					<div class="clearfix"></div>
 				</span>
 
-				<span class="destination-bottom__restdays"></span>
-
 				<span class="destination-bottom__car">
 					<span class="property-title">Car: </span> 
 						{% if car.not_needed == 1 %}
@@ -449,7 +435,25 @@
 						{% if car.must_have == 1 %}
 							<span class="property-value--car">Must have</span>
 						{% endif %}
+
+						<div class="clearfix"></div>
 				</span>
+
+				<!-- APPROACH -->
+				<!-- <span class="destination-bottom__approach">
+					<span class="property-title">Approach</span> 
+					{% if approach.easy == 1 %}
+						<span class="property-value--approach">Easy</span>
+					{% endif %}
+					{% if approach.moderate == 1 %}
+						<span class="property-value--approach">Moderate</span>
+					{% endif %}
+					{% if approach.hardcore == 1 %}
+						<span class="property-value--approach">Hardcore</span>
+					{% endif %}
+
+					<div class="clearfix"></div>
+				</span> -->
 			</div>
 			{% if current_user.is_authenticated and current_user.access == 2 %}
 			<div class="edit-remove">

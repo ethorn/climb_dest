@@ -3,7 +3,7 @@ from wtforms import StringField, TextAreaField, IntegerField, PasswordField, Boo
     FileField, MultipleFileField, HiddenField, DecimalField
 from wtforms.validators import ValidationError, DataRequired, Length, Email, EqualTo, Optional
 from flask_wtf.file import FileAllowed, FileRequired
-from app.models import User
+from app.models import User, Destination
 from app import images
 import pycountry
 
@@ -190,6 +190,19 @@ class DestinationForm(FlaskForm):
 
     # Submit
     submit = SubmitField('Add Destination!')
+
+    def validate_title(self, title):  # When you add any methods that match the pattern validate_<field_name>,
+                                            # WTForms takes those as custom validators and invokes them in addition to
+                                            # the stock validators. In this case I want to make sure that the username
+                                            # and email address entered by the user are not already in the database, so
+                                            # these two methods issue database queries expecting there will be no
+                                            # results. In the event a result exists, a validation error is triggered
+                                            # by raising ValidationError. The message included as the argument in the
+                                            # exception will be the message that will be displayed next to the field
+                                            # for the user to see.
+        destination = Destination.query.filter_by(title=title.data).first()
+        if destination is not None:
+            raise ValidationError('This name is already in use. If you want to add information to an existing destination, please email me at eric.m.thorn@gmail.com, or use the feedback forum.')
 
 
 class EditDestinationForm(FlaskForm):

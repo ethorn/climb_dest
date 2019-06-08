@@ -706,9 +706,14 @@ def delete(id):
     return redirect(url_for('index'))
 
 
-@app.route('/find_partner')
-def find_partner():
-    return "Her skal man kunne finne klatrepartners for sin reise"
+@app.route('/feedback')
+def feedback():
+    return render_template('feedback.html')
+
+
+# @app.route('/find_partner')
+# def find_partner():
+#     return "Her skal man kunne finne klatrepartners for sin reise"
 
 
 @app.route('/vote')
@@ -718,96 +723,96 @@ def vote():
               Bonus: Man kan också kommentera på varje destination."""
 
 
-@app.route('/query-example')
-def query_example():
-    # # Query arguments:
-    # http://127.0.0.1:5000/query-example?language=Python
-    # query string begins after '?'
+# @app.route('/query-example')
+# def query_example():
+#     # # Query arguments:
+#     # http://127.0.0.1:5000/query-example?language=Python
+#     # query string begins after '?'
 
-    # # Generate query string by:
-    # * manually in a function somewhere, and add it to the url
-    # * by form with GET method
+#     # # Generate query string by:
+#     # * manually in a function somewhere, and add it to the url
+#     # * by form with GET method
 
-    # # Process with:
-    # request.args.get('language') # The app will continue to run if the language key doesn't exist in the URL
-    # request.args['language'] # The app will return a 400 error if the language key doesn't exist in the URL
+#     # # Process with:
+#     # request.args.get('language') # The app will continue to run if the language key doesn't exist in the URL
+#     # request.args['language'] # The app will return a 400 error if the language key doesn't exist in the URL
 
-    language = request.args.get('language')  # if key doesn't exist, returns None
-    framework = request.args['framework']  # if key doesn't exist, returns a 400, bad request error
-    website = request.args.get('website')
+#     language = request.args.get('language')  # if key doesn't exist, returns None
+#     framework = request.args['framework']  # if key doesn't exist, returns a 400, bad request error
+#     website = request.args.get('website')
 
-    return '''<h1>The language value is: {}</h1>
-              <h1>The framework value is: {}</h1>
-              <h1>The website value is: {}'''.format(language, framework, website)
-
-
-@app.route('/form-example', methods=['GET', 'POST'])  # allow both GET and POST requests)
-def form_example():
-    """
-    Form data comes from a form that has been sent as a POST request to a route.
-    So instead of seeing the data in the URL (except for cases when the form is
-    submitted with a GET request), the form data will be passed to the app behind
-    the scenes. Even though you can't easily see the form data that gets passed,
-    your app can still read it.
-    """
-    """
-    Inside the view function, we need to check if the request method is GET or POST.
-    If it's GET, we simply display the form we have. If it's POST, then we want to
-    process the incoming data.
-    """
-
-    # The following form performs a POST request to the same route that generated the form.
-    # The keys come from the "name" attribute
-
-    if request.method == 'POST':  # this block is only entered when the form is submitted
-        language = request.form.get('language')
-        framework = request.form['framework']
-
-        return '''<h1>The language value is: {}</h1>
-                  <h1>The framework value is: {}</h1>'''.format(language, framework)
-
-    return '''<form method="POST">
-                  Language: <input type="text" name="language"><br>
-                  Framework: <input type="text" name="framework"><br>
-                  <input type="submit" value="Submit"><br>
-              </form>'''
+#     return '''<h1>The language value is: {}</h1>
+#               <h1>The framework value is: {}</h1>
+#               <h1>The website value is: {}'''.format(language, framework, website)
 
 
-@app.route('/json-example', methods=['POST'])  # GET requests will be blocked
-def json_example():
-    """
-    Like form data, it's not so easy to see. JSON data is normally constructed by a process that calls our route.
-    {
-        "language" : "Python",
-        "framework" : "Flask",
-        "website" : "Scotch",
-        "version_info" : {
-            "python" : 3.4,
-            "flask" : 0.12
-        },
-        "examples" : ["query", "form", "json"],
-        "boolean_test" : true
-    }
-    """
-    req_data = request.get_json()
+# @app.route('/form-example', methods=['GET', 'POST'])  # allow both GET and POST requests)
+# def form_example():
+#     """
+#     Form data comes from a form that has been sent as a POST request to a route.
+#     So instead of seeing the data in the URL (except for cases when the form is
+#     submitted with a GET request), the form data will be passed to the app behind
+#     the scenes. Even though you can't easily see the form data that gets passed,
+#     your app can still read it.
+#     """
+#     """
+#     Inside the view function, we need to check if the request method is GET or POST.
+#     If it's GET, we simply display the form we have. If it's POST, then we want to
+#     process the incoming data.
+#     """
 
-    language = req_data['language']
-    framework = req_data['framework']
-    python_version = req_data['version_info']['python']  # two keys are needed because of the nested object
-    example = req_data['examples'][0]  # an index is needed because of the array
-    boolean_test = req_data['boolean_test']
+#     # The following form performs a POST request to the same route that generated the form.
+#     # The keys come from the "name" attribute
 
-    return '''
-           The language value is: {}
-           The framework value is: {}
-           The Python version is: {}
-           The item at index 0 in the example list is: {}
-           The boolean value is: {}'''.format(language, framework, python_version, example, boolean_test)
+#     if request.method == 'POST':  # this block is only entered when the form is submitted
+#         language = request.form.get('language')
+#         framework = request.form['framework']
+
+#         return '''<h1>The language value is: {}</h1>
+#                   <h1>The framework value is: {}</h1>'''.format(language, framework)
+
+#     return '''<form method="POST">
+#                   Language: <input type="text" name="language"><br>
+#                   Framework: <input type="text" name="framework"><br>
+#                   <input type="submit" value="Submit"><br>
+#               </form>'''
 
 
-@app.route('/ajax-example')
-def ajax_example():
-    # Antar at request.get_json() funker?
-    # request.form.get('order') funker og
-    # request.args.get('a') FUNKER IKKE (virker som at det bare funker på url arguments)
-    return "todo.."
+# @app.route('/json-example', methods=['POST'])  # GET requests will be blocked
+# def json_example():
+#     """
+#     Like form data, it's not so easy to see. JSON data is normally constructed by a process that calls our route.
+#     {
+#         "language" : "Python",
+#         "framework" : "Flask",
+#         "website" : "Scotch",
+#         "version_info" : {
+#             "python" : 3.4,
+#             "flask" : 0.12
+#         },
+#         "examples" : ["query", "form", "json"],
+#         "boolean_test" : true
+#     }
+#     """
+#     req_data = request.get_json()
+
+#     language = req_data['language']
+#     framework = req_data['framework']
+#     python_version = req_data['version_info']['python']  # two keys are needed because of the nested object
+#     example = req_data['examples'][0]  # an index is needed because of the array
+#     boolean_test = req_data['boolean_test']
+
+#     return '''
+#            The language value is: {}
+#            The framework value is: {}
+#            The Python version is: {}
+#            The item at index 0 in the example list is: {}
+#            The boolean value is: {}'''.format(language, framework, python_version, example, boolean_test)
+
+
+# @app.route('/ajax-example')
+# def ajax_example():
+#     # Antar at request.get_json() funker?
+#     # request.form.get('order') funker og
+#     # request.args.get('a') FUNKER IKKE (virker som at det bare funker på url arguments)
+#     return "todo.."

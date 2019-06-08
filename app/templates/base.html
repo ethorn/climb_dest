@@ -35,13 +35,13 @@
 			<a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/climb_dest_6.svg') }}"
 					alt="Climbit"></a>
 		</div>
-		<div class="search">
+		<div class="search hidden">
 			<input type="text" placeholder="Search for your destination">
 		</div>
 		<nav class="menu js-menu">
 			<ul>
 				<li><a href="{{ url_for('index') }}">Home</a></li>
-				<li><a href="{{ url_for('add_destination') }}">Add Destination</a></li>
+				<li><strong><a href="{{ url_for('add_destination') }}">Add Destination</a></strong></li>
 				{% if current_user.is_anonymous %}
 				<li>
 					<a href="{{ url_for('login') }}">Login</a>
@@ -53,9 +53,9 @@
 					<div class="dropdown-content dropdown-content-menu">
 						<ul>
 							<li><a href="{{ url_for('user', username=current_user.username) }}">View Profile</a></li>
-							<li><a href="{{ url_for('dashboard', page='favorites') }}">Favorites</a></li>
+							<!-- <li><a href="{{ url_for('dashboard', page='favorites') }}">Favorites</a></li>
 							<li><a href="{{ url_for('dashboard', page='searches') }}">Searches</a></li>
-							<li><a href="{{ url_for('dashboard', page='destinations') }}">Destinations</a></li>
+							<li><a href="{{ url_for('dashboard', page='destinations') }}">Destinations</a></li> -->
 							<li><a href="{{ url_for('dashboard', page='settings') }}">Settings</a></li>
 							<li><a href="{{ url_for('logout') }}">Logout</a></li>
 						</ul>
@@ -87,9 +87,9 @@
 	{% if current_user.is_authenticated and current_user.access == 2 %}
 	<p style="text-align: center; font-style: italic;">First, ten</p>
 	{% endif %}
-	<!-- <p style="text-align:center; color:darkgray">
-		Welcome to the beta-version of this site. Please give me feedback on features, destinations, information, bugs, etc. <br>Register your own account and add a destination. <br>Help me make this website great!
-	</p> -->
+	<p style="text-align:center; font-style: italic; color: #bbb; font-size:0.8em; padding: 0 20px;">
+		Welcome to the beta-version. Please give me feedback through the bottom-left "speak-bubble" button! Thanks - Eric
+	</p>
 
 	{% block content %}{% endblock %}
 
@@ -97,6 +97,16 @@
 		<hr>
 		Climbit BETA version - 2018-2019
 	</section>
+
+	<script type="text/javascript">
+        window._urq = window._urq || [];
+        _urq.push(['initSite', 'b57f4fab-ce88-449c-977d-c8c410349764']);
+        (function() {
+        var ur = document.createElement('script'); ur.type = 'text/javascript'; ur.async = true;
+        ur.src = ('https:' == document.location.protocol ? 'https://cdn.userreport.com/userreport.js' : 'http://cdn.userreport.com/userreport.js');
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ur, s);
+        })();
+    </script>
 </body>
 
 </html>

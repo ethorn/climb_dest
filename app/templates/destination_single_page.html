@@ -6,7 +6,7 @@
 		<h1>{{ destination.title }}</h1>
 		<h2>{{ destination.country }}</h2>
 		<span class="forecast-current-weather">
-			
+			Right now:
 		</span>
 	</div>
 
@@ -111,24 +111,24 @@
 			</table>
 		</div>
 		<div class="routes-diagram">
-			<h3>Grades distribution</h3>
+			<h3>Grades distribution <a class="link-info-grades" target="_blank" href='{{ url_for("static", filename="images/grades_categorization.png") }}'>(?)</a></h3>
 			<!-- Routes diagram -->
 			<div class="destination-top__routes-chart">
 				<span class="column">
 					<span class="hide-text col-grade-easy" style="height: {{ 0.6*perc_easy_routes }}px; margin-top: {{ margin_easy_routes }}px;">{{ easy_routes }}</span>
-					Easy
+					<span class="column-label">Easy</span>
 				</span>
 				<span class="column">
 					<span class="hide-text col-grade-intermediate" style="height: {{ 0.6*perc_intermediate_routes }}px; margin-top: {{ margin_intermediate_routes }}px;">{{ intermediate_routes }}</span>
-					Intermediate
+					<span class="column-label">Intermediate</span>
 				</span>
 				<span class="column">
 					<span class="hide-text col-grade-hard" style="height: {{ 0.6*perc_hard_routes }}px; margin-top: {{ margin_hard_routes }}px;">{{ hard_routes }}</span>
-					Hard
+					<span class="column-label">Hard</span>
 				</span>
 				<span class="column">
 					<span class="hide-text col-grade-very-hard" style="height: {{ 0.6*perc_very_hard_routes }}px; margin-top: {{ margin_very_hard_routes }}px;">{{ very_hard_routes }}</span>
-					Very hard
+					<span class="column-label">Very hard</span>
 				</span>
 				<div class="clearfix"></div>
 			</div>
@@ -553,7 +553,7 @@
 		$('tr.forecast-day-seven td.forecast-summary').text(forecast.daily.data[7].summary)
 
 
-		$('span.forecast-current-weather').prepend('<img style="display:block; margin: 0 auto;" width="64px" src={{ url_for("static", filename="images/darksky/") }}' + forecast.currently.icon + '.svg>')
+		$('span.forecast-current-weather').append('<img style="display:block; margin: -8px auto 0; text-shadow: 1px 1px 0 rgba($black, .35), 1px 1px 5px rgba($black, .5);" width="64px" src={{ url_for("static", filename="images/darksky/") }}' + forecast.currently.icon + '.svg>')
 
 	});
 </script>

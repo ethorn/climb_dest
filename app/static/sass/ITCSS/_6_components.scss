@@ -68,11 +68,13 @@
 		border-radius: 6px;
 		color: $white;
 		display: inline-block;
+		float: right;
 		font-size: 1.1rem;
 		font-weight: bold;
-		height: 50px;
-		line-height: 50px;
+		height: 40px;
+		line-height: 40px;
 		margin-left: 20px;
+		margin-top: 5px;
 		padding: 0;
 		vertical-align: middle;
 		width: 70px;
@@ -208,22 +210,24 @@
 
 	.sortfilter-bar--currency {
 		display: inline-block;
-		height: 40px;
 
 		select {
+			appearance: none;
 			font-size: .9em;
 			padding-left: 12px;
 			padding-right: 0;
 			width: 65px;
+			margin-top: -1px;
+			height: 38px;
 		}
 	}
 
 	.sortfilter-bar--sortby {
 		display: inline-block;
-		height: 40px;
 		width: 131px;
 
 		select {
+			appearance: none;
 			background: $orange;
 			border: 0;
 			border-radius: 3px 0 0 3px;
@@ -231,6 +235,7 @@
 			height: 100%;
 			padding-left: 15px;
 			width: 100px;
+			height: 38px;
 		}
 	}
 
@@ -239,8 +244,8 @@
 		border-radius: 0 3px 3px 0;
 		color: $black;
 		display: inline-block;
-		line-height: 40px;
-		margin-left: -4px;
+		line-height: 38px;
+		margin-left: -5px;
 		margin-top: -2px;
 		padding: 0 10px;
 		text-decoration: none;
@@ -402,7 +407,7 @@
 	}
 
 	@include over-1200 {
-		width: 1230px;
+		width: 1200px;
 	}
 
 	ul {
@@ -418,18 +423,29 @@
 		display: inline-block;
 		font-size: 1rem;
 		list-style: none;
-		margin: 5px;
 		position: relative;
 		vertical-align: top;
 		width: 100%;
+		margin-bottom: 10px;
 
 		@include over-600 {
-			width: 45%;
+			width: 49%;
+
+			&:nth-child(2n-1) {
+				margin: 0 2% 2% 0;
+			}
 		}
 
 		@include over-1200 {
-			margin: .5%;
-			width: 32.3333333%;
+			width: calc(98% / 3);
+
+			&:nth-child(2n-1) {
+				margin: 0 0 1%;
+			}
+
+			&:nth-child(3n-1) {
+				margin: 0 1%;
+			}
 		}
 
 		&:hover {
@@ -519,10 +535,11 @@
 				padding: 0 20%;
 
 				.column {
+					position:relative;
 					background: rgba($black, 0);
 					display: inline-block;
 					font-size: .5em;
-					height: 80px;
+					height: 60px;
 					text-align: center;
 					width: calc((100% - 13px) / 4);
 				}
@@ -531,31 +548,33 @@
 				.col-grade-intermediate,
 				.col-grade-hard,
 				.col-grade-very-hard {
+					position:absolute;
 					background: $silver;
 					box-shadow: 0 0 8px rgba($black, .2);
 					color: $black;
 					display: block;
 					font-size: .8em;
-					opacity: .9;
+					opacity: .95;
 					text-align: center;
 					text-shadow: none;
 					width: 100%;
+					bottom: 0;
 				}
 
 				.col-grade-easy {
-					background: $fruit-salad;
+					background: #a4c653;
 				}
 
 				.col-grade-intermediate {
-					background: $orange;
+					background: #d8b05f;
 				}
 
 				.col-grade-hard {
-					background: rgb(197, 49, 64);
+					background: #c65366;
 				}
 
 				.col-grade-very-hard {
-					background: rgb(34, 34, 34);
+					background: #3d3033;
 				}
 
 			}
@@ -888,6 +907,11 @@
 		}
 
 		.forecast-current-weather {
+			display: block;
+			font-size: 0.5rem;
+			text-transform: uppercase;
+			text-shadow: 1px 1px 0 rgba($black, .35), 1px 1px 5px rgba($black, .5);
+			color: #93b8ec;
 			text-align: center;
 		}
 	}
@@ -920,11 +944,34 @@
 		}
 
 		.routes-diagram {
+
 			h3 {
 				color: $dusty-grey;
 				text-align: center;
 				margin-bottom: 0;
+
+				a.link-info-grades {
+					font-size: 0.6em;
+					color: #d11a77;
+
+					&:hover {
+						color: #da3f8c;
+					}
+				}
 			}
+
+			.col-grade-easy,
+			.col-grade-intermediate,
+			.col-grade-hard,
+			.col-grade-very-hard {
+				box-shadow: none;
+				opacity: 1;
+			}
+			.column-label {
+				display: block;
+				margin-top: -15px;
+			}
+			
 		}
 
 		table {
