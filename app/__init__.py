@@ -9,6 +9,8 @@ from logging.handlers import SMTPHandler
 from logging.handlers import RotatingFileHandler
 import os
 from flask_mail import Mail
+import redis
+from rq import Queue
 
 app = Flask(__name__)  # skapar en app objekt instans från klassen Flask
 app.config.from_object(Config)
@@ -22,7 +24,8 @@ mail = Mail(app)
 # Configure the image uploading via Flask-Uploads
 images = UploadSet('images', IMAGES)
 configure_uploads(app, images)
-
+r = redis.Redis()
+q = Queue(connection=r)
 
 if not app.debug:
     if app.config['MAIL_SERVER']:
@@ -53,4 +56,4 @@ if not app.debug:
     app.logger.info('Climbit startup')
 
 
-from app import routes, models, errors
+from app import routes, models, errors, tasks

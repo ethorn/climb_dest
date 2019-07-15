@@ -15,6 +15,32 @@ from app.forms import (CurrencyForm, DestinationForm, EditDestinationForm,
                        ResetPasswordForm, ResetPasswordRequestForm)
 from app.models import (Accomodation, AdditionalPhotos, Approach, Car, Cost,
                         Destination, Months, Routes, User)
+from app.tasks import create_image_set
+import os
+import secrets
+from app import q
+
+
+@app.route('/upload_image', methods=["GET", "POST"])
+def upload_image():
+    message = None
+    if request.method == "POST":
+        image = request.files["image"]
+        image_dir_name = secrets.token_hex(16)
+        os.mkdir(os.path.join(app.config["UPLOADS_PILLOW"], image_dir_name))
+        image.save(os.path.join(app.config["UPLOADS_PILLOW"], image_dir_name, image.filename))
+        image_dir = os.path.join(app.config["UPLOADS_PILLOW"], image_dir_name)
+
+        q.enqueue(create_image_set, image_dir, image.filename)
+
+        flash("Image uploaded and sent for resizing", "success")
+        message = f"/image/{image_dir_name}/{image.filename.split('.')[0]}"
+    return render_template("upload_image.html", message=message)    
+
+
+@app.route("/image/<dir>/<img>")
+def view_image(dir, img):
+    return render_template("view_image.html", dir=dir, img=img)
 
 
 @app.route('/dashboard/<page>', methods=['GET', 'POST'])
