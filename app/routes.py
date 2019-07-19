@@ -35,7 +35,7 @@ def upload_image():
 
         flash("Image uploaded and sent for resizing", "success")
         message = f"/image/{image_dir_name}/{image.filename.split('.')[0]}"
-    return render_template("upload_image.html", message=message)    
+    return render_template("upload_image.html", message=message)
 
 
 @app.route("/image/<dir>/<img>")
@@ -473,8 +473,17 @@ def add_destination():
         if form.validate_on_submit():
 
             # Featured Photo
-            featured_photo_filename = images.save(request.files['featured_photo'])
-            featured_photo_url = images.url(featured_photo_filename)
+            photo_folder_name = form.title.data + '-' + secrets.token_hex(16)
+            featured_photo = images.save(request.files['featured_photo'], folder=photo_folder_name)
+            featured_photo_filename = featured_photo.split('.')[0]
+            featured_photo_extension = featured_photo.split('.')[-1]
+            photo_folder_url = images.url(featured_photo).split(featured_photo_filename)[0]
+
+            q.enqueue(create_image_set, photo_folder_url, featured_photo)
+
+            # X 1) save image in dir (DEFAULT DIR IN CONFIG?)
+            # X 2) enqueue resize function
+            # X 3) store filename, dir (secret hex), and extension in database
 
             # Destination main stuff
             # -- Convert from country code to country name
@@ -487,8 +496,9 @@ def add_destination():
                                       continent=continent,
                                       weather_ltd=form.weather_ltd.data,
                                       weather_lng=form.weather_lng.data,
+                                      photo_folder_url=photo_folder_url,
                                       featured_photo_filename=featured_photo_filename,
-                                      featured_photo_url=featured_photo_url,
+                                      featured_photo_extension=featured_photo_extension,
                                       description=form.description.data,
                                       author=current_user)
             # Add new destination to database
@@ -735,11 +745,6 @@ def delete(id):
 @app.route('/feedback')
 def feedback():
     return render_template('feedback.html')
-
-
-# @app.route('/find_partner')
-# def find_partner():
-#     return "Her skal man kunne finne klatrepartners for sin reise"
 
 
 @app.route('/vote')

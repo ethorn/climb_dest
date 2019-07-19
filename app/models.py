@@ -73,8 +73,9 @@ class Destination(db.Model):
     # discipline = db.Column(db.String(64), index=True)
     weather_ltd = db.Column(db.Integer)
     weather_lng = db.Column(db.Integer)
+    photo_folder_url = db.Column(db.String(256))
     featured_photo_filename = db.Column(db.String(64))
-    featured_photo_url = db.Column(db.String(256))
+    featured_photo_extension = db.Column(db.String(8))
     description = db.Column(db.Text)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))  # user.id refers to table user, column id
@@ -94,7 +95,7 @@ class Destination(db.Model):
 class AdditionalPhotos(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     additional_photo_filename = db.Column(db.String(64))
-    additional_photo_url = db.Column(db.String(256))
+    additional_photo_extension = db.Column(db.String(256))
     destination_id = db.Column(db.Integer, db.ForeignKey('destination.id'), index=True)
 
 
