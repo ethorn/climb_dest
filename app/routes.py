@@ -474,12 +474,15 @@ def add_destination():
 
             # Featured Photo
             photo_folder_name = form.title.data + '-' + secrets.token_hex(16)
-            featured_photo = images.save(request.files['featured_photo'], folder=photo_folder_name)
+            featured_photo_with_folder = images.save(request.files['featured_photo'], folder=photo_folder_name)
+            featured_photo = featured_photo_with_folder.split('/')[1]
             featured_photo_filename = featured_photo.split('.')[0]
             featured_photo_extension = featured_photo.split('.')[-1]
-            photo_folder_url = images.url(featured_photo).split(featured_photo_filename)[0]
+            photo_dir = os.path.join(app.config["UPLOADED_IMAGES_DEST"], photo_folder_name)
+            
+            photo_folder_url = images.url(featured_photo_with_folder).split(featured_photo)[0]
 
-            q.enqueue(create_image_set, photo_folder_url, featured_photo)
+            q.enqueue(create_image_set, photo_dir, featured_photo)
 
             # X 1) save image in dir (DEFAULT DIR IN CONFIG?)
             # X 2) enqueue resize function
