@@ -999,10 +999,10 @@
 		"ma": 1,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "/app/static/app-min.js",
-		"oF": 3,
+		"oAP": "/app/static/js/dev/app-min.js",
+		"oF": 0,
 		"sC": 3,
-		"tS": 1
+		"tS": 0
 		},
 	"/app/static/js/dev/currency.js": {
 		"bF": 0,
@@ -2168,7 +2168,7 @@
 		"opt": 0,
 		"q": 30
 		},
-	"/app/static/uploads/images/Småland-c987244ba694a41d4b51d9db666fa3b4/615688_388015251270652_734966158_o.jpg": {
+	"/app/static/uploads/images/Småland-c987244ba694a41d4b51d9db666fa3b4/615688_388015251270652_734966158_o.jpg": {
 		"ft": 16384,
 		"iS": 418598,
 		"jF": 0,
