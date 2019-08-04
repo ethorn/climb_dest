@@ -1,0 +1,2 @@
+if("objectFit"in document.documentElement.style==!1)for(var container=document.getElementsByClassName("js-destination-bg-polyfill"),i=0;i<container.length;i++){var imageSource=container[i].querySelector("img").src;container[i].querySelector("img").style.display="none",container[i].style.backgroundSize="cover",container[i].style.backgroundImage="url("+imageSource+")",container[i].style.backgroundPosition="center center"}
+//# sourceMappingURL=index_thumbnails_polyfill-min.js.map

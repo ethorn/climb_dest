@@ -3,7 +3,7 @@ from config import Config  # Kan importa från "en folder upp" eftersom climb_de
 from flask_sqlalchemy import SQLAlchemy  # från paketet importeras klassen SQLAlchemy
 from flask_migrate import Migrate  # från paketet importeras klassen SQLAlchemy
 from flask_login import LoginManager
-from flask_uploads import UploadSet, IMAGES, configure_uploads
+from flask_uploads import UploadSet, IMAGES, configure_uploads, patch_request_class
 import logging
 from logging.handlers import SMTPHandler
 from logging.handlers import RotatingFileHandler
@@ -21,9 +21,10 @@ login.login_view = 'login'  # To use the login-required feature to show certain 
 mail = Mail(app)
 # Setup Flask-User and specify the User data-model
 
-# Configure the image uploading via Flask-Uploads
-images = UploadSet('images', IMAGES)
+# Configure the image uploading via Flask-Uploads, redis, rq
+images = UploadSet('images', ('jpeg', 'jpg'))
 configure_uploads(app, images)
+patch_request_class(app, size=33554432)
 r = redis.Redis()
 q = Queue(connection=r)
 

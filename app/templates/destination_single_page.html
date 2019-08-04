@@ -2,7 +2,18 @@
 
 {% block content %}
 <div class="single-page-wrapper">
-	<div class="single-title" style="background: url({{ destination.featured_photo_url }}) no-repeat center center; background-size:cover;">
+	<!-- style="background: url({{ destination.photo_folder_url }}{{ destination.featured_photo_filename }}-1200.{{ destination.featured_photo_extension }}) no-repeat center center; background-size:cover;" -->
+	<div class="single-title">
+		<img class="single-title-img-bg" 
+			 srcset="{{ destination.photo_folder_url }}{{ destination.featured_photo_filename }}-thumbnail.{{ destination.featured_photo_extension }} 392w,
+			 		 {{ destination.photo_folder_url }}{{ destination.featured_photo_filename }}-600.{{ destination.featured_photo_extension }} 600w,
+		 		 	 {{ destination.photo_folder_url }}{{ destination.featured_photo_filename }}-900.{{ destination.featured_photo_extension }} 900w,
+		 		 	 {{ destination.photo_folder_url }}{{ destination.featured_photo_filename }}-1200.{{ destination.featured_photo_extension }} 1200w"
+			 sizes="(max-width: 400px) 380px,
+		 			(max-width: 598px) 579px,
+		 			(max-width: 1199px) 441px,
+		 	    	392px"
+			 src="{{ destination.photo_folder_url }}{{ destination.featured_photo_filename }}-1200.{{ destination.featured_photo_extension }}" alt="">
 		<h1>{{ destination.title }}</h1>
 		<h2>{{ destination.country }}</h2>
 		<span class="forecast-current-weather">

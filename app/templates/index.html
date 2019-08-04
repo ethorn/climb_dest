@@ -253,12 +253,27 @@
 		{% set margin_very_hard_routes = 80 - 0.8*perc_very_hard_routes %}
 								
 	{% endif %}
-	<li class="destination-container">
+	<li class="destination-container js-destination-bg-polyfill">
 		<a href="/{{ destination.id }}">
 			
 			<!-- BG - Pos: absolute -->
-			<div class="destination-bg" style="background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url({{ destination.featured_photo_url }}); background-size:cover; background-position: center;">
-			</div>
+			<!-- <div class="destination-bg" style="
+			background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), 
+						url({{ destination.photo_folder_url }}{{ destination.featured_photo_filename }}-thumbnail.{{ destination.featured_photo_extension }}); 
+			background-size: cover; 
+			background-position: center;">
+			</div> -->
+
+			<img class="destination-bg-img" 
+				 srcset="{{ destination.photo_folder_url }}{{ destination.featured_photo_filename }}-thumbnail.{{ destination.featured_photo_extension }} 392w,
+				 		 {{ destination.photo_folder_url }}{{ destination.featured_photo_filename }}-600.{{ destination.featured_photo_extension }} 600w,
+						 {{ destination.photo_folder_url }}{{ destination.featured_photo_filename }}-900.{{ destination.featured_photo_extension }} 900w,
+						 {{ destination.photo_folder_url }}{{ destination.featured_photo_filename }}-1200.{{ destination.featured_photo_extension }} 1200w"
+				 sizes="(max-width: 400px) 380px,
+						(max-width: 598px) 579px,
+						(max-width: 1199px) 441px,
+					    392px"
+				 src="{{ destination.photo_folder_url }}{{ destination.featured_photo_filename }}-thumbnail.{{ destination.featured_photo_extension }}" alt="">
 
 			<!-- Top destination div - with BG -->
 			<div class="destination-top">

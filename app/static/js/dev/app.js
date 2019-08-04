@@ -22,3 +22,4 @@
 // @codekit-prepend "destination_list_hover.js"
 // @codekit-prepend "page_add-destination.js" ;
 // @codekit-prepend "re-usables.js" ;
+// @codekit-prepend "index_thumbnails_polyfill.js" ;

@@ -99,7 +99,7 @@ class DestinationForm(FlaskForm):
     weather_place_autocomplete = StringField('Place to use for weather forecast ', validators=[DataRequired()])
     weather_ltd = HiddenField('Latitude', validators=[DataRequired()])
     weather_lng = HiddenField('Longitude', validators=[DataRequired()])
-    featured_photo = FileField('Featured Photo', validators=[FileRequired(), FileAllowed(images, 'Images only!')])
+    featured_photo = FileField('Featured Photo', validators=[FileRequired(), FileAllowed(images, 'JPG/JPEG images only!')])
     additional_photos = MultipleFileField('Additional Photos', validators=[FileAllowed(images, 'Images only!')])
     description = TextAreaField('Description')
 
