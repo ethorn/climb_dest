@@ -134,7 +134,7 @@ class Cost(db.Model):
     house_per_day = db.Column(db.Float, index=True, default=0)
     hotel_per_day = db.Column(db.Float, index=True, default=0)
     accomodation_used_for_avg_weekly_cost = db.Column(db.String, index=True)
-    avg_weekly_cost = db.Column(db.Float, index=True, default=0)
+    avg_weekly_cost = db.Column(db.Integer, index=True, default=0)
     destination_id = db.Column(db.Integer, db.ForeignKey('destination.id'), index=True)
 
 

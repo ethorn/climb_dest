@@ -629,6 +629,7 @@ def add_destination():
                 return avg_weekly_cost
 
             avg_weekly_cost = CalcAvgWeeklyCost()
+            avg_weekly_cost_rounded = int(avg_weekly_cost)
 
             cost = Cost(cost_form_currency=cost_form_currency,
                         beer_at_establishment=beer_at_establishment,
@@ -646,7 +647,7 @@ def add_destination():
                         house_per_day=house_per_day,
                         hotel_per_day=hotel_per_day,
                         accomodation_used_for_avg_weekly_cost=cheapest_accomodation,
-                        avg_weekly_cost=avg_weekly_cost,
+                        avg_weekly_cost=avg_weekly_cost_rounded,
                         destination_id=d.id)
             db.session.add(cost)
 
