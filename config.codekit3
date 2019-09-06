@@ -2139,6 +2139,14 @@
 		"oAP": "/venv/bin/coverage3",
 		"oF": 0
 		},
+	"/venv/bin/dotenv": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/venv/bin/dotenv",
+		"oF": 0
+		},
 	"/venv/bin/easy_install": {
 		"cB": 0,
 		"ft": 8192,
@@ -9315,6 +9323,126 @@
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/venv/lib/python3.7/site-packages/dateutil/zoneinfo/rebuild.py",
+		"oF": 0
+		},
+	"/venv/lib/python3.7/site-packages/dotenv/__init__.py": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 1,
+		"oAP": "/venv/lib/python3.7/site-packages/dotenv/__init__.py",
+		"oF": 0
+		},
+	"/venv/lib/python3.7/site-packages/dotenv/__pycache__/__init__.cpython-37.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 1,
+		"oAP": "/venv/lib/python3.7/site-packages/dotenv/__pycache__/__init__.cpython-37.pyc",
+		"oF": 0
+		},
+	"/venv/lib/python3.7/site-packages/dotenv/__pycache__/cli.cpython-37.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/venv/lib/python3.7/site-packages/dotenv/__pycache__/cli.cpython-37.pyc",
+		"oF": 0
+		},
+	"/venv/lib/python3.7/site-packages/dotenv/__pycache__/compat.cpython-37.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/venv/lib/python3.7/site-packages/dotenv/__pycache__/compat.cpython-37.pyc",
+		"oF": 0
+		},
+	"/venv/lib/python3.7/site-packages/dotenv/__pycache__/ipython.cpython-37.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/venv/lib/python3.7/site-packages/dotenv/__pycache__/ipython.cpython-37.pyc",
+		"oF": 0
+		},
+	"/venv/lib/python3.7/site-packages/dotenv/__pycache__/main.cpython-37.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/venv/lib/python3.7/site-packages/dotenv/__pycache__/main.cpython-37.pyc",
+		"oF": 0
+		},
+	"/venv/lib/python3.7/site-packages/dotenv/__pycache__/parser.cpython-37.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/venv/lib/python3.7/site-packages/dotenv/__pycache__/parser.cpython-37.pyc",
+		"oF": 0
+		},
+	"/venv/lib/python3.7/site-packages/dotenv/__pycache__/version.cpython-37.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/venv/lib/python3.7/site-packages/dotenv/__pycache__/version.cpython-37.pyc",
+		"oF": 0
+		},
+	"/venv/lib/python3.7/site-packages/dotenv/cli.py": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/venv/lib/python3.7/site-packages/dotenv/cli.py",
+		"oF": 0
+		},
+	"/venv/lib/python3.7/site-packages/dotenv/compat.py": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/venv/lib/python3.7/site-packages/dotenv/compat.py",
+		"oF": 0
+		},
+	"/venv/lib/python3.7/site-packages/dotenv/ipython.py": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/venv/lib/python3.7/site-packages/dotenv/ipython.py",
+		"oF": 0
+		},
+	"/venv/lib/python3.7/site-packages/dotenv/main.py": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/venv/lib/python3.7/site-packages/dotenv/main.py",
+		"oF": 0
+		},
+	"/venv/lib/python3.7/site-packages/dotenv/parser.py": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/venv/lib/python3.7/site-packages/dotenv/parser.py",
+		"oF": 0
+		},
+	"/venv/lib/python3.7/site-packages/dotenv/py.typed": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/venv/lib/python3.7/site-packages/dotenv/py.typed",
+		"oF": 0
+		},
+	"/venv/lib/python3.7/site-packages/dotenv/version.py": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/venv/lib/python3.7/site-packages/dotenv/version.py",
 		"oF": 0
 		},
 	"/venv/lib/python3.7/site-packages/easy_install.py": {
@@ -29467,6 +29595,62 @@
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/venv/lib/python3.7/site-packages/python_dateutil-2.8.0.dist-info/zip-safe",
+		"oF": 0
+		},
+	"/venv/lib/python3.7/site-packages/python_dotenv-0.10.3.dist-info/entry_points.txt": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/venv/lib/python3.7/site-packages/python_dotenv-0.10.3.dist-info/entry_points.txt",
+		"oF": 0
+		},
+	"/venv/lib/python3.7/site-packages/python_dotenv-0.10.3.dist-info/INSTALLER": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/venv/lib/python3.7/site-packages/python_dotenv-0.10.3.dist-info/INSTALLER",
+		"oF": 0
+		},
+	"/venv/lib/python3.7/site-packages/python_dotenv-0.10.3.dist-info/LICENSE": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/venv/lib/python3.7/site-packages/python_dotenv-0.10.3.dist-info/LICENSE",
+		"oF": 0
+		},
+	"/venv/lib/python3.7/site-packages/python_dotenv-0.10.3.dist-info/METADATA": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/venv/lib/python3.7/site-packages/python_dotenv-0.10.3.dist-info/METADATA",
+		"oF": 0
+		},
+	"/venv/lib/python3.7/site-packages/python_dotenv-0.10.3.dist-info/RECORD": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/venv/lib/python3.7/site-packages/python_dotenv-0.10.3.dist-info/RECORD",
+		"oF": 0
+		},
+	"/venv/lib/python3.7/site-packages/python_dotenv-0.10.3.dist-info/top_level.txt": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/venv/lib/python3.7/site-packages/python_dotenv-0.10.3.dist-info/top_level.txt",
+		"oF": 0
+		},
+	"/venv/lib/python3.7/site-packages/python_dotenv-0.10.3.dist-info/WHEEL": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/venv/lib/python3.7/site-packages/python_dotenv-0.10.3.dist-info/WHEEL",
 		"oF": 0
 		},
 	"/venv/lib/python3.7/site-packages/python_editor-1.0.4.dist-info/DESCRIPTION.rst": {
