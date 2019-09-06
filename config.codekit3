@@ -999,10 +999,10 @@
 		"ma": 1,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "/app/static/app-min.js",
-		"oF": 3,
+		"oAP": "/app/static/js/dev/app-min.js",
+		"oF": 0,
 		"sC": 3,
-		"tS": 1
+		"tS": 0
 		},
 	"/app/static/js/dev/currency.js": {
 		"bF": 0,
