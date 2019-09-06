@@ -7,9 +7,9 @@ class Config(object):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'sqlite:///' + os.path.join(basedir, 'app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     UPLOADS_DEFAULT_DEST = 'app/static/uploads'
-    UPLOADS_DEFAULT_URL = os.environ.get('UPLOADS_DEFAULT_URL') or 'http://127.0.0.1:5000/static/uploads/'
+    UPLOADS_DEFAULT_URL = os.environ.get('UPLOADS_DEFAULT_URL') or 'https://climbit.ericthorn.me/static/uploads/'
     UPLOADED_IMAGES_DEST = 'app/static/uploads/images'
-    UPLOADED_IMAGES_URL = os.environ.get('UPLOADED_IMAGES_URL') or 'http://127.0.0.1:5000/static/uploads/images/'
+    UPLOADED_IMAGES_URL = os.environ.get('UPLOADED_IMAGES_URL') or 'https://climbit.ericthorn.me/static/uploads/images/'
     UPLOADS_PILLOW = os.path.join(basedir, 'app/static/uploads/images')
     MAIL_SERVER = os.environ.get('MAIL_SERVER')
     MAIL_PORT = int(os.environ.get('MAIL_PORT') or 25)
