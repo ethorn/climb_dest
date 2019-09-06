@@ -985,33 +985,14 @@
 		"oT": 1,
 		"q": 100
 		},
-	"/app/static/js/dev/app-min.js": {
-		"bF": 0,
-		"ft": 64,
-		"ma": 1,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "/app/static/js/dev/app-min-min.js",
-		"oF": 0,
-		"sC": 3,
-		"tS": 0
-		},
-	"/app/static/js/dev/app-min.js.map": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/app/static/js/dev/app-min.js.map",
-		"oF": 0
-		},
 	"/app/static/js/dev/app.js": {
 		"bF": 0,
 		"ft": 64,
 		"ma": 1,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "/app/static/js/dev/app-min.js",
-		"oF": 0,
+		"oAP": "/app/static/app-min.js",
+		"oF": 2,
 		"sC": 3,
 		"tS": 0
 		},
