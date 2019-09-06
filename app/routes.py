@@ -15,6 +15,32 @@ from app.forms import (CurrencyForm, DestinationForm, EditDestinationForm,
                        ResetPasswordForm, ResetPasswordRequestForm)
 from app.models import (Accomodation, AdditionalPhotos, Approach, Car, Cost,
                         Destination, Months, Routes, User)
+from app.tasks import create_image_set
+import os
+import secrets
+from app import q
+
+
+@app.route('/upload_image', methods=["GET", "POST"])
+def upload_image():
+    message = None
+    if request.method == "POST":
+        image = request.files["image"]
+        image_dir_name = secrets.token_hex(16)
+        os.mkdir(os.path.join(app.config["UPLOADS_PILLOW"], image_dir_name))
+        image.save(os.path.join(app.config["UPLOADS_PILLOW"], image_dir_name, image.filename))
+        image_dir = os.path.join(app.config["UPLOADS_PILLOW"], image_dir_name)
+
+        q.enqueue(create_image_set, image_dir, image.filename)
+
+        flash("Image uploaded and sent for resizing", "success")
+        message = f"/image/{image_dir_name}/{image.filename.split('.')[0]}"
+    return render_template("upload_image.html", message=message)
+
+
+@app.route("/image/<dir>/<img>")
+def view_image(dir, img):
+    return render_template("view_image.html", dir=dir, img=img)
 
 
 @app.route('/dashboard/<page>', methods=['GET', 'POST'])
@@ -378,10 +404,7 @@ def index():
 @login_required
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
-    destinations = [
-        {'author': user, 'destination': 'Lofoten test'},
-        {'author': user, 'destination': 'Bohuslaen test'}
-    ]
+    destinations = Destination.query.filter_by(user_id=user.id)
     return render_template('user.html', user=user, destinations=destinations)
 
 
@@ -447,8 +470,20 @@ def add_destination():
         if form.validate_on_submit():
 
             # Featured Photo
-            featured_photo_filename = images.save(request.files['featured_photo'])
-            featured_photo_url = images.url(featured_photo_filename)
+            photo_folder_name = form.title.data + '-' + secrets.token_hex(16)
+            featured_photo_with_folder = images.save(request.files['featured_photo'], folder=photo_folder_name)
+            featured_photo = featured_photo_with_folder.split('/')[1]
+            featured_photo_filename = featured_photo.split('.')[0]
+            featured_photo_extension = featured_photo.split('.')[-1]
+            photo_dir = os.path.join(app.config["UPLOADED_IMAGES_DEST"], photo_folder_name)
+            
+            photo_folder_url = images.url(featured_photo_with_folder).split(featured_photo)[0]
+
+            q.enqueue(create_image_set, photo_dir, featured_photo)
+
+            # X 1) save image in dir (DEFAULT DIR IN CONFIG?)
+            # X 2) enqueue resize function
+            # X 3) store filename, dir (secret hex), and extension in database
 
             # Destination main stuff
             # -- Convert from country code to country name
@@ -461,8 +496,9 @@ def add_destination():
                                       continent=continent,
                                       weather_ltd=form.weather_ltd.data,
                                       weather_lng=form.weather_lng.data,
+                                      photo_folder_url=photo_folder_url,
                                       featured_photo_filename=featured_photo_filename,
-                                      featured_photo_url=featured_photo_url,
+                                      featured_photo_extension=featured_photo_extension,
                                       description=form.description.data,
                                       author=current_user)
             # Add new destination to database
@@ -590,6 +626,7 @@ def add_destination():
                 return avg_weekly_cost
 
             avg_weekly_cost = CalcAvgWeeklyCost()
+            avg_weekly_cost_rounded = int(avg_weekly_cost)
 
             cost = Cost(cost_form_currency=cost_form_currency,
                         beer_at_establishment=beer_at_establishment,
@@ -607,7 +644,7 @@ def add_destination():
                         house_per_day=house_per_day,
                         hotel_per_day=hotel_per_day,
                         accomodation_used_for_avg_weekly_cost=cheapest_accomodation,
-                        avg_weekly_cost=avg_weekly_cost,
+                        avg_weekly_cost=avg_weekly_cost_rounded,
                         destination_id=d.id)
             db.session.add(cost)
 
@@ -709,11 +746,6 @@ def delete(id):
 @app.route('/feedback')
 def feedback():
     return render_template('feedback.html')
-
-
-# @app.route('/find_partner')
-# def find_partner():
-#     return "Her skal man kunne finne klatrepartners for sin reise"
 
 
 @app.route('/vote')

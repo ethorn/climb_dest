@@ -1004,6 +1004,17 @@
 		"sC": 3,
 		"tS": 0
 		},
+	"/app/static/js/dev/closebox.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 1,
+		"oAP": "/app/static/js/dev/closebox-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
 	"/app/static/js/dev/currency.js": {
 		"bF": 0,
 		"ft": 64,
@@ -1033,6 +1044,36 @@
 		"mi": 1,
 		"oA": 1,
 		"oAP": "/app/static/js/dev/filter-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/app/static/js/dev/index_thumbnails_polyfill-min.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/app/static/js/dev/index_thumbnails_polyfill-min-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/app/static/js/dev/index_thumbnails_polyfill-min.js.map": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/app/static/js/dev/index_thumbnails_polyfill-min.js.map",
+		"oF": 0
+		},
+	"/app/static/js/dev/index_thumbnails_polyfill.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/app/static/js/dev/index_thumbnails_polyfill-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -1214,181 +1255,123 @@
 		"oAP": "/app/static/style.css.map",
 		"oF": 0
 		},
-	"/app/static/uploads/images/11896185_10156014945460634_3131389479774157468_n.jpg": {
+	"/app/static/uploads/images/Kalymnos-82a89958f468309acaa97f2d971c473f/184935_129768310428682_6405062_n-1200.jpg": {
 		"ft": 16384,
-		"iS": 126539,
+		"iS": 90805,
 		"jF": 0,
 		"oA": 0,
-		"oAP": "/app/static/uploads/images/11896185_10156014945460634_3131389479774157468_n.jpg",
+		"oAP": "/app/static/uploads/images/Kalymnos-82a89958f468309acaa97f2d971c473f/184935_129768310428682_6405062_n-1200.jpg",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
 		"q": 30
 		},
-	"/app/static/uploads/images/11896185_10156014945460634_3131389479774157468_n_1.jpg": {
+	"/app/static/uploads/images/Kalymnos-82a89958f468309acaa97f2d971c473f/184935_129768310428682_6405062_n-600.jpg": {
 		"ft": 16384,
-		"iS": 126539,
+		"iS": 91641,
 		"jF": 0,
 		"oA": 0,
-		"oAP": "/app/static/uploads/images/11896185_10156014945460634_3131389479774157468_n_1.jpg",
+		"oAP": "/app/static/uploads/images/Kalymnos-82a89958f468309acaa97f2d971c473f/184935_129768310428682_6405062_n-600.jpg",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
 		"q": 30
 		},
-	"/app/static/uploads/images/12728760_10156626548080523_7550212807584346473_n.jpg": {
+	"/app/static/uploads/images/Kalymnos-82a89958f468309acaa97f2d971c473f/184935_129768310428682_6405062_n-900.jpg": {
 		"ft": 16384,
-		"iS": 54801,
+		"iS": 90805,
 		"jF": 0,
 		"oA": 0,
-		"oAP": "/app/static/uploads/images/12728760_10156626548080523_7550212807584346473_n.jpg",
+		"oAP": "/app/static/uploads/images/Kalymnos-82a89958f468309acaa97f2d971c473f/184935_129768310428682_6405062_n-900.jpg",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
 		"q": 30
 		},
-	"/app/static/uploads/images/12728760_10156626548080523_7550212807584346473_n_1.jpg": {
+	"/app/static/uploads/images/Kalymnos-82a89958f468309acaa97f2d971c473f/184935_129768310428682_6405062_n-mini.jpg": {
 		"ft": 16384,
-		"iS": 54801,
+		"iS": 22377,
 		"jF": 0,
 		"oA": 0,
-		"oAP": "/app/static/uploads/images/12728760_10156626548080523_7550212807584346473_n_1.jpg",
+		"oAP": "/app/static/uploads/images/Kalymnos-82a89958f468309acaa97f2d971c473f/184935_129768310428682_6405062_n-mini.jpg",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
 		"q": 30
 		},
-	"/app/static/uploads/images/14681580_686429324857969_8354741369358001280_n.jpg": {
+	"/app/static/uploads/images/Kalymnos-82a89958f468309acaa97f2d971c473f/184935_129768310428682_6405062_n-thumbnail.jpg": {
 		"ft": 16384,
-		"iS": 160483,
+		"iS": 46476,
 		"jF": 0,
 		"oA": 0,
-		"oAP": "/app/static/uploads/images/14681580_686429324857969_8354741369358001280_n.jpg",
+		"oAP": "/app/static/uploads/images/Kalymnos-82a89958f468309acaa97f2d971c473f/184935_129768310428682_6405062_n-thumbnail.jpg",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
 		"q": 30
 		},
-	"/app/static/uploads/images/14690930_686429791524589_8535505141492700782_n.jpg": {
+	"/app/static/uploads/images/Lofoten-cea2c9df9b8c3ca1786b2460c5a73100/24883593_1511432152227364_6119190793449918083_o-1200.jpg": {
 		"ft": 16384,
-		"iS": 108640,
+		"iS": 294785,
 		"jF": 0,
 		"oA": 0,
-		"oAP": "/app/static/uploads/images/14690930_686429791524589_8535505141492700782_n.jpg",
+		"oAP": "/app/static/uploads/images/Lofoten-cea2c9df9b8c3ca1786b2460c5a73100/24883593_1511432152227364_6119190793449918083_o-1200.jpg",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
 		"q": 30
 		},
-	"/app/static/uploads/images/14713753_686429708191264_8533953784930172943_n.jpg": {
+	"/app/static/uploads/images/Lofoten-cea2c9df9b8c3ca1786b2460c5a73100/24883593_1511432152227364_6119190793449918083_o-600.jpg": {
 		"ft": 16384,
-		"iS": 93779,
+		"iS": 90008,
 		"jF": 0,
 		"oA": 0,
-		"oAP": "/app/static/uploads/images/14713753_686429708191264_8533953784930172943_n.jpg",
+		"oAP": "/app/static/uploads/images/Lofoten-cea2c9df9b8c3ca1786b2460c5a73100/24883593_1511432152227364_6119190793449918083_o-600.jpg",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
 		"q": 30
 		},
-	"/app/static/uploads/images/14713753_686429708191264_8533953784930172943_n_1.jpg": {
+	"/app/static/uploads/images/Lofoten-cea2c9df9b8c3ca1786b2460c5a73100/24883593_1511432152227364_6119190793449918083_o-900.jpg": {
 		"ft": 16384,
-		"iS": 93779,
+		"iS": 183347,
 		"jF": 0,
 		"oA": 0,
-		"oAP": "/app/static/uploads/images/14713753_686429708191264_8533953784930172943_n_1.jpg",
+		"oAP": "/app/static/uploads/images/Lofoten-cea2c9df9b8c3ca1786b2460c5a73100/24883593_1511432152227364_6119190793449918083_o-900.jpg",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
 		"q": 30
 		},
-	"/app/static/uploads/images/1935076_10156626547750523_7937965071204542987_n.jpg": {
+	"/app/static/uploads/images/Lofoten-cea2c9df9b8c3ca1786b2460c5a73100/24883593_1511432152227364_6119190793449918083_o-mini.jpg": {
 		"ft": 16384,
-		"iS": 104274,
+		"iS": 20205,
 		"jF": 0,
 		"oA": 0,
-		"oAP": "/app/static/uploads/images/1935076_10156626547750523_7937965071204542987_n.jpg",
+		"oAP": "/app/static/uploads/images/Lofoten-cea2c9df9b8c3ca1786b2460c5a73100/24883593_1511432152227364_6119190793449918083_o-mini.jpg",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
 		"q": 30
 		},
-	"/app/static/uploads/images/DSC03462.jpg": {
+	"/app/static/uploads/images/Lofoten-cea2c9df9b8c3ca1786b2460c5a73100/24883593_1511432152227364_6119190793449918083_o-thumbnail.jpg": {
 		"ft": 16384,
-		"iS": 15590001,
+		"iS": 42445,
 		"jF": 0,
 		"oA": 0,
-		"oAP": "/app/static/uploads/images/DSC03462.jpg",
+		"oAP": "/app/static/uploads/images/Lofoten-cea2c9df9b8c3ca1786b2460c5a73100/24883593_1511432152227364_6119190793449918083_o-thumbnail.jpg",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
 		"q": 30
 		},
-	"/app/static/uploads/images/DSC03475.jpg": {
-		"ft": 16384,
-		"iS": 15751540,
-		"jF": 0,
+	"/app/tasks.py": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
-		"oAP": "/app/static/uploads/images/DSC03475.jpg",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"q": 30
-		},
-	"/app/static/uploads/images/DSC03477.jpg": {
-		"ft": 16384,
-		"iS": 11588612,
-		"jF": 0,
-		"oA": 0,
-		"oAP": "/app/static/uploads/images/DSC03477.jpg",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"q": 30
-		},
-	"/app/static/uploads/images/DSC03589.jpg": {
-		"ft": 16384,
-		"iS": 9762209,
-		"jF": 0,
-		"oA": 0,
-		"oAP": "/app/static/uploads/images/DSC03589.jpg",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"q": 30
-		},
-	"/app/static/uploads/images/IMG_0409.jpg": {
-		"ft": 16384,
-		"iS": 4245434,
-		"jF": 0,
-		"oA": 0,
-		"oAP": "/app/static/uploads/images/IMG_0409.jpg",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"q": 30
-		},
-	"/app/static/uploads/images/IMG_0411.jpg": {
-		"ft": 16384,
-		"iS": 5162355,
-		"jF": 0,
-		"oA": 0,
-		"oAP": "/app/static/uploads/images/IMG_0411.jpg",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"q": 30
-		},
-	"/app/static/uploads/images/MG_0402.jpg": {
-		"ft": 16384,
-		"iS": 2022854,
-		"jF": 0,
-		"oA": 0,
-		"oAP": "/app/static/uploads/images/MG_0402.jpg",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"q": 30
+		"oAP": "/app/tasks.py",
+		"oF": 0
 		},
 	"/app/templates/404.html": {
 		"cB": 0,
@@ -1566,12 +1549,28 @@
 		"oAP": "/app/templates/upload.html",
 		"oF": 0
 		},
+	"/app/templates/upload_image.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/app/templates/upload_image.html",
+		"oF": 0
+		},
 	"/app/templates/user.html": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/app/templates/user.html",
+		"oF": 0
+		},
+	"/app/templates/view_image.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/app/templates/view_image.html",
 		"oF": 0
 		},
 	"/climb_dest.py": {
@@ -1588,6 +1587,14 @@
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/config.py",
+		"oF": 0
+		},
+	"/dump.rdb": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/dump.rdb",
 		"oF": 0
 		},
 	"/logs": {
@@ -2042,6 +2049,14 @@
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/migrations/versions/c7a95c76e625_adding_continent_to_destination_table.py",
+		"oF": 0
+		},
+	"/migrations/versions/ecb5074283ea_.py": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/migrations/versions/ecb5074283ea_.py",
 		"oF": 0
 		},
 	"/requirements.txt": {

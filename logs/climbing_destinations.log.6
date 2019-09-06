@@ -1,10 +1,10 @@
-2019-05-21 09:44:27,275 ERROR: Exception on / [GET] [in /Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py:1761]
+2019-05-21 09:47:05,831 ERROR: Exception on /_load_destinations [POST] [in /Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
     cursor, statement, parameters, context
   File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 552, in do_execute
     cursor.execute(statement, parameters)
-sqlite3.OperationalError: no such column: routes.total_routes
+sqlite3.OperationalError: no such column: cost.avg_weekly_cost
 
 The above exception was the direct cause of the following exception:
 
@@ -21,8 +21,8 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/mrerico/Desktop/climb_dest/app/routes.py", line 365, in index
-    destinations = Destination.query.join(*joins).order_by(order_p_final).all()
+  File "/Users/mrerico/Desktop/climb_dest/app/routes.py", line 181, in load_destinations
+    destinations = Destination.query.order_by(order_p_final).all()
   File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 3161, in all
     return list(self)
   File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 3317, in __iter__
@@ -47,11 +47,11 @@ Traceback (most recent call last):
     cursor, statement, parameters, context
   File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 552, in do_execute
     cursor.execute(statement, parameters)
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: routes.total_routes
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: cost.avg_weekly_cost
 [SQL: SELECT destination.id AS destination_id, destination.title AS destination_title, destination.country AS destination_country, destination.weather_ltd AS destination_weather_ltd, destination.weather_lng AS destination_weather_lng, destination.featured_photo_filename AS destination_featured_photo_filename, destination.featured_photo_url AS destination_featured_photo_url, destination.description AS destination_description, destination.timestamp AS destination_timestamp, destination.user_id AS destination_user_id 
-FROM destination ORDER BY routes.total_routes ASC]
+FROM destination ORDER BY cost.avg_weekly_cost ASC]
 (Background on this error at: http://sqlalche.me/e/e3q8)
-2019-05-21 09:46:24,044 ERROR: Exception on / [GET] [in /Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py:1761]
+2019-05-21 09:47:34,096 ERROR: Exception on /_load_destinations [POST] [in /Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
     cursor, statement, parameters, context
@@ -74,8 +74,8 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/mrerico/Desktop/climb_dest/app/routes.py", line 365, in index
-    destinations = Destination.query.join(*joins).order_by(order_p_final).all()
+  File "/Users/mrerico/Desktop/climb_dest/app/routes.py", line 181, in load_destinations
+    destinations = Destination.query.order_by(order_p_final).all()
   File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 3161, in all
     return list(self)
   File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 3317, in __iter__

@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+#Codekit
+config.codekit3
+
 # Distribution / packaging
 .Python
 build/

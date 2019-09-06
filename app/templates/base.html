@@ -27,6 +27,7 @@
 	<link rel="stylesheet" href="{{ url_for('static', filename='fonts/fonts.css') }}">
 	<link rel="stylesheet" href="{{ url_for('static', filename='bower_components/normalize-css/normalize.css') }}">
 	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
 </head>
 
 <body>
@@ -87,8 +88,14 @@
 	{% if current_user.is_authenticated and current_user.access == 2 %}
 	<p style="text-align: center; font-style: italic;">First, ten</p>
 	{% endif %}
-	<p style="text-align:center; font-style: italic; color: #bbb; font-size:0.8em; padding: 0 20px;">
-		Welcome to the beta-version. Please give me feedback through the bottom-left "speak-bubble" button! Thanks - Eric
+	<p class="announcements">
+		<strong>Hello!</strong> <br>
+		Welcome to the alpha-version of Climbit, a website where you can search and filter for climbing destinations around the world. I want to make a website that YOU want to use, so I would love your feedback on the functionality and design (and whatever else comes to your mind). Please give me feedback through the bottom-left button on the screen with a speak-bubble icon. Thanks!
+		<br>
+		/Eric
+		<br>
+		<br>
+		<span class="js-close-box">Close</span>
 	</p>
 
 	{% block content %}{% endblock %}

@@ -1,57 +1,4 @@
-2019-05-21 09:58:00,184 ERROR: Exception on / [GET] [in /Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
-    cursor, statement, parameters, context
-  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 552, in do_execute
-    cursor.execute(statement, parameters)
-sqlite3.OperationalError: no such column: cost.avg_weekly_cost
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/mrerico/Desktop/climb_dest/app/routes.py", line 365, in index
-    destinations = Destination.query.join(*joins).filter(*filters).order_by(order_p_final).all()
-  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 3161, in all
-    return list(self)
-  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 3317, in __iter__
-    return self._execute_and_instances(context)
-  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 3342, in _execute_and_instances
-    result = conn.execute(querycontext.statement, self._params)
-  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 988, in execute
-    return meth(self, multiparams, params)
-  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 287, in _execute_on_connection
-    return connection._execute_clauseelement(self, multiparams, params)
-  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1107, in _execute_clauseelement
-    distilled_params,
-  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1248, in _execute_context
-    e, statement, parameters, cursor, context
-  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1466, in _handle_dbapi_exception
-    util.raise_from_cause(sqlalchemy_exception, exc_info)
-  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 383, in raise_from_cause
-    reraise(type(exception), exception, tb=exc_tb, cause=cause)
-  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 128, in reraise
-    raise value.with_traceback(tb)
-  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
-    cursor, statement, parameters, context
-  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 552, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: cost.avg_weekly_cost
-[SQL: SELECT destination.id AS destination_id, destination.title AS destination_title, destination.country AS destination_country, destination.weather_ltd AS destination_weather_ltd, destination.weather_lng AS destination_weather_lng, destination.featured_photo_filename AS destination_featured_photo_filename, destination.featured_photo_url AS destination_featured_photo_url, destination.description AS destination_description, destination.timestamp AS destination_timestamp, destination.user_id AS destination_user_id 
-FROM destination ORDER BY cost.avg_weekly_cost ASC]
-(Background on this error at: http://sqlalche.me/e/e3q8)
-2019-05-21 09:58:48,426 ERROR: Exception on / [GET] [in /Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py:1761]
+2019-05-21 09:59:00,181 ERROR: Exception on / [GET] [in /Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
     cursor, statement, parameters, context
@@ -104,3 +51,62 @@ sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: cost
 [SQL: SELECT destination.id AS destination_id, destination.title AS destination_title, destination.country AS destination_country, destination.weather_ltd AS destination_weather_ltd, destination.weather_lng AS destination_weather_lng, destination.featured_photo_filename AS destination_featured_photo_filename, destination.featured_photo_url AS destination_featured_photo_url, destination.description AS destination_description, destination.timestamp AS destination_timestamp, destination.user_id AS destination_user_id 
 FROM destination ORDER BY cost.avg_weekly_cost ASC]
 (Background on this error at: http://sqlalche.me/e/e3q8)
+2019-05-21 09:59:18,752 INFO: Climbit startup [in /Users/mrerico/Desktop/climb_dest/app/__init__.py:53]
+2019-05-22 14:15:14,184 INFO: Climbit startup [in /Users/mrerico/Desktop/climb_dest/app/__init__.py:53]
+2019-05-30 16:16:13,220 INFO: Climbit startup [in /Users/mrerico/Desktop/climb_dest/app/__init__.py:53]
+2019-05-30 16:34:11,129 INFO: Climbit startup [in /Users/mrerico/Desktop/climb_dest/app/__init__.py:53]
+2019-06-15 15:23:02,360 INFO: Climbit startup [in /Users/mrerico/Desktop/climb_dest/app/__init__.py:53]
+2019-07-15 22:28:18,651 INFO: Climbit startup [in /Users/mrerico/Desktop/climb_dest/app/__init__.py:56]
+2019-07-16 11:26:14,141 INFO: Climbit startup [in ./app/__init__.py:56]
+2019-07-16 11:26:18,024 INFO: Climbit startup [in ./app/__init__.py:56]
+2019-07-16 11:26:25,223 INFO: Climbit startup [in ./app/__init__.py:56]
+2019-07-16 11:37:09,882 INFO: Climbit startup [in ./app/__init__.py:56]
+2019-07-16 17:58:20,422 INFO: Climbit startup [in ./app/__init__.py:56]
+2019-07-16 18:06:02,888 INFO: Climbit startup [in ./app/__init__.py:56]
+2019-07-16 18:33:16,053 INFO: Climbit startup [in ./app/__init__.py:56]
+2019-07-16 18:41:22,934 INFO: Climbit startup [in ./app/__init__.py:56]
+2019-07-16 18:43:18,068 INFO: Climbit startup [in ./app/__init__.py:56]
+2019-07-17 10:05:57,699 INFO: Climbit startup [in /Users/mrerico/Desktop/climb_dest/app/__init__.py:56]
+2019-07-17 10:06:03,468 INFO: Climbit startup [in /Users/mrerico/Desktop/climb_dest/app/__init__.py:56]
+2019-07-19 19:44:39,784 INFO: Climbit startup [in ./app/__init__.py:56]
+2019-07-19 19:47:52,678 INFO: Climbit startup [in ./app/__init__.py:56]
+2019-07-20 12:57:04,958 INFO: Climbit startup [in ./app/__init__.py:56]
+2019-07-20 12:59:15,990 INFO: Climbit startup [in /Users/mrerico/Desktop/climb_dest/app/__init__.py:56]
+2019-07-20 12:59:40,085 INFO: Climbit startup [in /Users/mrerico/Desktop/climb_dest/app/__init__.py:56]
+2019-07-20 13:00:46,596 INFO: Climbit startup [in ./app/__init__.py:56]
+2019-07-20 13:07:27,537 INFO: Climbit startup [in /Users/mrerico/Desktop/climb_dest/app/__init__.py:56]
+2019-07-20 13:12:16,723 INFO: Climbit startup [in /Users/mrerico/Desktop/climb_dest/app/__init__.py:56]
+2019-07-20 19:23:57,302 INFO: Climbit startup [in /Users/mrerico/Desktop/climb_dest/app/__init__.py:56]
+2019-07-20 19:33:19,986 INFO: Climbit startup [in /Users/mrerico/Desktop/climb_dest/app/__init__.py:56]
+2019-07-20 19:33:59,982 ERROR: Exception on /add_destination [POST] [in /Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/mrerico/Desktop/climb_dest/app/routes.py", line 499, in add_destination
+    photo_folder_url=photo_folder_url,
+NameError: name 'photo_folder_url' is not defined
+2019-07-20 19:34:01,502 INFO: Climbit startup [in ./app/__init__.py:56]
+2019-07-20 19:35:36,503 INFO: Climbit startup [in /Users/mrerico/Desktop/climb_dest/app/__init__.py:56]
+2019-07-20 19:36:01,030 INFO: Climbit startup [in ./app/__init__.py:56]
+2019-07-20 19:37:21,089 INFO: Climbit startup [in /Users/mrerico/Desktop/climb_dest/app/__init__.py:56]
+2019-07-20 19:37:53,924 INFO: Climbit startup [in ./app/__init__.py:56]
+2019-07-20 19:39:09,764 INFO: Climbit startup [in ./app/__init__.py:56]
+2019-07-20 19:40:03,164 INFO: Climbit startup [in /Users/mrerico/Desktop/climb_dest/app/__init__.py:56]
+2019-07-20 19:43:01,266 INFO: Climbit startup [in ./app/__init__.py:56]
+2019-07-20 19:44:11,908 INFO: Climbit startup [in ./app/__init__.py:56]
+2019-07-20 19:47:42,545 INFO: Climbit startup [in /Users/mrerico/Desktop/climb_dest/app/__init__.py:56]
+2019-07-20 19:48:34,937 INFO: Climbit startup [in ./app/__init__.py:56]
+2019-07-20 19:59:21,746 INFO: Climbit startup [in /Users/mrerico/Desktop/climb_dest/app/__init__.py:56]
+2019-07-20 20:01:20,509 INFO: Climbit startup [in /Users/mrerico/Desktop/climb_dest/app/__init__.py:56]

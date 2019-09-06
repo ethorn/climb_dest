@@ -1,4 +1,3 @@
-/* global $SCRIPT_ROOT:true currency:true */
 /* -------------------------------------------------------------------------
 -------
 -------   Filterbar Features

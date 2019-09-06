@@ -49,12 +49,14 @@
         {{ form.weather_place_autocomplete }} <br>
 
         <h3><span class="required">*</span> {{ form.featured_photo.label }}</h3>
+        <p>Please only use a landscape oriented photo here, it will look much better (jpg/jpeg)</p>
         {{ form.featured_photo }} <br>
         {% for error in form.featured_photo.errors %}
         <span style="color: red;">[{{ error }}]</span>
         {% endfor %}
 
         <h3>{{ form.additional_photos.label }} </h3>
+        <p>Any aspect ratio is fine here (jpg/jpeg)</p>
         {{ form.additional_photos }} <br>
         {% for error in form.additional_photos.errors %}
         <span style="color: red;">[{{ error }}]</span>
