@@ -404,10 +404,7 @@ def index():
 @login_required
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
-    destinations = [
-        {'author': user, 'destination': 'Lofoten test'},
-        {'author': user, 'destination': 'Bohuslaen test'}
-    ]
+    destinations = Destination.query.filter_by(user_id=user.id)
     return render_template('user.html', user=user, destinations=destinations)
 
 

@@ -7,6 +7,37 @@
 //-------
 //----------------------------------------------------------------------------
 
+p.announcements {
+	display: none;
+	font-size: 1em !important;
+	text-align:center; 
+	font-style: italic; 
+	border: 1px solid #999;
+	border-radius: 3px;
+	box-shadow: 0 0 10px rgba($black, .2);
+	color: #3d3033; 
+	font-size:0.8em; 
+	padding: 15px 8%;
+	margin: 0 5%;
+
+	span {
+		padding: 5px;
+		color: $white;
+		background: #d11a77;
+		border-radius: 3px;
+		
+		&:hover {
+			background: #7e0340;
+			cursor: pointer;
+		}
+
+		a {
+			color: $white;
+			text-decoration: none;
+		}
+	}
+}
+
 // ===========================================================
 // ==== TOP BAR
 

@@ -52,10 +52,15 @@
 		{% set perc_very_hard_routes = very_hard_routes / most_routes * 100 %}
 
 		<!-- calculate margin-top for each column, to reflect percentage height -->
-		{% set margin_easy_routes = 80 - 0.8*perc_easy_routes %}
-		{% set margin_intermediate_routes = 80 - 0.8*perc_intermediate_routes %}
-		{% set margin_hard_routes = 80 - 0.8*perc_hard_routes %}
-		{% set margin_very_hard_routes = 80 - 0.8*perc_very_hard_routes %}
+		{% set margin_easy_routes = 60 - 0.8*perc_easy_routes %}
+		{% set margin_intermediate_routes = 60 - 0.8*perc_intermediate_routes %}
+		{% set margin_hard_routes = 60 - 0.8*perc_hard_routes %}
+		{% set margin_very_hard_routes = 60 - 0.8*perc_very_hard_routes %}
+
+		{% set height_easy_routes = 60*0.01*perc_easy_routes %}
+		{% set height_intermediate_routes = 60*0.01*perc_intermediate_routes %}
+		{% set height_hard_routes = 60*0.01*perc_hard_routes %}
+		{% set height_very_hard_routes = 60*0.01*perc_very_hard_routes %}
 								
 	{% endif %}
 	<li class="destination-container js-destination-bg-polyfill">
@@ -118,19 +123,19 @@
 				<!-- Routes diagram -->
 				<div class="destination-top__routes-chart">
 					<span class="column">
-						<span class="hide-text col-grade-easy" style="height: {{ 60*0.01*perc_easy_routes }}px;">{{ easy_routes }}</span>
+						<span class="hide-text col-grade-easy" style="height: {{ height_easy_routes }}px);">{{ easy_routes }}</span>
 						<!-- 2 - 3 -->
 					</span>
 					<span class="column">
-						<span class="hide-text col-grade-intermediate" style="height: {{ 60*0.01*perc_intermediate_routes }}px;">{{ intermediate_routes }}</span>
+						<span class="hide-text col-grade-intermediate" style="height: {{ height_intermediate_routes }}px;">{{ intermediate_routes }}</span>
 						<!-- 4 -->
 					</span>
 					<span class="column">
-						<span class="hide-text col-grade-hard" style="height: {{ 60*0.01*perc_hard_routes }}px;">{{ hard_routes }}</span>
+						<span class="hide-text col-grade-hard" style="height: {{ height_hard_routes }}px;">{{ hard_routes }}</span>
 						<!-- 5 -->
 					</span>
 					<span class="column">
-						<span class="hide-text col-grade-very-hard" style="height: {{ 60*0.01*perc_very_hard_routes }}px;">{{ very_hard_routes }}</span>
+						<span class="hide-text col-grade-very-hard" style="height: {{ height_very_hard_routes }}px;">{{ very_hard_routes }}</span>
 						<!-- 6 -->
 					</span>
 					<div class="clearfix"></div>
@@ -169,7 +174,7 @@
 				<span class="destination-bottom__weekly-cost">
 					<span class="property-title">Est. cost: </span>
 					<span class="property-value--cost">
-						<span class="money">{{ cost.avg_weekly_cost|round|int }}</span> 
+						<span class="money">{{ cost.avg_weekly_cost|int }}</span> 
 						<span class="currency">{{ cost.cost_form_currency }}
 						</span> 
 					/ week
