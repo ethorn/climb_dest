@@ -12,8 +12,9 @@ from app.errors import routes
 # ## Alle routes, forms og funksjoner skal inn i ulike blueprints
 # Poeng med blueprints: It encapsulates a feature, separation of concerns, easy to use in other projects
 # Andre blueprints jeg kan lage:
-# * Image resize/compression ??
-# * Add destination
-# * load destinations / filtering
-# * Currency
-# *
+# * image_upload (this is not bound to add_destination)
+# * add_destination
+# * load destinations / filtering / index
+# * currency
+# * logged_in (settigs, etc.)
+# * 

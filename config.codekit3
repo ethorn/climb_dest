@@ -1677,14 +1677,6 @@
 		"oAP": "/app/templates/user.html",
 		"oF": 0
 		},
-	"/app/templates/view_image.html": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/app/templates/view_image.html",
-		"oF": 0
-		},
 	"/climb_dest.py": {
 		"cB": 0,
 		"ft": 8192,
