@@ -17,7 +17,7 @@ app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
-login.login_view = 'login'  # To use the login-required feature to show certain views only if logged in. 'login' is the function/endpoint for the login view
+login.login_view = 'auth.login'  # To use the login-required feature to show certain views only if logged in. 'login' is the function/endpoint for the login view
 mail = Mail(app)
 # Setup Flask-User and specify the User data-model
 
@@ -65,6 +65,9 @@ app.register_blueprint(errors_bp)
 
 from app.auth import bp as auth_bp
 app.register_blueprint(auth_bp, url_prefix='/auth')
+
+from app.dashboard import bp as dashboard_bp
+app.register_blueprint(dashboard_bp)
 
 # ##
 

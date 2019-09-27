@@ -3,7 +3,7 @@ from flask import Blueprint
 
 bp = Blueprint('main', __name__)
 
-from app.errors import routes
+from app.main import routes
 
 # Refactor routes and other functions
 # change url_for, intex -> main.index etc.

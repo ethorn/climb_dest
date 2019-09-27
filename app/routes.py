@@ -8,8 +8,7 @@ from flask_login import current_user, login_required
 from sqlalchemy import and_, or_, true  # , false
 
 from app import app, db, images
-from app.forms import (CurrencyForm, DestinationForm, EditDestinationForm,
-                       EditProfileForm)
+from app.forms import (CurrencyForm, DestinationForm, EditDestinationForm)
 from app.models import (Accomodation, AdditionalPhotos, Approach, Car, Cost,
                         Destination, Months, Routes, User)
 from app.tasks import create_image_set
@@ -18,24 +17,7 @@ import secrets
 from app import q
 
 
-@app.route('/dashboard/<page>', methods=['GET', 'POST'])
-@login_required
-def dashboard(page):
-    if page == "settings":
-        form = EditProfileForm()
-        if form.validate_on_submit():
-            current_user.displayname = form.displayname.data
-            current_user.location = form.location.data
-            current_user.bio = form.bio.data
-            db.session.commit()
-            flash('Your settings have been saved.')
-            return redirect(url_for('dashboard', page='settings'))
-        elif request.method == 'GET':
-            form.displayname.data = current_user.displayname
-            form.location.data = current_user.location
-            form.bio.data = current_user.bio
-        return render_template('dashboard/dashboard.html', page=page, form=form)
-    return render_template('dashboard/dashboard.html', page=page)
+
 
 
 # Gets called from .load() call in loadDestinations

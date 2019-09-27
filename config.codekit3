@@ -296,6 +296,54 @@
 		"oAP": "/app/auth/routes.py",
 		"oF": 0
 		},
+	"/app/dashboard/__init__.py": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 1,
+		"oAP": "/app/dashboard/__init__.py",
+		"oF": 0
+		},
+	"/app/dashboard/__pycache__/__init__.cpython-37.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 1,
+		"oAP": "/app/dashboard/__pycache__/__init__.cpython-37.pyc",
+		"oF": 0
+		},
+	"/app/dashboard/__pycache__/forms.cpython-37.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/app/dashboard/__pycache__/forms.cpython-37.pyc",
+		"oF": 0
+		},
+	"/app/dashboard/__pycache__/routes.cpython-37.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/app/dashboard/__pycache__/routes.cpython-37.pyc",
+		"oF": 0
+		},
+	"/app/dashboard/forms.py": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/app/dashboard/forms.py",
+		"oF": 0
+		},
+	"/app/dashboard/routes.py": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/app/dashboard/routes.py",
+		"oF": 0
+		},
 	"/app/email.py": {
 		"cB": 0,
 		"ft": 8192,
@@ -342,6 +390,14 @@
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/app/forms.py",
+		"oF": 0
+		},
+	"/app/image_upload/__init__.py": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 1,
+		"oAP": "/app/image_upload/__init__.py",
 		"oF": 0
 		},
 	"/app/main/__init__.py": {
