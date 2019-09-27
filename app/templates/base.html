@@ -42,7 +42,7 @@
 		<nav class="menu js-menu">
 			<ul>
 				<li><a href="{{ url_for('index') }}">Home</a></li>
-				<li><strong><a href="{{ url_for('add_destination') }}">Add Destination</a></strong></li>
+				<li><strong><a href="{{ url_for('destinations.add_destination') }}">Add Destination</a></strong></li>
 				{% if current_user.is_anonymous %}
 				<li>
 					<a href="{{ url_for('auth.login') }}">Login</a>
@@ -53,20 +53,20 @@
 					<a href="#">{{ current_user.username }} &#9662; </a>
 					<div class="dropdown-content dropdown-content-menu">
 						<ul>
-							<li><a href="{{ url_for('user', username=current_user.username) }}">View Profile</a></li>
-							<!-- <li><a href="{{ url_for('dashboard.dashboard', page='favorites') }}">Favorites</a></li>
-							<li><a href="{{ url_for('dashboard.dashboard', page='searches') }}">Searches</a></li>
-							<li><a href="{{ url_for('dashboard.dashboard', page='destinations') }}">Destinations</a></li> -->
-							<li><a href="{{ url_for('dashboard.dashboard', page='settings') }}">Settings</a></li>
+							<li><a href="{{ url_for('user.user', username=current_user.username) }}">View Profile</a></li>
+							<!-- <li><a href="{{ url_for('user.dashboard', page='favorites') }}">Favorites</a></li>
+							<li><a href="{{ url_for('user.dashboard', page='searches') }}">Searches</a></li>
+							<li><a href="{{ url_for('user.dashboard', page='destinations') }}">Destinations</a></li> -->
+							<li><a href="{{ url_for('user.dashboard', page='settings') }}">Settings</a></li>
 							<li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
 						</ul>
 					</div>
 				</li>
-				<li class="hide-over-600"><a href="{{ url_for('user', username=current_user.username) }}">View Profile</a></li>
-				<li class="hide-over-600"><a href="{{ url_for('dashboard.dashboard', page='favorites') }}">Manage Favorites</a></li>
-				<li class="hide-over-600"><a href="{{ url_for('dashboard.dashboard', page='searches') }}">Saved Searches</a></li>
-				<li class="hide-over-600"><a href="{{ url_for('dashboard.dashboard', page='destinations') }}">Your Destinations</a></li>
-				<li class="hide-over-600"><a href="{{ url_for('dashboard.dashboard', page='settings') }}">Settings</a></li>
+				<li class="hide-over-600"><a href="{{ url_for('user.user', username=current_user.username) }}">View Profile</a></li>
+				<li class="hide-over-600"><a href="{{ url_for('user.dashboard', page='favorites') }}">Manage Favorites</a></li>
+				<li class="hide-over-600"><a href="{{ url_for('user.dashboard', page='searches') }}">Saved Searches</a></li>
+				<li class="hide-over-600"><a href="{{ url_for('user.dashboard', page='destinations') }}">Your Destinations</a></li>
+				<li class="hide-over-600"><a href="{{ url_for('user.dashboard', page='settings') }}">Settings</a></li>
 				<li class="hide-over-600"><a href="{{ url_for('auth.logout') }}">Logout</a></li>
 				{% endif %}
 			</ul>

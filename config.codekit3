@@ -296,52 +296,52 @@
 		"oAP": "/app/auth/routes.py",
 		"oF": 0
 		},
-	"/app/dashboard/__init__.py": {
+	"/app/destinations/__init__.py": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 1,
-		"oAP": "/app/dashboard/__init__.py",
+		"oAP": "/app/destinations/__init__.py",
 		"oF": 0
 		},
-	"/app/dashboard/__pycache__/__init__.cpython-37.pyc": {
+	"/app/destinations/__pycache__/__init__.cpython-37.pyc": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 1,
-		"oAP": "/app/dashboard/__pycache__/__init__.cpython-37.pyc",
+		"oAP": "/app/destinations/__pycache__/__init__.cpython-37.pyc",
 		"oF": 0
 		},
-	"/app/dashboard/__pycache__/forms.cpython-37.pyc": {
+	"/app/destinations/__pycache__/forms.cpython-37.pyc": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/app/dashboard/__pycache__/forms.cpython-37.pyc",
+		"oAP": "/app/destinations/__pycache__/forms.cpython-37.pyc",
 		"oF": 0
 		},
-	"/app/dashboard/__pycache__/routes.cpython-37.pyc": {
+	"/app/destinations/__pycache__/routes.cpython-37.pyc": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/app/dashboard/__pycache__/routes.cpython-37.pyc",
+		"oAP": "/app/destinations/__pycache__/routes.cpython-37.pyc",
 		"oF": 0
 		},
-	"/app/dashboard/forms.py": {
+	"/app/destinations/forms.py": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/app/dashboard/forms.py",
+		"oAP": "/app/destinations/forms.py",
 		"oF": 0
 		},
-	"/app/dashboard/routes.py": {
+	"/app/destinations/routes.py": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/app/dashboard/routes.py",
+		"oAP": "/app/destinations/routes.py",
 		"oF": 0
 		},
 	"/app/email.py": {
@@ -1423,6 +1423,72 @@
 		"oAP": "/app/static/style.css.map",
 		"oF": 0
 		},
+	"/app/static/uploads/images/Kalymnos-021984ed8d086cbf9a9860e0159bef19/555520_10151193707670985_576640311_n-1200.jpg": {
+		"ft": 16384,
+		"iS": 168916,
+		"jF": 0,
+		"oA": 0,
+		"oAP": "/app/static/uploads/images/Kalymnos-021984ed8d086cbf9a9860e0159bef19/555520_10151193707670985_576640311_n-1200.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 30
+		},
+	"/app/static/uploads/images/Kalymnos-021984ed8d086cbf9a9860e0159bef19/555520_10151193707670985_576640311_n-600.jpg": {
+		"ft": 16384,
+		"iS": 85381,
+		"jF": 0,
+		"oA": 0,
+		"oAP": "/app/static/uploads/images/Kalymnos-021984ed8d086cbf9a9860e0159bef19/555520_10151193707670985_576640311_n-600.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 30
+		},
+	"/app/static/uploads/images/Kalymnos-021984ed8d086cbf9a9860e0159bef19/555520_10151193707670985_576640311_n-900.jpg": {
+		"ft": 16384,
+		"iS": 183985,
+		"jF": 0,
+		"oA": 0,
+		"oAP": "/app/static/uploads/images/Kalymnos-021984ed8d086cbf9a9860e0159bef19/555520_10151193707670985_576640311_n-900.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 30
+		},
+	"/app/static/uploads/images/Kalymnos-021984ed8d086cbf9a9860e0159bef19/555520_10151193707670985_576640311_n-mini.jpg": {
+		"ft": 16384,
+		"iS": 17162,
+		"jF": 0,
+		"oA": 0,
+		"oAP": "/app/static/uploads/images/Kalymnos-021984ed8d086cbf9a9860e0159bef19/555520_10151193707670985_576640311_n-mini.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 30
+		},
+	"/app/static/uploads/images/Kalymnos-021984ed8d086cbf9a9860e0159bef19/555520_10151193707670985_576640311_n-thumbnail.jpg": {
+		"ft": 16384,
+		"iS": 38611,
+		"jF": 0,
+		"oA": 0,
+		"oAP": "/app/static/uploads/images/Kalymnos-021984ed8d086cbf9a9860e0159bef19/555520_10151193707670985_576640311_n-thumbnail.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 30
+		},
+	"/app/static/uploads/images/Kalymnos-3c9f12350cf9c76062caa1b05334e150/424606_10151193060940985_135313849_n.jpg": {
+		"ft": 16384,
+		"iS": 155435,
+		"jF": 0,
+		"oA": 0,
+		"oAP": "/app/static/uploads/images/Kalymnos-3c9f12350cf9c76062caa1b05334e150/424606_10151193060940985_135313849_n.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 30
+		},
 	"/app/static/uploads/images/Kalymnos-82a89958f468309acaa97f2d971c473f/184935_129768310428682_6405062_n-1200.jpg": {
 		"ft": 16384,
 		"iS": 90805,
@@ -1541,14 +1607,6 @@
 		"oAP": "/app/tasks.py",
 		"oF": 0
 		},
-	"/app/templates/add_destination.html": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/app/templates/add_destination.html",
-		"oF": 0
-		},
 	"/app/templates/auth/login.html": {
 		"cB": 0,
 		"ft": 8192,
@@ -1589,54 +1647,6 @@
 		"oAP": "/app/templates/base.html",
 		"oF": 0
 		},
-	"/app/templates/dashboard/dashboard.html": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/app/templates/dashboard/dashboard.html",
-		"oF": 0
-		},
-	"/app/templates/dashboard/dashboard_destinations.html": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/app/templates/dashboard/dashboard_destinations.html",
-		"oF": 0
-		},
-	"/app/templates/dashboard/dashboard_favorites.html": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/app/templates/dashboard/dashboard_favorites.html",
-		"oF": 0
-		},
-	"/app/templates/dashboard/dashboard_mobile_landing.html": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/app/templates/dashboard/dashboard_mobile_landing.html",
-		"oF": 0
-		},
-	"/app/templates/dashboard/dashboard_searches.html": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/app/templates/dashboard/dashboard_searches.html",
-		"oF": 0
-		},
-	"/app/templates/dashboard/dashboard_settings.html": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/app/templates/dashboard/dashboard_settings.html",
-		"oF": 0
-		},
 	"/app/templates/destination_single_page.html": {
 		"cB": 0,
 		"ft": 8192,
@@ -1645,12 +1655,20 @@
 		"oAP": "/app/templates/destination_single_page.html",
 		"oF": 0
 		},
-	"/app/templates/edit_destination.html": {
+	"/app/templates/destinations/add_destination.html": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/app/templates/edit_destination.html",
+		"oAP": "/app/templates/destinations/add_destination.html",
+		"oF": 0
+		},
+	"/app/templates/destinations/edit_destination.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/app/templates/destinations/edit_destination.html",
 		"oF": 0
 		},
 	"/app/templates/email/reset_password.html": {
@@ -1725,12 +1743,108 @@
 		"oAP": "/app/templates/upload_image.html",
 		"oF": 0
 		},
-	"/app/templates/user.html": {
+	"/app/templates/user/dashboard.html": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/app/templates/user.html",
+		"oAP": "/app/templates/user/dashboard.html",
+		"oF": 0
+		},
+	"/app/templates/user/dashboard_destinations.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/app/templates/user/dashboard_destinations.html",
+		"oF": 0
+		},
+	"/app/templates/user/dashboard_favorites.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/app/templates/user/dashboard_favorites.html",
+		"oF": 0
+		},
+	"/app/templates/user/dashboard_mobile_landing.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/app/templates/user/dashboard_mobile_landing.html",
+		"oF": 0
+		},
+	"/app/templates/user/dashboard_searches.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/app/templates/user/dashboard_searches.html",
+		"oF": 0
+		},
+	"/app/templates/user/dashboard_settings.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/app/templates/user/dashboard_settings.html",
+		"oF": 0
+		},
+	"/app/templates/user/user.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/app/templates/user/user.html",
+		"oF": 0
+		},
+	"/app/user/__init__.py": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 1,
+		"oAP": "/app/user/__init__.py",
+		"oF": 0
+		},
+	"/app/user/__pycache__/__init__.cpython-37.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 1,
+		"oAP": "/app/user/__pycache__/__init__.cpython-37.pyc",
+		"oF": 0
+		},
+	"/app/user/__pycache__/forms.cpython-37.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/app/user/__pycache__/forms.cpython-37.pyc",
+		"oF": 0
+		},
+	"/app/user/__pycache__/routes.cpython-37.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/app/user/__pycache__/routes.cpython-37.pyc",
+		"oF": 0
+		},
+	"/app/user/forms.py": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/app/user/forms.py",
+		"oF": 0
+		},
+	"/app/user/routes.py": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/app/user/routes.py",
 		"oF": 0
 		},
 	"/climb_dest.py": {
