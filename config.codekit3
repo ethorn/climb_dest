@@ -344,6 +344,30 @@
 		"oAP": "/app/forms.py",
 		"oF": 0
 		},
+	"/app/main/__init__.py": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 1,
+		"oAP": "/app/main/__init__.py",
+		"oF": 0
+		},
+	"/app/main/forms.py": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/app/main/forms.py",
+		"oF": 0
+		},
+	"/app/main/routes.py": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/app/main/routes.py",
+		"oF": 0
+		},
 	"/app/models.py": {
 		"cB": 0,
 		"ft": 8192,
