@@ -4,15 +4,12 @@ import pycountry_convert
 import requests
 from flask import (flash, json, jsonify, make_response, redirect,
                    render_template, request, url_for)
-from flask_login import current_user, login_required, login_user, logout_user
+from flask_login import current_user, login_required
 from sqlalchemy import and_, or_, true  # , false
-from werkzeug.urls import url_parse
 
 from app import app, db, images
-from app.email import send_password_reset_email
 from app.forms import (CurrencyForm, DestinationForm, EditDestinationForm,
-                       EditProfileForm, LoginForm, RegistrationForm,
-                       ResetPasswordForm, ResetPasswordRequestForm)
+                       EditProfileForm)
 from app.models import (Accomodation, AdditionalPhotos, Approach, Car, Cost,
                         Destination, Months, Routes, User)
 from app.tasks import create_image_set
@@ -61,37 +58,6 @@ def dashboard(page):
             form.bio.data = current_user.bio
         return render_template('dashboard/dashboard.html', page=page, form=form)
     return render_template('dashboard/dashboard.html', page=page)
-
-
-@app.route('/reset_password_request', methods=['GET', 'POST'])
-def reset_password_request():
-    if current_user.is_authenticated:
-        return redirect(url_for('index'))
-    form = ResetPasswordRequestForm()
-    if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first()
-        if user:
-            send_password_reset_email(user)
-        flash('Check your email for the instructions to reset your password')
-        return redirect(url_for('login'))
-    return render_template('reset_password_request.html',
-                           title='Reset Password', form=form)
-
-
-@app.route('/reset_password/<token>', methods=['GET', 'POST'])
-def reset_password(token):
-    if current_user.is_authenticated:
-        return redirect(url_for('index'))
-    user = User.verify_reset_password_token(token)  # static function, the method is called without a User instance
-    if not user:
-        return redirect(url_for('index'))
-    form = ResetPasswordForm()
-    if form.validate_on_submit():
-        user.set_password(form.password.data)
-        db.session.commit()
-        flash('Your password has been reset.')
-        return redirect(url_for('login'))
-    return render_template('reset_password.html', form=form)
 
 
 # Gets called from .load() call in loadDestinations
@@ -406,49 +372,6 @@ def user(username):
     user = User.query.filter_by(username=username).first_or_404()
     destinations = Destination.query.filter_by(user_id=user.id)
     return render_template('user.html', user=user, destinations=destinations)
-
-
-# imports the LoginForm class from forms.py, puts it into a variable,
-# and sends it to the html template
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if current_user.is_authenticated:  # checks if the user is logged in or not
-        return redirect(url_for('index'))
-    form = LoginForm()
-    if form.validate_on_submit():
-        user = User.query.filter_by(username=form.username.data).first()
-        if user is None or not user.check_password(form.password.data):
-            flash('Invalid username or password')
-            return redirect(url_for('login'))
-        login_user(user, remember=form.remember_me.data)
-        next_page = request.args.get('next')  # from (/login?next=/index) gets the value of ?next=
-        if not next_page or url_parse(next_page).netloc != '':
-            # .netloc checks if the URL in ?next= is absolute or relative, if absolute (http://www.domain.com/...)
-            # it redirects to index for security purposes
-            next_page = url_for('index')
-        return redirect(next_page)
-    return render_template('login.html', title='Sign In', form=form)
-
-
-@app.route('/logout')
-def logout():
-    logout_user()
-    return redirect(url_for('index'))
-
-
-@app.route('/register', methods=['GET', 'POST'])
-def register():
-    if current_user.is_authenticated:
-        return redirect(url_for('index'))
-    form = RegistrationForm()
-    if form.validate_on_submit():
-        user = User(username=form.username.data, email=form.email.data)
-        user.set_password(form.password.data)
-        db.session.add(user)
-        db.session.commit()
-        flash('Congratulations, you are now a registered user!')
-        return redirect(url_for('login'))
-    return render_template('register.html', title='Register', form=form)
 
 
 @app.route('/add_destination', methods=['GET', 'POST'])

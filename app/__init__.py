@@ -1,7 +1,7 @@
-from flask import Flask  # Fordi jeg har installert flask i den virtuelle environmenten
-from config import Config  # Kan importa från "en folder upp" eftersom climb_dest.py importar hela appen till den filen
-from flask_sqlalchemy import SQLAlchemy  # från paketet importeras klassen SQLAlchemy
-from flask_migrate import Migrate  # från paketet importeras klassen SQLAlchemy
+from flask import Flask 
+from config import Config
+from flask_sqlalchemy import SQLAlchemy  
+from flask_migrate import Migrate 
 from flask_login import LoginManager
 from flask_uploads import UploadSet, IMAGES, configure_uploads, patch_request_class
 import logging
@@ -57,8 +57,16 @@ if not app.debug:
     app.logger.info('Climbit startup')
 
 
+# Blueprints
+
 from app.errors import bp as errors_bp
 app.register_blueprint(errors_bp)
+
+
+from app.auth import bp as auth_bp
+app.register_blueprint(auth_bp, url_prefix='/auth')
+
+# ##
 
 
 from app import routes, models, tasks

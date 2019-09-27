@@ -45,8 +45,8 @@
 				<li><strong><a href="{{ url_for('add_destination') }}">Add Destination</a></strong></li>
 				{% if current_user.is_anonymous %}
 				<li>
-					<a href="{{ url_for('login') }}">Login</a>
-				<li><a href="{{ url_for('register') }}">Register</a></li>
+					<a href="{{ url_for('auth.login') }}">Login</a>
+				<li><a href="{{ url_for('auth.register') }}">Register</a></li>
 				</li>
 				{% else %}
 				<li class="menu-dashboard-drop-btn hide-under-600">
@@ -58,7 +58,7 @@
 							<li><a href="{{ url_for('dashboard', page='searches') }}">Searches</a></li>
 							<li><a href="{{ url_for('dashboard', page='destinations') }}">Destinations</a></li> -->
 							<li><a href="{{ url_for('dashboard', page='settings') }}">Settings</a></li>
-							<li><a href="{{ url_for('logout') }}">Logout</a></li>
+							<li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
 						</ul>
 					</div>
 				</li>
@@ -67,7 +67,7 @@
 				<li class="hide-over-600"><a href="{{ url_for('dashboard', page='searches') }}">Saved Searches</a></li>
 				<li class="hide-over-600"><a href="{{ url_for('dashboard', page='destinations') }}">Your Destinations</a></li>
 				<li class="hide-over-600"><a href="{{ url_for('dashboard', page='settings') }}">Settings</a></li>
-				<li class="hide-over-600"><a href="{{ url_for('logout') }}">Logout</a></li>
+				<li class="hide-over-600"><a href="{{ url_for('auth.logout') }}">Logout</a></li>
 				{% endif %}
 			</ul>
 		</nav>

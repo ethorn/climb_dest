@@ -1,11 +1,12 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, IntegerField, PasswordField, BooleanField, SubmitField, SelectField, \
+from wtforms import StringField, TextAreaField, IntegerField, BooleanField, SubmitField, SelectField, \
     FileField, MultipleFileField, HiddenField, DecimalField
-from wtforms.validators import ValidationError, DataRequired, Length, Email, EqualTo, Optional
+from wtforms.validators import ValidationError, DataRequired, Length, Optional
 from flask_wtf.file import FileAllowed, FileRequired
-from app.models import User, Destination
+from app.models import Destination
 from app import images
 import pycountry
+
 
 class CountrySelectField(SelectField):
     def __init__(self, *args, **kwargs):
@@ -31,52 +32,6 @@ class EditProfileForm(FlaskForm):
     #         user = User.query.filter_by(username=self.username.data).first()
     #         if user is not None:
     #             raise ValidationError('Please use a different username.')
-
-
-class ResetPasswordRequestForm(FlaskForm):
-    email = StringField('Email', validators=[DataRequired(), Email()])
-    submit = SubmitField('Request Password Reset')
-
-
-class ResetPasswordForm(FlaskForm):
-    password = PasswordField('Password', validators=[DataRequired()])
-    password2 = PasswordField(
-        'Repeat Password', validators=[DataRequired(), EqualTo('password')])
-    submit = SubmitField('Request Password Reset')
-
-
-class LoginForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    remember_me = BooleanField('Remember Me')  # the string gives the text for the label
-    submit = SubmitField('Sign In')
-
-
-class RegistrationForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
-    email = StringField('Email', validators=[DataRequired(), Email()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    password2 = PasswordField(
-        'Repeat Password', validators=[DataRequired(), EqualTo('password')])
-    submit = SubmitField('Register')
-
-    def validate_username(self, username):  # When you add any methods that match the pattern validate_<field_name>,
-                                            # WTForms takes those as custom validators and invokes them in addition to
-                                            # the stock validators. In this case I want to make sure that the username
-                                            # and email address entered by the user are not already in the database, so
-                                            # these two methods issue database queries expecting there will be no
-                                            # results. In the event a result exists, a validation error is triggered
-                                            # by raising ValidationError. The message included as the argument in the
-                                            # exception will be the message that will be displayed next to the field
-                                            # for the user to see.
-        user = User.query.filter_by(username=username.data).first()
-        if user is not None:
-            raise ValidationError('Please use a different username.')
-
-    def validate_email(self, email):
-        user = User.query.filter_by(email=email.data).first()
-        if user is not None:
-            raise ValidationError('Please use a different email address.')
 
 
 class CurrencyForm(FlaskForm):
