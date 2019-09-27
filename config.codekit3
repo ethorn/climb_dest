@@ -128,6 +128,14 @@
 		"oT": 1,
 		"q": 100
 		},
+	"/app.db": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/app.db",
+		"oF": 0
+		},
 	"/app/__init__.py": {
 		"cB": 0,
 		"ft": 8192,
@@ -232,12 +240,36 @@
 		"oAP": "/app/email.py",
 		"oF": 0
 		},
-	"/app/errors.py": {
+	"/app/errors/__init__.py": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 1,
+		"oAP": "/app/errors/__init__.py",
+		"oF": 0
+		},
+	"/app/errors/__pycache__/__init__.cpython-37.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 1,
+		"oAP": "/app/errors/__pycache__/__init__.cpython-37.pyc",
+		"oF": 0
+		},
+	"/app/errors/__pycache__/handlers.cpython-37.pyc": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/app/errors.py",
+		"oAP": "/app/errors/__pycache__/handlers.cpython-37.pyc",
+		"oF": 0
+		},
+	"/app/errors/handlers.py": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/app/errors/handlers.py",
 		"oF": 0
 		},
 	"/app/forms.py": {
@@ -1365,22 +1397,6 @@
 		"oAP": "/app/tasks.py",
 		"oF": 0
 		},
-	"/app/templates/404.html": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/app/templates/404.html",
-		"oF": 0
-		},
-	"/app/templates/500.html": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/app/templates/500.html",
-		"oF": 0
-		},
 	"/app/templates/add_destination.html": {
 		"cB": 0,
 		"ft": 8192,
@@ -1475,6 +1491,22 @@
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/app/templates/email/reset_password.txt",
+		"oF": 0
+		},
+	"/app/templates/errors/404.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/app/templates/errors/404.html",
+		"oF": 0
+		},
+	"/app/templates/errors/500.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/app/templates/errors/500.html",
 		"oF": 0
 		},
 	"/app/templates/feedback.html": {
