@@ -1,4 +1,5 @@
 import os
+from flask import request
 from dotenv import load_dotenv
 load_dotenv()
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -9,9 +10,9 @@ class Config(object):
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL') or 'sqlite:///' + os.path.join(basedir, 'app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     UPLOADS_DEFAULT_DEST = 'app/static/uploads'
-    UPLOADS_DEFAULT_URL = os.getenv('UPLOADS_DEFAULT_URL') or 'https://climbit.ericthorn.me/static/uploads/'
+    UPLOADS_DEFAULT_URL = os.getenv('UPLOADS_DEFAULT_URL') or 'http://127.0.0.1:5000/static/uploads/'
     UPLOADED_IMAGES_DEST = 'app/static/uploads/images'
-    UPLOADED_IMAGES_URL = os.getenv('UPLOADED_IMAGES_URL') or 'https://climbit.ericthorn.me/static/uploads/images/'
+    UPLOADED_IMAGES_URL = os.getenv('UPLOADED_IMAGES_URL') or 'http://127.0.0.1:5000/static/uploads/images/'
     UPLOADS_PILLOW = os.path.join(basedir, 'app/static/uploads/images')
     MAIL_SERVER = os.getenv('MAIL_SERVER')
     MAIL_PORT = int(os.getenv('MAIL_PORT') or 25)
