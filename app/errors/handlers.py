@@ -1,7 +1,7 @@
 from flask import render_template
 from app import db
 from app.errors import bp
-from app.forms import CurrencyForm
+from app.main.forms import CurrencyForm
 
 
 @bp.app_errorhandler(404)

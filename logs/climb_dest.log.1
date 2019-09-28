@@ -1,0 +1,116 @@
+2019-09-28 14:38:24,375 INFO: Climbit startup [in /Users/mrerico/Desktop/climb_dest/app/__init__.py:57]
+2019-09-28 14:39:05,200 ERROR: Exception on /_load_destinations [POST] [in /Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/mrerico/Desktop/climb_dest/app/main/routes.py", line 127, in load_destinations
+    destinations = Destination.query.join(*joins).filter(*filters).order_by(order_p_final).all()
+NameError: name 'order_p_final' is not defined
+2019-09-28 14:39:05,204 ERROR: Exception on /_load_destinations [POST] [in /Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/mrerico/Desktop/climb_dest/app/main/routes.py", line 127, in load_destinations
+    destinations = Destination.query.join(*joins).filter(*filters).order_by(order_p_final).all()
+NameError: name 'order_p_final' is not defined
+2019-09-28 14:39:26,794 ERROR: Exception on /_load_destinations [POST] [in /Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/mrerico/Desktop/climb_dest/app/main/routes.py", line 127, in load_destinations
+    destinations = Destination.query.join(*joins).filter(*filters).order_by(order_p_final).all()
+NameError: name 'order_p_final' is not defined
+2019-09-28 14:40:36,978 ERROR: Exception on /_load_destinations [POST] [in /Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/mrerico/Desktop/climb_dest/app/main/routes.py", line 127, in load_destinations
+    destinations = Destination.query.join(*joins).filter(*filters).order_by(order_p_final).all()
+NameError: name 'order_p_final' is not defined
+2019-09-28 14:42:19,107 INFO: Climbit startup [in /Users/mrerico/Desktop/climb_dest/app/__init__.py:57]
+2019-09-28 15:15:36,461 INFO: Climbit startup [in /Users/mrerico/Desktop/climb_dest/app/__init__.py:57]
+2019-09-28 15:54:47,346 INFO: Climbit startup [in /Users/mrerico/Desktop/climb_dest/app/__init__.py:57]
+2019-09-28 15:55:03,401 ERROR: Exception on /index [GET] [in /Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/mrerico/Desktop/climb_dest/app/main/routes.py", line 151, in index
+    currency_form=currency_form, user=User)
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/templating.py", line 135, in render_template
+    context, ctx.app)
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/mrerico/Desktop/climb_dest/app/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/mrerico/Desktop/climb_dest/app/templates/base.html", line 36, in top-level template code
+    <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/climb_dest_6.svg') }}"
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/helpers.py", line 356, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/app.py", line 2061, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/flask/helpers.py", line 345, in url_for
+    force_external=external)
+  File "/Users/mrerico/Desktop/climb_dest/venv/lib/python3.7/site-packages/werkzeug/routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'index'. Did you mean 'main.index' instead?
+2019-09-28 15:55:12,321 INFO: Climbit startup [in /Users/mrerico/Desktop/climb_dest/app/__init__.py:57]

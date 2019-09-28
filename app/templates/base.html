@@ -33,7 +33,7 @@
 <body>
 	<div class="top-bar">
 		<div class="logo">
-			<a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/climb_dest_6.svg') }}"
+			<a href="{{ url_for('main.index') }}"><img src="{{ url_for('static', filename='images/climb_dest_6.svg') }}"
 					alt="Climbit"></a>
 		</div>
 		<div class="search hidden">
@@ -41,7 +41,7 @@
 		</div>
 		<nav class="menu js-menu">
 			<ul>
-				<li><a href="{{ url_for('index') }}">Home</a></li>
+				<li><a href="{{ url_for('main.index') }}">Home</a></li>
 				<li><strong><a href="{{ url_for('destinations.add_destination') }}">Add Destination</a></strong></li>
 				{% if current_user.is_anonymous %}
 				<li>
