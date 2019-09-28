@@ -1,11 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, IntegerField, BooleanField, SubmitField, SelectField, \
-    FileField, MultipleFileField, HiddenField, DecimalField
-from wtforms.validators import ValidationError, DataRequired, Length, Optional
-from flask_wtf.file import FileAllowed, FileRequired
-from app.models import Destination
-from app import images
-import pycountry
+from wtforms import SubmitField, SelectField
 
 
 class CurrencyForm(FlaskForm):

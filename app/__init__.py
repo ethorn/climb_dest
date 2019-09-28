@@ -74,6 +74,10 @@ app.register_blueprint(user_bp)
 from app.destinations import bp as destinations_bp
 app.register_blueprint(destinations_bp)
 
+
+from app.currency import bp as currency_bp
+app.register_blueprint(currency_bp)
+
 # ##
 
 

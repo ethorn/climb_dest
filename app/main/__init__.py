@@ -16,5 +16,3 @@ from app.main import routes
 # * add_destination
 # * load destinations / filtering / index
 # * currency
-# * logged_in (settigs, etc.)
-# * 
