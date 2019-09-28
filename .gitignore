@@ -61,9 +61,6 @@ coverage.xml
 *.mo
 *.pot
 
-# Database:
-app.db
-
 # Django stuff:
 *.log
 local_settings.py
@@ -118,3 +115,6 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+app.db
+climbing_destinations.log*
