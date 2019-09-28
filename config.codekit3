@@ -17,6 +17,14 @@
 		"oAP": "/.env",
 		"oF": 0
 		},
+	"/.flake8": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/.flake8",
+		"oF": 0
+		},
 	"/.gitignore": {
 		"cB": 0,
 		"ft": 8192,
@@ -1431,7 +1439,7 @@
 		"oAP": "/app/static/style.css.map",
 		"oF": 0
 		},
-	"/app/static/uploads/images/Bohuslän-20fa5edbed4d7c7adb5bac60c50429ad/427392_10151047375277336_36333584_n-1200.jpg": {
+	"/app/static/uploads/images/Bohuslän-20fa5edbed4d7c7adb5bac60c50429ad/427392_10151047375277336_36333584_n-1200.jpg": {
 		"ft": 16384,
 		"iS": 42042,
 		"jF": 0,
@@ -1442,7 +1450,7 @@
 		"opt": 0,
 		"q": 30
 		},
-	"/app/static/uploads/images/Bohuslän-20fa5edbed4d7c7adb5bac60c50429ad/427392_10151047375277336_36333584_n-600.jpg": {
+	"/app/static/uploads/images/Bohuslän-20fa5edbed4d7c7adb5bac60c50429ad/427392_10151047375277336_36333584_n-600.jpg": {
 		"ft": 16384,
 		"iS": 60065,
 		"jF": 0,
@@ -1453,7 +1461,7 @@
 		"opt": 0,
 		"q": 30
 		},
-	"/app/static/uploads/images/Bohuslän-20fa5edbed4d7c7adb5bac60c50429ad/427392_10151047375277336_36333584_n-900.jpg": {
+	"/app/static/uploads/images/Bohuslän-20fa5edbed4d7c7adb5bac60c50429ad/427392_10151047375277336_36333584_n-900.jpg": {
 		"ft": 16384,
 		"iS": 42042,
 		"jF": 0,
@@ -1464,7 +1472,7 @@
 		"opt": 0,
 		"q": 30
 		},
-	"/app/static/uploads/images/Bohuslän-20fa5edbed4d7c7adb5bac60c50429ad/427392_10151047375277336_36333584_n-mini.jpg": {
+	"/app/static/uploads/images/Bohuslän-20fa5edbed4d7c7adb5bac60c50429ad/427392_10151047375277336_36333584_n-mini.jpg": {
 		"ft": 16384,
 		"iS": 14773,
 		"jF": 0,
@@ -1475,7 +1483,7 @@
 		"opt": 0,
 		"q": 30
 		},
-	"/app/static/uploads/images/Bohuslän-20fa5edbed4d7c7adb5bac60c50429ad/427392_10151047375277336_36333584_n-thumbnail.jpg": {
+	"/app/static/uploads/images/Bohuslän-20fa5edbed4d7c7adb5bac60c50429ad/427392_10151047375277336_36333584_n-thumbnail.jpg": {
 		"ft": 16384,
 		"iS": 30475,
 		"jF": 0,
@@ -2402,14 +2410,6 @@
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/requirements.txt",
-		"oF": 0
-		},
-	"/setup.cfg": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/setup.cfg",
 		"oF": 0
 		},
 	"/venv/bin/activate": {
