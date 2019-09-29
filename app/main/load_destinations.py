@@ -1,39 +1,46 @@
 from app.models import (Accomodation, Car, Cost, Destination, Months, Routes)
 from sqlalchemy import and_, or_, true
+from flask import request
 
 
 def get_filter_and_order_array(data):
+
     # sort_by (Cost/Time added/routes in 4/routes in 5/...)
-    sort_by = data['sort_by']
-    if sort_by == "cost":
-        order_parameter = Cost.avg_weekly_cost
-    elif sort_by == "time":
-        order_parameter = Destination.timestamp
-    elif sort_by == "total_routes":
-        order_parameter = Routes.total_routes
-    elif sort_by == "total_sport":
-        order_parameter = Routes.total_sport
-    elif sort_by == "total_trad":
-        order_parameter = Routes.total_trad
-    elif sort_by == "total_boulders":
-        order_parameter = Routes.total_boulders
-    elif sort_by == "easy_routes":
-        order_parameter = Routes.easy_routes
-    elif sort_by == "intermediate_routes":
-        order_parameter = Routes.intermediate_routes
-    elif sort_by == "hard_routes":
-        order_parameter = Routes.hard_routes
-    elif sort_by == "very_hard_routes":
-        order_parameter = Routes.very_hard_routes
+    if 'sort_by' in data:
+        sort_by = data['sort_by']
+        if sort_by == "cost":
+            order_parameter = Cost.avg_weekly_cost
+        elif sort_by == "time":
+            order_parameter = Destination.timestamp
+        elif sort_by == "total_routes":
+            order_parameter = Routes.total_routes
+        elif sort_by == "total_sport":
+            order_parameter = Routes.total_sport
+        elif sort_by == "total_trad":
+            order_parameter = Routes.total_trad
+        elif sort_by == "total_boulders":
+            order_parameter = Routes.total_boulders
+        elif sort_by == "easy_routes":
+            order_parameter = Routes.easy_routes
+        elif sort_by == "intermediate_routes":
+            order_parameter = Routes.intermediate_routes
+        elif sort_by == "hard_routes":
+            order_parameter = Routes.hard_routes
+        elif sort_by == "very_hard_routes":
+            order_parameter = Routes.very_hard_routes
     else:
-            order_parameter = Destination.timestamp  # Default order
+        order_parameter = Destination.timestamp  # Default order
 
     # order (DESC/ASC)
-    order = data['order']
-
-    if order == "ASC":
-        order_p_final = order_parameter.asc()
-    elif order == "DESC":
+    if 'order' in data:
+        order = data['order']
+        if order == "ASC":
+            order_p_final = order_parameter.asc()
+        elif order == "DESC":
+            order_p_final = order_parameter.desc()
+        else:
+            order_p_final = order_parameter.asc()
+    else:
         order_p_final = order_parameter.desc()
 
     # All Filters together container

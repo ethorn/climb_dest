@@ -142,7 +142,7 @@ class Months(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     january = db.Column(db.Boolean, index=True, default=False)
     february = db.Column(db.Boolean, index=True, default=False)
-    mars = db.Column(db.Boolean, index=True, default=False)
+    march = db.Column(db.Boolean, index=True, default=False)
     april = db.Column(db.Boolean, index=True, default=False)
     may = db.Column(db.Boolean, index=True, default=False)
     june = db.Column(db.Boolean, index=True, default=False)

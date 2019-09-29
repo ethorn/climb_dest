@@ -12,7 +12,34 @@ from app.models import (Accomodation, Approach, Car, Cost, Destination, Months,
 @bp.route('/index')
 def index():
 
-    # Gjør dette til en funksjon
+    # Gjør en general purpose funksjon for både index og _load_destinations
+    if request.args:
+        url_filter_data = request.args.to_dict()
+
+        if request.args.getlist('accomodation[]'):
+            accomodations = request.args.getlist('accomodation[]')
+            url_filter_data['accomodation'] = accomodations
+            url_filter_data.pop('accomodation[]', None)
+
+        if request.args.getlist('car[]'):
+            car = request.args.getlist('car[]')
+            url_filter_data['car'] = car
+            url_filter_data.pop('car[]', None)
+
+        if request.args.getlist('secondary_discipline[]'):
+            secondary_discipline = request.args.getlist('secondary_discipline[]')
+            url_filter_data['secondary_discipline'] = secondary_discipline
+            url_filter_data.pop('secondary_discipline[]', None)
+
+        if request.args.getlist('months[]'):
+            months = request.args.getlist('months[]')
+            url_filter_data['months'] = months
+            url_filter_data.pop('months[]', None)
+        
+        print('GET', url_filter_data)
+
+        # Get filters and orders array for query
+        filters, order = get_filter_and_order_array(url_filter_data)
 
     if request.args:
         if request.args.get('sort_by'):
@@ -155,10 +182,12 @@ def load_destinations():
 
     # Process incoming data: Make stringified json into json object
     data_as_string = request.form.get('jsonDataAsString')
-    data = json.loads(data_as_string)
+    json_filter_data = json.loads(data_as_string)  # OK
+
+    print('json', json_filter_data)
 
     # Get filters and orders array for query
-    filters, order = get_filter_and_order_array(data)
+    filters, order = get_filter_and_order_array(json_filter_data)
 
     # Joins: Makes it possible to query filters on several tables at the same time
     # -- All tables that can be filtered with the filter options should be here
