@@ -47,57 +47,61 @@ def get_filter_and_order_array(data):
     filters = []
 
     # accomodation (hvis selected, så må destinasjonen ha det.)
-    if data.get('accomodation'):
+    if 'accomodation' in data:
         accomodation_filters = []
-
         accomodations = data['accomodation']
-
         for a in accomodations:
-            accomodation_filters.append(getattr(Accomodation, a) == true())
+            if hasattr(Accomodation, a):
+                accomodation_filters.append(getattr(Accomodation, a) == true())
+        if accomodation_filters:
+                filters.append(and_(*accomodation_filters))
 
-        filters.append(and_(*accomodation_filters))
-
+                        
     # car
-    if data.get('car'):
+    if 'car' in data:
         car_filters = []
         cars = data['car']
-
         for c in cars:
-            car_filters.append(getattr(Car, c) == true())
-
-        filters.append(or_(*car_filters))
+            if hasattr(Car, c):
+                car_filters.append(getattr(Car, c) == true())
+        if car_filters:
+            filters.append(or_(*car_filters))
 
     # cost
-    if data.get('cost'):
+    if 'cost' in data:
         max_cost = data['cost']
-
+        try:
+            max_cost = int(max_cost)
+        except ValueError:
+            max_cost = 9999999999999
         filters.append(Cost.avg_weekly_cost <= max_cost)
 
     # main_discipline & secondary_discipline (hvis selected, så må destinasjonen ha det.)
     discipline_filters = []
 
-    if data.get('main_discipline'):
+    if 'main_discipline' in data:
         m_d = data['main_discipline']
-        discipline_filters.append(Routes.main_discipline == m_d)
+        if m_d in ('sport', 'traditional', 'bouldering'):
+            discipline_filters.append(Routes.main_discipline == m_d)
 
-    if data.get('secondary_discipline'):
+    if 'secondary_discipline' in data:
         secondary_disciplines = data['secondary_discipline']
-
         for d in secondary_disciplines:
-            discipline_filters.append(getattr(Routes, d) == true())
+            if hasattr(Routes, d):
+                discipline_filters.append(getattr(Routes, d) == true())
 
     if discipline_filters:
         filters.append(and_(*discipline_filters))
 
     # months
-    if data.get('months'):
+    if 'months' in data:
         months_filters = []
-
         months_from_ajax = data['months']
         for m in months_from_ajax:
-            months_filters.append(getattr(Months, m) == true())
-
-        filters.append(or_(*months_filters))
+            if hasattr(Months, m):
+                months_filters.append(getattr(Months, m) == true())
+        if months_filters:
+            filters.append(or_(*months_filters))
     # ----------
 
     return filters, order_p_final
