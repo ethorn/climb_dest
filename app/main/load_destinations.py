@@ -3,6 +3,40 @@ from sqlalchemy import and_, or_, true
 from flask import request
 
 
+def convert_data_to_dict(url_filter_data):
+    if request.args.getlist('accomodation[]'):
+        accomodations = request.args.getlist('accomodation[]')
+        url_filter_data['accomodation'] = accomodations
+        url_filter_data.pop('accomodation[]', None)
+
+    if request.args.getlist('car[]'):
+        car = request.args.getlist('car[]')
+        url_filter_data['car'] = car
+        url_filter_data.pop('car[]', None)
+
+    if request.args.getlist('secondary_discipline[]'):
+        secondary_discipline = request.args.getlist('secondary_discipline[]')
+        url_filter_data['secondary_discipline'] = secondary_discipline
+        url_filter_data.pop('secondary_discipline[]', None)
+
+    if request.args.getlist('months[]'):
+        months = request.args.getlist('months[]')
+        url_filter_data['months'] = months
+        url_filter_data.pop('months[]', None)
+
+    return url_filter_data
+
+
+def get_joins():
+    joins = []
+    joins.append(Cost)
+    joins.append(Routes)
+    joins.append(Accomodation)
+    joins.append(Months)
+    joins.append(Car)
+    return joins
+
+
 def get_filter_and_order_array(data):
 
     # sort_by (Cost/Time added/routes in 4/routes in 5/...)
