@@ -4,10 +4,10 @@ from decimal import Decimal
 
 import pycountry_convert
 import requests
-from flask import flash, redirect, render_template, request, url_for
+from flask import current_app, flash, redirect, render_template, request, url_for
 from flask_login import current_user, login_required
 
-from app import app, db, images, q
+from app import db, images, q
 from app.destinations import bp
 from app.destinations.forms import DestinationForm, EditDestinationForm
 from app.models import (Accomodation, AdditionalPhotos, Approach, Car, Cost,
@@ -39,7 +39,7 @@ def add_destination():
             featured_photo = featured_photo_with_folder.split('/')[1]
             featured_photo_filename = featured_photo.split('.')[0]
             featured_photo_extension = featured_photo.split('.')[-1]
-            photo_dir = os.path.join(app.config["UPLOADED_IMAGES_DEST"], photo_folder_name)
+            photo_dir = os.path.join(current_app.config["UPLOADED_IMAGES_DEST"], photo_folder_name)
 
             photo_folder_url = images.url(featured_photo_with_folder).split(featured_photo)[0]
 

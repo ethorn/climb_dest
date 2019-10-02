@@ -1,8 +1,9 @@
 import os
-from flask import request
 from dotenv import load_dotenv
-load_dotenv()
+
+
 basedir = os.path.abspath(os.path.dirname(__file__))
+load_dotenv(os.path.join(basedir, '.env'))
 
 
 class Config(object):
@@ -20,3 +21,4 @@ class Config(object):
     MAIL_USERNAME = os.getenv('MAIL_USERNAME')
     MAIL_PASSWORD = os.getenv('MAIL_PASSWORD')
     ADMINS = ['eric.m.thorn@gmail.com']
+    REDIS_URL = os.environ.get('REDIS_URL') or 'redis://'
