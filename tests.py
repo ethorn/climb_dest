@@ -4,10 +4,11 @@ from app import create_app, db
 from app.models import User
 from config import Config
 
+# run in terminal: python tests.py
 
 class TestConfig(Config):
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = 'sqlite://'  # instead of sqlite:/// , this one is in memory
+    SQLALCHEMY_DATABASE_URI = 'sqlite://'  # instead of sqlite:///, this one is in memory
     ELASTICSEARCH_URL = None
 
 
@@ -28,6 +29,15 @@ class UserModelCase(unittest.TestCase):
         u.set_password('cat')
         self.assertFalse(u.check_password('dog'))
         self.assertTrue(u.check_password('cat'))
+
+    def test_add_user(self):
+        user = User(username='Batman', email='bruce@wayne.com')
+        user.set_password('ilovealfred')
+        db.session.add(user)
+        db.session.commit()
+        u = User.query.order_by(User.id.desc()).first()
+        self.assertTrue(u.username == 'Batman')
+        self.assertTrue(u.check_password('ilovealfred'))
 
     # Exempel:
     '''
