@@ -7,7 +7,7 @@ from config import Config
 
 class TestConfig(Config):
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = 'sqlite://' # instead of sqlite:/// , this one is in memory
+    SQLALCHEMY_DATABASE_URI = 'sqlite://'  # instead of sqlite:/// , this one is in memory
     ELASTICSEARCH_URL = None
 
 
