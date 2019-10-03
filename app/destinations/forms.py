@@ -41,7 +41,7 @@ class DestinationForm(FlaskForm):
     # Months/Season
     january = BooleanField('January')
     february = BooleanField('February')
-    mars = BooleanField('March')
+    march = BooleanField('March')
     april = BooleanField('April')
     may = BooleanField('May')
     june = BooleanField('June')

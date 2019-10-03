@@ -4,10 +4,10 @@ from decimal import Decimal
 
 import pycountry_convert
 import requests
-from flask import flash, redirect, render_template, request, url_for
+from flask import current_app, flash, redirect, render_template, request, url_for
 from flask_login import current_user, login_required
 
-from app import app, db, images, q
+from app import db, images
 from app.destinations import bp
 from app.destinations.forms import DestinationForm, EditDestinationForm
 from app.models import (Accomodation, AdditionalPhotos, Approach, Car, Cost,
@@ -39,11 +39,11 @@ def add_destination():
             featured_photo = featured_photo_with_folder.split('/')[1]
             featured_photo_filename = featured_photo.split('.')[0]
             featured_photo_extension = featured_photo.split('.')[-1]
-            photo_dir = os.path.join(app.config["UPLOADED_IMAGES_DEST"], photo_folder_name)
+            photo_dir = os.path.join(current_app.config["UPLOADED_IMAGES_DEST"], photo_folder_name)
 
             photo_folder_url = images.url(featured_photo_with_folder).split(featured_photo)[0]
 
-            q.enqueue(create_image_set, photo_dir, featured_photo)
+            current_app.q.enqueue(create_image_set, photo_dir, featured_photo)
 
             # X 1) save image in dir (DEFAULT DIR IN CONFIG?)
             # X 2) enqueue resize function
@@ -229,7 +229,7 @@ def add_destination():
             db.session.add(routes)
 
             # MONTHS
-            months = Months(january=form.january.data, february=form.february.data, mars=form.mars.data,
+            months = Months(january=form.january.data, february=form.february.data, march=form.march.data,
                             april=form.april.data, may=form.may.data, june=form.june.data, july=form.july.data,
                             august=form.august.data, september=form.september.data, october=form.october.data,
                             november=form.november.data, december=form.december.data, destination_id=d.id)
@@ -255,7 +255,7 @@ def add_destination():
             # Commit everything to database
             db.session.commit()
             flash('Destination "{}" added!'.format(str(form.title.data)))
-            return redirect(url_for('index'))
+            return redirect(url_for('main.index'))
         else:
             flash_errors(form)
             flash('ERROR! Destination was not added.', 'error')
@@ -279,7 +279,7 @@ def edit(id):
         db.session.add(d)
         db.session.commit()
         flash('Destination edited')
-        return redirect(url_for('index', id=d.id))
+        return redirect(url_for('main.index', id=d.id))
 
     return render_template('destinations/edit_destination.html',
                            title='Edit Destination',
@@ -294,4 +294,4 @@ def delete(id):
     db.session.delete(d)
     db.session.commit()
     flash('Destination "{}" deleted!'.format(d.title))
-    return redirect(url_for('index'))
+    return redirect(url_for('main.index'))

@@ -32,4 +32,4 @@ def dashboard(page):
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
     destinations = Destination.query.filter_by(user_id=user.id)
-    return render_template('user/user.html', user=user, destinations=destinations)
+    return render_template('user/user_profile.html', user=user, destinations=destinations)
