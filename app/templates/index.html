@@ -10,6 +10,10 @@
 			{{ currency_form.currency(class_="button-filter") }}
 		</li>
 
+		<li class="sortfilter-bar--clear-filter button-filter button-filter--border-only js-clear-filter">
+			Clear filter
+		</li>
+
 		<!-- Mobile sortby -->
 		<li class="sortfilter-bar--sortby hide-on-desktop">
 			<select name="sort_by" class="js-sort-by js-mobile-sort-by">
@@ -55,13 +59,13 @@
 		<li class="sortfilter-bar--continent button-filter js-filter-button-dropdown hide-on-mobile">
 			Continent
 			<div class="dropdown-content">
-				<input type="checkbox" class="js-filter-desktop-continent-checkbox" value="Africa"> Africa<br>
-				<input type="checkbox" class="js-filter-desktop-continent-checkbox" value="Antarctica"> Antarctica<br>
-				<input type="checkbox" class="js-filter-desktop-continent-checkbox" value="Asia"> Asia<br>
-				<input type="checkbox" class="js-filter-desktop-continent-checkbox" value="Europe"> Europe<br>
-				<input type="checkbox" class="js-filter-desktop-continent-checkbox" value="North America"> North America<br>
-				<input type="checkbox" class="js-filter-desktop-continent-checkbox" value="Oceania"> Oceania<br>
-				<input type="checkbox" class="js-filter-desktop-continent-checkbox" value="South America"> South America<br>
+				<input type="checkbox" class="js-filter-checkbox js-filter-desktop-continent-checkbox" value="Africa"> Africa<br>
+				<input type="checkbox" class="js-filter-checkbox js-filter-desktop-continent-checkbox" value="Antarctica"> Antarctica<br>
+				<input type="checkbox" class="js-filter-checkbox js-filter-desktop-continent-checkbox" value="Asia"> Asia<br>
+				<input type="checkbox" class="js-filter-checkbox js-filter-desktop-continent-checkbox" value="Europe"> Europe<br>
+				<input type="checkbox" class="js-filter-checkbox js-filter-desktop-continent-checkbox" value="North America"> North America<br>
+				<input type="checkbox" class="js-filter-checkbox js-filter-desktop-continent-checkbox" value="Oceania"> Oceania<br>
+				<input type="checkbox" class="js-filter-checkbox js-filter-desktop-continent-checkbox" value="South America"> South America<br>
 
 				<input type="submit" class="js-filter-desktop-submit js-filter-desktop-continent-submit" value="GO">
 			</div>
@@ -71,7 +75,7 @@
 			Country
 			<div class="dropdown-content">
 				{% for country in countries %}
-					<input type="checkbox" class="js-filter-desktop-country-checkbox" value="{{ country }}"> {{ country }}<br>
+					<input type="checkbox" class="js-filter-checkbox js-filter-desktop-country-checkbox" value="{{ country }}"> {{ country }}<br>
 				{% endfor %}
 				<input type="submit" class="js-filter-desktop-submit js-filter-desktop-country-submit" value="GO">
 			</div>
@@ -90,13 +94,13 @@
 		<li class="sortfilter-bar--accomodation button-filter js-filter-button-dropdown hide-on-mobile">
 			Accomodation
 			<div class="dropdown-content">
-				<input type="checkbox" class="js-filter-desktop-accomodation-checkbox" value="tent"> Tent<br>
-				<input type="checkbox" class="js-filter-desktop-accomodation-checkbox" value="van"> Van<br>
-				<input type="checkbox" class="js-filter-desktop-accomodation-checkbox" value="camping"> Camping <br>
-				<input type="checkbox" class="js-filter-desktop-accomodation-checkbox" value="hostel"> Hostel/Guesthouse <br>
-				<input type="checkbox" class="js-filter-desktop-accomodation-checkbox" value="apartment"> Apartment <br>
-				<input type="checkbox" class="js-filter-desktop-accomodation-checkbox" value="house"> House <br>
-				<input type="checkbox" class="js-filter-desktop-accomodation-checkbox" value="hotel"> Hotel <br>
+				<input type="checkbox" class="js-filter-checkbox js-filter-desktop-accomodation-checkbox" value="tent"> Tent<br>
+				<input type="checkbox" class="js-filter-checkbox js-filter-desktop-accomodation-checkbox" value="van"> Van<br>
+				<input type="checkbox" class="js-filter-checkbox js-filter-desktop-accomodation-checkbox" value="camping"> Camping <br>
+				<input type="checkbox" class="js-filter-checkbox js-filter-desktop-accomodation-checkbox" value="hostel"> Hostel/Guesthouse <br>
+				<input type="checkbox" class="js-filter-checkbox js-filter-desktop-accomodation-checkbox" value="apartment"> Apartment <br>
+				<input type="checkbox" class="js-filter-checkbox js-filter-desktop-accomodation-checkbox" value="house"> House <br>
+				<input type="checkbox" class="js-filter-checkbox js-filter-desktop-accomodation-checkbox" value="hotel"> Hotel <br>
 
 				<input type="submit" class="js-filter-desktop-submit js-filter-desktop-accomodation-submit" value="GO">
 			</div>
@@ -113,9 +117,9 @@
 					<option value="bouldering">Bouldering</option>
 				</select>
 				<label>Also has</label>
-				<input type="checkbox" class="js-filter-desktop-second-discipline-checkbox" value="sport"> Sport<br>
-				<input type="checkbox" class="js-filter-desktop-second-discipline-checkbox" value="traditional"> Trad<br>
-				<input type="checkbox" class="js-filter-desktop-second-discipline-checkbox" value="bouldering"> Bouldering<br>
+				<input type="checkbox" class="js-filter-checkbox js-filter-desktop-second-discipline-checkbox" value="sport"> Sport<br>
+				<input type="checkbox" class="js-filter-checkbox js-filter-desktop-second-discipline-checkbox" value="traditional"> Trad<br>
+				<input type="checkbox" class="js-filter-checkbox js-filter-desktop-second-discipline-checkbox" value="bouldering"> Bouldering<br>
 
 				<input type="submit" class="js-filter-desktop-submit js-filter-desktop-discipline-submit" value="GO">
 			</div>
@@ -124,18 +128,18 @@
 		<li class="sortfilter-bar--months button-filter js-filter-button-dropdown hide-on-mobile">
 			Months
 			<div class="dropdown-content">
-				<input type="checkbox" class="js-filter-desktop-months-checkbox" value="january"> January <br>
-				<input type="checkbox" class="js-filter-desktop-months-checkbox" value="february"> February <br>
-				<input type="checkbox" class="js-filter-desktop-months-checkbox" value="march"> March <br>
-				<input type="checkbox" class="js-filter-desktop-months-checkbox" value="april"> April <br>
-				<input type="checkbox" class="js-filter-desktop-months-checkbox" value="may"> May <br>
-				<input type="checkbox" class="js-filter-desktop-months-checkbox" value="june"> June <br>
-				<input type="checkbox" class="js-filter-desktop-months-checkbox" value="july"> July <br>
-				<input type="checkbox" class="js-filter-desktop-months-checkbox" value="august"> August <br>
-				<input type="checkbox" class="js-filter-desktop-months-checkbox" value="september"> September <br>
-				<input type="checkbox" class="js-filter-desktop-months-checkbox" value="october"> October <br>
-				<input type="checkbox" class="js-filter-desktop-months-checkbox" value="november"> November <br>
-				<input type="checkbox" class="js-filter-desktop-months-checkbox" value="december"> December <br>
+				<input type="checkbox" class="js-filter-checkbox js-filter-desktop-months-checkbox" value="january"> January <br>
+				<input type="checkbox" class="js-filter-checkbox js-filter-desktop-months-checkbox" value="february"> February <br>
+				<input type="checkbox" class="js-filter-checkbox js-filter-desktop-months-checkbox" value="march"> March <br>
+				<input type="checkbox" class="js-filter-checkbox js-filter-desktop-months-checkbox" value="april"> April <br>
+				<input type="checkbox" class="js-filter-checkbox js-filter-desktop-months-checkbox" value="may"> May <br>
+				<input type="checkbox" class="js-filter-checkbox js-filter-desktop-months-checkbox" value="june"> June <br>
+				<input type="checkbox" class="js-filter-checkbox js-filter-desktop-months-checkbox" value="july"> July <br>
+				<input type="checkbox" class="js-filter-checkbox js-filter-desktop-months-checkbox" value="august"> August <br>
+				<input type="checkbox" class="js-filter-checkbox js-filter-desktop-months-checkbox" value="september"> September <br>
+				<input type="checkbox" class="js-filter-checkbox js-filter-desktop-months-checkbox" value="october"> October <br>
+				<input type="checkbox" class="js-filter-checkbox js-filter-desktop-months-checkbox" value="november"> November <br>
+				<input type="checkbox" class="js-filter-checkbox js-filter-desktop-months-checkbox" value="december"> December <br>
 
 				<input type="submit" class="js-filter-desktop-submit js-filter-desktop-months-submit" value="GO">
 			</div>
@@ -144,9 +148,9 @@
 		<li class="sortfilter-bar--car button-filter js-filter-button-dropdown hide-on-mobile">
 			Car
 			<div class="dropdown-content">
-				<input type="checkbox" class="js-filter-desktop-car-checkbox" value="not_needed"> Not needed <br>
-				<input type="checkbox" class="js-filter-desktop-car-checkbox" value="good_to_have"> Good to have <br>
-				<input type="checkbox" class="js-filter-desktop-car-checkbox" value="must_have"> Must have <br>
+				<input type="checkbox" class="js-filter-checkbox js-filter-desktop-car-checkbox" value="not_needed"> Not needed <br>
+				<input type="checkbox" class="js-filter-checkbox js-filter-desktop-car-checkbox" value="good_to_have"> Good to have <br>
+				<input type="checkbox" class="js-filter-checkbox js-filter-desktop-car-checkbox" value="must_have"> Must have <br>
 
 				<input type="submit" class="js-filter-desktop-submit js-filter-car-submit" value="GO">
 			</div>
@@ -170,28 +174,28 @@
 		</select>
 
 		<h4>Continent</h4>
-		<input type="checkbox" class="js-filter-mobile-continent-checkbox" value="Africa"> Africa<br>
-		<input type="checkbox" class="js-filter-mobile-continent-checkbox" value="Antarctica"> Antarctica<br>
-		<input type="checkbox" class="js-filter-mobile-continent-checkbox" value="Asia"> Asia<br>
-		<input type="checkbox" class="js-filter-mobile-continent-checkbox" value="Europe"> Europe<br>
-		<input type="checkbox" class="js-filter-mobile-continent-checkbox" value="North America"> North America<br>
-		<input type="checkbox" class="js-filter-mobile-continent-checkbox" value="Oceania"> Oceania<br>
-		<input type="checkbox" class="js-filter-mobile-continent-checkbox" value="South America"> South America<br>
+		<input type="checkbox" class="js-filter-checkbox js-filter-mobile-continent-checkbox" value="Africa"> Africa<br>
+		<input type="checkbox" class="js-filter-checkbox js-filter-mobile-continent-checkbox" value="Antarctica"> Antarctica<br>
+		<input type="checkbox" class="js-filter-checkbox js-filter-mobile-continent-checkbox" value="Asia"> Asia<br>
+		<input type="checkbox" class="js-filter-checkbox js-filter-mobile-continent-checkbox" value="Europe"> Europe<br>
+		<input type="checkbox" class="js-filter-checkbox js-filter-mobile-continent-checkbox" value="North America"> North America<br>
+		<input type="checkbox" class="js-filter-checkbox js-filter-mobile-continent-checkbox" value="Oceania"> Oceania<br>
+		<input type="checkbox" class="js-filter-checkbox js-filter-mobile-continent-checkbox" value="South America"> South America<br>
 		
 		<h4>Country</h4>
 		{% for country in countries %}
-			<input type="checkbox" class="js-filter-mobile-country-checkbox" value="{{ country }}"> {{ country }}<br>
+			<input type="checkbox" class="js-filter-checkbox js-filter-mobile-country-checkbox" value="{{ country }}"> {{ country }}<br>
 		{% endfor %}
 
 
 		<h4>Accomodation</h4>
-		<input type="checkbox" class="js-filter-mobile-accomodation-checkbox" name="mobile_tent_free" value="tent_free"> <label for="mobile_tent_free">Free tent spots</label> <br>
-		<input type="checkbox" class="js-filter-mobile-accomodation-checkbox" name="mobile_van_free" value="van_free"> <label for="mobile_van_free">Free van spots</label> <br>
-		<input type="checkbox" class="js-filter-mobile-accomodation-checkbox" name="mobile_cambing" value="camping"> <label for="mobile_camping">Camping</label> <br>
-		<input type="checkbox"  class="js-filter-mobile-accomodation-checkbox" name="mobile_hostel_guesthouse" value="hostel"> <label for="mobile_hostel_guesthouse">Hostel/Guesthouse</label> <br>
-		<input type="checkbox" class="js-filter-mobile-accomodation-checkbox" name="mobile_apartment" value="apartment"> <label for="mobile_apartment">apartment</label> <br>
-		<input type="checkbox" class="js-filter-mobile-accomodation-checkbox" name="mobile_house" value="house"> <label for="mobile_house">House</label> <br>
-		<input type="checkbox" class="js-filter-mobile-accomodation-checkbox" name="mobile_hotel" value="hotel"> <label for="mobile_hotel">Hotel</label>
+		<input type="checkbox" class="js-filter-checkbox js-filter-mobile-accomodation-checkbox" name="mobile_tent_free" value="tent_free"> <label for="mobile_tent_free">Free tent spots</label> <br>
+		<input type="checkbox" class="js-filter-checkbox js-filter-mobile-accomodation-checkbox" name="mobile_van_free" value="van_free"> <label for="mobile_van_free">Free van spots</label> <br>
+		<input type="checkbox" class="js-filter-checkbox js-filter-mobile-accomodation-checkbox" name="mobile_cambing" value="camping"> <label for="mobile_camping">Camping</label> <br>
+		<input type="checkbox" class="js-filter-checkbox js-filter-mobile-accomodation-checkbox" name="mobile_hostel_guesthouse" value="hostel"> <label for="mobile_hostel_guesthouse">Hostel/Guesthouse</label> <br>
+		<input type="checkbox" class="js-filter-checkbox js-filter-mobile-accomodation-checkbox" name="mobile_apartment" value="apartment"> <label for="mobile_apartment">apartment</label> <br>
+		<input type="checkbox" class="js-filter-checkbox js-filter-mobile-accomodation-checkbox" name="mobile_house" value="house"> <label for="mobile_house">House</label> <br>
+		<input type="checkbox" class="js-filter-checkbox js-filter-mobile-accomodation-checkbox" name="mobile_hotel" value="hotel"> <label for="mobile_hotel">Hotel</label>
 
 		<h4>Main discipline</h4>
 		<select class="filter-main-discipline--select js-filter-mobile-main-discipline">
@@ -202,28 +206,28 @@
 		</select>
 		
 		<h5>Also have</h5>
-		<input type="checkbox" class="js-filter-mobile-second-discipline-checkbox" name="mobile_bouldering" value="bouldering"> <label for="mobile_bouldering">Bouldering</label> <br>
-		<input type="checkbox" class="js-filter-mobile-second-discipline-checkbox" name="mobile_sport" value="sport"> <label for="mobile_sport">Sport</label> <br>
-		<input type="checkbox" class="js-filter-mobile-second-discipline-checkbox" name="mobile_traditional" value="traditional"> <label for="mobile_traditional">Traditional</label> <br>
+		<input type="checkbox" class="js-filter-checkbox js-filter-mobile-second-discipline-checkbox" name="mobile_bouldering" value="bouldering"> <label for="mobile_bouldering">Bouldering</label> <br>
+		<input type="checkbox" class="js-filter-checkbox js-filter-mobile-second-discipline-checkbox" name="mobile_sport" value="sport"> <label for="mobile_sport">Sport</label> <br>
+		<input type="checkbox" class="js-filter-checkbox js-filter-mobile-second-discipline-checkbox" name="mobile_traditional" value="traditional"> <label for="mobile_traditional">Traditional</label> <br>
 		
 		<h4>Months</h4>
-		<input type="checkbox" class="js-filter-mobile-months-checkbox" name="mobile_january" value="january"> <label for="mobile_january">January</label> <br>
-		<input type="checkbox" class="js-filter-mobile-months-checkbox" name="mobile_february" value="february"> <label for="mobile_february">February</label> <br>
-		<input type="checkbox" class="js-filter-mobile-months-checkbox" name="mobile_mars" value="mars"> <label for="mobile_mars">Mars</label> <br>
-		<input type="checkbox" class="js-filter-mobile-months-checkbox" name="mobile_april" value="april"> <label for="mobile_april">April</label> <br>
-		<input type="checkbox" class="js-filter-mobile-months-checkbox" name="mobile_may" value="may"> <label for="mobile_may">May</label> <br>
-		<input type="checkbox" class="js-filter-mobile-months-checkbox" name="mobile_june" value="june"> <label for="mobile_june">June</label> <br>
-		<input type="checkbox" class="js-filter-mobile-months-checkbox" name="mobile_july" value="july"> <label for="mobile_july">July</label> <br>
-		<input type="checkbox" class="js-filter-mobile-months-checkbox" name="mobile_august" value="august"> <label for="mobile_august">August</label> <br>
-		<input type="checkbox" class="js-filter-mobile-months-checkbox" name="mobile_september" value="september"> <label for="mobile_september">September</label> <br>
-		<input type="checkbox" class="js-filter-mobile-months-checkbox" name="mobile_october" value="october"> <label for="mobile_october">October</label> <br>
-		<input type="checkbox" class="js-filter-mobile-months-checkbox" name="mobile_november" value="november"> <label for="mobile_november">november</label> <br>
-		<input type="checkbox" class="js-filter-mobile-months-checkbox" name="mobile_december" value="december"> <label for="mobile_december">December</label> <br>
+		<input type="checkbox" class="js-filter-checkbox js-filter-mobile-months-checkbox" name="mobile_january" value="january"> <label for="mobile_january">January</label> <br>
+		<input type="checkbox" class="js-filter-checkbox js-filter-mobile-months-checkbox" name="mobile_february" value="february"> <label for="mobile_february">February</label> <br>
+		<input type="checkbox" class="js-filter-checkbox js-filter-mobile-months-checkbox" name="mobile_mars" value="mars"> <label for="mobile_mars">Mars</label> <br>
+		<input type="checkbox" class="js-filter-checkbox js-filter-mobile-months-checkbox" name="mobile_april" value="april"> <label for="mobile_april">April</label> <br>
+		<input type="checkbox" class="js-filter-checkbox js-filter-mobile-months-checkbox" name="mobile_may" value="may"> <label for="mobile_may">May</label> <br>
+		<input type="checkbox" class="js-filter-checkbox js-filter-mobile-months-checkbox" name="mobile_june" value="june"> <label for="mobile_june">June</label> <br>
+		<input type="checkbox" class="js-filter-checkbox js-filter-mobile-months-checkbox" name="mobile_july" value="july"> <label for="mobile_july">July</label> <br>
+		<input type="checkbox" class="js-filter-checkbox js-filter-mobile-months-checkbox" name="mobile_august" value="august"> <label for="mobile_august">August</label> <br>
+		<input type="checkbox" class="js-filter-checkbox js-filter-mobile-months-checkbox" name="mobile_september" value="september"> <label for="mobile_september">September</label> <br>
+		<input type="checkbox" class="js-filter-checkbox js-filter-mobile-months-checkbox" name="mobile_october" value="october"> <label for="mobile_october">October</label> <br>
+		<input type="checkbox" class="js-filter-checkbox js-filter-mobile-months-checkbox" name="mobile_november" value="november"> <label for="mobile_november">november</label> <br>
+		<input type="checkbox" class="js-filter-checkbox js-filter-mobile-months-checkbox" name="mobile_december" value="december"> <label for="mobile_december">December</label> <br>
 
 		<h4>Car</h4>
-		<input type="checkbox" class="js-filter-mobile-car-checkbox" name="mobile_car_not_needed" value="not_needed"> <label for="mobile_car_not_needed">Not Needed</label> <br>
-		<input type="checkbox" class="js-filter-mobile-car-checkbox" name="mobile_car_good_to_have" value="good_to_have"> <label for="mobile_car_good_to_have">Good to have</label> <br>
-		<input type="checkbox" class="js-filter-mobile-car-checkbox" name="mobile_car_must_have" value="must_have"> <label for="mobile_car_must_have">Must have</label> <br>
+		<input type="checkbox" class="js-filter-checkbox js-filter-mobile-car-checkbox" name="mobile_car_not_needed" value="not_needed"> <label for="mobile_car_not_needed">Not Needed</label> <br>
+		<input type="checkbox" class="js-filter-checkbox js-filter-mobile-car-checkbox" name="mobile_car_good_to_have" value="good_to_have"> <label for="mobile_car_good_to_have">Good to have</label> <br>
+		<input type="checkbox" class="js-filter-checkbox js-filter-mobile-car-checkbox" name="mobile_car_must_have" value="must_have"> <label for="mobile_car_must_have">Must have</label> <br>
 		
 		<input type="submit" class="filter-mobile-submit js-filter-mobile-submit" value="GO">
 		

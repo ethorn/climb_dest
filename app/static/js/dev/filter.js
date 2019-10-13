@@ -1,6 +1,8 @@
 /* -------------------------------------------------------------------------
 -------
 -------   Filterbar Features
+-------   - filterBarGeneral
+-------     * Clear button
 -------
 -------   - filterBarMobile
 -------     * Show/hides filter container for mobile
@@ -15,6 +17,13 @@
 -------     * loadDestinations
 -------
 ---------------------------------------------------------------------------- */
+
+var filterBarGeneral = {
+  onReady: function () {
+    
+  }
+}
+$(document).ready(filterBarGeneral.onReady)
 
 // For the filter box that appears when clicking "filter" on mobile
 var filterBarMobile = {
@@ -68,7 +77,7 @@ var filterBarMobile = {
 
     $('select.js-filter-mobile-cost option').unwrap().each(function () {
 
-      var btn = $('<div data-cost-value="' + $(this).val() + '" class="filter-mobile-select-button js-filter-mobile-cost-button">' + $(this).text() + '</div>')
+      var btn = $('<div data-cost-value="' + $(this).val() + '" class="filter-mobile-select-button js-filter-mobile-cost-button js-filter-mobile-cost-' + $(this).val() + '">' + $(this).text() + '</div>')
       if ($(this).val() === $('.js-hidden-mobile-cost-value').val()) {
 
         btn.addClass('on')
@@ -93,7 +102,7 @@ var filterBarMobile = {
 
     $('select.filter-main-discipline--select option').unwrap().each(function () {
 
-      var btn = $('<div data-main-discipline-value="' + $(this).val() + '" class="filter-mobile-select-button js-filter-main-discipline--btn">' + $(this).text() + '</div>')
+      var btn = $('<div data-main-discipline-value="' + $(this).val() + '" class="filter-mobile-select-button js-filter-main-discipline--btn js-filter-main-discipline-' + $(this).val() + '">' + $(this).text() + '</div>')
       if ($(this).val() === $('.js-hidden-main-discipline-value').val()) {
 
         btn.addClass('on')
@@ -199,6 +208,21 @@ var filterLoad = {
 
   // When clicking GO or changing something that loads destinations
   onReady: function () {
+
+    // Clear filter
+    $('.js-clear-filter').click(function () {
+      $('input.js-filter-checkbox').prop('checked', false)
+      $('select.js-sort-by').val('time')
+      $('select.js-filter-desktop-cost').val('any')
+
+      $('input.js-hidden-mobile-cost-value').val('any')
+      $('input.js-hidden-main-discipline-value').val('any')
+      $('div.filter-mobile-select-button').removeClass('on')
+      $('div.js-filter-mobile-cost-any').addClass('on')
+      $('div.js-filter-main-discipline-any').addClass('on')
+
+      filterLoad.loadDestinations('desktop')
+    })
 
     // ---- DESKTOP
     // When changing "sort by" - load destinations
