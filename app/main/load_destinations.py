@@ -4,6 +4,16 @@ from flask import request
 
 
 def convert_data_to_dict(url_filter_data):
+    if request.args.getlist('continents[]'):
+        continents = request.args.getlist('continents[]')
+        url_filter_data['continents'] = continents
+        url_filter_data.pop('continents[]', None)
+
+    if request.args.getlist('countries[]'):
+        countries = request.args.getlist('countries[]')
+        url_filter_data['countries'] = countries
+        url_filter_data.pop('countries[]', None)
+        
     if request.args.getlist('accomodation[]'):
         accomodations = request.args.getlist('accomodation[]')
         url_filter_data['accomodation'] = accomodations
@@ -80,6 +90,24 @@ def get_filter_and_order_array(data):
     # All Filters together container
     filters = []
 
+    # continents
+    if 'continents' in data:
+        continents_filters = []
+        continents = data['continents']
+        for continent in continents:
+            continents_filters.append(Destination.continent == continent)
+        if continents_filters:
+            filters.append(or_(*continents_filters))
+
+    # coutries
+    if 'countries' in data:
+        countries_filters = []
+        countries = data['countries']
+        for country in countries:
+            countries_filters.append(Destination.country == country)
+        if countries_filters:
+            filters.append(or_(*countries_filters))
+
     # accomodation (hvis selected, så må destinasjonen ha det.)
     if 'accomodation' in data:
         accomodation_filters = []
@@ -90,7 +118,6 @@ def get_filter_and_order_array(data):
         if accomodation_filters:
                 filters.append(and_(*accomodation_filters))
 
-                        
     # car
     if 'car' in data:
         car_filters = []

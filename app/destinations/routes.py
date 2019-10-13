@@ -53,7 +53,17 @@ def add_destination():
             # -- Convert from country code to country name
             country = pycountry_convert.country_alpha2_to_country_name(form.country.data)
             # -- Convert from country code to continent
-            continent = pycountry_convert.country_alpha2_to_continent_code(form.country.data)
+            continent_code = pycountry_convert.country_alpha2_to_continent_code(form.country.data)
+            continents = {
+                'AF': 'Africa',
+                'AN': 'Antarctica',
+                'AS': 'Asia',
+                'EU': 'Europe',
+                'NA': 'North America',
+                'OC': 'Oceania',
+                'SA': 'South America'
+            }
+            continent = continents[continent_code]
 
             destination = Destination(title=form.title.data,
                                       country=country,

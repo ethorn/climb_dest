@@ -1,6 +1,7 @@
 from flask import json, render_template, request
 from sqlalchemy import and_, or_, true
 
+from app import db
 from app.main import bp
 from app.main.forms import CurrencyForm
 from app.main.load_destinations import get_joins, get_filter_and_order_array, convert_data_to_dict
@@ -26,10 +27,13 @@ def index():
     else:
         destinations = Destination.query.all()
 
+    countries_query = db.session.query(Destination.country.distinct()).all()
+    countries = [value for value, in countries_query]
+
     currency_form = CurrencyForm()
 
     return render_template('index.html', title='Home', destinations=destinations, request=request,
-                           currency_form=currency_form, user=User)
+                           currency_form=currency_form, user=User, countries=countries)
 
 
 

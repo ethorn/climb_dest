@@ -277,6 +277,28 @@ var filterLoad = {
     var dataSortBy = $('select.js-desktop-sort-by').val()
     desktopJsonData.sort_by = dataSortBy
 
+    // Continents (CHECKBOXES)
+    var dataContinents = []
+    $('input.js-filter-desktop-continent-checkbox').each(function () {
+      if ($(this).is(':checked')) {
+        dataContinents.push($(this).val())
+      }
+    })
+    if (dataContinents.length > 0) {
+      desktopJsonData.continents = dataContinents
+    }
+
+    // Countries (CHECKBOXES)
+    var dataCountries = []
+    $('input.js-filter-desktop-country-checkbox').each(function () {
+      if ($(this).is(':checked')) {
+        dataCountries.push($(this).val())
+      }
+    })
+    if (dataCountries.length > 0) {
+      desktopJsonData.countries = dataCountries
+    }
+
     // Cost (SELECT)
     var dataCost = $('select.js-filter-desktop-cost').val()
     if (dataCost !== 'any') {
@@ -335,19 +357,6 @@ var filterLoad = {
       desktopJsonData.car = dataCar
     }
 
-    // ALL DATA TOGETHER
-    /*
-    desktopJsonData = {
-      order: dataOrder,
-      sort_by: dataSortBy,
-      cost: dataCost,
-      accomodation: dataAccomodation,
-      main_discipline: dataMainDiscipline,
-      secondary_discipline: dataSecondaryDiscipline,
-      months: dataMonths,
-      car: dataCar
-    } */
-
     return desktopJsonData
 
   },
@@ -372,6 +381,28 @@ var filterLoad = {
     var dataCost = $('input.js-hidden-mobile-cost-value').val()
     if (dataCost !== 'any') {
       mobileJsonData.cost = dataCost
+    }
+
+    // Continents (CHECKBOXES)
+    var dataContinents = []
+    $('input.js-filter-mobile-continent-checkbox').each(function () {
+      if ($(this).is(':checked')) {
+        dataContinents.push($(this).val())
+      }
+    })
+    if (dataContinents.length > 0) {
+      mobileJsonData.continents = dataContinents
+    }
+
+    // Countries (CHECKBOXES)
+    var dataCountries = []
+    $('input.js-filter-mobile-country-checkbox').each(function () {
+      if ($(this).is(':checked')) {
+        dataCountries.push($(this).val())
+      }
+    })
+    if (dataCountries.length > 0) {
+      mobileJsonData.countries = dataCountries
     }
 
     // Accomodation (CHECKBOXES)
@@ -444,13 +475,12 @@ var filterLoad = {
     } else if (from === 'mobile') {
       jsonData = filterLoad.mobileDataFromFilter
     }
-    // console.log('bottom in loadDestinations') // eslint-disable-line no-console
-    // console.log(jsonData) // eslint-disable-line no-console
+
     // Change url
     filterLoad.changeUrl(jsonData)
 
     var jsonDataAsString = JSON.stringify(jsonData)
-    // console.log(jsonDataAsString)
+
     // Ajax load (sends request to route('/_load_destinations'))
     $('.destinations-list-container ul').load($SCRIPT_ROOT + '/_load_destinations', { jsonDataAsString: jsonDataAsString }, function () {
       // On success

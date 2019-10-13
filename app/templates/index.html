@@ -52,6 +52,31 @@
     		<a class="sortfilter-bar--asc-desc js-sortby-asc-desc js-desktop-sortby-asc-desc js-asc" href="javascript:void(0);">&uarr;</a>
 		</li>
 
+		<li class="sortfilter-bar--continent button-filter js-filter-button-dropdown hide-on-mobile">
+			Continent
+			<div class="dropdown-content">
+				<input type="checkbox" class="js-filter-desktop-continent-checkbox" value="Africa"> Africa<br>
+				<input type="checkbox" class="js-filter-desktop-continent-checkbox" value="Antarctica"> Antarctica<br>
+				<input type="checkbox" class="js-filter-desktop-continent-checkbox" value="Asia"> Asia<br>
+				<input type="checkbox" class="js-filter-desktop-continent-checkbox" value="Europe"> Europe<br>
+				<input type="checkbox" class="js-filter-desktop-continent-checkbox" value="North America"> North America<br>
+				<input type="checkbox" class="js-filter-desktop-continent-checkbox" value="Oceania"> Oceania<br>
+				<input type="checkbox" class="js-filter-desktop-continent-checkbox" value="South America"> South America<br>
+
+				<input type="submit" class="js-filter-desktop-submit js-filter-desktop-continent-submit" value="GO">
+			</div>
+		</li>
+
+		<li class="sortfilter-bar--country button-filter js-filter-button-dropdown hide-on-mobile">
+			Country
+			<div class="dropdown-content">
+				{% for country in countries %}
+					<input type="checkbox" class="js-filter-desktop-country-checkbox" value="{{ country }}"> {{ country }}<br>
+				{% endfor %}
+				<input type="submit" class="js-filter-desktop-submit js-filter-desktop-country-submit" value="GO">
+			</div>
+		</li>
+
 		<li class="sortfilter-bar--cost button-filter hide-on-mobile">
 			Cost
 			<select name="filter-desktop-cost" class="js-filter-desktop-cost">
@@ -142,7 +167,22 @@
     			<option value="200">&#60;200 EUR / week</option>
     			<option value="500">&#60;500 EUR / week</option>
     			<option value="1000">&#60;1000 EUR / week</option>
-    	</select>
+		</select>
+
+		<h4>Continent</h4>
+		<input type="checkbox" class="js-filter-mobile-continent-checkbox" value="Africa"> Africa<br>
+		<input type="checkbox" class="js-filter-mobile-continent-checkbox" value="Antarctica"> Antarctica<br>
+		<input type="checkbox" class="js-filter-mobile-continent-checkbox" value="Asia"> Asia<br>
+		<input type="checkbox" class="js-filter-mobile-continent-checkbox" value="Europe"> Europe<br>
+		<input type="checkbox" class="js-filter-mobile-continent-checkbox" value="North America"> North America<br>
+		<input type="checkbox" class="js-filter-mobile-continent-checkbox" value="Oceania"> Oceania<br>
+		<input type="checkbox" class="js-filter-mobile-continent-checkbox" value="South America"> South America<br>
+		
+		<h4>Country</h4>
+		{% for country in countries %}
+			<input type="checkbox" class="js-filter-mobile-country-checkbox" value="{{ country }}"> {{ country }}<br>
+		{% endfor %}
+
 
 		<h4>Accomodation</h4>
 		<input type="checkbox" class="js-filter-mobile-accomodation-checkbox" name="mobile_tent_free" value="tent_free"> <label for="mobile_tent_free">Free tent spots</label> <br>
@@ -477,8 +517,8 @@
 			</div>
 			{% if current_user.is_authenticated and current_user.access == 2 %}
 			<div class="edit-remove">
-				<a href="{{ url_for('edit', id=destination.id) }}">Edit</a>
-				<a href="{{ url_for('delete', id=destination.id) }}">Delete</a>
+				<a href="{{ url_for('destinations.edit', id=destination.id) }}">Edit</a>
+				<a href="{{ url_for('destinations.delete', id=destination.id) }}">Delete</a>
 			</div>
 			{% endif %}
 		</a>
