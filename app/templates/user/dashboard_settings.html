@@ -7,21 +7,21 @@
     {{ form.hidden_tag() }}
     <p>
     	{{ form.displayname.label }}<br>
-        {{ form.displayname(size=32) }}<br>
+        {{ form.displayname() }}<br>
         {% for error in form.displayname.errors %}
         	<span style="color: red;">[{{ error }}]</span>
         {% endfor %}
     </p>
     <p>
     	{{ form.location.label }}<br>
-    	{{ form.location(size=64) }}<br>
+    	{{ form.location }}<br>
     	{% for error in form.location.errors %}
 			<span style="color: red;">[{{ error }}]</span>
     	{% endfor %}
     </p>
      <p>
     	{{ form.bio.label }}<br>
-    	{{ form.bio(cols=50, rows=4) }}<br>
+    	{{ form.bio(class_="settings-bio-textarea") }}<br>
     	{% for error in form.bio.errors %}
 			<span style="color: red;">[{{ error }}]</span>
     	{% endfor %}

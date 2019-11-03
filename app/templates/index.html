@@ -10,10 +10,6 @@
 			{{ currency_form.currency(class_="button-filter") }}
 		</li>
 
-		<li class="sortfilter-bar--clear-filter button-filter button-filter--border-only js-clear-filter">
-			Clear filter
-		</li>
-
 		<!-- Mobile sortby -->
 		<li class="sortfilter-bar--sortby hide-on-desktop">
 			<select name="sort_by" class="js-sort-by js-mobile-sort-by">
@@ -157,7 +153,11 @@
 		</li>
 
 		<li class="sortfilter-bar--filters button js-mobile-filters-toggle js-filter-button-dropdown hide-on-desktop">
-			<span>Filters</span>
+			Filter
+		</li>
+
+		<li class="sortfilter-bar--clear-filter button button-filter--border-only js-clear-filter">
+			Clear filter
 		</li>
 
 		</ul>
@@ -430,8 +430,11 @@
 						{% if months.february == 1 %}
 							<span class="property-value--month">Feb</span>
 						{% endif %}
-						{% if months.mars == 1 %}
+						{% if months.march == 1 %}
 							<span class="property-value--month">Mar</span>
+						{% endif %}
+						{% if months.april == 1 %}
+							<span class="property-value--month">Apr</span>
 						{% endif %}
 						{% if months.may == 1 %}
 							<span class="property-value--month">May</span>

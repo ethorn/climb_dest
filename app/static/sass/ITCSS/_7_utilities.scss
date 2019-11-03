@@ -29,8 +29,20 @@
 	}
 }
 
+.hide-under-450 {
+	@include under-450 {
+		display: none !important;
+	}
+}
+
 .hide-over-600 {
 	@include over-600 {
+		display: none !important;
+	}
+}
+
+.hide-over-450 {
+	@include over-450 {
 		display: none !important;
 	}
 }

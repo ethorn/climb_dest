@@ -221,6 +221,10 @@ p.announcements {
 	margin: 0 auto;
 	padding: 10px;
 
+	@include under-450-only {
+		// font-size: 0;
+	}
+
 	@include over-900 {
 		width: 900px;
 	}
@@ -236,6 +240,13 @@ p.announcements {
 
 	li {
 		display: inline-block;
+		height: 38px;
+		line-height: 38px;
+		margin: 2px 0;
+
+		@include under-450 {
+			font-size: 0.8em;
+		}
 	}
 }
 
@@ -243,19 +254,24 @@ p.announcements {
 		display: inline-block;
 
 		select {
+			display: block;
 			appearance: none;
 			font-size: .9em;
-			padding-left: 12px;
-			padding-right: 0;
-			width: 65px;
-			margin-top: -1px;
+			padding-left: 7px;
+			padding-right: 7px;
 			height: 38px;
+			position: relative;
+			top: -1px;
+
+			@include under-450 {
+				padding-left: 3px;
+				padding-right: 3px;
+			}
 		}
 	}
 
 	.sortfilter-bar--sortby {
 		display: inline-block;
-		width: 131px;
 
 		select {
 			appearance: none;
@@ -267,6 +283,11 @@ p.announcements {
 			padding-left: 15px;
 			width: 100px;
 			height: 38px;
+
+			@include under-450 {
+				width: 80px;
+				padding-left: 8px;
+			}
 		}
 	}
 
@@ -276,16 +297,32 @@ p.announcements {
 		color: $black;
 		display: inline-block;
 		line-height: 38px;
+		height:38px;
 		margin-left: -5px;
-		margin-top: -2px;
+		margin-top: -3px;
 		padding: 0 10px;
 		text-decoration: none;
 		vertical-align: middle;
+
+		@include under-450 {
+			position: relative;
+			top:0.5px;
+		}
 	}
 
 	.sortfilter-bar--filters {
-		span {
-			line-height: 40px;
+		line-height: 38px;
+
+		@include over-450 {
+			position: relative;
+			top: -1px;
+		}
+	}
+
+	.sortfilter-bar--clear-filter {
+		@include over-450 {
+			position: relative;
+			top: -1.5px;
 		}
 	}
 
@@ -295,7 +332,8 @@ p.announcements {
 		border-radius: 3px;
 		color: $black;
 		font-weight: $bold;
-		padding: 8px 12px;
+		line-height: 38px;
+		padding: 0 8px;
 		text-align: center;
 		text-decoration: none;
 
@@ -388,6 +426,7 @@ p.announcements {
 		color: $grey;
 		display: inline-block;
 		margin-right: 5px;
+		margin-top: 3px;
 		padding: 3px 5px;
 
 		&:hover {
@@ -404,6 +443,9 @@ p.announcements {
 // ==== Content containers
 
 .content-container {
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
 	margin: 0 auto;
 	padding: 0 10px;
 	width: 100%;
@@ -708,7 +750,18 @@ p.announcements {
 	width: 25%;
 }
 
+.settings-bio-textarea {
+	width: 100%;
+	height: 100px;
+	
+	@include over-600 {
+		width: 80%;
+	}
 
+	@include over-900 {
+		width: 60%;
+	}
+}
 
 
 // ===========================================================
@@ -1264,10 +1317,18 @@ p.announcements {
 		}
 
 		@include over-900 {
-			width: 60%;
 		}
 	
 		@include over-1200 {
+		}
+
+		img.single-additional-photo {
+			display: inline-block;
+			width: 150px;
+
+			@include over-900 {
+				width: 200px;
+			}
 		}
 	}
 

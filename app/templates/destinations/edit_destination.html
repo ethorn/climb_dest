@@ -1,43 +1,311 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Edit Destination</h1>
+<script>
+    var editDestinationFormFuctionality = {
+
+        onReady: function () {
+
+            $('select#country option').first().attr('disabled', true)
+
+            $('select#country option[value={{ destination.country_code }}]').attr('selected', 'selected')
+        
+        }
+
+    }
+
+    $(document).ready(editDestinationFormFuctionality.onReady)
+</script>
+
+<div class="add-destination-container">
+    <h1>{{ title }}</h1>
     <form action="" method="post" enctype="multipart/form-data">
         {{ form.hidden_tag() }}
+
+        <h3><span>*</span> {{ form.title.label }}</h3>
+        {{ form.title(size=64) }}<br>
+        {% for error in form.title.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+
+
+        <h3><span class="required">*</span> {{ form.country.label }}</h3>
+        {{ form.country() }}
+        {% for error in form.country.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+
+        <h3><span>*</span> {{ form.weather_place_autocomplete.label }}</h3>
+        <p>Start writing, then select from list.</p>
+        {{ form.weather_place_autocomplete }} <br>
+
+        <h3><span>*</span> {{ form.featured_photo.label }}</h3>
+        <p>Please only use a landscape oriented photo here, it will look much better (jpg/jpeg)</p>
+        {{ form.featured_photo }} <br>
+        {% for error in form.featured_photo.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+
+        <h3>{{ form.additional_photos.label }} </h3>
+        <p>Any aspect ratio is fine here (jpg/jpeg)</p>
+        {{ form.additional_photos }} <br>
+        {% for error in form.additional_photos.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+        
+        {% for photo in destination.addit_photos %}
+            <img width="150px" src="{{ destination.photo_folder_url  }}additional_photos/{{ photo.additional_photo_filename }}-thumbnail.{{ photo.additional_photo_extension }}" alt="">
+            <a href="{{ url_for('destinations.delete_additional_img', id=destination.id, photo_id=photo.id) }}">Delete</a>
+        {% endfor %}
+
+        <h3>{{ form.description.label }}</h3>
+        <p>Describe the area, it's history, access/travel info, accomodation, weather characteristics, route characteristics, topos/books, things that are good to know, etc.</p>
+        {{ form.description }}
+
+        <h3>{{ form.main_discipline.label }} </h3>
+        <div id="discipline_buttons_wrap">{{ form.main_discipline }}</div>
+
+        <h4>Also has these</h4>
+        <ul class="list-discipline">
+            <li>{{ form.traditional }} {{ form.traditional.label }}</li>
+            <li>{{ form.sport }} {{ form.sport.label }}</li>
+            <li>{{ form.bouldering }} {{ form.bouldering.label }}</li>
+        </ul>
+        </ul>
+        {% for error in form.main_discipline.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+
+
+        <h3>Months in season</h3>
+        <ul>
+            <li>{{ form.january }} {{ form.january.label }}</li>
+            <li>{{ form.february }} {{ form.february.label }}</li>
+            <li>{{ form.march }} {{ form.march.label }}</li>
+            <li>{{ form.april }} {{ form.april.label }}</li>
+            <li>{{ form.may }} {{ form.may.label }}</li>
+            <li>{{ form.june }} {{ form.june.label }}</li>
+            <li>{{ form.july }} {{ form.july.label }}</li>
+            <li>{{ form.august }} {{ form.august.label }}</li>
+            <li>{{ form.september }} {{ form.september.label }}</li>
+            <li>{{ form.october }} {{ form.october.label }}</li>
+            <li>{{ form.november }} {{ form.november.label }}</li>
+            <li>{{ form.december }} {{ form.december.label }}</li>
+        </ul>
+
+        <h3>Accomodations available</h3>
+        <ul>
+            <li>{{ form.tent }} {{ form.tent.label }}</li>
+            <li>{{ form.van }} {{ form.van.label }}</li>
+            <li>{{ form.camping }} {{ form.camping.label }}</li>
+            <li>{{ form.hostel }} {{ form.hostel.label }}</li>
+            <li>{{ form.apartment }} {{ form.apartment.label }}</li>
+            <li>{{ form.house }} {{ form.house.label }}</li>
+            <li>{{ form.hotel }} {{ form.hotel.label }}</li>
+        </ul>
+
+        <h3>Approach:</h3>
+        <ul>
+            <li>{{ form.easy }} {{ form.easy.label }}</li>
+            <li> {{ form.moderate }} {{ form.moderate.label }}</li>
+            <li>{{ form.hardcore }} {{ form.hardcore.label }}</li>
+        </ul>
+
+        <h3>Car</h3>
+        <ul>
+            <li>{{ form.not_needed }} {{ form.not_needed.label }}</li>
+            <li>{{ form.good_to_have }} {{ form.good_to_have.label }}</li>
+            <li>{{ form.must_have }} {{ form.must_have.label }}</li>
+        </ul>
+
+        <h2>Cost and prices for this destination</h2>
+        <p>Please fill in as much as you can. Only use numbers and dots (3.14 is correct). Do not use comma (3,14 is wrong).</p>
+
+        <h3>{{ form.cost_form_currency.label }}</h4>
+        <p>Just select the currency you will use to enter the prices. Does not have to be the local currency.</p>
+        {{ form.cost_form_currency }}
+
+        <h3>Food and drinks</h3>
+        <p>For beer, coffee and restaurant prices, see <a href="https://www.numbeo.com/cost-of-living/">Cost of Living index (Numbeo)</a>. For one days worth of groceries, see <a href="https://www.numbeo.com/food-prices/">Food prices index (Numbeo)</a></p>
+      
+        <h4><span class="required">*</span> {{ form.beer_at_establishment.label }}</h4>
+        {{ form.beer_at_establishment }} <span class="cost-field-currency">EUR</span>
+    
+        <h4><span class="required">*</span> {{ form.coffee_at_establishment.label }}</h4>
+        {{ form.coffee_at_establishment }} <span class="cost-field-currency">EUR</span>
+    
+        <h4><span class="required">*</span> {{ form.restaurant_inexpensive_meal.label }}</h4>
+        {{ form.restaurant_inexpensive_meal }} <span class="cost-field-currency">EUR</span>
+    
+        <h4><span class="required">*</span> {{ form.groceries_one_week.label }}</h4>
+        {{ form.groceries_one_week }} <span class="cost-field-currency">EUR</span>
+         
+
+        <h3>Car</h3>
+        <p>For one week rental prices, see <a href="https://www.rentalcars.com/">Rental Cars</a>, <a
+                href="https://www.avis.com/en/locations/avisworldwide">Avis</a>, <a
+                href="https://www.hertz.no/rentacar/location">Hertz</a> or <a
+                href="https://www.sixt.com/car-rental/">SiXT</a>. For gas prices, see <a href="https://www.numbeo.com/gas-prices/">Gas prices index (Numbeo)</a>.</p>
+        
+        <h4>{{ form.car_rent_one_week.label }}</h4>
+        {{ form.car_rent_one_week }} <span class="cost-field-currency">EUR</span>
+        
+        <h4>{{ form.gas_one_liter.label }}</h4>
+        {{ form.gas_one_liter }} <span class="cost-field-currency">EUR</span>
+        
+        <h4>{{ form.km_per_day.label }}</h4>
+        {{ form.km_per_day }} <span style="color:#ccc">km</span>
+        
+
+        <h3>Accomodation</h3>
+        <p>Just leave the unavailable accomodations blank. </p>
+            <h4>{{ form.tent_per_day.label }}</h4>
+            {{ form.tent_per_day }} <span class="cost-field-currency">EUR</span>
+        
+            <h4>{{ form.van_per_day.label }}</h4>
+            {{ form.van_per_day }} <span class="cost-field-currency">EUR</span>
+
+            <h4>{{ form.camping_per_day.label }}</h4>
+            {{ form.camping_per_day }} <span class="cost-field-currency">EUR</span>
+
+            <h4>{{ form.hostel_per_day.label }}</h4>
+            {{ form.hostel_per_day }} <span class="cost-field-currency">EUR</span>
+
+            <h4>{{ form.apartment_per_day.label }}</h4>
+            {{ form.apartment_per_day }} <span class="cost-field-currency">EUR</span>
+
+            <h4>{{ form.house_per_day.label }}</h4>
+            {{ form.house_per_day }} <span class="cost-field-currency">EUR</span>
+
+            <h4>{{ form.hotel_per_day.label }}</h4>
+            {{ form.hotel_per_day }} <span class="cost-field-currency">EUR</span>
+
+
+        <h2>Routes information</h2>
+        <p>Please fill in as much as you can. Only use numbers and dots (3.14 is correct). Do not use comma (3,14 is wrong).</p>
+
+        <h4>{{ form.total_routes.label }}</h4>
+        {{ form.total_routes }}
+
+        <h4>{{ form.total_sport.label }}</h4>
+        {{ form.total_sport }}
+
+        <h4>{{ form.total_trad.label }}</h4>
+        {{ form.total_trad }}
+
+        <h4>{{ form.total_boulders.label }}</h4>
+        {{ form.total_boulders }}
+        
+        <br><br><br><br>
+        
+        <img width="500px" src="{{ url_for('static', filename='images/grades_categorization.png') }}" alt="">
+        <br>
         <p>
-            {{ form.title.label }}<br>
-            {{ form.title(size=64) }}<br>
-            {% for error in form.title.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
+            <strong><u>The following four fields are used to create the staple diagram for this destination.</u></strong>
+            If you don't know the number of routes, just put in percentage numbers (but without '%'),
+            e.g. easy: 0.25, intermediate: 0.45, hard: 0.2, very hard: 0.1.
         </p>
-        <p>
-            {{ form.country.label }}<br>
-            {{ form.country(size=64) }}<br>
-            {% for error in form.country.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.discipline.label }}<br>
-            {{ form.discipline }}<br>
-            {% for error in form.discipline.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        {% if destination.featured_photo_url %}
-        <p>
-        <img src="{{ destination.featured_photo_url }}" alt="{{ destination.featured_photo_filename }}" style="width:600px;height:450px;">
-        </p>
-        {% endif %}
-        <p>
-            {{ form.image.label }}<br>
-            {{ form.image }}<br>
-            {% for error in form.image.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-       
-        <p>{{ form.submit() }}</p>
+        <p>Use the table above for reference.</p>
+
+        <h4><span class="easy-routes">{{ form.easy_routes.label }}</span></h4>
+        {{ form.easy_routes }}
+
+        <h4><span class="intermediate-routes">{{ form.intermediate_routes.label }}</span></h4>
+        {{ form.intermediate_routes }}
+
+        <h4><span class="hard-routes">{{ form.hard_routes.label }}</span></h4>
+        {{ form.hard_routes }}
+
+        <h4><span class="very-hard-routes">{{ form.very_hard_routes.label }}</span></h4>
+        {{ form.very_hard_routes }}
+
+        <h2 style="text-align: center;">Thank you so much! :)</h2>
+
+        {{ form.submit() }}
     </form>
+</div>
+
+<script>
+
+    var autocomplete, place;
+
+    var options = {
+        types: ['geocode']
+    };
+
+    function initAutocomplete() {
+        // Create the autocomplete object, restricting the search predictions to
+        // geographical location types.
+        autocomplete = new google.maps.places.Autocomplete(
+            document.getElementById('weather_place_autocomplete'), options);
+
+        // Avoid paying for data that you don't need by restricting the set of
+        // place fields that are returned to just the address components.
+        autocomplete.setFields(['geometry']);
+
+        // When the user selects an address from the drop-down, populate the
+        // address fields in the form.
+        autocomplete.addListener('place_changed', fillInLatitudeLongitude);
+
+        // Add a DOM event listener to react when the user selects a country.
+        document.getElementById('country').addEventListener(
+            'change', setAutocompleteCountry);
+    }
+
+    // Set the country restriction based on user input.
+    // Also center and zoom the map on the given country.
+    function setAutocompleteCountry() {
+        var country = document.getElementById('country').value;
+        if (country === 'all') {
+            autocomplete.setComponentRestrictions({ 'country': [] });
+        } else {
+            autocomplete.setComponentRestrictions({ 'country': country });
+        }
+    }
+
+    function fillInLatitudeLongitude() {
+        // Get the place details from the autocomplete object.
+        place = autocomplete.getPlace();
+
+        document.getElementById('weather_ltd').value = place.geometry.location.lat();
+        document.getElementById('weather_lng').value = place.geometry.location.lng();
+
+        console.log(document.getElementById('weather_ltd').value)
+        console.log(document.getElementById('weather_lng').value)
+
+    }
+
+</script>
+<script>
+    $('#description').summernote({
+        minHeight: 200,
+        toolbar: [
+            // [groupName, [list of button]]
+            ['style', ['bold', 'italic', 'underline', 'clear', 'H1']],
+            ['font', ['strikethrough', 'superscript', 'subscript']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['picture'],
+            ['link'],
+            ['table']
+        ],
+        placeholder: 'Write here...'
+    });
+</script>
+<script>
+var currencyFormChange = {
+    
+    onReady: function () {
+        $('select#cost_form_currency').change(function () {
+            console.log("hasd")
+            $('span.cost-field-currency').text($(this).val()) 
+        })
+    }
+
+}
+$(document).ready(currencyFormChange.onReady)
+</script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8XiZomiVMq2KmbTlj6OPu6tILBrkTYoQ&libraries=places&callback=initAutocomplete"
+    async defer></script>
+
 {% endblock %}

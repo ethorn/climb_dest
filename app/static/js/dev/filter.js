@@ -485,7 +485,7 @@ var filterLoad = {
 
   },
 
-  // Change URL with history API
+  // Change URL with history API, and add to browser history
   changeUrl: function (jsonData) {
     var url = '?' + $.param(jsonData)
     history.pushState(null, null, url)

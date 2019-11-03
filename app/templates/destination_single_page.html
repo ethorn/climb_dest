@@ -156,8 +156,11 @@
 				{% if months.february == 1 %}
 					<span class="property-value--month">Feb</span>
 				{% endif %}
-				{% if months.mars == 1 %}
+				{% if months.march == 1 %}
 					<span class="property-value--month">Mar</span>
+				{% endif %}
+				{% if months.april == 1 %}
+					<span class="property-value--month">Apr</span>
 				{% endif %}
 				{% if months.may == 1 %}
 					<span class="property-value--month">May</span>
@@ -440,7 +443,9 @@
 	<div class="single-photos">
 		<h2>Photos</h2>
 		{% for photo in destination.additional_photos %}
-			<img src="{{ photo.additional_photo_url }}" alt="" width="150px">
+			<a target="_blank" href="{{ destination.photo_folder_url }}/additional_photos/{{ photo.additional_photo_filename }}-thumbnail.{{ photo.additional_photo_extension }}">
+				<img src="{{ destination.photo_folder_url }}/additional_photos/{{ photo.additional_photo_filename }}-thumbnail.{{ photo.additional_photo_extension }}" alt="" class="single-additional-photo">
+			</a>
 		{% endfor %}
 	</div>
 	{% endif %}

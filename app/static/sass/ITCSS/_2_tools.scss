@@ -15,6 +15,10 @@
 	@media (max-width: 450px) { @content; }
 }
 
+@mixin under-450 {
+	@media (max-width: 450px) { @content; }
+}
+
 @mixin over-450 {
 	@media (min-width: 450px) { @content; }
 }
