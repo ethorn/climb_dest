@@ -27,7 +27,6 @@
 </script>
 
 <div class="add-destination-container">
-    {{ test }}
     <h1>{{ title }}</h1>
     <form action="" method="post" enctype="multipart/form-data">
         {{ form.hidden_tag() }}
@@ -223,10 +222,9 @@
 
         <h4><span class="very-hard-routes">{{ form.very_hard_routes.label }}</span></h4>
         {{ form.very_hard_routes }}
-
-        <h2 style="text-align: center;">Thank you so much! :)</h2>
-
+        <br><br>
         {{ form.submit() }}
+        <h2 style="text-align: center;">Thank you so much! :)</h2>
     </form>
 </div>
 

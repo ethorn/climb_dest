@@ -27,6 +27,7 @@ def index():
     else:
         destinations = Destination.query.all()
 
+    # Get all countries in database, for filter.
     countries_query = db.session.query(Destination.country.distinct()).all()
     countries = [value for value, in countries_query]
 

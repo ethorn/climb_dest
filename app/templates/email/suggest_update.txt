@@ -1,0 +1,8 @@
+Suggested update!
+
+From: {{ sender_email }}
+
+Destination: {{ destination_title }}
+
+Message:
+{{ message }}

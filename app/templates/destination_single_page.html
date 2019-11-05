@@ -21,6 +21,10 @@
 		</span>
 	</div>
 
+	<div class="suggest-update">
+		<p>See an error in the information on this page? <a href="{{ url_for('destinations.suggest_update', id=destination.id) }}">Suggest an update!</a></p>
+	</div>
+
 	<div class="climbing-information">
 		{% set routes = destination.routes.first() %}
 		{% if routes %}

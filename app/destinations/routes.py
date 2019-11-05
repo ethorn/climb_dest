@@ -1,19 +1,38 @@
-import os
-import secrets
-from decimal import Decimal
-
 import pycountry_convert
-import requests
-from flask import current_app, flash, redirect, render_template, request, url_for
-from flask_login import current_user, login_required
+from flask import flash, redirect, render_template, request, url_for
+from flask_login import login_required
 
-from app import db, images
+from app import db
 from app.destinations import bp
-from app.destinations.forms import DestinationForm, EditDestinationForm
-from app.models import (Accomodation, AdditionalPhotos, Approach, Car, Cost,
-                        Destination, Months, Routes)
-from app.tasks import create_image_set
+from app.destinations.email import send_suggest_update_email
+from app.destinations.forms import (DestinationForm, EditDestinationForm,
+                                    suggestUpdateForm)
 from app.destinations.save_destination import save_destination
+from app.models import AdditionalPhotos, Destination
+
+
+@bp.route('/suggest_update/', methods=['GET', 'POST'])
+@bp.route('/suggest_update/<int:id>', methods=['GET', 'POST'])
+def suggest_update(id=None):
+    form = suggestUpdateForm()
+
+    destination = Destination.query.get(id)
+
+    if form.validate_on_submit():
+        subject = form.subject.data
+        sender_email = form.sender_email.data
+        destination_title = form.destination_title.data
+        message = form.message.data
+
+        send_suggest_update_email(subject, sender_email, destination_title, message)
+        
+        flash('The message has been sent!')
+        return redirect(url_for('main.single', id=id))
+
+    return render_template('destinations/suggest_update.html',
+                           title='Suggest update',
+                           form=form,
+                           destination=destination)
 
 
 @bp.route('/add_destination', methods=['GET', 'POST'])

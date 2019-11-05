@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<script>
+    var editDestinationFormFuctionality = {
+        onReady: function () {
+            $('select#destination_title option').first().attr('disabled', true)
+            $('select#destination_title option[value={{ destination.title }}]').attr('selected', 'selected')
+        }
+    }
+
+    $(document).ready(editDestinationFormFuctionality.onReady)
+</script>
+
+<div class="content-container">
+    <div class="radius-shadow-window"> 
+        <h1>{{ title }}</h1>
+        <form action="" method="post" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+
+            <h3><span class="required">*</span> {{ form.subject.label }}</h3>
+            {{ form.subject(size=64) }}<br>
+            {% for error in form.subject.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+
+            <h3><span class="required">*</span> {{ form.destination_title.label }}</h3>
+            {{ form.destination_title() }}<br>
+            {% for error in form.destination_title.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+
+            <h3><span class="required">*</span> {{ form.sender_email.label }}</h3>
+            {{ form.sender_email() }}<br>
+            {% for error in form.sender_email.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+
+            <h3><span class="required">*</span> {{ form.message.label }}</h3>
+            {{ form.message(class_="general-form-textarea") }}<br>
+            {% for error in form.message.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            <br>
+            {{ form.submit(class_='button') }}
+            <h2 style="text-align: center;">Thank you! :)</h2>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

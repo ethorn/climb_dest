@@ -4,10 +4,26 @@ from flask_wtf.file import FileAllowed, FileRequired
 from wtforms import (BooleanField, DecimalField, FileField, HiddenField,
                      IntegerField, MultipleFileField, SelectField, StringField,
                      SubmitField, TextAreaField)
-from wtforms.validators import DataRequired, Optional, ValidationError
+from wtforms.validators import DataRequired, Optional, ValidationError, Email
 
 from app import images
 from app.models import Destination
+
+
+class DestinationSelectField(SelectField):
+    def __init__(self, *args, **kwargs):
+        super(DestinationSelectField, self).__init__(*args, **kwargs)
+        destinations = Destination.query.all()
+        self.choices = [(d.title, d.title) for d in destinations]
+        self.choices.insert(0, ('', 'Choose Destination'))
+
+
+class suggestUpdateForm(FlaskForm):
+    subject = StringField('Subject', validators=[DataRequired()])
+    destination_title = DestinationSelectField('Destination to update', validators=[DataRequired()])
+    sender_email = StringField('Email', validators=[DataRequired(), Email()])
+    message = TextAreaField('Message', validators=[DataRequired()])
+    submit = SubmitField('Send')
 
 
 class CountrySelectField(SelectField):
