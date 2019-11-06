@@ -119,3 +119,4 @@ venv.bak/
 app.db
 app/static/uploads/images/*
 climbing_destinations.log*
+_ASSETS/
