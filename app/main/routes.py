@@ -33,8 +33,9 @@ def index():
 
     currency_form = CurrencyForm()
 
-    return render_template('index.html', title='Home', destinations=destinations, request=request,
-                           currency_form=currency_form, user=User, countries=countries)
+    # return render_template('index.html', title='Home', destinations=destinations, request=request,
+    #                        currency_form=currency_form, user=User, countries=countries)
+    return render_template('under_development.html')
 
 
 
