@@ -30,7 +30,7 @@ passlib==1.7.1
 Pillow==8.0.1
 pluggy==0.11.0
 pprintpp==0.4.0
-py==1.8.0
+py==1.10.0
 pycodestyle==2.4.0
 pycountry==18.12.8
 pycountry-convert==0.7.2
